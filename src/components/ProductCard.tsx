@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
 import Image from "next/image"
 
 interface ProductCardProps {
@@ -9,16 +8,18 @@ interface ProductCardProps {
 
 export default function ProductCard({ image, name }: ProductCardProps) {
   return (
-    <Card className="items-center w-full gap-4 py-4">
-      <AspectRatio ratio={1 / 1} className="w-full">
+    <Card className="flex flex-col items-center w-full p-4 h-[369px] gap-4 overflow-hidden">
+      <div className="relative h-[305px] flex items-center justify-center flex-shrink-0 overflow-hidden">
         <Image
           src={image}
           alt={name}
-          fill
-          className="object-contain"
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="object-contain w-full h-full"
         />
-      </AspectRatio>
-      <div className="text-[16px]">
+      </div>
+      <div className="text-[16px] font-medium text-center w-full">
         {name}
       </div>
     </Card>
