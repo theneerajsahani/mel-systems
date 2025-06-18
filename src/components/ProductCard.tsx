@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card"
 import Image from "next/image"
 
 interface ProductCardProps {
@@ -8,20 +7,18 @@ interface ProductCardProps {
 
 export default function ProductCard({ image, name }: ProductCardProps) {
   return (
-    <Card className="flex flex-col items-center w-full p-4 h-[369px] gap-4 overflow-hidden">
-      <div className="relative h-[305px] flex items-center justify-center flex-shrink-0 overflow-hidden">
+    <div className="flex flex-col items-center gap-4 pb-4">
+      <div className="border rounded w-full aspect-square overflow-hidden relative">
         <Image
           src={image}
           alt={name}
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="object-contain w-full h-full"
+          fill
+          className="object-contain rounded-lg"
         />
       </div>
-      <div className="text-[16px] font-medium text-center w-full">
-        {name}
+      <div>
+        <p className="text-[12px] text-center lg:text-[16px]">{name}</p>
       </div>
-    </Card>
+    </div>
   )
 }
