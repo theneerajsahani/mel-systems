@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function FirstHeroSection() {
   return (
-    <section className="relative flex flex-col px-4 md:px-8 lg:px-16 items-center justify-center min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh]">
+    <section className="relative flex flex-col px-4 md:px-8 lg:px-16 items-center justify-center min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] -mt-16 md:-mt-20 pt-16 md:pt-20">
       {/* Optimized Background Image */}
       <Image
         src="/images/1.jpg"

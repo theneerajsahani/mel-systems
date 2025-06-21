@@ -1,96 +1,138 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import { testimonials } from "@/lib/testimonials";
 
 export default function Testimonials() {
-  // If no testimonials yet, show placeholder
-  if (testimonials.length === 0) {
-    return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Testimonials
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Client testimonials will be added here soon. We're proud of the relationships we've built and the results we've delivered across industries.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
-
+  // Create a doubled array for seamless looping
+  const doubledTestimonials = [...testimonials, ...testimonials];
+  
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+    <section className="py-12 lg:py-16 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            What Our Clients Say
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            What our clients say about us
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what industry leaders say about working with MEL Systems.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <Quote className="w-8 h-8 text-blue-600 flex-shrink-0" />
-                {testimonial.rating && (
-                  <div className="flex gap-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
+        {/* First Row - Moving Right to Left */}
+        <div className="relative mb-6">
+          <motion.div
+            className="flex gap-4"
+            animate={{
+              x: [0, -100 * testimonials.length / 2], // Move by half the total width
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 25,
+                ease: "linear",
+              },
+            }}
+          >
+            {doubledTestimonials.map((testimonial, index) => (
+              <Card 
+                key={`${testimonial.id}-${index}`} 
+                className="flex-shrink-0 w-72 bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                <CardContent className="p-5">
+                  {/* Company Logo Placeholder */}
+                  <div className="mb-4">
+                    <div className="h-6 w-18 bg-gray-200 rounded flex items-center justify-center">
+                      <span className="text-xs font-medium text-gray-500">LOGO</span>
+                    </div>
                   </div>
-                )}
-              </div>
-              
-              <blockquote className="text-gray-700 mb-6 leading-relaxed">
-                "{testimonial.content}"
-              </blockquote>
-              
-              <div className="flex items-center gap-3">
-                {testimonial.image && (
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                )}
-                <div>
-                  <cite className="font-semibold text-gray-900 not-italic">
-                    {testimonial.name}
-                  </cite>
-                  <p className="text-sm text-gray-600">
-                    {testimonial.position} at {testimonial.company}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                  
+                  {/* Testimonial Text */}
+                  <blockquote className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                    {testimonial.content}
+                  </blockquote>
+                  
+                  {/* Author Information */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-medium">
+                        {testimonial.name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                    <div>
+                      <cite className="font-semibold text-gray-900 not-italic text-sm">
+                        {testimonial.name}
+                      </cite>
+                      <p className="text-xs text-gray-500">
+                        {testimonial.position}, {testimonial.company}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Second Row - Moving Left to Right (Opposite Direction) */}
+        <div className="relative">
+          <motion.div
+            className="flex gap-4"
+            animate={{
+              x: [-100 * testimonials.length / 2, 0], // Move in opposite direction
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 25,
+                ease: "linear",
+              },
+            }}
+          >
+            {doubledTestimonials.reverse().map((testimonial, index) => (
+              <Card 
+                key={`${testimonial.id}-reverse-${index}`} 
+                className="flex-shrink-0 w-72 bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                <CardContent className="p-5">
+                  {/* Company Logo Placeholder */}
+                  <div className="mb-4">
+                    <div className="h-6 w-18 bg-gray-200 rounded flex items-center justify-center">
+                      <span className="text-xs font-medium text-gray-500">LOGO</span>
+                    </div>
+                  </div>
+                  
+                  {/* Testimonial Text */}
+                  <blockquote className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                    {testimonial.content}
+                  </blockquote>
+                  
+                  {/* Author Information */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-medium">
+                        {testimonial.name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                    <div>
+                      <cite className="font-semibold text-gray-900 not-italic text-sm">
+                        {testimonial.name}
+                      </cite>
+                      <p className="text-xs text-gray-500">
+                        {testimonial.position}, {testimonial.company}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

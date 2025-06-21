@@ -57,5 +57,21 @@ export const testimonials: Testimonial[] = [
     position: "Maintenance Supervisor",
     content: "MEL Systems delivers exactly what they promise. Their ESG solutions have helped us meet sustainability goals while reducing operational costs across our renewable energy portfolio.",
     rating: 5
+  },
+  {
+    id: "7",
+    name: "Mark Davis",
+    company: "Manufacturing Plus",
+    position: "Plant Manager",
+    content: "The reliability of MEL Systems' equipment monitoring solutions has been outstanding. We've seen a 35% reduction in unexpected equipment failures since implementation.",
+    rating: 5
+  },
+  {
+    id: "8",
+    name: "Jennifer Wilson",
+    company: "Global Logistics",
+    position: "Operations Director",
+    content: "MEL Systems' comprehensive approach to industrial monitoring has streamlined our operations. Their customer support is exceptional and always responsive to our needs.",
+    rating: 5
   }
 ];
