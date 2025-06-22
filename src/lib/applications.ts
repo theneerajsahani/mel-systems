@@ -3,9 +3,9 @@ export interface Application {
   title: string;
   description: string;
   image: string;
-  category: 'industrial' | 'energy' | 'transportation' | 'marine' | 'construction' | 'agriculture' | 'mining' | 'aerospace';
+  category: 'industrial' | 'energy' | 'transportation' | 'marine' | 'construction' | 'agriculture' | 'mining' | 'infrastructure';
   gradient: string;
-  featured: boolean; // To mark applications for home page carousel
+  featured: boolean;
   industries: string[];
   keyBenefits: string[];
   relatedProducts?: string[];
@@ -13,429 +13,293 @@ export interface Application {
 
 export const applications: Application[] = [
   {
-    id: 'wind-energy',
-    title: 'Wind Energy',
-    description: 'Advanced monitoring solutions for wind turbine gearboxes and hydraulic systems to ensure optimal performance and prevent costly downtime.',
-    image: '/images/applications/wind-energy.jpg',
-    category: 'energy',
-    gradient: 'from-green-400 to-blue-500',
+    id: 'concrete-slab-press',
+    title: 'Concrete Slab Press',
+    description: 'Advanced hydraulic monitoring for concrete slab pressing operations ensuring consistent quality and optimal performance.',
+    image: '/images/applications/concrete-slab-press.jpg',
+    category: 'construction',
+    gradient: 'from-gray-400 to-gray-600',
     featured: true,
-    industries: ['Renewable Energy', 'Power Generation'],
+    industries: ['Construction', 'Precast Concrete', 'Manufacturing'],
     keyBenefits: [
-      'Real-time oil quality monitoring',
-      'Predictive maintenance alerts',
-      'Extended component life',
-      'Reduced maintenance costs'
+      'Hydraulic pressure monitoring',
+      'Quality consistency',
+      'Reduced downtime',
+      'Improved efficiency'
     ],
-    relatedProducts: ['OQSx-G2', 'Particle Pal', 'Watchlog Sensors']
+    relatedProducts: ['Watchlog Pressure Sensors', 'Hydraulic Monitoring']
   },
   {
-    id: 'marine-vessels',
-    title: 'Marine Vessels',
-    description: 'Comprehensive fluid monitoring solutions for ship engines, hydraulics, and transmission systems in harsh marine environments.',
-    image: '/images/applications/marine.jpg',
+    id: 'concrete-delivery-precision',
+    title: 'Concrete Delivery Precision',
+    description: 'Precision monitoring systems for concrete delivery processes with enhanced accuracy and consistency controls.',
+    image: '/images/applications/concrete-delivery.jpg',
+    category: 'construction',
+    gradient: 'from-orange-400 to-red-500',
+    featured: false,
+    industries: ['Construction', 'Ready Mix Concrete', 'Quality Control'],
+    keyBenefits: [
+      'Delivery precision monitoring',
+      'Quality assurance',
+      'Process optimization',
+      'Real-time feedback'
+    ],
+    relatedProducts: ['Pressure Sensors', 'Flow Monitoring']
+  },
+  {
+    id: 'flood-gate-pressure-monitoring',
+    title: 'Flood Gate Pressure Monitoring',
+    description: 'Critical pressure monitoring systems for flood control gates ensuring reliable operation during emergency situations.',
+    image: '/images/applications/flood-gate.jpg',
+    category: 'infrastructure',
+    gradient: 'from-blue-400 to-blue-600',
+    featured: true,
+    industries: ['Water Management', 'Infrastructure', 'Emergency Services'],
+    keyBenefits: [
+      'Emergency response readiness',
+      'Hydraulic system reliability',
+      'Remote monitoring',
+      'Preventive maintenance'
+    ],
+    relatedProducts: ['Watchlog Wireless Sensors', 'Remote Monitoring']
+  },
+  {
+    id: 'industrial-engine',
+    title: 'Industrial Engine',
+    description: 'Comprehensive engine monitoring solutions for industrial applications with oil quality and performance tracking.',
+    image: '/images/applications/industrial-engine.jpg',
+    category: 'industrial',
+    gradient: 'from-indigo-400 to-purple-500',
+    featured: true,
+    industries: ['Manufacturing', 'Industrial', 'Power Generation'],
+    keyBenefits: [
+      'Engine oil condition monitoring',
+      'Performance optimization',
+      'Predictive maintenance',
+      'Extended engine life'
+    ],
+    relatedProducts: ['OQSx-G2', 'Particle Pal', 'Oil Quality Sensors']
+  },
+  {
+    id: 'natural-gas-engine',
+    title: 'Natural Gas Engine',
+    description: 'Specialized monitoring systems for natural gas engines with focus on oil quality and combustion efficiency.',
+    image: '/images/applications/natural-gas-engine.jpg',
+    category: 'energy',
+    gradient: 'from-green-400 to-teal-500',
+    featured: false,
+    industries: ['Energy', 'Power Generation', 'Gas Processing'],
+    keyBenefits: [
+      'Combustion efficiency monitoring',
+      'Oil degradation tracking',
+      'Emission optimization',
+      'Fuel efficiency improvement'
+    ],
+    relatedProducts: ['Gas Engine Monitoring', 'OQSx-G2']
+  },
+  {
+    id: 'chiller-compressors',
+    title: 'Chiller Compressors',
+    description: 'Advanced monitoring for chiller compressor systems ensuring optimal cooling performance and energy efficiency.',
+    image: '/images/applications/chiller-compressors.jpg',
+    category: 'industrial',
+    gradient: 'from-cyan-400 to-blue-500',
+    featured: false,
+    industries: ['HVAC', 'Refrigeration', 'Industrial Cooling'],
+    keyBenefits: [
+      'Refrigerant monitoring',
+      'Energy efficiency optimization',
+      'Compressor protection',
+      'System reliability'
+    ],
+    relatedProducts: ['Temperature Sensors', 'Pressure Monitoring']
+  },
+  {
+    id: 'electricity-transformers',
+    title: 'Electricity Transformers',
+    description: 'Critical monitoring systems for electrical transformers with oil quality and thermal management capabilities.',
+    image: '/images/applications/transformers.jpg',
+    category: 'energy',
+    gradient: 'from-yellow-400 to-orange-500',
+    featured: true,
+    industries: ['Utilities', 'Power Distribution', 'Electrical Grid'],
+    keyBenefits: [
+      'Transformer oil monitoring',
+      'Thermal protection',
+      'Grid reliability',
+      'Asset protection'
+    ],
+    relatedProducts: ['OQSx-G2', 'Transformer Monitoring']
+  },
+  {
+    id: 'gearbox',
+    title: 'Gearbox',
+    description: 'Comprehensive gearbox monitoring solutions for industrial applications with vibration and oil quality analysis.',
+    image: '/images/applications/gearbox.jpg',
+    category: 'industrial',
+    gradient: 'from-purple-400 to-pink-500',
+    featured: false,
+    industries: ['Manufacturing', 'Industrial', 'Mechanical Systems'],
+    keyBenefits: [
+      'Gear oil condition monitoring',
+      'Vibration analysis',
+      'Wear particle detection',
+      'Predictive maintenance'
+    ],
+    relatedProducts: ['Particle Pal', 'Vibration Sensors']
+  },
+  {
+    id: 'engine-power-generation',
+    title: 'Engine - Power Generation',
+    description: 'Specialized monitoring for power generation engines ensuring reliable electricity production and optimal performance.',
+    image: '/images/applications/power-generation-engine.jpg',
+    category: 'energy',
+    gradient: 'from-red-400 to-pink-500',
+    featured: true,
+    industries: ['Power Generation', 'Utilities', 'Emergency Power'],
+    keyBenefits: [
+      'Continuous power reliability',
+      'Engine performance optimization',
+      'Fuel efficiency monitoring',
+      'Emission control'
+    ],
+    relatedProducts: ['Engine Monitoring Systems', 'OQSx-G2']
+  },
+  {
+    id: 'heavy-lift-cranes',
+    title: 'Heavy Lift Cranes',
+    description: 'Advanced monitoring systems for heavy lift cranes with hydraulic and mechanical component tracking.',
+    image: '/images/applications/heavy-lift-cranes.jpg',
+    category: 'construction',
+    gradient: 'from-orange-400 to-red-600',
+    featured: false,
+    industries: ['Construction', 'Heavy Industry', 'Port Operations'],
+    keyBenefits: [
+      'Hydraulic system monitoring',
+      'Load management',
+      'Safety assurance',
+      'Operational efficiency'
+    ],
+    relatedProducts: ['Crane Monitoring', 'Hydraulic Sensors']
+  },
+  {
+    id: 'heavy-mining-equipment',
+    title: 'Heavy Mining Equipment',
+    description: 'Robust monitoring solutions for heavy mining equipment operating in harsh environments with extreme conditions.',
+    image: '/images/applications/mining-equipment.jpg',
+    category: 'mining',
+    gradient: 'from-yellow-600 to-orange-600',
+    featured: true,
+    industries: ['Mining', 'Excavation', 'Material Handling'],
+    keyBenefits: [
+      'Equipment protection',
+      'Harsh environment monitoring',
+      'Downtime reduction',
+      'Maintenance optimization'
+    ],
+    relatedProducts: ['Heavy Duty Sensors', 'Mining Equipment Monitoring']
+  },
+  {
+    id: 'hydraulics',
+    title: 'Hydraulics',
+    description: 'Comprehensive hydraulic system monitoring with pressure, temperature, and fluid quality analysis.',
+    image: '/images/applications/hydraulics.jpg',
+    category: 'industrial',
+    gradient: 'from-blue-500 to-purple-600',
+    featured: false,
+    industries: ['Industrial', 'Construction', 'Manufacturing'],
+    keyBenefits: [
+      'Hydraulic fluid monitoring',
+      'Pressure optimization',
+      'System efficiency',
+      'Component protection'
+    ],
+    relatedProducts: ['Hydraulic Monitoring', 'Pressure Sensors']
+  },
+  {
+    id: 'engine-shipping-vessel',
+    title: 'Engine - Shipping Vessel',
+    description: 'Marine engine monitoring systems for shipping vessels with salt water resistance and remote capabilities.',
+    image: '/images/applications/shipping-vessel-engine.jpg',
     category: 'marine',
     gradient: 'from-blue-400 to-cyan-500',
     featured: true,
-    industries: ['Maritime', 'Shipping', 'Offshore'],
+    industries: ['Maritime', 'Shipping', 'Marine Transport'],
     keyBenefits: [
-      'Saltwater corrosion detection',
-      'Engine oil condition monitoring',
-      'Hydraulic system protection',
-      'Remote monitoring capabilities'
+      'Marine environment protection',
+      'Engine reliability',
+      'Remote monitoring',
+      'Fuel efficiency'
     ],
-    relatedProducts: ['OQSx-G2 HAZ', 'Particle Pal Plus', 'Watchlog Pro']
+    relatedProducts: ['Marine Monitoring', 'OQSx-G2 HAZ']
   },
   {
-    id: 'mining-equipment',
-    title: 'Mining Equipment',
-    description: 'Heavy-duty monitoring systems for excavators, dump trucks, and processing equipment operating in extreme mining conditions.',
-    image: '/images/applications/mining.jpg',
-    category: 'mining',
-    gradient: 'from-orange-400 to-red-500',
-    featured: true,
-    industries: ['Mining', 'Quarrying', 'Material Handling'],
-    keyBenefits: [
-      'Dust contamination detection',
-      'Heavy load monitoring',
-      'Component wear analysis',
-      'Increased equipment uptime'
-    ],
-    relatedProducts: ['Digital Imaging Particle Counter', 'MOT Kit', 'OQDe-G2']
-  },
-  {
-    id: 'construction-machinery',
-    title: 'Construction Machinery',
-    description: 'Robust monitoring solutions for bulldozers, cranes, and other construction equipment to maximize productivity.',
-    image: '/images/applications/construction.jpg',
-    category: 'construction',
-    gradient: 'from-yellow-400 to-orange-500',
-    featured: true,
-    industries: ['Construction', 'Infrastructure', 'Heavy Machinery'],
-    keyBenefits: [
-      'Hydraulic system optimization',
-      'Engine protection',
-      'Maintenance scheduling',
-      'Equipment reliability'
-    ],
-    relatedProducts: ['Crane Camera', 'Watchlog Sensors', 'OQSx-G2']
-  },
-  {
-    id: 'power-generation',
-    title: 'Power Generation',
-    description: 'Critical monitoring systems for power plants, generators, and electrical grid infrastructure.',
-    image: '/images/applications/power-generation.jpg',
-    category: 'energy',
-    gradient: 'from-purple-400 to-pink-500',
-    featured: true,
-    industries: ['Power Plants', 'Electrical Grid', 'Energy Storage'],
-    keyBenefits: [
-      'Transformer oil monitoring',
-      'Generator protection',
-      'Grid stability assurance',
-      'Emergency response systems'
-    ],
-    relatedProducts: ['OQSx-G2', 'Gateway Hub', 'SENSE3 Gateway Kit']
-  },
-  {
-    id: 'agriculture-equipment',
-    title: 'Agricultural Equipment',
-    description: 'Specialized monitoring for tractors, harvesters, and irrigation systems to ensure optimal farming operations.',
-    image: '/images/applications/agriculture.jpg',
-    category: 'agriculture',
-    gradient: 'from-green-500 to-lime-400',
-    featured: false,
-    industries: ['Agriculture', 'Farming', 'Food Production'],
-    keyBenefits: [
-      'Seasonal equipment protection',
-      'Hydraulic system monitoring',
-      'Fuel quality analysis',
-      'Precision farming support'
-    ],
-    relatedProducts: ['Particle Pal', 'Watchlog USB', 'Digital Monitors']
-  },
-  {
-    id: 'aerospace-systems',
-    title: 'Aerospace Systems',
-    description: 'High-precision monitoring solutions for aircraft hydraulics, fuel systems, and ground support equipment.',
-    image: '/images/applications/aerospace.jpg',
-    category: 'aerospace',
-    gradient: 'from-blue-600 to-indigo-500',
-    featured: false,
-    industries: ['Aviation', 'Space', 'Defense'],
-    keyBenefits: [
-      'Flight safety assurance',
-      'Fuel contamination detection',
-      'Hydraulic system reliability',
-      'Maintenance optimization'
-    ],
-    relatedProducts: ['Particle Pal Plus', 'S120 Digital Counter', 'Watchlog Pro']
-  },
-  {
-    id: 'rail-transportation',
-    title: 'Rail Transportation',
-    description: 'Comprehensive monitoring for locomotives, rail cars, and railway infrastructure systems.',
-    image: '/images/applications/rail.jpg',
+    id: 'railway-locomotive',
+    title: 'Railway Locomotive',
+    description: 'Specialized monitoring systems for railway locomotives with engine and transmission monitoring capabilities.',
+    image: '/images/applications/railway-locomotive.jpg',
     category: 'transportation',
-    gradient: 'from-gray-500 to-blue-600',
+    gradient: 'from-green-500 to-blue-600',
     featured: false,
-    industries: ['Railways', 'Public Transport', 'Freight'],
+    industries: ['Railway', 'Transportation', 'Logistics'],
     keyBenefits: [
-      'Engine oil condition monitoring',
-      'Brake system analysis',
+      'Locomotive engine monitoring',
       'Transmission protection',
-      'Schedule reliability'
+      'Schedule reliability',
+      'Maintenance planning'
     ],
-    relatedProducts: ['Digital camera', 'Rear view cameras', 'Watchlog Sensors']
+    relatedProducts: ['Railway Monitoring', 'Engine Sensors']
   },
   {
-    id: 'oil-gas-drilling',
-    title: 'Oil & Gas Drilling',
-    description: 'Specialized monitoring for drilling rigs, pumps, and extraction equipment in oil and gas operations.',
-    image: '/images/applications/oil-gas.jpg',
-    category: 'energy',
-    gradient: 'from-black to-gray-700',
-    featured: false,
-    industries: ['Oil & Gas', 'Petrochemical', 'Drilling'],
-    keyBenefits: [
-      'Drilling fluid monitoring',
-      'Equipment protection',
-      'Safety compliance',
-      'Operational efficiency'
-    ],
-    relatedProducts: ['OQSx-G2 HAZ', 'MOT Kit', 'Gateway OQTg']
-  },
-  {
-    id: 'manufacturing-plants',
-    title: 'Manufacturing Plants',
-    description: 'Industrial monitoring solutions for production lines, robotics, and automated manufacturing systems.',
-    image: '/images/applications/manufacturing.jpg',
+    id: 'sheffield-forgemasters',
+    title: 'Sheffield Forgemasters',
+    description: 'Industrial forging operation monitoring with heavy machinery and hydraulic system oversight.',
+    image: '/images/applications/sheffield-forgemasters.jpg',
     category: 'industrial',
-    gradient: 'from-teal-400 to-blue-500',
+    gradient: 'from-red-500 to-orange-600',
     featured: false,
-    industries: ['Manufacturing', 'Automation', 'Production'],
+    industries: ['Heavy Industry', 'Forging', 'Manufacturing'],
     keyBenefits: [
-      'Production line optimization',
-      'Robotic system monitoring',
-      'Quality assurance',
-      'Downtime prevention'
-    ],
-    relatedProducts: ['Digital Monitors', 'Video control units', 'Transmission']
-  },
-  {
-    id: 'forestry-equipment',
-    title: 'Forestry Equipment',
-    description: 'Rugged monitoring systems for logging equipment, wood processing machinery, and forest management vehicles.',
-    image: '/images/applications/forestry.jpg',
-    category: 'industrial',
-    gradient: 'from-green-600 to-brown-500',
-    featured: false,
-    industries: ['Forestry', 'Logging', 'Wood Processing'],
-    keyBenefits: [
-      'Heavy-duty protection',
-      'Contamination detection',
-      'Equipment longevity',
-      'Environmental compliance'
-    ],
-    relatedProducts: ['Particle Pal', 'Watchlog Bluetooth', 'Digital camera']
-  },
-  {
-    id: 'waste-management',
-    title: 'Waste Management',
-    description: 'Monitoring solutions for waste collection vehicles, recycling equipment, and treatment facilities.',
-    image: '/images/applications/waste-management.jpg',
-    category: 'industrial',
-    gradient: 'from-green-500 to-yellow-600',
-    featured: false,
-    industries: ['Waste Management', 'Recycling', 'Environmental'],
-    keyBenefits: [
-      'Fleet monitoring',
-      'Equipment reliability',
-      'Environmental protection',
-      'Cost optimization'
-    ],
-    relatedProducts: ['Front camera system', 'Monitors', 'Watchlog Pro']
-  },
-  {
-    id: 'food-processing',
-    title: 'Food Processing',
-    description: 'Hygienic monitoring systems for food production equipment and processing machinery.',
-    image: '/images/applications/food-processing.jpg',
-    category: 'industrial',
-    gradient: 'from-orange-300 to-red-400',
-    featured: false,
-    industries: ['Food Processing', 'Beverage', 'Packaging'],
-    keyBenefits: [
-      'Food safety compliance',
-      'Hygiene monitoring',
-      'Equipment efficiency',
-      'Quality control'
-    ],
-    relatedProducts: ['Digital Monitors', 'S120 Digital Counter', 'Gateway Hub']
-  },
-  {
-    id: 'pharmaceutical-manufacturing',
-    title: 'Pharmaceutical Manufacturing',
-    description: 'Precision monitoring for pharmaceutical production equipment and cleanroom environments.',
-    image: '/images/applications/pharmaceutical.jpg',
-    category: 'industrial',
-    gradient: 'from-blue-400 to-purple-500',
-    featured: false,
-    industries: ['Pharmaceuticals', 'Biotechnology', 'Medical Devices'],
-    keyBenefits: [
-      'Regulatory compliance',
-      'Contamination prevention',
-      'Product quality assurance',
-      'Process validation'
-    ],
-    relatedProducts: ['Particle Pal Plus', 'S120 Digital Counter', 'SENSE2 Display']
-  },
-  {
-    id: 'data-centers',
-    title: 'Data Centers',
-    description: 'Critical monitoring for cooling systems, backup generators, and infrastructure equipment.',
-    image: '/images/applications/data-centers.jpg',
-    category: 'industrial',
-    gradient: 'from-cyan-400 to-blue-600',
-    featured: false,
-    industries: ['Technology', 'Cloud Computing', 'Telecommunications'],
-    keyBenefits: [
-      'System reliability',
-      'Cooling efficiency',
-      'Backup power monitoring',
-      'Uptime maximization'
-    ],
-    relatedProducts: ['Digital Monitors', 'Watchlog Pro', 'Gateway Hub']
-  },
-  {
-    id: 'steel-production',
-    title: 'Steel Production',
-    description: 'Heavy-duty monitoring for steel mills, rolling equipment, and metalworking machinery.',
-    image: '/images/applications/steel-production.jpg',
-    category: 'industrial',
-    gradient: 'from-gray-600 to-red-600',
-    featured: false,
-    industries: ['Steel Production', 'Metallurgy', 'Heavy Industry'],
-    keyBenefits: [
-      'High-temperature monitoring',
-      'Equipment protection',
-      'Production efficiency',
-      'Safety compliance'
-    ],
-    relatedProducts: ['OQSx-G2', 'Digital Imaging Counter', 'MOT Kit']
-  },
-  {
-    id: 'cement-production',
-    title: 'Cement Production',
-    description: 'Robust monitoring systems for cement kilns, crushers, and material handling equipment.',
-    image: '/images/applications/cement.jpg',
-    category: 'industrial',
-    gradient: 'from-stone-400 to-gray-600',
-    featured: false,
-    industries: ['Cement', 'Building Materials', 'Construction Materials'],
-    keyBenefits: [
-      'Dust environment protection',
-      'Kiln monitoring',
-      'Equipment longevity',
-      'Process optimization'
-    ],
-    relatedProducts: ['Particle Pal', 'Watchlog Sensors', 'Digital Monitors']
-  },
-  {
-    id: 'chemical-processing',
-    title: 'Chemical Processing',
-    description: 'Specialized monitoring for chemical plants, reactors, and processing equipment.',
-    image: '/images/applications/chemical.jpg',
-    category: 'industrial',
-    gradient: 'from-purple-500 to-pink-500',
-    featured: false,
-    industries: ['Chemical Processing', 'Petrochemicals', 'Specialty Chemicals'],
-    keyBenefits: [
-      'Safety monitoring',
-      'Process control',
-      'Equipment protection',
-      'Regulatory compliance'
-    ],
-    relatedProducts: ['OQSx-G2 HAZ', 'Gateway OQTg', 'SENSE3 Kit']
-  },
-  {
-    id: 'textile-manufacturing',
-    title: 'Textile Manufacturing',
-    description: 'Monitoring solutions for textile machinery, dyeing equipment, and production lines.',
-    image: '/images/applications/textile.jpg',
-    category: 'industrial',
-    gradient: 'from-pink-400 to-purple-400',
-    featured: false,
-    industries: ['Textile', 'Fashion', 'Apparel Manufacturing'],
-    keyBenefits: [
-      'Production efficiency',
-      'Quality control',
-      'Equipment reliability',
-      'Color consistency'
-    ],
-    relatedProducts: ['Digital Monitors', 'Watchlog USB', 'Video control units']
-  },
-  {
-    id: 'paper-production',
-    title: 'Paper Production',
-    description: 'Comprehensive monitoring for paper mills, pulping equipment, and printing machinery.',
-    image: '/images/applications/paper.jpg',
-    category: 'industrial',
-    gradient: 'from-amber-300 to-brown-500',
-    featured: false,
-    industries: ['Paper & Pulp', 'Printing', 'Packaging'],
-    keyBenefits: [
+      'Heavy machinery monitoring',
       'Process optimization',
       'Quality assurance',
-      'Equipment protection',
-      'Environmental monitoring'
+      'Equipment protection'
     ],
-    relatedProducts: ['S120 Digital Counter', 'Watchlog Pro', 'Digital camera']
+    relatedProducts: ['Industrial Monitoring', 'Heavy Duty Systems']
   },
   {
-    id: 'automotive-manufacturing',
-    title: 'Automotive Manufacturing',
-    description: 'Advanced monitoring for automotive assembly lines, paint systems, and testing equipment.',
-    image: '/images/applications/automotive.jpg',
-    category: 'industrial',
-    gradient: 'from-red-500 to-orange-500',
-    featured: false,
-    industries: ['Automotive', 'Assembly', 'Quality Testing'],
-    keyBenefits: [
-      'Assembly line monitoring',
-      'Paint quality control',
-      'Testing accuracy',
-      'Production efficiency'
-    ],
-    relatedProducts: ['Digital Monitors', 'Crane Camera', 'Video control units']
-  },
-  {
-    id: 'water-treatment',
-    title: 'Water Treatment',
-    description: 'Monitoring solutions for water treatment plants, pumping stations, and distribution systems.',
-    image: '/images/applications/water-treatment.jpg',
-    category: 'industrial',
-    gradient: 'from-blue-300 to-teal-500',
-    featured: false,
-    industries: ['Water Treatment', 'Municipal Services', 'Environmental'],
-    keyBenefits: [
-      'Water quality monitoring',
-      'System efficiency',
-      'Compliance assurance',
-      'Infrastructure protection'
-    ],
-    relatedProducts: ['Particle Pal Water Sensor', 'Watchlog Flow Sensors', 'Gateway Hub']
-  },
-  {
-    id: 'logistics-warehousing',
-    title: 'Logistics & Warehousing',
-    description: 'Smart monitoring for forklifts, conveyor systems, and automated storage equipment.',
-    image: '/images/applications/logistics.jpg',
-    category: 'transportation',
-    gradient: 'from-indigo-400 to-purple-500',
-    featured: false,
-    industries: ['Logistics', 'Warehousing', 'Distribution'],
-    keyBenefits: [
-      'Fleet management',
-      'Equipment efficiency',
-      'Safety monitoring',
-      'Operational optimization'
-    ],
-    relatedProducts: ['Fork Camera', 'Digital Monitors', 'Rear view cameras']
-  },
-  {
-    id: 'renewable-energy-storage',
-    title: 'Energy Storage Systems',
-    description: 'Advanced monitoring for battery systems, energy storage facilities, and grid integration equipment.',
-    image: '/images/applications/energy-storage.jpg',
+    id: 'gearbox-wind-turbine',
+    title: 'Gearbox - Wind Turbine',
+    description: 'Specialized wind turbine gearbox monitoring with vibration analysis and oil quality tracking.',
+    image: '/images/applications/wind-turbine-gearbox.jpg',
     category: 'energy',
-    gradient: 'from-emerald-400 to-teal-500',
-    featured: false,
-    industries: ['Energy Storage', 'Grid Integration', 'Renewable Energy'],
+    gradient: 'from-green-400 to-teal-600',
+    featured: true,
+    industries: ['Renewable Energy', 'Wind Power', 'Green Technology'],
     keyBenefits: [
-      'Battery health monitoring',
-      'Grid stability',
-      'Energy efficiency',
-      'Safety compliance'
+      'Wind turbine reliability',
+      'Gearbox protection',
+      'Energy production optimization',
+      'Maintenance planning'
     ],
-    relatedProducts: ['SENSE3 Gateway Kit', 'Watchlog Pro', 'Gateway Hub']
+    relatedProducts: ['Wind Turbine Monitoring', 'Gearbox Sensors']
   },
   {
-    id: 'public-transportation',
-    title: 'Public Transportation',
-    description: 'Comprehensive monitoring for buses, trains, and transit system infrastructure.',
-    image: '/images/applications/public-transport.jpg',
-    category: 'transportation',
-    gradient: 'from-blue-500 to-green-500',
+    id: 'work-boat-engine-monitoring',
+    title: 'Work Boat - Engine Monitoring Kit',
+    description: 'Complete engine monitoring kit for work boats with marine-grade sensors and remote monitoring capabilities.',
+    image: '/images/applications/work-boat-engine.jpg',
+    category: 'marine',
+    gradient: 'from-blue-500 to-teal-500',
     featured: false,
-    industries: ['Public Transit', 'Municipal Transport', 'Urban Mobility'],
+    industries: ['Marine Services', 'Offshore', 'Port Operations'],
     keyBenefits: [
-      'Fleet reliability',
-      'Passenger safety',
-      'Schedule optimization',
-      'Maintenance efficiency'
+      'Marine engine protection',
+      'Remote diagnostics',
+      'Operational efficiency',
+      'Maintenance scheduling'
     ],
-    relatedProducts: ['Digital camera', 'Front camera system', 'Monitors']
+    relatedProducts: ['Marine Engine Kit', 'Boat Monitoring']
   }
 ];
 
@@ -453,7 +317,7 @@ export const getApplicationById = (id: string): Application | undefined => {
 };
 
 export const getAllCategories = (): Application['category'][] => {
-  return ['industrial', 'energy', 'transportation', 'marine', 'construction', 'agriculture', 'mining', 'aerospace'];
+  return ['industrial', 'energy', 'transportation', 'marine', 'construction', 'agriculture', 'mining', 'infrastructure'];
 };
 
 export const getApplicationsByIndustry = (industry: string): Application[] => {

@@ -1,7 +1,5 @@
-// import HeroSection from "@/components/home/Hero";
-import FirstHeroSection from "@/components/home/FirstHero";
+import HeroSection from "@/components/home/Hero";
 import ProductsSection from "@/components/home/Products";
-import SecondHeroSection from "@/components/home/SecondHero";
 import ApplicationsSection from "@/components/home/Applications";
 import AboutUsPage from "@/components/home/AboutUs";
 import StatsSection from "@/components/home/StatsSection";
@@ -11,16 +9,13 @@ import Testimonials from "@/components/home/Testimonials";
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section */}
-      <FirstHeroSection />
+      {/* Main Hero Section with Video */}
+      <HeroSection />
 
-      {/* Products Section */}
+      {/* Products Section - Dedicated section for products */}
       <ProductsSection />
-
-      {/* Second Hero Section */}
-      <SecondHeroSection />
       
-      {/* Applications Section */}
+      {/* Applications Section - Dedicated section for applications */}
       <ApplicationsSection />
 
       {/* About Us Section */}
