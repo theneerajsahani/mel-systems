@@ -13,13 +13,13 @@ export default function products() {
     return (
         <div className="min-h-screen w-full bg-background">
             {/* Hero Section */}
-            <div className="relative bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+            <div className="relative bg-gradient-to-r from-blue-600 to-blue-800">
                 <div className="py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-7xl mx-auto">
                     <div className="text-center space-y-4">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-tight">
                             Our Products
                         </h1>
-                        <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
                             Discover our comprehensive range of industrial solutions designed for precision and reliability
                         </p>
                     </div>

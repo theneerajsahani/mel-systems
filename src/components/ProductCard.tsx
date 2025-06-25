@@ -10,7 +10,7 @@ export default function ProductCard({ image, name }: ProductCardProps) {
     <div className="group cursor-pointer h-full touch-manipulation">
       <div className="bg-card rounded-lg border border-border shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[280px] sm:min-h-[320px] lg:min-h-[300px]">
         {/* Image Container */}
-        <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 flex-1">
+        <div className="relative aspect-square overflow-hidden bg-white flex-1">
           <Image
             src={image}
             alt={name}

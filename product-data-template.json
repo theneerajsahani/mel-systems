@@ -1,0 +1,82 @@
+{
+  "products": [
+    {
+      "id": "example-product-1",
+      "name": "Example Product Name",
+      "category": "oil-conditioning",
+      "subcategory": "tandelta",
+      "brand": "TanDelta",
+      "images": [
+        {
+          "src": "/products/oil conditioning/Tandelta/Example Product/image1.jpg",
+          "alt": "Example Product Main View"
+        },
+        {
+          "src": "/products/oil conditioning/Tandelta/Example Product/image2.jpg",
+          "alt": "Example Product Side View"
+        }
+      ],
+      "description": [
+        "First paragraph describing what this product does and its main benefits.",
+        "Second paragraph with more technical details and applications.",
+        "Third paragraph about compatibility and ease of use."
+      ],
+      "features": [
+        {
+          "title": "Advanced Technology",
+          "description": "Description of the main technological advantage."
+        },
+        {
+          "title": "Easy Installation",
+          "description": "Simple setup process with minimal downtime."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Installation Guide",
+          "content": "Step-by-step installation instructions or any additional content you want to include.",
+          "image": {
+            "src": "/products/oil conditioning/Tandelta/Example Product/guide.png",
+            "alt": "Installation Guide"
+          }
+        }
+      ],
+      "technicalSpecs": {
+        "sections": [
+          {
+            "title": "PRODUCT INFORMATION",
+            "specs": [
+              { "label": "Name", "value": "Example Product Name" },
+              { "label": "Product No.", "value": "EP-001-XX" },
+              { "label": "Manufacturer", "value": "TanDelta" }
+            ]
+          },
+          {
+            "title": "PHYSICAL SPECIFICATIONS",
+            "specs": [
+              { "label": "Dimensions", "value": "100 x 50 x 25mm (L x W x H)" },
+              { "label": "Weight", "value": "500g" },
+              { "label": "Material", "value": "Stainless Steel" }
+            ]
+          },
+          {
+            "title": "ELECTRICAL",
+            "specs": [
+              { "label": "Supply Voltage", "value": "12-24V DC" },
+              { "label": "Power Consumption", "value": "5W max" },
+              { "label": "Output", "value": "4-20mA, RS485" }
+            ]
+          },
+          {
+            "title": "ENVIRONMENTAL",
+            "specs": [
+              { "label": "Operating Temperature", "value": "-20°C to +80°C" },
+              { "label": "Storage Temperature", "value": "-40°C to +100°C" },
+              { "label": "Protection Rating", "value": "IP67" }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

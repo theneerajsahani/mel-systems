@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:product": "node scripts/generate-product-page.js",
+    "generate:products:bulk": "node scripts/bulk-generate-products.js"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.7",

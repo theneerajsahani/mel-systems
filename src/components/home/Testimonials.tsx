@@ -5,134 +5,108 @@ import { Card, CardContent } from "@/components/ui/card";
 import { testimonials } from "@/lib/testimonials";
 
 export default function Testimonials() {
-  // Create a doubled array for seamless looping
-  const doubledTestimonials = [...testimonials, ...testimonials];
-  
+  // Create enough copies for truly infinite scroll
+  const infiniteTestimonials = [
+    ...testimonials.slice(0, 10),
+    ...testimonials.slice(0, 10),
+    ...testimonials.slice(0, 10),
+    ...testimonials.slice(0, 10),
+  ];
+
   return (
-    <section className="py-12 lg:py-16 bg-gray-50 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 2xl:py-36 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            What our clients say about us
+          <h2 className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[48px] xl:text-[64px] 2xl:text-[54px] font-bold text-gray-900 mb-12 sm:mb-16 md:mb-20 lg:mb-24 xl:mb-28 2xl:mb-32">
+            TESTIMONIALS
           </h2>
         </motion.div>
 
-        {/* First Row - Moving Right to Left */}
-        <div className="relative mb-6">
-          <motion.div
-            className="flex gap-4"
-            animate={{
-              x: [0, -100 * testimonials.length / 2], // Move by half the total width
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 25,
-                ease: "linear",
-              },
-            }}
-          >
-            {doubledTestimonials.map((testimonial, index) => (
-              <Card 
-                key={`${testimonial.id}-${index}`} 
-                className="flex-shrink-0 w-72 bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
-              >
-                <CardContent className="p-5">
-                  {/* Company Logo Placeholder */}
-                  <div className="mb-4">
-                    <div className="h-6 w-18 bg-gray-200 rounded flex items-center justify-center">
-                      <span className="text-xs font-medium text-gray-500">LOGO</span>
-                    </div>
-                  </div>
-                  
-                  {/* Testimonial Text */}
-                  <blockquote className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">
-                    {testimonial.content}
-                  </blockquote>
-                  
-                  {/* Author Information */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">
-                        {testimonial.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    <div>
-                      <cite className="font-semibold text-gray-900 not-italic text-sm">
+        {/* CSS Keyframes for infinite scroll */}
+        <style jsx>{`
+          @keyframes scrollLeft {
+            0% { transform: translateX(-25%); }
+            100% { transform: translateX(-75%); }
+          }
+          
+          @keyframes scrollRight {
+            0% { transform: translateX(-75%); }
+            100% { transform: translateX(-25%); }
+          }
+          
+          .scroll-left {
+            animation: scrollLeft 60s linear infinite;
+          }
+          
+          .scroll-right {
+            animation: scrollRight 60s linear infinite;
+          }
+          
+          .testimonial-row {
+            width: 400%;
+          }
+        `}</style>
+
+        {/* First Row - Continuous Right to Left */}
+        <div className="relative mb-6 xl:mb-8 2xl:mb-10">
+          <div className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 2xl:gap-10 scroll-left testimonial-row">
+            {infiniteTestimonials.map((testimonial, index) => (
+              <Card key={index} className="w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[28rem] 2xl:w-[32rem] flex-shrink-0 border border-gray-200 hover:shadow-md transition-shadow duration-300 rounded-lg">
+                <CardContent className="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 2xl:p-9">
+                  <div className="flex items-center mb-3 sm:mb-4 md:mb-5">
+                    <div className="ml-0">
+                      <h4 className="font-semibold text-gray-900 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[22px]">
                         {testimonial.name}
-                      </cite>
-                      <p className="text-xs text-gray-500">
-                        {testimonial.position}, {testimonial.company}
+                      </h4>
+                      <p className="text-gray-600 text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px]">
+                        {testimonial.position}
+                      </p>
+                      <p className="text-gray-500 text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px]">
+                        {testimonial.company}
                       </p>
                     </div>
                   </div>
+                  <p className="text-gray-700 text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px] leading-relaxed">
+                    {testimonial.content}
+                  </p>
                 </CardContent>
               </Card>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        {/* Second Row - Moving Left to Right (Opposite Direction) */}
+        {/* Second Row - Continuous Left to Right */}
         <div className="relative">
-          <motion.div
-            className="flex gap-4"
-            animate={{
-              x: [-100 * testimonials.length / 2, 0], // Move in opposite direction
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 25,
-                ease: "linear",
-              },
-            }}
-          >
-            {doubledTestimonials.reverse().map((testimonial, index) => (
-              <Card 
-                key={`${testimonial.id}-reverse-${index}`} 
-                className="flex-shrink-0 w-72 bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
-              >
-                <CardContent className="p-5">
-                  {/* Company Logo Placeholder */}
-                  <div className="mb-4">
-                    <div className="h-6 w-18 bg-gray-200 rounded flex items-center justify-center">
-                      <span className="text-xs font-medium text-gray-500">LOGO</span>
-                    </div>
-                  </div>
-                  
-                  {/* Testimonial Text */}
-                  <blockquote className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">
-                    {testimonial.content}
-                  </blockquote>
-                  
-                  {/* Author Information */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">
-                        {testimonial.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    <div>
-                      <cite className="font-semibold text-gray-900 not-italic text-sm">
+          <div className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 2xl:gap-10 scroll-right testimonial-row">
+            {infiniteTestimonials.map((testimonial, index) => (
+              <Card key={index} className="w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[28rem] 2xl:w-[32rem] flex-shrink-0 border border-gray-200 hover:shadow-md transition-shadow duration-300 rounded-lg">
+                <CardContent className="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 2xl:p-9">
+                  <div className="flex items-center mb-3 sm:mb-4 md:mb-5">
+                    <div className="ml-0">
+                      <h4 className="font-semibold text-gray-900 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[22px]">
                         {testimonial.name}
-                      </cite>
-                      <p className="text-xs text-gray-500">
-                        {testimonial.position}, {testimonial.company}
+                      </h4>
+                      <p className="text-gray-600 text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px]">
+                        {testimonial.position}
+                      </p>
+                      <p className="text-gray-500 text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px]">
+                        {testimonial.company}
                       </p>
                     </div>
                   </div>
+                  <p className="text-gray-700 text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px] leading-relaxed">
+                    {testimonial.content}
+                  </p>
                 </CardContent>
               </Card>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

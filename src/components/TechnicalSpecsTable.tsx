@@ -32,42 +32,46 @@ export default function TechnicalSpecsTable({
   className = "" 
 }: TechnicalSpecsTableProps) {
   return (
-    <div className={` overflow-hidden ${className}`}>
-      {/* Header */}
-      <div className="">
-        <h2 className="text-[16px] font-bold uppercase md:text-[24px]">{title}</h2>
-      </div>
+    <div className={`${className}`}>
+      {/* Header - only show if title is provided */}
+      {title && (
+        <div className="p-6 lg:p-8 border-b border-gray-200">
+          <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
+        </div>
+      )}
 
       {/* Sections */}
-      <div className="space-y-4 p-4">
+      <div className="p-6 lg:p-8 space-y-6">
         {sections.map((section, sectionIndex) => (
-          <div key={sectionIndex} className="border border-gray-300 rounded-lg overflow-hidden">
+          <div key={sectionIndex} className="border border-gray-200 rounded-lg overflow-hidden">
             {/* Section Header */}
-            <div className="bg-gray-100 px-6 py-4 border-b border-gray-300">
-              <h3 className="text-[14px] font-semibold tracking-wide text-gray-800 md:text-[18px]">
+            <div className="bg-gray-800 px-6 py-4">
+              <h3 className="text-lg font-semibold text-white">
                 {section.title}
               </h3>
             </div>
 
-            {/* Section Table */}
-            <Table>
-              <TableBody>
-                {section.specs.map((spec, specIndex) => (
-                  <TableRow key={specIndex} className="hover:bg-gray-50 border-b border-gray-200 last:border-b-0">
-                    <TableCell className="font-medium bg-gray-600 text-white py-3 px-6 w-1/3 border-r border-gray-300 text-[14px] md:text-[16px]">
-                      {spec.label}
-                    </TableCell>
-                    <TableCell className="py-3 px-6 text-gray-800 bg-white text-[14px] md:text-[16px]">
-                      {spec.value}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            {/* Section Table - Responsive */}
+            <div className="overflow-x-auto">
+              <Table className="min-w-full">
+                <TableBody>
+                  {section.specs.map((spec, specIndex) => (
+                    <TableRow key={specIndex} className="hover:bg-gray-50 border-b border-gray-200 last:border-b-0">
+                      <TableCell className="font-medium bg-gray-100 text-gray-900 py-4 px-6 w-1/3 min-w-[160px] border-r border-gray-200 text-sm">
+                        {spec.label}
+                      </TableCell>
+                      <TableCell className="py-4 px-6 text-gray-700 bg-white text-sm break-words">
+                        {spec.value}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
 
             {/* Additional Text */}
             {section.additionalText && (
-              <div className="px-6 py-3 text-sm text-gray-600 italic bg-gray-50 border-t border-gray-200 md:text-base">
+              <div className="px-6 py-3 text-sm text-gray-600 italic bg-gray-50 border-t border-gray-200">
                 {section.additionalText}
               </div>
             )}

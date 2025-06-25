@@ -17,25 +17,63 @@ export default function AboutUsPage() {
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-        createAnimation();
+        
+        // Wait for DOM to be ready and refs to be populated
+        const timer = setTimeout(() => {
+            if (refs.current.length > 0) {
+                createAnimation();
+            }
+        }, 500);
+        
+        // Handle window resize to refresh animation
+        const handleResize = () => {
+            ScrollTrigger.refresh();
+        };
+        
+        window.addEventListener('resize', handleResize);
         
         // Cleanup function to kill ScrollTrigger on unmount
         return () => {
+            clearTimeout(timer);
+            window.removeEventListener('resize', handleResize);
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
     }, []);
 
     const createAnimation = () => {
-        gsap.to(refs.current, {
+        if (refs.current.length === 0) return;
+        
+        // Filter out null refs
+        const validRefs = refs.current.filter(ref => ref !== null);
+        
+        if (validRefs.length === 0) return;
+        
+        // Responsive stagger values that work properly across all screens
+        const getStaggerValue = () => {
+            if (window.innerWidth >= 1024) return 0.02; // lg and above - smooth reveal
+            if (window.innerWidth >= 768) return 0.015; // md screens - medium reveal
+            return 0.03; // sm and below - slightly slower for readability
+        };
+        
+        gsap.to(validRefs, {
             scrollTrigger: {
                 trigger: container.current,
-                scrub: true,
-                start: `top 75%`,
-                end: `bottom 35%`,
+                start: "top 80%", // Start earlier for better visibility
+                end: "bottom 30%", // End later to allow full animation
+                scrub: 1, // Smoother scrub for better control
+                markers: false,
+                refreshPriority: -1, // Ensure proper refresh on resize
+                onRefresh: () => {
+                    // Re-calculate stagger on screen resize
+                    gsap.set(validRefs, { opacity: 0.2 });
+                }
             },
             opacity: 1,
-            ease: "none",
-            stagger: 0.003
+            ease: "power2.out",
+            stagger: {
+                amount: getStaggerValue() * validRefs.length,
+                from: "start"
+            }
         });
     };
 
@@ -44,7 +82,7 @@ export default function AboutUsPage() {
         phrases.forEach((phrase, phraseIndex) => {
             const words = splitWords(phrase);
             allElements.push(
-                <div key={`phrase_${phraseIndex}`} className="mb-8 w-full">
+                <div key={`phrase_${phraseIndex}`} className="mb-4 sm:mb-6 md:mb-8 lg:mb-10 w-full flex flex-wrap justify-center leading-tight">
                     {words}
                 </div>
             );
@@ -59,7 +97,7 @@ export default function AboutUsPage() {
             body.push(
                 <span 
                     key={word + "_" + i} 
-                    className="text-[8vw] sm:text-[6vw] md:text-[4.5vw] lg:text-[3.5vw] xl:text-[3vw] font-bold mr-[2vw] sm:mr-[1.5vw] inline-block"
+                    className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[48px] 2xl:text-[40px] font-bold mr-2 sm:mr-3 md:mr-4 lg:mr-5 xl:mr-6 inline-block"
                 >
                     {letters}
                 </span>
@@ -75,8 +113,12 @@ export default function AboutUsPage() {
             letters.push(
                 <span 
                     key={letter + "_" + i} 
-                    ref={el => {refs.current.push(el)}}
-                    className="opacity-30 transition-opacity duration-300 text-gray-800"
+                    ref={el => {
+                        if (el && !refs.current.includes(el)) {
+                            refs.current.push(el);
+                        }
+                    }}
+                    className="opacity-20 text-gray-800"
                 >
                     {letter}
                 </span>
@@ -86,11 +128,11 @@ export default function AboutUsPage() {
     }
 
     return (
-        <main ref={container} className="flex flex-col min-h-screen h-auto items-start justify-center bg-white px-4 md:px-8 lg:px-16 py-16 sm:py-24">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-12 sm:mb-16 w-full">
+        <main ref={container} className="flex flex-col min-h-screen h-auto items-center justify-center bg-white px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-20 sm:py-24 md:py-28 lg:py-32">
+            <h2 className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[48px] xl:text-[64px] 2xl:text-[54px] font-bold text-gray-900 mb-8 sm:mb-12 md:mb-16 w-full text-center">
                 ABOUT US
             </h2>
-            <div ref={body} className="w-full max-w-6xl flex flex-col text-left leading-relaxed">
+            <div ref={body} className="w-full max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-8xl flex flex-col text-center leading-relaxed">
                 {splitPhrases(phrases)}
             </div>
         </main>

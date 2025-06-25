@@ -6,7 +6,7 @@ import { useRef, useEffect } from "react";
 // Counter component for individual stat animation
 function CounterAnimation({ target, suffix = "", duration = 2 }: { target: number; suffix?: string; duration?: number }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.floor(latest));
 
@@ -20,9 +20,9 @@ function CounterAnimation({ target, suffix = "", duration = 2 }: { target: numbe
   return (
     <motion.span
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <motion.span>{rounded}</motion.span>{suffix}
     </motion.span>
@@ -49,36 +49,42 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-20 md:py-24 lg:py-28 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <motion.div 
-          className="flex flex-col items-center gap-8 sm:gap-12 lg:gap-16 text-center max-w-sm sm:max-w-md lg:max-w-lg mx-auto"
+          className="text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {stats.map((stat, index) => (
-            <motion.div 
-              key={index} 
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
-              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-1 sm:mb-2">
-                <CounterAnimation 
-                  target={stat.target} 
-                  suffix={stat.suffix}
-                  duration={2 + index * 0.3}
-                />
-              </div>
-              <div className="text-base sm:text-lg lg:text-xl text-gray-600">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+          <h2 className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[48px] xl:text-[64px] 2xl:text-[54px] font-bold text-gray-900 mb-12 sm:mb-16 md:mb-14 lg:mb-16 w-full">
+            OUR IMPACT
+          </h2>
+          
+          <div className="grid grid-cols-1 gap-8 sm:gap-12 md:gap-16 lg:gap-20 max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <motion.div 
+                key={index} 
+                className="flex flex-col items-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+              >
+                <div className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[48px] xl:text-[64px] 2xl:text-[72px] font-bold text-gray-900 mb-2">
+                  <CounterAnimation 
+                    target={stat.target} 
+                    suffix={stat.suffix}
+                    duration={1.5 + index * 0.2}
+                  />
+                </div>
+                <div className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[24px] xl:text-[32px] 2xl:text-[30px] text-gray-600">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

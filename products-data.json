@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "id": "sample-product",
+      "name": "Sample Product Name",
+      "category": "oil-conditioning",
+      "subcategory": "tandelta",
+      "brand": "TanDelta",
+      "images": [
+        {
+          "src": "/products/oil conditioning/Tandelta/Sample Product/image1.jpg",
+          "alt": "Sample Product Image 1"
+        }
+      ],
+      "description": [
+        "First paragraph of product description.",
+        "Second paragraph of product description."
+      ],
+      "features": [
+        {
+          "title": "Feature 1",
+          "description": "Description of feature 1"
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Additional Section",
+          "content": "Content for additional section",
+          "image": {
+            "src": "/products/oil conditioning/Tandelta/Sample Product/guide.png",
+            "alt": "Guide Image"
+          }
+        }
+      ],
+      "technicalSpecs": {
+        "sections": [
+          {
+            "title": "PRODUCT INFORMATION",
+            "specs": [
+              {
+                "label": "Name",
+                "value": "Sample Product"
+              },
+              {
+                "label": "Product No.",
+                "value": "SP-001"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
