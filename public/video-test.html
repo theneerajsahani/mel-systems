@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test - Mel Systems</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .video-test {
+            margin: 20px 0;
+            border: 1px solid #333;
+            padding: 10px;
+        }
+        video {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+        .log {
+            background: #111;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 Mel Systems Video Test</h1>
+    
+    <div class="video-test">
+        <h2>Desktop Optimized (5.3MB)</h2>
+        <video id="desktop-video" controls muted>
+            <source src="/hero-optimized.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="log" id="desktop-log">Loading...</div>
+    </div>
+
+    <div class="video-test">
+        <h2>Mobile Optimized (903KB)</h2>
+        <video id="mobile-video" controls muted>
+            <source src="/hero-mobile.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="log" id="mobile-log">Loading...</div>
+    </div>
+
+    <div class="video-test">
+        <h2>WebM Version (16MB)</h2>
+        <video id="webm-video" controls muted>
+            <source src="/hero-optimized.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <div class="log" id="webm-log">Loading...</div>
+    </div>
+
+    <div class="video-test">
+        <h2>Responsive Test (Same as Hero Component)</h2>
+        <video id="responsive-video" controls muted autoplay loop playsInline>
+            <source src="/hero-optimized.webm" type="video/webm" media="(min-width: 1024px)">
+            <source src="/hero-optimized.mp4" type="video/mp4" media="(min-width: 768px)">
+            <source src="/hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
+            <source src="/hero-optimized.mp4" type="video/mp4">
+        </video>
+        <div class="log" id="responsive-log">Loading...</div>
+    </div>
+
+    <script>
+        function setupVideoTest(videoId, logId) {
+            const video = document.getElementById(videoId);
+            const log = document.getElementById(logId);
+            
+            function updateLog(message) {
+                log.innerHTML += message + '<br>';
+                console.log(`[${videoId}] ${message}`);
+            }
+
+            video.addEventListener('loadstart', () => updateLog('🔄 Load started'));
+            video.addEventListener('progress', () => updateLog('📊 Loading progress'));
+            video.addEventListener('canplay', () => updateLog('✅ Can play'));
+            video.addEventListener('loadeddata', () => updateLog('✅ Data loaded'));
+            video.addEventListener('loadedmetadata', () => {
+                updateLog(`📝 Metadata loaded: ${video.videoWidth}x${video.videoHeight}, ${video.duration.toFixed(1)}s`);
+            });
+            video.addEventListener('error', (e) => {
+                updateLog(`❌ Error: ${e.message || 'Unknown error'}`);
+                updateLog(`Error code: ${video.error?.code || 'N/A'}`);
+            });
+            video.addEventListener('play', () => updateLog('▶️ Playing'));
+            video.addEventListener('pause', () => updateLog('⏸️ Paused'));
+
+            // Test file accessibility
+            fetch(video.querySelector('source').src, { method: 'HEAD' })
+                .then(response => {
+                    const size = response.headers.get('content-length');
+                    const sizeKB = size ? Math.round(size / 1024) : 'unknown';
+                    updateLog(`📁 File accessible: ${response.status}, Size: ${sizeKB}KB`);
+                })
+                .catch(error => updateLog(`❌ File check failed: ${error.message}`));
+        }
+
+        // Setup all video tests
+        setupVideoTest('desktop-video', 'desktop-log');
+        setupVideoTest('mobile-video', 'mobile-log');
+        setupVideoTest('webm-video', 'webm-log');
+        setupVideoTest('responsive-video', 'responsive-log');
+
+        // Auto-play test for responsive video (like hero)
+        setTimeout(() => {
+            const responsiveVideo = document.getElementById('responsive-video');
+            responsiveVideo.play().catch(e => {
+                console.log('Autoplay prevented:', e);
+                document.getElementById('responsive-log').innerHTML += `⚠️ Autoplay prevented: ${e.message}<br>`;
+            });
+        }, 1000);
+    </script>
+</body>
+</html>

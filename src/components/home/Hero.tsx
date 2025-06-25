@@ -46,14 +46,14 @@ export default function HeroSection() {
         />
       )}
 
-      {/* Optimized Background Video with Responsive Loading */}
+      {/* Simplified Video Test - Basic Implementation */}
       <video
         ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        preload="none"
+        controls // Add controls for testing
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
           videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
         }`}
@@ -87,22 +87,7 @@ export default function HeroSection() {
           console.log('📊 Video loading progress');
         }}
       >
-        {/* Responsive video sources - smaller files for better performance */}
-        <source 
-          src="/hero-optimized.webm" 
-          type="video/webm" 
-          media="(min-width: 1024px)"
-        />
-        <source 
-          src="/hero-optimized.mp4" 
-          type="video/mp4" 
-          media="(min-width: 768px)"
-        />
-        <source 
-          src="/hero-mobile.mp4" 
-          type="video/mp4" 
-          media="(max-width: 767px)"
-        />
+        {/* Single source for testing */}
         <source src="/hero-optimized.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
