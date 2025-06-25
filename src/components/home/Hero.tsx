@@ -13,18 +13,22 @@ export default function HeroSection() {
   useEffect(() => {
     console.log('🚀 Hero component mounted');
     
-    // Reduced fallback timer for faster testing
+    // Fast fallback timer for immediate demo readiness
     const timer = setTimeout(() => {
       if (!videoLoaded) {
-        console.log('⏰ Fallback timer expired, hiding fallback');
+        console.log('⏰ Fallback timer expired, showing black background');
         setShowFallback(false);
       }
-    }, 1500);
+    }, 1000); // Reduced to 1s for even faster demo performance
 
-    // Simplified video loading - load immediately for testing
+    // Preload video immediately for best performance
     if (videoRef.current) {
-      console.log('📱 Loading video immediately for testing');
+      console.log('📱 Preloading video for optimal performance');
       videoRef.current.load();
+      // Attempt to play as soon as possible
+      videoRef.current.play().catch(e => {
+        console.log('Auto-play blocked, video will play when user interacts');
+      });
     }
 
     return () => {
@@ -46,14 +50,14 @@ export default function HeroSection() {
         />
       )}
 
-      {/* Simplified Video Test - Basic Implementation */}
+      {/* Optimized Background Video - Final Version */}
       <video
         ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        controls // Add controls for testing
+        preload="auto"
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
           videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
         }`}
@@ -68,6 +72,11 @@ export default function HeroSection() {
           setShowFallback(false);
           setVideoError(false);
         }}
+        onCanPlayThrough={() => {
+          console.log('🎬 Video fully loaded and ready to play smoothly');
+          setVideoLoaded(true);
+          setShowFallback(false);
+        }}
         onError={(e) => {
           console.error('❌ Video failed to load:', e);
           console.log('Falling back to black background');
@@ -80,14 +89,23 @@ export default function HeroSection() {
           setVideoLoaded(true);
           setShowFallback(false);
         }}
-        onLoadStart={() => {
-          console.log('📥 Video loading started');
-        }}
-        onProgress={() => {
-          console.log('📊 Video loading progress');
-        }}
       >
-        {/* Single source for testing */}
+        {/* Responsive video sources - optimized for different screen sizes */}
+        <source 
+          src="/hero-optimized.webm" 
+          type="video/webm" 
+          media="(min-width: 1024px)"
+        />
+        <source 
+          src="/hero-optimized.mp4" 
+          type="video/mp4" 
+          media="(min-width: 768px)"
+        />
+        <source 
+          src="/hero-mobile.mp4" 
+          type="video/mp4" 
+          media="(max-width: 767px)"
+        />
         <source src="/hero-optimized.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

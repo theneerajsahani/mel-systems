@@ -13,6 +13,38 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   
+  // Headers for video optimization
+  async headers() {
+    return [
+      {
+        source: '/hero-optimized.(mp4|webm)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
+          },
+        ],
+      },
+      {
+        source: '/hero-mobile.mp4',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
+          },
+        ],
+      },
+    ];
+  },
+  
   // Performance optimizations
   poweredByHeader: false,
   compress: true,

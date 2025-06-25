@@ -21,6 +21,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link 
+          rel="preload" 
+          href="/hero-optimized.mp4" 
+          as="video" 
+          type="video/mp4"
+        />
+        <link 
+          rel="preload" 
+          href="/hero-mobile.mp4" 
+          as="video" 
+          type="video/mp4"
+          media="(max-width: 767px)"
+        />
+      </head>
       <body className={`${inter.variable} antialiased`}>
         <Navbar />
         <main className="pt-16 md:pt-20">
