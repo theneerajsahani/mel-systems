@@ -11,48 +11,36 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Progressive loading strategy
+    console.log('🚀 Hero component mounted');
+    
+    // Reduced fallback timer for faster testing
     const timer = setTimeout(() => {
       if (!videoLoaded) {
+        console.log('⏰ Fallback timer expired, hiding fallback');
         setShowFallback(false);
       }
-    }, 2000);
+    }, 1500);
 
-    // Intersection Observer for lazy loading
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && videoRef.current) {
-          videoRef.current.load();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
+    // Simplified video loading - load immediately for testing
     if (videoRef.current) {
-      observer.observe(videoRef.current);
+      console.log('📱 Loading video immediately for testing');
+      videoRef.current.load();
     }
 
     return () => {
       clearTimeout(timer);
-      observer.disconnect();
     };
   }, [videoLoaded]);
 
   return (
     <section className="relative flex flex-col px-6 md:px-12 lg:px-16 py-10 md:py-10 lg:py-20 items-center justify-center min-h-[90vh] md:min-h-[95vh] lg:min-h-screen overflow-hidden">
       
-      {/* Responsive preload hints for faster video loading */}
-      <link rel="preload" href="/hero-mobile.mp4" as="video" type="video/mp4" media="(max-width: 767px)" />
-      <link rel="preload" href="/hero-optimized.mp4" as="video" type="video/mp4" media="(min-width: 768px)" />
-      
-      {/* Fallback Background Image - Shows instantly with better image */}
+      {/* Fallback Black Background - Shows instantly */}
       {(showFallback || videoError) && (
         <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-500"
+          className="absolute inset-0 w-full h-full transition-opacity duration-500"
           style={{ 
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/Mel-systems-logo.png')`,
-            backgroundColor: '#0f172a',
-            filter: 'brightness(0.8)',
+            backgroundColor: '#000000',
             willChange: 'opacity'
           }}
         />
@@ -75,19 +63,28 @@ export default function HeroSection() {
           transform: 'translate3d(0,0,0)' // Hardware acceleration
         }}
         onLoadedData={() => {
+          console.log('✅ Video loaded successfully');
           setVideoLoaded(true);
           setShowFallback(false);
           setVideoError(false);
         }}
-        onError={() => {
-          console.warn('Video failed to load, using fallback');
+        onError={(e) => {
+          console.error('❌ Video failed to load:', e);
+          console.log('Falling back to black background');
           setVideoError(true);
           setVideoLoaded(false);
           setShowFallback(true);
         }}
         onCanPlay={() => {
+          console.log('🎬 Video can start playing');
           setVideoLoaded(true);
           setShowFallback(false);
+        }}
+        onLoadStart={() => {
+          console.log('📥 Video loading started');
+        }}
+        onProgress={() => {
+          console.log('📊 Video loading progress');
         }}
       >
         {/* Responsive video sources - smaller files for better performance */}
