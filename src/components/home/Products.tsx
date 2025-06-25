@@ -18,7 +18,7 @@ const productCategories: ProductCategory[] = [
   {
     title: "Oil Conditioning",
     description: "Advanced oil quality monitoring and conditioning systems for optimal machinery performance and extended equipment life.",
-    image: "/images/1.jpg",
+    image: "/products/oil conditioning/Tandelta/OQSx-G2 Oil Quality Sensor/OQSx-G2 Oil Quality Sensor-1.jpg",
     href: "/products/oil-conditioning",
     brands: ["Tandelta", "Filtertechnik", "Hydrotechnik", "Evamo"],
     icon: Zap,
@@ -36,7 +36,7 @@ const productCategories: ProductCategory[] = [
   {
     title: "Systems",
     description: "Comprehensive safety and monitoring systems including crane cameras, digital monitors, and video control units for enhanced operational safety.",
-    image: "/images/1.jpg",
+    image: "/products/systems/Motec/Rear view cameras/MC3000B/MC3000B.png",
     href: "/products/systems",
     brands: ["Motec"],
     icon: Shield,

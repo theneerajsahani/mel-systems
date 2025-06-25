@@ -29,24 +29,24 @@ export default function CraneCamerasPage() {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                        <Link href="/products/systems/crane-cameras/mws">
+                        <div className="cursor-pointer">
                             <ProductCard
                                 image='/products/systems/Motec/Crane Camera/MWS/MWS.jpg'
                                 name='MWS'
                             />
-                        </Link>
-                        <Link href="/products/systems/crane-cameras/mc5201">
+                        </div>
+                        <div className="cursor-pointer">
                             <ProductCard
                                 image='/products/systems/Motec/Crane Camera/MC5201/MC5201.jpg'
                                 name='MC5201'
                             />
-                        </Link>
-                        <Link href="/products/systems/crane-cameras/mcde5200">
+                        </div>
+                        <div className="cursor-pointer">
                             <ProductCard
                                 image='/products/systems/Motec/Crane Camera/MCDE5200/MCDE5200.jpg'
                                 name='MCDE5200'
                             />
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>

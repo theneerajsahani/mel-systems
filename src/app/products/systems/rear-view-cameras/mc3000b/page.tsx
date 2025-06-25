@@ -43,7 +43,7 @@ export default function MC3000BPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                         <div className="space-y-4">
                             <Image
-                                src="/products/systems/Motec/Rear view cameras/MC3000B/MC3000B.jpg"
+                                src="/products/systems/Motec/Rear view cameras/MC3000B/MC3000B.png"
                                 alt="MC3000B Rear View Camera"
                                 width={600}
                                 height={400}
