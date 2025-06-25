@@ -116,11 +116,6 @@ export default function HeroSection() {
 
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl w-full flex flex-col items-center justify-center text-center gap-8 md:gap-12">
-        {/* Performance Optimization Indicator - Temporary for verification */}
-        <div className="fixed top-4 right-4 z-50 bg-red-500 text-white px-3 py-1 rounded text-xs font-mono shadow-lg">
-          VERCEL FORCE UPDATE v2.2 � {new Date().toLocaleTimeString()}
-        </div>
-        
         {/* Main Heading with Enhanced Animation */}
         <div className="space-y-4 md:space-y-6">
           <h1 className="text-[24px] md:text-[36px] lg:text-[48px] xl:text-[64px] font-bold text-white leading-tight tracking-tight drop-shadow-2xl">
