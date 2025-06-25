@@ -2,23 +2,66 @@
 
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function HeroSection() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [showFallback, setShowFallback] = useState(true);
+
+  useEffect(() => {
+    // Hide fallback after video loads or after 3 seconds
+    const timer = setTimeout(() => {
+      setShowFallback(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="relative flex flex-col px-6 md:px-12 lg:px-16 py-10 md:py-10 lg:py-20 items-center justify-center min-h-[90vh] md:min-h-[95vh] lg:min-h-screen overflow-hidden">
-      {/* Optimized Background Video */}
+      
+      {/* Fallback Background Image - Shows instantly */}
+      {showFallback && (
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
+          style={{ 
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/Mel-systems-logo.png')`,
+            backgroundColor: '#1e293b',
+            filter: 'brightness(0.7)' 
+          }}
+        />
+      )}
+
+      {/* Optimized Background Video with Multiple Sources */}
       <video
         autoPlay
         muted
         loop
         playsInline
         preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover scale-105"
+        className={`absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-1000 ${
+          videoLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
         style={{ filter: 'brightness(0.7)' }}
+        onLoadedData={() => {
+          setVideoLoaded(true);
+          setShowFallback(false);
+        }}
+        onError={() => {
+          console.log('Video failed to load, keeping fallback');
+          setShowFallback(true);
+        }}
+        onLoadStart={() => {
+          // Start loading video after a small delay to prioritize critical content
+          setTimeout(() => {
+            const video = document.querySelector('video');
+            if (video) video.load();
+          }, 100);
+        }}
       >
+        {/* Multiple sources for better browser support and fallback */}
         <source src="/Mel Systems - Hero.mp4" type="video/mp4" />
-        {/* Fallback for browsers that don't support video */}
-        <div className="absolute inset-0 bg-slate-900"></div>
+        <source src="/Mel Systems - Hero.mp4" type="video/webm" />
       </video>
 
       {/* Enhanced Gradient Overlay for Better Text Readability */}
