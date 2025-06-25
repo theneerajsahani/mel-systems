@@ -11,17 +11,21 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    console.log('🚀 Hero Performance Optimization v2.0 - Component Mounted');
+    
     // Show fallback immediately for better perceived performance
     const fastTimer = setTimeout(() => {
+      console.log('⚡ Hiding fallback after 100ms');
       setShowFallback(false);
     }, 100);
 
     // Only load video after initial render to improve LCP
     const videoTimer = setTimeout(() => {
       if (videoRef.current && !videoLoaded) {
+        console.log('📹 Loading video after 500ms delay for better LCP');
         videoRef.current.load();
         videoRef.current.play().catch(() => {
-          // Silent fail for autoplay restrictions
+          console.log('🔇 Autoplay blocked - video will play on user interaction');
         });
       }
     }, 500);
@@ -63,20 +67,24 @@ export default function HeroSection() {
           transform: 'translate3d(0,0,0)' // Hardware acceleration
         }}
         onLoadedData={() => {
+          console.log('✅ Video loaded successfully - Performance Opt Working!');
           setVideoLoaded(true);
           setShowFallback(false);
           setVideoError(false);
         }}
         onCanPlayThrough={() => {
+          console.log('🎬 Video can play through - Ready for smooth playback');
           setVideoLoaded(true);
           setShowFallback(false);
         }}
         onError={() => {
+          console.log('❌ Video failed to load - Using fallback');
           setVideoError(true);
           setVideoLoaded(false);
           setShowFallback(true);
         }}
         onCanPlay={() => {
+          console.log('▶️ Video can start playing');
           setVideoLoaded(true);
           setShowFallback(false);
         }}
@@ -110,7 +118,7 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl w-full flex flex-col items-center justify-center text-center gap-8 md:gap-12">
         {/* Performance Optimization Indicator - Temporary for verification */}
         <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-3 py-1 rounded text-xs font-mono">
-          Perf Opt v2.0 ✅
+          Perf Opt v2.1 🚀 {new Date().toLocaleTimeString()}
         </div>
         
         {/* Main Heading with Enhanced Animation */}
