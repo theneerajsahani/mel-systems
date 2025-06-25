@@ -53,7 +53,7 @@ export default function HeroSection() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="none"
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
           videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
         }`}
@@ -108,6 +108,11 @@ export default function HeroSection() {
 
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl w-full flex flex-col items-center justify-center text-center gap-8 md:gap-12">
+        {/* Performance Optimization Indicator - Temporary for verification */}
+        <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-3 py-1 rounded text-xs font-mono">
+          Perf Opt v2.0 ✅
+        </div>
+        
         {/* Main Heading with Enhanced Animation */}
         <div className="space-y-4 md:space-y-6">
           <h1 className="text-[24px] md:text-[36px] lg:text-[48px] xl:text-[64px] font-bold text-white leading-tight tracking-tight drop-shadow-2xl">
