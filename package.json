@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
+    "deploy": "vercel --prod",
+    "deploy-preview": "vercel",
     "generate:product": "node scripts/generate-product-page.js",
     "generate:products:bulk": "node scripts/bulk-generate-products.js"
   },
@@ -37,6 +39,7 @@
     "eslint-config-next": "15.3.3",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vercel": "^44.2.3"
   }
 }
