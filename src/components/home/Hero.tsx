@@ -11,28 +11,24 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    console.log('🚀 Hero component mounted');
-    
-    // Fast fallback timer for immediate demo readiness
-    const timer = setTimeout(() => {
-      if (!videoLoaded) {
-        console.log('⏰ Fallback timer expired, showing black background');
-        setShowFallback(false);
-      }
-    }, 1000); // Reduced to 1s for even faster demo performance
+    // Show fallback immediately for better perceived performance
+    const fastTimer = setTimeout(() => {
+      setShowFallback(false);
+    }, 100);
 
-    // Preload video immediately for best performance
-    if (videoRef.current) {
-      console.log('📱 Preloading video for optimal performance');
-      videoRef.current.load();
-      // Attempt to play as soon as possible
-      videoRef.current.play().catch(e => {
-        console.log('Auto-play blocked, video will play when user interacts');
-      });
-    }
+    // Only load video after initial render to improve LCP
+    const videoTimer = setTimeout(() => {
+      if (videoRef.current && !videoLoaded) {
+        videoRef.current.load();
+        videoRef.current.play().catch(() => {
+          // Silent fail for autoplay restrictions
+        });
+      }
+    }, 500);
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(fastTimer);
+      clearTimeout(videoTimer);
     };
   }, [videoLoaded]);
 
@@ -67,25 +63,20 @@ export default function HeroSection() {
           transform: 'translate3d(0,0,0)' // Hardware acceleration
         }}
         onLoadedData={() => {
-          console.log('✅ Video loaded successfully');
           setVideoLoaded(true);
           setShowFallback(false);
           setVideoError(false);
         }}
         onCanPlayThrough={() => {
-          console.log('🎬 Video fully loaded and ready to play smoothly');
           setVideoLoaded(true);
           setShowFallback(false);
         }}
-        onError={(e) => {
-          console.error('❌ Video failed to load:', e);
-          console.log('Falling back to black background');
+        onError={() => {
           setVideoError(true);
           setVideoLoaded(false);
           setShowFallback(true);
         }}
         onCanPlay={() => {
-          console.log('🎬 Video can start playing');
           setVideoLoaded(true);
           setShowFallback(false);
         }}

@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Enable experimental features for better performance
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
   
   // Image optimization settings
@@ -11,9 +11,15 @@ const nextConfig: NextConfig = {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000, // 1 year
   },
   
-  // Headers for video optimization
+  // Compression and caching
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: true,
+  
+  // Headers for video optimization and caching
   async headers() {
     return [
       {
@@ -42,12 +48,18 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Cache static assets
+      {
+        source: '/products/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=86400', // 24 hours
+          },
+        ],
+      },
     ];
   },
-  
-  // Performance optimizations
-  poweredByHeader: false,
-  compress: true,
 };
 
 export default nextConfig;

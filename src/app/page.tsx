@@ -1,35 +1,57 @@
+import { Suspense, lazy } from "react";
 import HeroSection from "@/components/home/Hero";
-import ProductsSection from "@/components/home/Products";
-import ApplicationsSection from "@/components/home/Applications";
-import AboutUsPage from "@/components/home/AboutUs";
-import StatsSection from "@/components/home/StatsSection";
-import WhyChooseUs from "@/components/home/WhyChooseUs";
-import Testimonials from "@/components/home/Testimonials";
+
+// Lazy load non-critical sections
+const ProductsSection = lazy(() => import("@/components/home/Products"));
+const ApplicationsSection = lazy(() => import("@/components/home/Applications"));
+const AboutUsPage = lazy(() => import("@/components/home/AboutUs"));
+const StatsSection = lazy(() => import("@/components/home/StatsSection"));
+const WhyChooseUs = lazy(() => import("@/components/home/WhyChooseUs"));
+const Testimonials = lazy(() => import("@/components/home/Testimonials"));
+
+// Loading skeleton component
+const SectionSkeleton = () => (
+  <div className="py-12 animate-pulse">
+    <div className="container mx-auto px-4">
+      <div className="h-8 bg-gray-200 rounded w-1/3 mx-auto mb-6"></div>
+      <div className="space-y-4">
+        <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto"></div>
+        <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
+      </div>
+    </div>
+  </div>
+);
 
 export default function HomePage() {
   return (
     <>
-      {/* Main Hero Section with Video */}
+      {/* Main Hero Section with Video - Load immediately */}
       <HeroSection />
 
-      {/* Products Section - Dedicated section for products */}
-      <ProductsSection />
+      {/* Lazy load other sections for better performance */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <ProductsSection />
+      </Suspense>
       
-      {/* Applications Section - Dedicated section for applications */}
-      <ApplicationsSection />
+      <Suspense fallback={<SectionSkeleton />}>
+        <ApplicationsSection />
+      </Suspense>
 
-      {/* About Us Section */}
-      <AboutUsPage />
+      <Suspense fallback={<SectionSkeleton />}>
+        <AboutUsPage />
+      </Suspense>
       
-      {/* Stats Section */}
-      <StatsSection />
+      <Suspense fallback={<SectionSkeleton />}>
+        <StatsSection />
+      </Suspense>
 
-      {/* Why Choose Us Section */}
-      <WhyChooseUs />
+      <Suspense fallback={<SectionSkeleton />}>
+        <WhyChooseUs />
+      </Suspense>
 
-      {/* Testimonials Section */}
-      <Testimonials />
-
+      <Suspense fallback={<SectionSkeleton />}>
+        <Testimonials />
+      </Suspense>
     </>
   );
 }
