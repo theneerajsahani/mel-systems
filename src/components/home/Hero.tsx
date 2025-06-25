@@ -2,66 +2,112 @@
 
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function HeroSection() {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [showFallback, setShowFallback] = useState(true);
+  const [videoError, setVideoError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Hide fallback after video loads or after 3 seconds
+    // Progressive loading strategy
     const timer = setTimeout(() => {
-      setShowFallback(false);
-    }, 3000);
+      if (!videoLoaded) {
+        setShowFallback(false);
+      }
+    }, 2000);
 
-    return () => clearTimeout(timer);
-  }, []);
+    // Intersection Observer for lazy loading
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && videoRef.current) {
+          videoRef.current.load();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [videoLoaded]);
 
   return (
     <section className="relative flex flex-col px-6 md:px-12 lg:px-16 py-10 md:py-10 lg:py-20 items-center justify-center min-h-[90vh] md:min-h-[95vh] lg:min-h-screen overflow-hidden">
       
-      {/* Fallback Background Image - Shows instantly */}
-      {showFallback && (
+      {/* Responsive preload hints for faster video loading */}
+      <link rel="preload" href="/hero-mobile.mp4" as="video" type="video/mp4" media="(max-width: 767px)" />
+      <link rel="preload" href="/hero-optimized.mp4" as="video" type="video/mp4" media="(min-width: 768px)" />
+      
+      {/* Fallback Background Image - Shows instantly with better image */}
+      {(showFallback || videoError) && (
         <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-500"
           style={{ 
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/Mel-systems-logo.png')`,
-            backgroundColor: '#1e293b',
-            filter: 'brightness(0.7)' 
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/Mel-systems-logo.png')`,
+            backgroundColor: '#0f172a',
+            filter: 'brightness(0.8)',
+            willChange: 'opacity'
           }}
         />
       )}
 
-      {/* Optimized Background Video with Multiple Sources */}
+      {/* Optimized Background Video with Responsive Loading */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
-        className={`absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-1000 ${
-          videoLoaded ? 'opacity-100' : 'opacity-0'
+        preload="none"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+          videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
         }`}
-        style={{ filter: 'brightness(0.7)' }}
+        style={{ 
+          filter: 'brightness(0.7)', 
+          willChange: 'opacity',
+          transform: 'translate3d(0,0,0)' // Hardware acceleration
+        }}
         onLoadedData={() => {
           setVideoLoaded(true);
           setShowFallback(false);
+          setVideoError(false);
         }}
         onError={() => {
-          console.log('Video failed to load, keeping fallback');
+          console.warn('Video failed to load, using fallback');
+          setVideoError(true);
+          setVideoLoaded(false);
           setShowFallback(true);
         }}
-        onLoadStart={() => {
-          // Start loading video after a small delay to prioritize critical content
-          setTimeout(() => {
-            const video = document.querySelector('video');
-            if (video) video.load();
-          }, 100);
+        onCanPlay={() => {
+          setVideoLoaded(true);
+          setShowFallback(false);
         }}
       >
-        {/* Multiple sources for better browser support and fallback */}
-        <source src="/Mel Systems - Hero.mp4" type="video/mp4" />
-        <source src="/Mel Systems - Hero.mp4" type="video/webm" />
+        {/* Responsive video sources - smaller files for better performance */}
+        <source 
+          src="/hero-optimized.webm" 
+          type="video/webm" 
+          media="(min-width: 1024px)"
+        />
+        <source 
+          src="/hero-optimized.mp4" 
+          type="video/mp4" 
+          media="(min-width: 768px)"
+        />
+        <source 
+          src="/hero-mobile.mp4" 
+          type="video/mp4" 
+          media="(max-width: 767px)"
+        />
+        <source src="/hero-optimized.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
 
       {/* Enhanced Gradient Overlay for Better Text Readability */}
