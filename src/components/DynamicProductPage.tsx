@@ -11,6 +11,9 @@ import OrderCodesTable from "@/components/OrderCodesTable"
 import ProductLayout from "@/components/ProductLayout"
 import WatchlogUSBProducts from "@/components/WatchlogUSBProducts"
 import WatchlogBluetoothProducts from "@/components/WatchlogBluetoothProducts"
+import WatchlogBluetoothSubcategories from "@/components/WatchlogBluetoothSubcategories"
+import WatchlogBluetooth4SensorsProducts from "@/components/WatchlogBluetooth4SensorsProducts"
+import WatchlogBluetoothPlusProducts from "@/components/WatchlogBluetoothPlusProducts"
 import { ProductData } from "@/lib/products"
 
 interface DynamicProductPageProps {
@@ -69,25 +72,28 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                         
                         {/* Enhanced Thumbnails */}
                         {productData.images.length > 1 && (
-                            <div className="flex gap-4 overflow-x-auto pb-3 px-3 scrollbar-hide">
+                            <div className="flex gap-4 overflow-x-auto pb-4 pt-2 px-6 scrollbar-hide">
                                 {productData.images.map((image, index) => (
-                                    <button
+                                    <div
                                         key={index}
-                                        onClick={() => setSelectedImageIndex(index)}
-                                        className={`flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 ${
-                                            selectedImageIndex === index
-                                                ? 'border-blue-500 ring-2 ring-blue-500 ring-opacity-30 scale-105'
-                                                : 'border-gray-200 hover:border-gray-300 hover:scale-102'
-                                        }`}
+                                        className="flex-shrink-0 relative p-1"
                                     >
-                                        <Image
-                                            src={image.src}
-                                            alt={image.alt}
-                                            width={80}
-                                            height={80}
-                                            className="w-full h-full object-contain p-1 bg-white"
-                                        />
-                                    </button>
+                                        <button
+                                            onClick={() => setSelectedImageIndex(index)}
+                                            className="w-16 h-16 lg:w-20 lg:h-20 rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-200"
+                                        >
+                                            <Image
+                                                src={image.src}
+                                                alt={image.alt}
+                                                width={80}
+                                                height={80}
+                                                className="w-full h-full object-contain p-1 bg-white rounded-lg"
+                                            />
+                                        </button>
+                                        {selectedImageIndex === index && (
+                                            <div className="absolute top-0 right-0 w-3 h-3 bg-black rounded-full border-2 border-white shadow-sm"></div>
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                         )}
@@ -136,60 +142,20 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                     <CardContent className="p-6 lg:p-8">
                         <div className="flex items-center mb-6">
                             <div className="w-1 h-8 bg-gradient-to-b from-green-500 to-green-600 rounded-full mr-4"></div>
-                            <h2 className="text-2xl font-bold text-gray-900 flex items-center">
-                                Key Features
-                                {productData.features.length > 6 && (
-                                    <span className="ml-3 text-base font-normal text-gray-500">
-                                        ({productData.features.length} total)
-                                    </span>
-                                )}
-                            </h2>
+                            <h2 className="text-2xl font-bold text-gray-900">Key Features</h2>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {(showAllFeatures ? productData.features : productData.features.slice(0, 6)).map((feature, index) => {
-                                const getIcon = (idx: number) => {
-                                    const icons = [Shield, Award, Zap, Star, CheckCircle, Settings, Globe, Clock, BarChart3, AlertCircle, ArrowRight];
-                                    return icons[idx % icons.length];
-                                };
-                                const IconComponent = getIcon(index);
-                                
-                                return (
-                                    <Card key={index} className="border border-gray-100 hover:border-blue-200 hover:shadow-md transition-all duration-200 card-hover">
-                                        <CardContent className="p-5">
-                                            <div className="flex items-start gap-3">
-                                                <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center transition-colors hover:bg-blue-200">
-                                                    <IconComponent className="w-5 h-5 text-blue-600" />
-                                                </div>
-                                                <div className="min-w-0 flex-1">
-                                                    <h4 className="font-semibold text-gray-900 text-sm mb-2 text-balance">{feature.title}</h4>
-                                                    <p className="text-gray-600 text-sm leading-relaxed text-balance">{feature.description}</p>
-                                                </div>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                );
-                            })}
+                        <div className="space-y-3">
+                            {productData.features.map((feature, index) => (
+                                <div key={index} className="flex items-start gap-3 py-1">
+                                    <div className="flex-shrink-0 w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                                    <div className="min-w-0 flex-1">
+                                        <p className="text-gray-700 text-base leading-relaxed">
+                                            {feature}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        {productData.features.length > 6 && (
-                            <div className="mt-6 text-center">
-                                <button
-                                    onClick={() => setShowAllFeatures(!showAllFeatures)}
-                                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors duration-200"
-                                >
-                                    {showAllFeatures ? (
-                                        <>
-                                            <ChevronUp className="w-4 h-4" />
-                                            Show Less Features
-                                        </>
-                                    ) : (
-                                        <>
-                                            <ChevronDown className="w-4 h-4" />
-                                            Show All {productData.features.length} Features
-                                        </>
-                                    )}
-                                </button>
-                            </div>
-                        )}
                     </CardContent>
                 </Card>
             ) : null}
@@ -201,15 +167,20 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                         <Card key={index} className="shadow-lg border-0 overflow-hidden">
                             <CardContent className="p-0">
                                 <div className="p-6 lg:p-8">
-                                    <div className="flex items-center mb-6">
-                                        <div className="w-1 h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full mr-4"></div>
-                                        <h2 className="text-2xl font-bold text-gray-900">{section.title}</h2>
-                                    </div>
+                                    {section.title && (
+                                        <div className="flex items-center mb-6">
+                                            <div className="w-1 h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full mr-4"></div>
+                                            <h2 className="text-2xl font-bold text-gray-900">{section.title}</h2>
+                                        </div>
+                                    )}
                                     {section.content && section.content.startsWith('CUSTOM_COMPONENT:') ? (
                                         // Render custom component
-                                        <div className="mb-6">
+                                        <div className={section.title ? "mb-6" : ""}>
                                             {section.content === 'CUSTOM_COMPONENT:WatchlogUSBProducts' && <WatchlogUSBProducts />}
                                             {section.content === 'CUSTOM_COMPONENT:WatchlogBluetoothProducts' && <WatchlogBluetoothProducts />}
+                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetoothSubcategories' && <WatchlogBluetoothSubcategories />}
+                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetooth4SensorsProducts' && <WatchlogBluetooth4SensorsProducts />}
+                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetoothPlusProducts' && <WatchlogBluetoothPlusProducts />}
                                         </div>
                                     ) : section.content ? (
                                         <div className="prose prose-lg prose-gray max-w-none mb-6">
@@ -218,6 +189,18 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                                                     {paragraph}
                                                 </p>
                                             ))}
+                                            {section.videoEmbedUrl && (
+                                                <div className="w-full aspect-w-16 aspect-h-9 my-6">
+                                                    <iframe
+                                                        src={section.videoEmbedUrl}
+                                                        title="YouTube video"
+                                                        frameBorder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowFullScreen
+                                                        className="w-full h-96 rounded-lg shadow-lg"
+                                                    ></iframe>
+                                                </div>
+                                            )}
                                         </div>
                                     ) : null}
                                 </div>
