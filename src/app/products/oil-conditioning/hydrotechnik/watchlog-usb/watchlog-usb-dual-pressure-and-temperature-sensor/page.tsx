@@ -1,8 +1,6 @@
-"use client";
+import DynamicProductPage from "@/components/DynamicProductPage"
+import { watchlogUSBDualSensorData } from "@/lib/oil-conditioning-products"
 
-import DynamicProductPage from "@/components/DynamicProductPage";
-import { watchlogUSBDualSensorData } from "@/lib/oil-conditioning-products";
-
-export default function WatchlogUSBDualSensorPage() {
-  return <DynamicProductPage productData={watchlogUSBDualSensorData} />;
+export default function watchlogUSBDualSensorPage() {
+    return <DynamicProductPage productData={watchlogUSBDualSensorData} />
 }

@@ -28,6 +28,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [atTop, setAtTop] = useState(true)
   const { scrollY } = useScroll()
   const pathname = usePathname()
 
@@ -39,23 +40,25 @@ export default function Navbar() {
     setIsMobileMenuOpen(false)
   }, [])
 
-  // Handle scroll direction
+  // Handle scroll direction and atTop state
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0
-    
     // Show navbar when at top or scrolling up, hide when scrolling down
     if (latest < previous || latest < 100) {
       setIsVisible(true)
     } else if (latest > previous && latest > 100) {
       setIsVisible(false)
-      // Close mobile menu when hiding navbar
       setIsMobileMenuOpen(false)
     }
+    // Track if at the very top (allowing a small threshold)
+    setAtTop(latest <= 2)
   })
 
   return (
     <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-lg" 
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-300 bg-white"
+      )}
       role="navigation" 
       aria-label="Main navigation"
       initial={{ y: 0 }}
@@ -92,8 +95,8 @@ export default function Navbar() {
                 className={cn(
                   "font-medium transition-all duration-200",
                   isActive 
-                    ? "text-[#4A90E2]" 
-                    : "text-gray-500 hover:text-[#4A90E2] opacity-70 hover:opacity-100"
+                    ? "text-black" 
+                    : "text-gray-500 hover:text-black opacity-70 hover:opacity-100"
                 )}
               >
                 {item.label}
@@ -150,8 +153,8 @@ export default function Navbar() {
                 className={cn(
                   "block text-base font-medium transition-all duration-200",
                   isActive 
-                    ? "text-[#4A90E2]" 
-                    : "text-gray-500 hover:text-[#4A90E2] opacity-70 hover:opacity-100"
+                    ? "text-black" 
+                    : "text-gray-500 hover:text-black opacity-70 hover:opacity-100"
                 )}
                 onClick={closeMobileMenu}
                 style={{

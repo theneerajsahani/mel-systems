@@ -45,7 +45,7 @@ export interface ProductData {
 // MOTEC
 // ============================
 
-// Category page - Motec
+// Category page - Motec or directly systems
 // export 
 
 // ============================

@@ -9,12 +9,8 @@ import { useState } from "react"
 import TechnicalSpecsTable from "@/components/TechnicalSpecsTable"
 import OrderCodesTable from "@/components/OrderCodesTable"
 import ProductLayoutNoSidebar from "@/components/ProductLayoutNoSidebar"
-import WatchlogUSBProducts from "@/components/WatchlogUSBProducts"
-import WatchlogBluetoothProducts from "@/components/WatchlogBluetoothProducts"
-import WatchlogBluetoothSubcategories from "@/components/WatchlogBluetoothSubcategories"
-import WatchlogBluetooth4SensorsProducts from "@/components/WatchlogBluetooth4SensorsProducts"
-import WatchlogBluetoothPlusProducts from "@/components/WatchlogBluetoothPlusProducts"
-import { ProductData } from "@/lib/products"
+import ProductGrid from "@/components/ProductGrid"
+import { ProductData } from "@/lib/oil-conditioning-products"
 
 interface DynamicProductPageNoSidebarProps {
   productData: ProductData;
@@ -137,13 +133,14 @@ export default function DynamicProductPageNoSidebar({ productData }: DynamicProd
                         <Card key={index} className="shadow-lg border-0 overflow-hidden">
                             <CardContent className="p-0">
                                 <div>
-                                    {section.content && section.content.startsWith('CUSTOM_COMPONENT:') ? (
+                                    {section.content && section.content.startsWith('PRODUCT_GRID:') ? (
                                         <div className="p-6 lg:p-8">
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogUSBProducts' && <WatchlogUSBProducts />}
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetoothProducts' && <WatchlogBluetoothProducts />}
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetoothSubcategories' && <WatchlogBluetoothSubcategories />}
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetooth4SensorsProducts' && <WatchlogBluetooth4SensorsProducts />}
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetoothPlusProducts' && <WatchlogBluetoothPlusProducts />}
+                                            {section.content === 'PRODUCT_GRID:watchlog-usb-products' && 
+                                             productData.categoryProducts && 
+                                             <ProductGrid products={productData.categoryProducts} />}
+                                            {section.content === 'PRODUCT_GRID:watchlog-bluetooth-categories' && 
+                                             productData.categoryProducts && 
+                                             <ProductGrid products={productData.categoryProducts} />}
                                         </div>
                                     ) : (
                                         <div className="p-6 lg:p-8">

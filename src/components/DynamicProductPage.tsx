@@ -9,12 +9,8 @@ import { useState } from "react"
 import TechnicalSpecsTable from "@/components/TechnicalSpecsTable"
 import OrderCodesTable from "@/components/OrderCodesTable"
 import ProductLayout from "@/components/ProductLayout"
-import WatchlogUSBProducts from "@/components/WatchlogUSBProducts"
-import WatchlogBluetoothProducts from "@/components/WatchlogBluetoothProducts"
-import WatchlogBluetoothSubcategories from "@/components/WatchlogBluetoothSubcategories"
-import WatchlogBluetooth4SensorsProducts from "@/components/WatchlogBluetooth4SensorsProducts"
-import WatchlogBluetoothPlusProducts from "@/components/WatchlogBluetoothPlusProducts"
-import { ProductData } from "@/lib/systems-products"
+import ProductGrid from "@/components/ProductGrid"
+import { ProductData } from "@/lib/oil-conditioning-products"
 
 interface DynamicProductPageProps {
   productData: ProductData;
@@ -141,7 +137,7 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
             )}
 
             {/* 4. FEATURES SECTION */}
-            {productData.productCharacteristics && productData.productCharacteristics.length > 0 ? (
+            {productData.features && productData.features.length > 0 ? (
                 <Card className="mb-8 shadow-lg border-0">
                     <CardContent className="p-6 lg:p-8">
                         <div className="flex items-center mb-6">
@@ -149,7 +145,7 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                             <h2 className="text-2xl font-bold text-gray-900">Key Features</h2>
                         </div>
                         <div className="space-y-3">
-                            {productData.productCharacteristics.map((feature: string, index: number) => (
+                            {productData.features.map((feature: string, index: number) => (
                                 <div key={index} className="flex items-start gap-3 py-1">
                                     <div className="flex-shrink-0 w-2 h-2 bg-green-500 rounded-full mt-2"></div>
                                     <div className="min-w-0 flex-1">
@@ -177,14 +173,15 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                                             <h2 className="text-2xl font-bold text-gray-900">{section.title}</h2>
                                         </div>
                                     )}
-                                    {section.content && section.content.startsWith('CUSTOM_COMPONENT:') ? (
-                                        // Render custom component
+                                    {section.content && section.content.startsWith('PRODUCT_GRID:') ? (
                                         <div className={section.title ? "mb-6" : ""}>
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogUSBProducts' && <WatchlogUSBProducts />}
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetoothProducts' && <WatchlogBluetoothProducts />}
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetoothSubcategories' && <WatchlogBluetoothSubcategories />}
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetooth4SensorsProducts' && <WatchlogBluetooth4SensorsProducts />}
-                                            {section.content === 'CUSTOM_COMPONENT:WatchlogBluetoothPlusProducts' && <WatchlogBluetoothPlusProducts />}
+                                            {section.content === 'PRODUCT_GRID:watchlog-usb-products' && 
+                                             productData.categoryProducts && 
+                                             <ProductGrid products={productData.categoryProducts} />}
+                                            {section.content === 'PRODUCT_GRID:watchlog-bluetooth-categories' && 
+                                             productData.categoryProducts && 
+                                             <ProductGrid products={productData.categoryProducts} />}
+                                            {/* Add more product grids as needed */}
                                         </div>
                                     ) : section.content ? (
                                         <div className="prose prose-lg prose-gray max-w-none mb-6">
