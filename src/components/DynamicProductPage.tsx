@@ -14,7 +14,7 @@ import WatchlogBluetoothProducts from "@/components/WatchlogBluetoothProducts"
 import WatchlogBluetoothSubcategories from "@/components/WatchlogBluetoothSubcategories"
 import WatchlogBluetooth4SensorsProducts from "@/components/WatchlogBluetooth4SensorsProducts"
 import WatchlogBluetoothPlusProducts from "@/components/WatchlogBluetoothPlusProducts"
-import { ProductData } from "@/lib/products"
+import { ProductData } from "@/lib/systems-products"
 
 interface DynamicProductPageProps {
   productData: ProductData;
@@ -48,30 +48,32 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                 <CardContent className="p-0">
                     <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 lg:p-8">
                         {/* Main Image with zoom functionality */}
-                        <div className="relative group mb-6 max-w-md mx-auto">
-                            <div 
-                                className={`aspect-[4/3] bg-white rounded-xl overflow-hidden border-2 border-gray-200 shadow-md transition-all duration-300 cursor-zoom-in card-hover ${
-                                    isImageZoomed ? 'scale-105' : 'hover:border-blue-300 hover:shadow-lg'
-                                }`}
-                                onClick={() => setIsImageZoomed(!isImageZoomed)}
-                            >
-                                <Image
-                                    src={productData.images[selectedImageIndex].src}
-                                    alt={productData.images[selectedImageIndex].alt}
-                                    width={400}
-                                    height={300}
-                                    className={`w-full h-full object-contain p-4 transition-transform duration-300 ${isImageZoomed ? 'zoom-image' : ''}`}
-                                    priority
-                                />
+                        {productData.images && productData.images.length > 0 && (
+                            <div className="relative group mb-6 max-w-md mx-auto">
+                                <div 
+                                    className={`aspect-[4/3] bg-white rounded-xl overflow-hidden border-2 border-gray-200 shadow-md transition-all duration-300 cursor-zoom-in card-hover ${
+                                        isImageZoomed ? 'scale-105' : 'hover:border-blue-300 hover:shadow-lg'
+                                    }`}
+                                    onClick={() => setIsImageZoomed(!isImageZoomed)}
+                                >
+                                    <Image
+                                        src={productData.images[selectedImageIndex].src}
+                                        alt={productData.images[selectedImageIndex].alt}
+                                        width={400}
+                                        height={300}
+                                        className={`w-full h-full object-contain p-4 transition-transform duration-300 ${isImageZoomed ? 'zoom-image' : ''}`}
+                                        priority
+                                    />
+                                </div>
+                                {/* Image indicators */}
+                                <div className="absolute top-4 right-4 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
+                                    {selectedImageIndex + 1} of {productData.images.length}
+                                </div>
                             </div>
-                            {/* Image indicators */}
-                            <div className="absolute top-4 right-4 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
-                                {selectedImageIndex + 1} of {productData.images.length}
-                            </div>
-                        </div>
+                        )}
                         
                         {/* Enhanced Thumbnails */}
-                        {productData.images.length > 1 && (
+                        {productData.images && productData.images.length > 1 && (
                             <div className="flex gap-4 overflow-x-auto pb-4 pt-2 px-6 scrollbar-hide">
                                 {productData.images.map((image, index) => (
                                     <div
@@ -120,24 +122,26 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
             </Card>
 
             {/* 3. DESCRIPTION SECTION */}
-            <Card className="mb-8 shadow-lg border-0">
-                <CardContent className="p-6 lg:p-8">
-                    <div className="flex items-center mb-6">
-                        <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full mr-4"></div>
-                        <h2 className="text-2xl font-bold text-gray-900">Product Description</h2>
-                    </div>
-                    <div className="prose prose-lg prose-gray max-w-none">
-                        {productData.description.map((paragraph, index) => (
-                            <p key={index} className="text-gray-700 leading-relaxed mb-4 text-base lg:text-lg">
-                                {paragraph}
-                            </p>
-                        ))}
-                    </div>
-                </CardContent>
-            </Card>
+            {productData.description && productData.description.length > 0 && (
+                <Card className="mb-8 shadow-lg border-0">
+                    <CardContent className="p-6 lg:p-8">
+                        <div className="flex items-center mb-6">
+                            <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full mr-4"></div>
+                            <h2 className="text-2xl font-bold text-gray-900">Product Description</h2>
+                        </div>
+                        <div className="prose prose-lg prose-gray max-w-none">
+                            {productData.description.map((paragraph, index) => (
+                                <p key={index} className="text-gray-700 leading-relaxed mb-4 text-base lg:text-lg">
+                                    {paragraph}
+                                </p>
+                            ))}
+                        </div>
+                    </CardContent>
+                </Card>
+            )}
 
             {/* 4. FEATURES SECTION */}
-            {productData.features && productData.features.length > 0 ? (
+            {productData.productCharacteristics && productData.productCharacteristics.length > 0 ? (
                 <Card className="mb-8 shadow-lg border-0">
                     <CardContent className="p-6 lg:p-8">
                         <div className="flex items-center mb-6">
@@ -145,7 +149,7 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                             <h2 className="text-2xl font-bold text-gray-900">Key Features</h2>
                         </div>
                         <div className="space-y-3">
-                            {productData.features.map((feature, index) => (
+                            {productData.productCharacteristics.map((feature: string, index: number) => (
                                 <div key={index} className="flex items-start gap-3 py-1">
                                     <div className="flex-shrink-0 w-2 h-2 bg-green-500 rounded-full mt-2"></div>
                                     <div className="min-w-0 flex-1">
