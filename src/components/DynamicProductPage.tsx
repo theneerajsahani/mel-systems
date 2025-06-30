@@ -10,10 +10,38 @@ import TechnicalSpecsTable from "@/components/TechnicalSpecsTable"
 import OrderCodesTable from "@/components/OrderCodesTable"
 import ProductLayout from "@/components/ProductLayout"
 import ProductGrid from "@/components/ProductGrid"
-import { ProductData } from "@/lib/oil-conditioning-products"
+import { ProductData, watchlogUSBDualSensorData, watchlogUSBSoftwareData, watchlogBluetoothSensorsGaugesAndMobileAppsData, watchlogBluetoothPressureTempSensorsCategoryData, watchlogBluetoothPlusPressureLevelForceSensorApp12SensorsCategoryData } from "@/lib/oil-conditioning-products"
 
 interface DynamicProductPageProps {
   productData: ProductData;
+}
+
+// Helper: aggregate all product and category data for lookup by ID
+const allProducts = [
+  watchlogUSBDualSensorData,
+  watchlogUSBSoftwareData,
+  watchlogBluetoothSensorsGaugesAndMobileAppsData,
+  watchlogBluetoothPressureTempSensorsCategoryData,
+  watchlogBluetoothPlusPressureLevelForceSensorApp12SensorsCategoryData,
+  // Add other product data exports here as needed
+];
+
+function getProductGridItemsByIds(ids: string[]) {
+  return ids
+    .map(id => allProducts.find(p => p.id === id))
+    .filter((product): product is ProductData => !!product)
+    .map(product => {
+      // Use explicit href property if present, otherwise fallback
+      const explicitHref = (product as any).href;
+      return {
+        name: product.name,
+        description: product.description?.[0] || "",
+        image: product.images?.[0]?.src || "",
+        href: explicitHref || `/products/oil-conditioning/hydrotechnik/${product.id}`,
+        category: product.category || "",
+        features: product.features || []
+      };
+    });
 }
 
 export default function DynamicProductPage({ productData }: DynamicProductPageProps) {
@@ -173,17 +201,10 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                                             <h2 className="text-2xl font-bold text-gray-900">{section.title}</h2>
                                         </div>
                                     )}
-                                    {section.content && section.content.startsWith('PRODUCT_GRID:') ? (
-                                        <div className={section.title ? "mb-6" : ""}>
-                                            {section.content === 'PRODUCT_GRID:watchlog-usb-products' && 
-                                             productData.categoryProducts && 
-                                             <ProductGrid products={productData.categoryProducts} />}
-                                            {section.content === 'PRODUCT_GRID:watchlog-bluetooth-categories' && 
-                                             productData.categoryProducts && 
-                                             <ProductGrid products={productData.categoryProducts} />}
-                                            {/* Add more product grids as needed */}
-                                        </div>
-                                    ) : section.content ? (
+                                    {section.content && section.content.startsWith('PRODUCT_GRID:') &&
+                                     productData.categoryProductIds &&
+                                     <ProductGrid products={getProductGridItemsByIds(productData.categoryProductIds)} />}
+                                    {section.content && !section.content.startsWith('PRODUCT_GRID:') ? (
                                         <div className="prose prose-lg prose-gray max-w-none mb-6">
                                             {section.content.split('\n').map((paragraph, pIndex) => (
                                                 <p key={pIndex} className="text-gray-700 leading-relaxed mb-4 text-base lg:text-lg">

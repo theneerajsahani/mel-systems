@@ -39,14 +39,8 @@ export interface ProductData {
     label: string;
     href?: string;
   }>;
-  categoryProducts?: Array<{
-    name: string;
-    description: string;
-    image: string;
-    href: string;
-    category: string;
-    features: string[];
-  }>;
+  categoryProductIds?: string[];
+  href?: string;
 }
 
 
@@ -1151,7 +1145,7 @@ export const manifoldData: ProductData = {
 // WATCHLOG USB
 // ============================
 
-// Category Data - Watchlog USB Category Page
+// Category Data - Watchlog USB
 export const watchlogUSBCategoryData: ProductData = {
   id: "watchlog-usb",
   name: "Watchlog USB",
@@ -1182,27 +1176,13 @@ export const watchlogUSBCategoryData: ProductData = {
     "Graph zooming and annotation even during recording.",
     "PDF and CSV test export options"
   ],
-  categoryProducts: [
-    {
-      name: 'Watchlog USB Dual Pressure and Temperature Sensor',
-      description: 'High-speed dual output pressure and temperature sensor with USB connectivity',
-      image: '/products/oil conditioning/Hydrotechnik/Watchlog-USB/Watchlog USB Dual Pressure and Temperature Sensor/Watchlog USB Dual Pressure and Temperature Sensor.png',
-      href: '/products/oil-conditioning/hydrotechnik/watchlog-usb/watchlog-usb-dual-pressure-and-temperature-sensor',
-      category: 'Hardware',
-      features: ['Dual Output', 'High-Speed', 'Multiple Ranges']
-    },
-    {
-      name: 'Watchlog USB Windows® PC/tablet pressure & temperature measurement software',
-      description: 'Professional Windows software for data acquisition, analysis and visualization',
-      image: '/products/oil conditioning/Hydrotechnik/Watchlog-USB/Watchlog USB Windows® PCtablet pressure & temperature measurement software/Watchlog USB Windows PCandtablet pressure and temperature measurement software.png',
-      href: '/products/oil-conditioning/hydrotechnik/watchlog-usb/watchlog-usb-windows-pc-tablet-software',
-      category: 'Software',
-      features: ['Real-time Display', 'Data Export', 'Multi-sensor']
-    }
+  categoryProductIds: [
+    'watchlog-usb-dual-pressure-and-temperature-sensor',
+    'watchlog-usb-windows-pc-tablet-software'
   ],
   additionalSections: [
     {
-      title: "Available Products",
+      title: "Product Ranges",
       content: "PRODUCT_GRID:watchlog-usb-products"
     }
   ],
@@ -1305,59 +1285,35 @@ export const watchlogUSBSoftwareData: ProductData = {
 // WATCHLOG BLUETOOTH SENSORS, GAUGES, MOBILE APPS
 // ============================
 
-// Category Data - Watchlog Bluetooth Sensors, Gauges and Mobile Apps Category Page
+// Category Data - Watchlog Bluetooth Sensors, Gauges and Mobile Apps
 export const watchlogBluetoothSensorsGaugesAndMobileAppsData: ProductData = {
   id: "watchlog-bluetooth-sensors-gauges-and-mobile-apps",
   name: "Watchlog Bluetooth Sensors, Gauges and Mobile Apps",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
   brand: "Hydrotechnik",
+  href: "/products/oil-conditioning/hydrotechnik/watchlog-bluetooth-sensors-gauges-and-mobile-apps",
   images: [
     {
-      src: "/products/oil conditioning/Hydrotechnik/Watchlog Bluetooth Sensors, Gauges and Mobile Apps/1st category/Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App.png",
+      src: "/products/oil conditioning/Hydrotechnik/Watchlog Bluetooth Sensors, Gauges and Mobile Apps/Watchlog Bluetooth Sensors, Gauges and Mobile Apps.png",
       alt: "Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App"
     },
-    {
-      src: "/products/oil conditioning/Hydrotechnik/Watchlog Bluetooth Sensors, Gauges and Mobile Apps/2nd category/Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App.png",
-      alt: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App"
-    }
   ],
   description: [
-    "Our Watchlog Bluetooth offering is available in 2 ranges. Each range contains a selection of sensors and an app, with the Watchlog Bluetooth Plus sensors and app offering a wider range for more advanced requirements.",
-    "• Watchlog Bluetooth allows users to simultaneously monitor and record data from up to 4 pressure sensors, temperature sensors and/or pressure gauges.",
-    "• Watchlog Bluetooth-Plus allows users to monitor and record data from up to 12 sensors simultaneously. Additional sensor options include force and level sensors, calculation channels, and an array of visual indicators such as tank levels and gauges to customise your app dashboard. Sensor types include pressure, hydrostatic level, and load cell sensors."
+    "Our Watchlog Bluetooth offering is available in 2 ranges. Each range contains a selection of sensors and an app, with the Watchlog Bluetooth Plus sensors and app offering a wider range for more advanced requirements."
   ],
   features: [
-    "DUAL RANGE SYSTEM: Standard Bluetooth (up to 4 sensors) and Bluetooth-Plus (up to 12 sensors) options",
-    "WIRELESS CONNECTIVITY: Bluetooth transmission up to 20m range for cable-free operation",
-    "MOBILE APPS: Free iOS and Android apps for real-time monitoring and data logging",
-    "MULTI-SENSOR SUPPORT: Pressure, temperature, level, and force sensors available",
-    "ADVANCED FEATURES: Calculation channels, custom dashboards, and visual indicators in Bluetooth-Plus",
-    "BATTERY POWERED: Long-life battery operation with easy replacement",
-    "INDUSTRIAL APPLICATIONS: Suitable for automotive, industrial, food & beverage, and mobile hydraulics"
+    "Watchlog Bluetooth allows users to simultaneously monitor and record data from up to 4 pressure sensors, temperature sensors and/or pressure gauges.",
+    "Watchlog Bluetooth-Plus allows users to monitor and record data from up to 12 sensors simultaneously. Additional sensor options include force and level sensors, calculation channels, and an array of visual indicators such as tank levels and gauges to customise your app dashboard. Sensor types include pressure, hydrostatic level, and load cell sensors."
   ],
-  categoryProducts: [
-    {
-      name: 'Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App',
-      description: 'For up to 4 sensors connected simultaneously with standard monitoring capabilities',
-      image: '/products/oil conditioning/Hydrotechnik/Watchlog Bluetooth Sensors, Gauges and Mobile Apps/1st category/Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App.png',
-      href: '/products/oil-conditioning/hydrotechnik/watchlog-bluetooth-sensors-gauges-and-mobile-apps/Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App for up to 4 sensors connected simultaneously',
-      category: 'Standard',
-      features: ['Up to 4 Sensors', 'Pressure & Temperature', 'Basic Monitoring']
-    },
-    {
-      name: 'Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App',
-      description: 'For up to 12 connected sensors with advanced app calculation features',
-      image: '/products/oil conditioning/Hydrotechnik/Watchlog Bluetooth Sensors, Gauges and Mobile Apps/2nd category/Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App.png',
-      href: '/products/oil-conditioning/hydrotechnik/watchlog-bluetooth-sensors-gauges-and-mobile-apps/Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App for up to 12 connected sensors & advanced app calculation features',
-      category: 'Advanced',
-      features: ['Up to 12 Sensors', 'Calculation Channels', 'Custom Dashboards']
-    }
+  categoryProductIds: [
+    'watchlog-bluetooth-pressure-temp-sensors',
+    'watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors'
   ],
   additionalSections: [
     {
-      title: "Available Product Categories",
-      content: "PRODUCT_GRID:watchlog-bluetooth-categories"
+      title: "Product Ranges",
+      content: "PRODUCT_GRID:watchlog-bluetooth-sensors-gauges-and-mobile-apps-products"
     }
   ],
   breadcrumbItems: [
@@ -1372,8 +1328,45 @@ export const watchlogBluetoothSensorsGaugesAndMobileAppsData: ProductData = {
 // Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App for up to 4 sensors connected simultaneously
 // ============================
 
-// Category Data - Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App for up to 4 sensors connected simultaneously Category Page
-// export  
+// Category Data - Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App for up to 4 sensors connected simultaneously
+export const watchlogBluetoothPressureTempSensorsCategoryData = {
+  id: "watchlog-bluetooth-pressure-temp-sensors",
+  name: "Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App (up to 4 sensors)",
+  category: "oil-conditioning",
+  subcategory: "hydrotechnik",
+  brand: "Hydrotechnik",
+  href: "/products/oil-conditioning/hydrotechnik/watchlog-bluetooth-pressure-temp-sensors",
+  description: [
+    "The Watchlog Bluetooth range is an extremely fast and easy way to add live pressure, temperature monitoring, and datalogging to your system. The low-cost, cable-free temperature sensors, pressure sensors, and pressure gauges are designed for use with our free monitoring and datalogging app, which is available in the iOS App Store and Android Google Play store."
+  ],
+  images: [
+    {
+      src: "/products/oil conditioning/Hydrotechnik/Watchlog Bluetooth Sensors, Gauges and Mobile Apps/1st category/watchlog-bluetooth-pressure-temp-sensors.png",
+      alt: "Watchlog Bluetooth Sensors, Gauges and Mobile Apps"
+    }
+  ],
+  categoryProductIds: [
+    "wlb-pt-compact-bluetooth-pressure-sensor",
+    "wlb-tt-compact-bluetooth-temperature-sensor",
+    "wlb-ddpg-series-bluetooth-datalogging-pressure-gauges",
+    "wlb-dpg-series-bluetooth-pressure-gauge",
+    "watchlog-bluetooth-live-view-datalogging-app",
+    "ddpg-series-bluetooth-pressure-gauge-test-kit",
+    "dgp-series-bluetooth-pressure-gauge-test-kit"
+  ],
+  additionalSections: [
+    {
+      title: "Product Ranges",
+      content: "PRODUCT_GRID:watchlog-bluetooth-pressure-temp-sensors-products"
+    }
+  ],
+  breadcrumbItems: [
+    { label: "Products", href: "/products" },
+    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
+    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
+    { label: "Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App (up to 4 sensors)" }
+  ]
+};
 
 // Product Data - WLB-PT Compact Bluetooth Pressure Sensor
 export const wlbPtCompactBluetoothPressureSensorData: ProductData = {
@@ -1529,7 +1522,7 @@ export const wlbTtCompactBluetoothTemperatureSensorData: ProductData = {
   additionalSections: [
     {
       title: "Watchlog Bluetooth App",
-      content: "The WLPB-DPG supports iOS and Android Bluetooth apps. Once connected, the app can be used to display pressure values, start/stop logging, and export CSV test files. See more in our overview video.",
+      content: "The WLPB-DDPG supports iOS and Android Bluetooth apps. Once connected, the app can be used to display pressure values, start/stop logging, and export CSV test files. See more in our overview video.",
       videoEmbedUrl: "https://youtu.be/ZsVAlXbAL2M"
     }
   ],
@@ -1980,8 +1973,42 @@ export const dgpSeriesBluetoothPressureGaugeTestKitData: ProductData = {
 // Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App for up to 12 connected sensors & advanced app calculation features
 // ============================
 
-// Category Data - Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App for up to 12 connected sensors & advanced app calculation features Category Page
-// export 
+// Category Data - Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App for up to 12 connected sensors & advanced app calculation features
+export const watchlogBluetoothPlusPressureLevelForceSensorApp12SensorsCategoryData = {
+  id: "watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors",
+  name: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App (up to 12 sensors, advanced features)",
+  category: "oil-conditioning",
+  subcategory: "hydrotechnik",
+  brand: "Hydrotechnik",
+  href: "/products/oil-conditioning/hydrotechnik/watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors",
+  description: [
+    "The Watchlog Bluetooth-Plus range offers advanced wireless monitoring for pressure, hydrostatic level, and force (load cell) sensors. The Bluetooth-Plus app supports up to 12 sensors simultaneously, with advanced calculation channels, customisable dashboards, and a wide array of visual indicators such as tank levels and gauges. Ideal for complex monitoring and datalogging requirements in industrial applications."
+  ],
+  images: [
+    {
+      src: "/products/oil conditioning/Hydrotechnik/Watchlog Bluetooth Sensors, Gauges and Mobile Apps/2nd category/watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors.png",
+      alt: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App"
+    }
+  ],
+  categoryProductIds: [
+    "ht-wlbp-bluetooth-plus-pressure-sensor",
+    "ht-wlbl-bluetooth-plus-level-sensor",
+    "ht-wlbf-bluetooth-plus-force-sensor",
+    "watchlog-bluetooth-plus-app"
+  ],
+  additionalSections: [
+    {
+      title: "Product Ranges",
+      content: "PRODUCT_GRID:watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors-products"
+    }
+  ],
+  breadcrumbItems: [
+    { label: "Products", href: "/products" },
+    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
+    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
+    { label: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App (up to 12 sensors, advanced features)" }
+  ]
+};
 
 // Product Data - HT-WLBP Watchlog Bluetooth-Plus Pressure Sensor
 export const htWlbpBluetoothPlusPressureSensorData: ProductData = {
@@ -2257,7 +2284,7 @@ export const watchlogBluetoothPlusAppData: ProductData = {
 // WATCHLOG WIRELESS PRESSURE, TEMPERATURE AND FLOW SENSORS
 // ============================
 
-// Category Data - Watchlog Wireless Pressure, Temperature and Flow Sensors category page
+// Category Data - Watchlog Wireless Pressure, Temperature and Flow Sensors
 // export 
 
 // Product Data - Watchlog Wireless Pressure, Flow & Temperature Test Kit
@@ -2474,7 +2501,7 @@ export const watchlogWirelessPressureSensorsData: ProductData = {
   ],
   description: [
     "Pressure sensors fitted with Watchlog Wireless transmitters send measuring data to the BSx series signal receiving base stations.  2xAA batteries give up to 2 years of battery life. Adjust scanning and data transmission speeds via Watchlog Wireless software.",
-    "A version powered by 2xD batteries for up to 5 years of battery life, or from an external 5...18Vdc is also available.",
+    "A version powered by 2xD batteries for up to 5...18Vdc is also available.",
     "Pressure transducers are supplied with 1/4\" BSP male connections or can be supplied with an adaptor to connect on to Minimess test points for safe connection and disconnection."
   ],
   orderCodes: {
@@ -2996,9 +3023,6 @@ export const wlwplSeriesCellularLevelSensorData: ProductData = {
 // WATCHLOG PRO REMOTE MONITORING
 // ============================
 
-// Category Data - Watchlog Pro Remote Monitoring category page
-// export 
-
 // Product Data - Watchlog PRO ORB Cellular / Wi-Fi Cloud Gateway for Mobile Applications
 export const watchlogProOrbCloudGatewayData: ProductData = {
   id: "watchlog-pro-orb-cloud-gateway",
@@ -3353,7 +3377,7 @@ export const s120DigitalImagingParticleCounterData: ProductData = {
 // PARTICLE PAL
 // ============================
 
-// Category Data - Particle Pal category page
+// Category Data - Particle Pal
 // export 
 
 // Product Data - Particle Pal - Laser Portable Particle Counter

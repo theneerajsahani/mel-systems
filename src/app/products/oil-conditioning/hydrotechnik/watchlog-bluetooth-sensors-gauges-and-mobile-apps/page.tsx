@@ -2,6 +2,6 @@
 import DynamicProductPage from '@/components/DynamicProductPage';
 import { watchlogBluetoothSensorsGaugesAndMobileAppsData } from '@/lib/oil-conditioning-products';
 
-export default function WatchlogBluetoothPage() {
-    return <DynamicProductPage productData={watchlogBluetoothSensorsGaugesAndMobileAppsData} />;
+export default function Page() {
+  return <div>Watchlog Bluetooth Sensors, Gauges and Mobile Apps Subcategory Page</div>;
 }
