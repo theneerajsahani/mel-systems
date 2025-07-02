@@ -116,8 +116,8 @@ export default function DynamicProductPage({
                   onClick={() => setIsImageZoomed(!isImageZoomed)}
                 >
                   <Image
-                    src={productData.images[selectedImageIndex].src}
-                    alt={productData.images[selectedImageIndex].alt}
+                    src={productData.images?.[selectedImageIndex]?.src || "/images/placeholder.jpg"}
+                    alt={productData.images?.[selectedImageIndex]?.alt || productData.name}
                     width={400}
                     height={300}
                     className={`w-full h-full object-contain p-4 transition-transform duration-300 ${isImageZoomed ? "zoom-image" : ""}`}
