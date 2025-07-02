@@ -1,4 +1,4 @@
-import { productStructure, ProductNode } from './product-structure';
+import { productStructure, ProductNode } from "./product-structure";
 
 export type NavigationItem = ProductNode;
 export type ProductCategory = ProductNode;
@@ -8,7 +8,7 @@ export const productNavigation: ProductCategory[] = productStructure;
 
 // Helper to build hrefs from a path of slugs
 export function buildHrefFromSlugs(slugs: string[]): string {
-  return '/products/' + slugs.join('/');
+  return "/products/" + slugs.join("/");
 }
 
 // Helper function to find the current navigation context by slug path
@@ -21,7 +21,10 @@ export function findCurrentNavigationBySlugs(slugPath: string[]): {
   let brand: NavigationItem | undefined;
   let product: NavigationItem | undefined;
 
-  function search(nodes: ProductNode[], depth: number): ProductNode | undefined {
+  function search(
+    nodes: ProductNode[],
+    depth: number,
+  ): ProductNode | undefined {
     for (const node of nodes) {
       if (node.slug === slugPath[depth]) {
         if (depth === 0) category = node;

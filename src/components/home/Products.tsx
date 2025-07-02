@@ -17,8 +17,10 @@ interface ProductCategory {
 const productCategories: ProductCategory[] = [
   {
     title: "Oil Conditioning",
-    description: "Advanced oil quality monitoring and conditioning systems for optimal machinery performance and extended equipment life.",
-    image: "/products/oil conditioning/Tandelta/OQSx-G2 Oil Quality Sensor/OQSx-G2 Oil Quality Sensor-1.jpg",
+    description:
+      "Advanced oil quality monitoring and conditioning systems for optimal machinery performance and extended equipment life.",
+    image:
+      "/products/oil conditioning/Tandelta/OQSx-G2 Oil Quality Sensor/OQSx-G2 Oil Quality Sensor-1.jpg",
     href: "/products/oil-conditioning",
     brands: ["Tandelta", "Filtertechnik", "Hydrotechnik", "Evamo"],
     icon: Zap,
@@ -26,16 +28,17 @@ const productCategories: ProductCategory[] = [
       "Real-time oil quality monitoring",
       "Predictive maintenance alerts",
       "Extended equipment lifespan",
-      "Environmental sustainability"
+      "Environmental sustainability",
     ],
     stats: [
       { label: "Equipment Life Extension", value: "Up to 300%" },
-      { label: "Maintenance Cost Reduction", value: "40-60%" }
-    ]
+      { label: "Maintenance Cost Reduction", value: "40-60%" },
+    ],
   },
   {
     title: "Systems",
-    description: "Comprehensive safety and monitoring systems including crane cameras, digital monitors, and video control units for enhanced operational safety.",
+    description:
+      "Comprehensive safety and monitoring systems including crane cameras, digital monitors, and video control units for enhanced operational safety.",
     image: "/products/systems/Motec/Rear view cameras/MC3000B/MC3000B.png",
     href: "/products/systems",
     brands: ["Motec"],
@@ -44,13 +47,13 @@ const productCategories: ProductCategory[] = [
       "Advanced camera systems",
       "Digital monitoring solutions",
       "Video control units",
-      "Enhanced safety protocols"
+      "Enhanced safety protocols",
     ],
     stats: [
       { label: "Safety Improvement", value: "95%" },
-      { label: "Operational Efficiency", value: "80%" }
-    ]
-  }
+      { label: "Operational Efficiency", value: "80%" },
+    ],
+  },
 ];
 
 export default function ProductsSection() {
@@ -77,8 +80,9 @@ export default function ProductsSection() {
             </span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed px-2 sm:px-0">
-            Discover our comprehensive range of industrial solutions designed to enhance machinery performance, 
-            extend equipment life, and optimize maintenance operations across critical industries.
+            Discover our comprehensive range of industrial solutions designed to
+            enhance machinery performance, extend equipment life, and optimize
+            maintenance operations across critical industries.
           </p>
         </div>
 
@@ -87,7 +91,7 @@ export default function ProductsSection() {
           {productCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <div 
+              <div
                 key={index}
                 className="group bg-white/80 backdrop-blur-sm rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg sm:shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 sm:hover:-translate-y-2 border border-white/20 flex flex-col h-full"
               >
@@ -100,15 +104,17 @@ export default function ProductsSection() {
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-800/30 to-transparent"></div>
-                  
+
                   {/* Floating Icon */}
                   <div className="absolute top-3 left-3 sm:top-4 sm:left-4 lg:top-6 lg:left-6 p-1.5 sm:p-2 lg:p-3 bg-white/20 backdrop-blur-md rounded-md sm:rounded-lg lg:rounded-xl border border-white/30">
                     <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white" />
                   </div>
-                  
+
                   {/* Category Title Overlay */}
                   <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 lg:bottom-6 lg:left-6 lg:right-6">
-                    <h3 className="text-lg xs:text-xl sm:text-2xl lg:text-[24px] xl:text-[48px] font-bold text-white mb-1 sm:mb-2 lg:mb-3 tracking-tight">{category.title}</h3>
+                    <h3 className="text-lg xs:text-xl sm:text-2xl lg:text-[24px] xl:text-[48px] font-bold text-white mb-1 sm:mb-2 lg:mb-3 tracking-tight">
+                      {category.title}
+                    </h3>
                   </div>
                 </div>
 
@@ -123,12 +129,19 @@ export default function ProductsSection() {
 
                   {/* Key Features - Responsive height */}
                   <div className="mb-3 sm:mb-4 lg:mb-6 min-h-28 xs:min-h-32 sm:min-h-34 md:min-h-40 lg:min-h-44">
-                    <h4 className="text-sm xs:text-base lg:text-base xl:text-[20px] font-semibold text-slate-900 mb-2 sm:mb-3 lg:mb-4">Key Features</h4>
+                    <h4 className="text-sm xs:text-base lg:text-base xl:text-[20px] font-semibold text-slate-900 mb-2 sm:mb-3 lg:mb-4">
+                      Key Features
+                    </h4>
                     <div className="grid grid-cols-1 gap-1.5 xs:gap-2 sm:gap-3">
                       {category.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center gap-2 sm:gap-3">
+                        <div
+                          key={featureIndex}
+                          className="flex items-center gap-2 sm:gap-3"
+                        >
                           <CheckCircle className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-emerald-500 flex-shrink-0" />
-                          <span className="text-slate-700 text-xs md:text-sm xl:text-[18px] leading-tight">{feature}</span>
+                          <span className="text-slate-700 text-xs md:text-sm xl:text-[18px] leading-tight">
+                            {feature}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -151,9 +164,12 @@ export default function ProductsSection() {
 
         {/* Bottom CTA Section */}
         <div className="text-center bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 rounded-lg sm:rounded-xl lg:rounded-2xl p-6 sm:p-8 lg:p-12 text-white shadow-xl sm:shadow-2xl mx-2 sm:mx-0">
-          <h3 className="text-xl md:text-[32px] xl:text-[48px] font-bold mb-4 sm:mb-6 tracking-tight">Ready to Transform Your Operations?</h3>
+          <h3 className="text-xl md:text-[32px] xl:text-[48px] font-bold mb-4 sm:mb-6 tracking-tight">
+            Ready to Transform Your Operations?
+          </h3>
           <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-[20px] mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
-            Our experts are standing by to help you select the perfect solution for your specific needs.
+            Our experts are standing by to help you select the perfect solution
+            for your specific needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <Link href="/contact" className="w-full sm:w-auto">

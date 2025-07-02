@@ -31,23 +31,31 @@ export default function Testimonials() {
         {/* CSS Keyframes for infinite scroll */}
         <style jsx>{`
           @keyframes scrollLeft {
-            0% { transform: translateX(-25%); }
-            100% { transform: translateX(-75%); }
+            0% {
+              transform: translateX(-25%);
+            }
+            100% {
+              transform: translateX(-75%);
+            }
           }
-          
+
           @keyframes scrollRight {
-            0% { transform: translateX(-75%); }
-            100% { transform: translateX(-25%); }
+            0% {
+              transform: translateX(-75%);
+            }
+            100% {
+              transform: translateX(-25%);
+            }
           }
-          
+
           .scroll-left {
             animation: scrollLeft 60s linear infinite;
           }
-          
+
           .scroll-right {
             animation: scrollRight 60s linear infinite;
           }
-          
+
           .testimonial-row {
             width: 400%;
           }
@@ -57,7 +65,10 @@ export default function Testimonials() {
         <div className="relative mb-6 xl:mb-8 2xl:mb-10">
           <div className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 2xl:gap-10 scroll-left testimonial-row">
             {infiniteTestimonials.map((testimonial, index) => (
-              <Card key={index} className="w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[28rem] 2xl:w-[32rem] flex-shrink-0 border border-gray-200 hover:shadow-md transition-shadow duration-300 rounded-lg">
+              <Card
+                key={index}
+                className="w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[28rem] 2xl:w-[32rem] flex-shrink-0 border border-gray-200 hover:shadow-md transition-shadow duration-300 rounded-lg"
+              >
                 <CardContent className="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 2xl:p-9">
                   <div className="flex items-center mb-3 sm:mb-4 md:mb-5">
                     <div className="ml-0">
@@ -85,7 +96,10 @@ export default function Testimonials() {
         <div className="relative">
           <div className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 2xl:gap-10 scroll-right testimonial-row">
             {infiniteTestimonials.map((testimonial, index) => (
-              <Card key={index} className="w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[28rem] 2xl:w-[32rem] flex-shrink-0 border border-gray-200 hover:shadow-md transition-shadow duration-300 rounded-lg">
+              <Card
+                key={index}
+                className="w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[28rem] 2xl:w-[32rem] flex-shrink-0 border border-gray-200 hover:shadow-md transition-shadow duration-300 rounded-lg"
+              >
                 <CardContent className="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 2xl:p-9">
                   <div className="flex items-center mb-3 sm:mb-4 md:mb-5">
                     <div className="ml-0">

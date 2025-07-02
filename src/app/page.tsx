@@ -3,7 +3,9 @@ import HeroSection from "@/components/home/Hero";
 
 // Lazy load non-critical sections
 const ProductsSection = lazy(() => import("@/components/home/Products"));
-const ApplicationsSection = lazy(() => import("@/components/home/Applications"));
+const ApplicationsSection = lazy(
+  () => import("@/components/home/Applications"),
+);
 const AboutUsPage = lazy(() => import("@/components/home/AboutUs"));
 const StatsSection = lazy(() => import("@/components/home/StatsSection"));
 const WhyChooseUs = lazy(() => import("@/components/home/WhyChooseUs"));
@@ -32,7 +34,7 @@ export default function HomePage() {
       <Suspense fallback={<SectionSkeleton />}>
         <ProductsSection />
       </Suspense>
-      
+
       <Suspense fallback={<SectionSkeleton />}>
         <ApplicationsSection />
       </Suspense>
@@ -40,7 +42,7 @@ export default function HomePage() {
       <Suspense fallback={<SectionSkeleton />}>
         <AboutUsPage />
       </Suspense>
-      
+
       <Suspense fallback={<SectionSkeleton />}>
         <StatsSection />
       </Suspense>

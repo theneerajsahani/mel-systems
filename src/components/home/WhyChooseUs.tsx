@@ -7,41 +7,46 @@ export default function WhyChooseUs() {
   const mainFeatures = [
     {
       title: "Partner That Shows Up",
-      description: "Mel Systems delivers advanced solutions that cut maintenance costs—both routine and emergency—across industries like renewable energy, transport, industrial, agricultural, ports etc. We offer ESG solutions plant machinery like engines gear-boxes hydraulics turbines compressors.",
-      details: "From wind turbines to diesel engines, compressors to cogeneration units, our smart sensors, gateways, and control panels give you full visibility and control over any machinery. With years of hands-on experience in power generation and large engine systems, our expertise runs deep—and delivers where it counts.",
+      description:
+        "Mel Systems delivers advanced solutions that cut maintenance costs—both routine and emergency—across industries like renewable energy, transport, industrial, agricultural, ports etc. We offer ESG solutions plant machinery like engines gear-boxes hydraulics turbines compressors.",
+      details:
+        "From wind turbines to diesel engines, compressors to cogeneration units, our smart sensors, gateways, and control panels give you full visibility and control over any machinery. With years of hands-on experience in power generation and large engine systems, our expertise runs deep—and delivers where it counts.",
       icon: Shield,
-      gradient: "from-blue-500 to-cyan-500"
+      gradient: "from-blue-500 to-cyan-500",
     },
     {
       title: "Every Industry. Every Element. Zero Excuses.",
-      description: "Whatever you operate, wherever you are, we have the technology to protect it, monitor it, and optimize its performance.",
-      details: "Explore your sector. Pinpoint your machinery. Let's solve the challenges that cost you time, money, and safety.",
+      description:
+        "Whatever you operate, wherever you are, we have the technology to protect it, monitor it, and optimize its performance.",
+      details:
+        "Explore your sector. Pinpoint your machinery. Let's solve the challenges that cost you time, money, and safety.",
       icon: Target,
-      gradient: "from-green-500 to-emerald-500"
-    }
+      gradient: "from-green-500 to-emerald-500",
+    },
   ];
 
   const highlights = [
     {
       icon: Zap,
       title: "30+ Years Experience",
-      description: "Deep technical expertise in lubrication and oil conditioning"
+      description:
+        "Deep technical expertise in lubrication and oil conditioning",
     },
     {
       icon: Clock,
       title: "24/7 Support",
-      description: "Always available when you need us most"
+      description: "Always available when you need us most",
     },
     {
       icon: Globe,
       title: "Global Reach",
-      description: "Serving clients across multiple industries worldwide"
+      description: "Serving clients across multiple industries worldwide",
     },
     {
       icon: Award,
       title: "Proven Results",
-      description: "Delivering measurable improvements in performance"
-    }
+      description: "Delivering measurable improvements in performance",
+    },
   ];
 
   return (
@@ -86,7 +91,9 @@ export default function WhyChooseUs() {
                 >
                   <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 sm:p-10 md:p-12 h-full border border-gray-100 hover:border-blue-200 group-hover:scale-105">
                     <div className="flex justify-center mb-8">
-                      <div className={`p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                      <div
+                        className={`p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                      >
                         <IconComponent className="w-8 h-8 text-white" />
                       </div>
                     </div>

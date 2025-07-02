@@ -5,6 +5,7 @@ This system streamlines the creation of product pages for the Mel Systems websit
 ## 🎯 Overview
 
 Every product page includes:
+
 - **Media Gallery** - Product images with thumbnail navigation
 - **Description** - Multiple paragraphs of product information
 - **Features** (optional) - Key product features in a grid layout
@@ -21,6 +22,7 @@ Every product page includes:
 4. **Generation Scripts** - Automated tools for creating new pages
 
 ### File Structure
+
 ```
 src/
 ├── components/
@@ -48,6 +50,7 @@ npm run generate:product
 ```
 
 This will prompt you for:
+
 - Product ID, name, category, subcategory, brand
 - Image paths and descriptions
 - Product description paragraphs
@@ -56,6 +59,7 @@ This will prompt you for:
 ### Method 2: Bulk Generator (Best for multiple products)
 
 1. Create `products-data.json` in the project root:
+
 ```bash
 npm run generate:products:bulk
 ```
@@ -63,6 +67,7 @@ npm run generate:products:bulk
 2. Edit the generated `products-data.json` with your product data
 
 3. Run the bulk generator again:
+
 ```bash
 npm run generate:products:bulk
 ```
@@ -74,23 +79,25 @@ Use the templates in `docs/PRODUCT_PAGE_TEMPLATES.md` to create products manuall
 ## 📋 Data Structure
 
 ### ProductData Interface
+
 ```typescript
 interface ProductData {
-  id: string;                    // URL slug (kebab-case)
-  name: string;                  // Display name
-  category: string;              // Main category (e.g., "oil-conditioning")
-  subcategory: string;           // Brand/subcategory (e.g., "tandelta")
-  brand: string;                 // Brand display name
-  images: ProductImage[];        // Array of product images
-  description: string[];         // Array of description paragraphs
-  features?: ProductFeature[];   // Optional features array
+  id: string; // URL slug (kebab-case)
+  name: string; // Display name
+  category: string; // Main category (e.g., "oil-conditioning")
+  subcategory: string; // Brand/subcategory (e.g., "tandelta")
+  brand: string; // Brand display name
+  images: ProductImage[]; // Array of product images
+  description: string[]; // Array of description paragraphs
+  features?: ProductFeature[]; // Optional features array
   additionalSections?: AdditionalSection[]; // Optional extra content
-  technicalSpecs: TechnicalSpecsSection[];  // Technical specifications
-  breadcrumbItems: BreadcrumbItem[];        // Navigation breadcrumb
+  technicalSpecs: TechnicalSpecsSection[]; // Technical specifications
+  breadcrumbItems: BreadcrumbItem[]; // Navigation breadcrumb
 }
 ```
 
 ### Example Product Data
+
 ```typescript
 export const sampleProductData: ProductData = {
   id: "sample-product",
@@ -101,32 +108,33 @@ export const sampleProductData: ProductData = {
   images: [
     {
       src: "/products/oil conditioning/TanDelta/Sample Product/image1.jpg",
-      alt: "Sample Product Main View"
-    }
+      alt: "Sample Product Main View",
+    },
   ],
   description: [
     "First paragraph describing the product...",
-    "Second paragraph with more details..."
+    "Second paragraph with more details...",
   ],
   features: [
     {
       title: "Advanced Technology",
-      description: "Description of the advanced technology feature."
-    }
+      description: "Description of the advanced technology feature.",
+    },
   ],
   technicalSpecs: sampleProductSpecs,
   breadcrumbItems: [
     { label: "Products", href: "/products" },
     { label: "Oil Conditioning", href: "/products/oil-conditioning" },
     { label: "TanDelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "Sample Product" }
-  ]
+    { label: "Sample Product" },
+  ],
 };
 ```
 
 ## 🛠️ Step-by-Step Process
 
 ### 1. Gather Product Information
+
 - Product name and unique ID
 - Category and subcategory paths
 - Brand information
@@ -136,32 +144,35 @@ export const sampleProductData: ProductData = {
 - Any additional content (guides, charts, etc.)
 
 ### 2. Prepare Images
+
 - Place images in `/public/products/[category]/[brand]/[product-name]/`
 - Use descriptive filenames
 - Ensure good quality and consistent sizing
 - Create alt text for accessibility
 
 ### 3. Create Technical Specifications
+
 ```typescript
 export const productSpecs: TechnicalSpecsSection[] = [
   {
     title: "PRODUCT INFORMATION",
     specs: [
       { label: "Name", value: "Product Name" },
-      { label: "Model", value: "Model Number" }
-    ]
+      { label: "Model", value: "Model Number" },
+    ],
   },
   {
     title: "PHYSICAL SPECIFICATIONS",
     specs: [
       { label: "Dimensions", value: "100 x 50 x 25mm" },
-      { label: "Weight", value: "500g" }
-    ]
-  }
+      { label: "Weight", value: "500g" },
+    ],
+  },
 ];
 ```
 
 ### 4. Add to Product Database
+
 ```typescript
 // In src/lib/products.ts
 export const productsDatabase: Record<string, ProductData> = {
@@ -171,6 +182,7 @@ export const productsDatabase: Record<string, ProductData> = {
 ```
 
 ### 5. Create Page File
+
 ```typescript
 // src/app/products/[category]/[subcategory]/[product-id]/page.tsx
 import DynamicProductPage from "@/components/DynamicProductPage"
@@ -184,6 +196,7 @@ export default function NewProductPage() {
 ## 📁 File Organization
 
 ### Image Naming Convention
+
 ```
 /public/products/[category display name]/[brand]/[product name]/
 ├── [product-name]-1.jpg          # Main product image
@@ -193,6 +206,7 @@ export default function NewProductPage() {
 ```
 
 ### Code Naming Convention
+
 - **Product ID**: kebab-case (`"oqsx-g2-oil-quality-sensor"`)
 - **Variable names**: camelCase (`oqsxG2OilQualitySensorData`)
 - **Component names**: PascalCase (`OQSXG2OilQualitySensorPage`)
@@ -201,20 +215,22 @@ export default function NewProductPage() {
 ## 🔧 Advanced Features
 
 ### Optional Features Section
+
 ```typescript
 features: [
   {
     title: "Real-time Monitoring",
-    description: "Continuous oil condition analysis with instant alerts."
+    description: "Continuous oil condition analysis with instant alerts.",
   },
   {
-    title: "Universal Compatibility", 
-    description: "Works with any oil type and equipment configuration."
-  }
-]
+    title: "Universal Compatibility",
+    description: "Works with any oil type and equipment configuration.",
+  },
+];
 ```
 
 ### Additional Sections
+
 ```typescript
 additionalSections: [
   {
@@ -222,22 +238,25 @@ additionalSections: [
     content: "Step-by-step installation instructions...",
     image: {
       src: "/products/.../installation-guide.png",
-      alt: "Installation Guide Diagram"
-    }
-  }
-]
+      alt: "Installation Guide Diagram",
+    },
+  },
+];
 ```
 
 ## 🎨 Customization
 
 ### Modifying the Template
+
 Edit `src/components/DynamicProductPage.tsx` to:
+
 - Change layout structure
 - Add new sections
 - Modify styling
 - Add interactive features
 
 ### Adding New Fields
+
 1. Update the `ProductData` interface in `src/lib/products.ts`
 2. Modify `DynamicProductPage.tsx` to render the new fields
 3. Update generation scripts if needed
@@ -247,16 +266,19 @@ Edit `src/components/DynamicProductPage.tsx` to:
 ### Common Issues
 
 **Images not displaying:**
+
 - Check file paths are correct and start with `/`
 - Ensure images exist in the `public` directory
 - Verify image file extensions match the code
 
 **TypeScript errors:**
+
 - Ensure all required fields are provided
 - Check that technical specs array is properly exported
 - Verify product is added to `productsDatabase`
 
 **Page not found (404):**
+
 - Check directory structure matches the URL pattern
 - Ensure `page.tsx` file exists in the correct location
 - Verify navigation.ts includes the product route

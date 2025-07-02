@@ -1,11 +1,29 @@
-'use client';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Monitor, Camera, Video, ArrowRight } from 'lucide-react';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { motecCategoryData, rearViewCamerasCategoryData, frontCameraSystemCategoryData, digitalCamerasCategoryData, monitorsCategoryData, digitalMonitorsCategoryData, forkCamerasCategoryData, videoControlUnitsCategoryData, craneCamerasCategoryData, transmissionsCategoryData, systemsProductMapping } from '@/lib/systems-products';
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { Monitor, Camera, Video, ArrowRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  motecCategoryData,
+  rearViewCamerasCategoryData,
+  frontCameraSystemCategoryData,
+  digitalCamerasCategoryData,
+  monitorsCategoryData,
+  digitalMonitorsCategoryData,
+  forkCamerasCategoryData,
+  videoControlUnitsCategoryData,
+  craneCamerasCategoryData,
+  transmissionsCategoryData,
+  systemsProductMapping,
+} from "@/lib/systems-products";
 
 const motecCategories = [
   rearViewCamerasCategoryData,
@@ -20,27 +38,31 @@ const motecCategories = [
 ];
 
 const getCategoryIcon = (slug: string) => {
-  if (slug.includes('monitor')) return Monitor;
-  if (slug.includes('camera')) return Camera;
-  if (slug.includes('video')) return Video;
+  if (slug.includes("monitor")) return Monitor;
+  if (slug.includes("camera")) return Camera;
+  if (slug.includes("video")) return Video;
   return Camera;
 };
 
 const getProductsForCategory = (categoryData: any) => {
   if (!categoryData.categoryProductIds) return [];
-  return categoryData.categoryProductIds.map((id: any) => {
-    // Find the product in systemsProductMapping by id
-    const product = Object.values(systemsProductMapping).find((p) => p.id === id);
-    if (!product) return null;
-    return {
-      name: product.name,
-      image: product.images?.[0]?.src || '',
-      href: `/products/systems/motec/${categoryData.subsubcategory || categoryData.subcategory || categoryData.name.toLowerCase()}/${id}`,
-      description: product.description?.[0] || '',
-      brand: product.brand,
-      productCharacteristics: product.productCharacteristics,
-    };
-  }).filter(Boolean);
+  return categoryData.categoryProductIds
+    .map((id: any) => {
+      // Find the product in systemsProductMapping by id
+      const product = Object.values(systemsProductMapping).find(
+        (p) => p.id === id,
+      );
+      if (!product) return null;
+      return {
+        name: product.name,
+        image: product.images?.[0]?.src || "",
+        href: `/products/systems/motec/${categoryData.subsubcategory || categoryData.subcategory || categoryData.name.toLowerCase()}/${id}`,
+        description: product.description?.[0] || "",
+        brand: product.brand,
+        productCharacteristics: product.productCharacteristics,
+      };
+    })
+    .filter(Boolean);
 };
 
 export default function SystemsPage() {
@@ -60,8 +82,9 @@ export default function SystemsPage() {
                 <span className="block text-primary">Systems</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-                Professional camera and monitoring systems for industrial applications. 
-                Enhance safety, visibility, and operational efficiency with advanced technology.
+                Professional camera and monitoring systems for industrial
+                applications. Enhance safety, visibility, and operational
+                efficiency with advanced technology.
               </p>
             </div>
           </div>
@@ -75,14 +98,19 @@ export default function SystemsPage() {
             Leading Camera & Monitoring Technologies
           </h2>
           <p className="text-muted-foreground text-lg mb-6">
-            Explore systems and solutions from industry-leading technology providers
+            Explore systems and solutions from industry-leading technology
+            providers
           </p>
         </div>
 
         {/* Category Sections */}
         <div className="space-y-16">
           {motecCategories.map((category) => {
-            const IconComponent = getCategoryIcon(category.subsubcategory || category.subcategory || category.name.toLowerCase());
+            const IconComponent = getCategoryIcon(
+              category.subsubcategory ||
+                category.subcategory ||
+                category.name.toLowerCase(),
+            );
             const products = getProductsForCategory(category);
             return (
               <div key={category.id} className="company-section">
@@ -98,11 +126,15 @@ export default function SystemsPage() {
                       </h3>
                       <div className="flex items-center gap-6 text-sm">
                         <div className="flex items-center gap-2 text-muted-foreground">
-                          <Badge variant="secondary">{products.length} Products</Badge>
+                          <Badge variant="secondary">
+                            {products.length} Products
+                          </Badge>
                         </div>
                       </div>
                       {category.description && (
-                        <p className="text-muted-foreground text-base mt-2">{category.description[0]}</p>
+                        <p className="text-muted-foreground text-base mt-2">
+                          {category.description[0]}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -120,8 +152,14 @@ export default function SystemsPage() {
                   >
                     <CarouselContent className="-ml-4">
                       {products.map((product: any) => (
-                        <CarouselItem key={product.name} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                          <Link href={product.href} className="block h-full group">
+                        <CarouselItem
+                          key={product.name}
+                          className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                        >
+                          <Link
+                            href={product.href}
+                            className="block h-full group"
+                          >
                             <Card className="h-full border-2 hover:border-primary/50 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 overflow-hidden">
                               <div className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
                                 {product.image && (
@@ -144,13 +182,16 @@ export default function SystemsPage() {
                                 <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
                                   {product.description}
                                 </p>
-                                {product.productCharacteristics && product.productCharacteristics.length > 0 && (
-                                  <ul className="text-xs text-gray-500 list-disc pl-4">
-                                    {product.productCharacteristics.slice(0, 3).map((char: any, idx: any) => (
-                                      <li key={idx}>{char}</li>
-                                    ))}
-                                  </ul>
-                                )}
+                                {product.productCharacteristics &&
+                                  product.productCharacteristics.length > 0 && (
+                                    <ul className="text-xs text-gray-500 list-disc pl-4">
+                                      {product.productCharacteristics
+                                        .slice(0, 3)
+                                        .map((char: any, idx: any) => (
+                                          <li key={idx}>{char}</li>
+                                        ))}
+                                    </ul>
+                                  )}
                               </div>
                             </Card>
                           </Link>

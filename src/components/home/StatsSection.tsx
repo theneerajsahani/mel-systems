@@ -1,10 +1,24 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+  animate,
+} from "framer-motion";
 import { useRef, useEffect } from "react";
 
 // Counter component for individual stat animation
-function CounterAnimation({ target, suffix = "", duration = 2 }: { target: number; suffix?: string; duration?: number }) {
+function CounterAnimation({
+  target,
+  suffix = "",
+  duration = 2,
+}: {
+  target: number;
+  suffix?: string;
+  duration?: number;
+}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const count = useMotionValue(0);
@@ -24,7 +38,8 @@ function CounterAnimation({ target, suffix = "", duration = 2 }: { target: numbe
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <motion.span>{rounded}</motion.span>{suffix}
+      <motion.span>{rounded}</motion.span>
+      {suffix}
     </motion.span>
   );
 }
@@ -34,24 +49,24 @@ export default function StatsSection() {
     {
       target: 115,
       suffix: "+",
-      label: "Countries"
+      label: "Countries",
     },
     {
       target: 5000,
       suffix: "+",
-      label: "Satisfied Customers"
+      label: "Satisfied Customers",
     },
     {
       target: 2000,
       suffix: "+",
-      label: "Projects Done"
-    }
+      label: "Projects Done",
+    },
   ];
 
   return (
     <section className="py-16 sm:py-20 md:py-24 lg:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        <motion.div 
+        <motion.div
           className="text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -61,11 +76,11 @@ export default function StatsSection() {
           <h2 className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[48px] xl:text-[64px] 2xl:text-[54px] font-bold text-gray-900 mb-12 sm:mb-16 md:mb-14 lg:mb-16 w-full">
             OUR IMPACT
           </h2>
-          
+
           <div className="grid grid-cols-1 gap-8 sm:gap-12 md:gap-16 lg:gap-20 max-w-4xl mx-auto">
             {stats.map((stat, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="flex flex-col items-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -73,8 +88,8 @@ export default function StatsSection() {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
               >
                 <div className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[48px] xl:text-[64px] 2xl:text-[72px] font-bold text-gray-900 mb-2">
-                  <CounterAnimation 
-                    target={stat.target} 
+                  <CounterAnimation
+                    target={stat.target}
                     suffix={stat.suffix}
                     duration={1.5 + index * 0.2}
                   />

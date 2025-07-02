@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -11,17 +11,28 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 import { applications } from "@/lib/applications";
-import { ArrowRight, Factory, Anchor, Zap, Building, CheckCircle } from "lucide-react";
+import {
+  ArrowRight,
+  Factory,
+  Anchor,
+  Zap,
+  Building,
+  CheckCircle,
+} from "lucide-react";
 
 const featuredApplications = applications.slice(0, 8); // or filter as needed
 
 // Icon mapping for different application categories
 const getCategoryIcon = (category: string) => {
   switch (category) {
-    case 'energy': return Zap;
-    case 'marine': return Anchor;
-    case 'industrial': return Factory;
-    default: return Building;
+    case "energy":
+      return Zap;
+    case "marine":
+      return Anchor;
+    case "industrial":
+      return Factory;
+    default:
+      return Building;
   }
 };
 
@@ -48,7 +59,8 @@ export default function ApplicationsSection() {
             </span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-ls xl:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4">
-            The industries around which our know-how revolves - delivering mission-critical solutions where failure is not an option.
+            The industries around which our know-how revolves - delivering
+            mission-critical solutions where failure is not an option.
           </p>
         </div>
 
@@ -63,18 +75,24 @@ export default function ApplicationsSection() {
           >
             <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4">
               {featuredApplications.map((application) => {
-                const CategoryIcon = getCategoryIcon(application.industry[0] || "");
+                const CategoryIcon = getCategoryIcon(
+                  application.industry[0] || "",
+                );
                 return (
-                  <CarouselItem 
-                    key={application.id} 
+                  <CarouselItem
+                    key={application.id}
                     className="pl-1 sm:pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/4"
                   >
                     <div className="group relative h-72 xs:h-80 sm:h-88 md:h-96 lg:h-72 xl:h-80 rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-1 sm:hover:-translate-y-2">
                       {/* Background Image with Enhanced Gradient */}
                       <div className="absolute inset-0">
-                        <div className={`absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-700 opacity-90`}></div>
+                        <div
+                          className={`absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-700 opacity-90`}
+                        ></div>
                         <Image
-                          src={application.images?.[0] || "/images/placeholder.jpg"}
+                          src={
+                            application.images?.[0] || "/images/placeholder.jpg"
+                          }
                           alt={application.title}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-700 mix-blend-overlay"
@@ -93,11 +111,16 @@ export default function ApplicationsSection() {
                       <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-5 lg:p-4 xl:p-6 text-white">
                         {/* Industry Tags */}
                         <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-3 lg:mb-2 xl:mb-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
-                          {application.industry.slice(0, 2).map((industry: string, index: number) => (
-                            <span key={index} className="px-2 sm:px-3 lg:px-2 xl:px-3 py-1 bg-white/20 backdrop-blur-sm text-xs rounded-full border border-white/30">
-                              {industry}
-                            </span>
-                          ))}
+                          {application.industry
+                            .slice(0, 2)
+                            .map((industry: string, index: number) => (
+                              <span
+                                key={index}
+                                className="px-2 sm:px-3 lg:px-2 xl:px-3 py-1 bg-white/20 backdrop-blur-sm text-xs rounded-full border border-white/30"
+                              >
+                                {industry}
+                              </span>
+                            ))}
                         </div>
 
                         {/* Title */}
@@ -110,17 +133,26 @@ export default function ApplicationsSection() {
                           <p className="text-xs sm:text-sm lg:text-xs xl:text-sm mb-2 sm:mb-3 lg:mb-2 xl:mb-4 leading-relaxed text-slate-200">
                             {typeof application.additionalInfo === "string"
                               ? application.additionalInfo
-                              : application.additionalInfo?.content?.join(" ") || ""}
+                              : application.additionalInfo?.content?.join(
+                                  " ",
+                                ) || ""}
                           </p>
 
                           {/* Key Benefits with improved styling */}
                           <div className="space-y-1.5 sm:space-y-2 lg:space-y-1 xl:space-y-2 mb-2 sm:mb-3 lg:mb-2 xl:mb-4">
-                            {(application.benefits || []).slice(0, 3).map((benefit: string, index: number) => (
-                              <div key={index} className="flex items-center text-xs">
-                                <CheckCircle className="w-3 h-3 text-emerald-400 mr-1.5 sm:mr-2 lg:mr-1.5 flex-shrink-0" />
-                                <span className="text-slate-300">{benefit}</span>
-                              </div>
-                            ))}
+                            {(application.benefits || [])
+                              .slice(0, 3)
+                              .map((benefit: string, index: number) => (
+                                <div
+                                  key={index}
+                                  className="flex items-center text-xs"
+                                >
+                                  <CheckCircle className="w-3 h-3 text-emerald-400 mr-1.5 sm:mr-2 lg:mr-1.5 flex-shrink-0" />
+                                  <span className="text-slate-300">
+                                    {benefit}
+                                  </span>
+                                </div>
+                              ))}
                           </div>
 
                           {/* Learn More Link */}
@@ -156,11 +188,14 @@ export default function ApplicationsSection() {
             <div className="absolute top-0 left-0 w-16 sm:w-24 lg:w-32 h-16 sm:h-24 lg:h-32 bg-white rounded-full transform -translate-x-8 sm:-translate-x-12 lg:-translate-x-16 -translate-y-8 sm:-translate-y-12 lg:-translate-y-16"></div>
             <div className="absolute bottom-0 right-0 w-20 sm:w-30 lg:w-40 h-20 sm:h-30 lg:h-40 bg-white rounded-full transform translate-x-10 sm:translate-x-15 lg:translate-x-20 translate-y-10 sm:translate-y-15 lg:translate-y-20"></div>
           </div>
-          
+
           <div className="relative z-10">
-            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[48px] font-bold mb-4 sm:mb-6 tracking-tight">Ready to Transform Your Industry?</h3>
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[48px] font-bold mb-4 sm:mb-6 tracking-tight">
+              Ready to Transform Your Industry?
+            </h3>
             <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-[20px] mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
-              Need a solution for your specific industry? Our experts understand the unique challenges across all industrial sectors.
+              Need a solution for your specific industry? Our experts understand
+              the unique challenges across all industrial sectors.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link href="/applications" className="w-full sm:w-auto">

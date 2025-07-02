@@ -1,6 +1,10 @@
-import DynamicProductPage from "@/components/DynamicProductPage"
-import { htWlbpWatchlogBluetoothPlusPressureSensorData } from "@/lib/oil-conditioning-products"
+import DynamicProductPage from "@/components/DynamicProductPage";
+import { htWlbpWatchlogBluetoothPlusPressureSensorData } from "@/lib/oil-conditioning-products";
 
 export default function htWlbpBluetoothPlusPressureSensorPage() {
-    return <DynamicProductPage productData={htWlbpWatchlogBluetoothPlusPressureSensorData} />
+  return (
+    <DynamicProductPage
+      productData={htWlbpWatchlogBluetoothPlusPressureSensorData}
+    />
+  );
 }

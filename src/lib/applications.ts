@@ -22,15 +22,23 @@ export const applications: Application[] = [
     title: "Chiller Compressors",
     subtitle: "Food Processing Continuous - Oil Condition Monitoring",
     images: ["applications/chiller compressors/1.png"],
-    requirements: [" At one of the UK’s largest supermarket chilled storage centres,there are two twin screw compressors operating 24x7, to ensure the temperature is maintained within a controlled range. A catastrophic failure occurred on one of the two compressors and it was decided that a live condition based monitoring system would be an effective solution to mitigate future risk."],
-    solutions: ["Tan Delta worked closely with the engineering team on-site to examine all of the potential methods for monitoring these assemblies. It was quickly concluded that regular oil sampling would give a good indication of the condition of the critical compressors, however it would not be practical or cost effective"],
-    benefits: ["Tan Delta suggested the installation of their patented Oil Quality Sensor (OQSx) which would continuously monitor the overall oil condition and oil temperature. The sensor was wired back into the “MachineGuard” data logging and communication system, enabling the client to set warning and alarm levels within the system."],
-    commercialBenefit: [" The OQSx warning levels have pre-empted and helped prevent a second potential catastrophic failure. The site has seen financial savings of £74K per annum since adopting sensor technologies."],
+    requirements: [
+      " At one of the UK’s largest supermarket chilled storage centres,there are two twin screw compressors operating 24x7, to ensure the temperature is maintained within a controlled range. A catastrophic failure occurred on one of the two compressors and it was decided that a live condition based monitoring system would be an effective solution to mitigate future risk.",
+    ],
+    solutions: [
+      "Tan Delta worked closely with the engineering team on-site to examine all of the potential methods for monitoring these assemblies. It was quickly concluded that regular oil sampling would give a good indication of the condition of the critical compressors, however it would not be practical or cost effective",
+    ],
+    benefits: [
+      "Tan Delta suggested the installation of their patented Oil Quality Sensor (OQSx) which would continuously monitor the overall oil condition and oil temperature. The sensor was wired back into the “MachineGuard” data logging and communication system, enabling the client to set warning and alarm levels within the system.",
+    ],
+    commercialBenefit: [
+      " The OQSx warning levels have pre-empted and helped prevent a second potential catastrophic failure. The site has seen financial savings of £74K per annum since adopting sensor technologies.",
+    ],
     highlights: [
       "24/7 Monitoring: Continuos monitoring condition of critical chiller motors and compressors, without the need of oil samples.",
       "Integrated Technology: Oil Quuality Sensor (OQSx) fitted into the compressors to continuosly monitor the overall oil condition.",
       "Custom Setup: The OQSx was calibrated to match the specalist synthetic oils with an ammonia depletion advice.",
-      "Cost Effective: Cost of maintenance significantly reduced and unplanned downtime eradicated."
+      "Cost Effective: Cost of maintenance significantly reduced and unplanned downtime eradicated.",
     ],
     additionalInfo: {
       title: "Service and Support from Tan Delta",
@@ -71,8 +79,8 @@ export const applications: Application[] = [
     industry: ["Electricity Transformers industry"],
   },
   {
-  id: "engine-monitoring",
-  title: "Engine Monitoring",
+    id: "engine-monitoring",
+    title: "Engine Monitoring",
     images: ["/images/engine-monitoring.jpg"],
     requirements: ["Engine Monitoring requirement"],
     solutions: ["Engine Monitoring solution"],
@@ -203,5 +211,5 @@ export const applications: Application[] = [
 ];
 
 export function getApplicationById(id: string) {
-  return applications.find(app => app.id === id);
+  return applications.find((app) => app.id === id);
 }

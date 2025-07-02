@@ -2,19 +2,34 @@ import { useMemo, useState, useCallback } from "react";
 import { NavigationItem, ProductCategory } from "@/lib/navigation";
 
 // Helper function to check if an item or its children are active by slug path
-function isItemOrChildrenActive(item: NavigationItem, slugPath: string[], currentSlugPath: string[]): boolean {
-  if (slugPath.join("/") === currentSlugPath.slice(0, slugPath.length).join("/")) return true;
+function isItemOrChildrenActive(
+  item: NavigationItem,
+  slugPath: string[],
+  currentSlugPath: string[],
+): boolean {
+  if (
+    slugPath.join("/") === currentSlugPath.slice(0, slugPath.length).join("/")
+  )
+    return true;
   if (!item.children) return false;
-  return item.children.some(child => isItemOrChildrenActive(child, [...slugPath, child.slug], currentSlugPath));
+  return item.children.some((child) =>
+    isItemOrChildrenActive(child, [...slugPath, child.slug], currentSlugPath),
+  );
 }
 
-export function useExpandedItems(category: ProductCategory | undefined, currentSlugPath: string[]) {
+export function useExpandedItems(
+  category: ProductCategory | undefined,
+  currentSlugPath: string[],
+) {
   const autoExpandedItems = useMemo(() => {
     if (!category) return new Set<string>();
     const expanded = new Set<string>();
     // Auto-expand items that contain the current slug path
-    const addParentPaths = (items: NavigationItem[], parentSlugPath: string[]) => {
-      items.forEach(item => {
+    const addParentPaths = (
+      items: NavigationItem[],
+      parentSlugPath: string[],
+    ) => {
+      items.forEach((item) => {
         const itemSlugPath = [...parentSlugPath, item.slug];
         if (isItemOrChildrenActive(item, itemSlugPath, currentSlugPath)) {
           expanded.add(itemSlugPath.join("/"));
@@ -28,7 +43,9 @@ export function useExpandedItems(category: ProductCategory | undefined, currentS
     return expanded;
   }, [category, currentSlugPath]);
 
-  const [manuallyExpandedItems, setManuallyExpandedItems] = useState<Set<string>>(new Set());
+  const [manuallyExpandedItems, setManuallyExpandedItems] = useState<
+    Set<string>
+  >(new Set());
 
   const expandedItems = useMemo(() => {
     const combined = new Set([...autoExpandedItems, ...manuallyExpandedItems]);
@@ -36,7 +53,7 @@ export function useExpandedItems(category: ProductCategory | undefined, currentS
   }, [autoExpandedItems, manuallyExpandedItems]);
 
   const toggleExpanded = useCallback((itemKey: string) => {
-    setManuallyExpandedItems(prev => {
+    setManuallyExpandedItems((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(itemKey)) {
         newSet.delete(itemKey);
@@ -49,6 +66,6 @@ export function useExpandedItems(category: ProductCategory | undefined, currentS
 
   return {
     expandedItems,
-    toggleExpanded
+    toggleExpanded,
   };
 }

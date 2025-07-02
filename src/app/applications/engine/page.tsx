@@ -1,8 +1,8 @@
-import { getApplicationById } from '@/lib/applications';
-import DynamicApplicationPage from '@/components/DynamicApplicationPage';
+import { getApplicationById } from "@/lib/applications";
+import DynamicApplicationPage from "@/components/DynamicApplicationPage";
 
 export default function Page() {
-  const application = getApplicationById('engine');
+  const application = getApplicationById("engine");
   if (!application) return null;
   return <DynamicApplicationPage application={application} />;
-} 
+}

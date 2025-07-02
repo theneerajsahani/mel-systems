@@ -4,7 +4,10 @@ import { useState, useCallback, memo } from "react";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { findCurrentNavigationBySlugs, buildHrefFromSlugs } from "@/lib/navigation";
+import {
+  findCurrentNavigationBySlugs,
+  buildHrefFromSlugs,
+} from "@/lib/navigation";
 import { Button } from "@/components/ui/button";
 import { NavigationItemComponent } from "./NavigationItem";
 import { MobileSidebar } from "./MobileSidebar";
@@ -18,12 +21,18 @@ interface ProductSidebarProps {
 const ProductSidebar = memo(({ className }: ProductSidebarProps) => {
   const pathname = usePathname();
   // Parse the current path into slugs (assuming /products/slug1/slug2...)
-  const slugPath = pathname.replace(/^\/products\/?/, "").split("/").filter(Boolean);
+  const slugPath = pathname
+    .replace(/^\/products\/?/, "")
+    .split("/")
+    .filter(Boolean);
   const { category } = findCurrentNavigationBySlugs(slugPath);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   // Custom hook for managing expanded items
-  const { expandedItems, toggleExpanded } = useExpandedItems(category, slugPath);
+  const { expandedItems, toggleExpanded } = useExpandedItems(
+    category,
+    slugPath,
+  );
 
   const handleCloseMobile = useCallback(() => {
     setIsMobileMenuOpen(false);
@@ -54,7 +63,7 @@ const ProductSidebar = memo(({ className }: ProductSidebarProps) => {
       </div>
 
       {/* Desktop Sidebar */}
-      <aside 
+      <aside
         className={cn(SIDEBAR_STYLES.desktop, className)}
         aria-label={`${category.label} navigation`}
       >
@@ -64,8 +73,12 @@ const ProductSidebar = memo(({ className }: ProductSidebarProps) => {
               {category.label}
             </h3>
           </header>
-          
-          <nav className="space-y-1" role="navigation" aria-label={`${category.label} products`}>
+
+          <nav
+            className="space-y-1"
+            role="navigation"
+            aria-label={`${category.label} products`}
+          >
             {category.children.map((item, index) => (
               <NavigationItemComponent
                 key={`${item.slug}-${index}`}

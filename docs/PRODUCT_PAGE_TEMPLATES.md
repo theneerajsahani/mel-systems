@@ -112,17 +112,21 @@ export default function [PRODUCT_NAME_PASCAL_CASE]Page() {
 ## Quick Reference
 
 ### Naming Conventions:
+
 - **Product ID**: kebab-case (e.g., "oqsx-g2-oil-quality-sensor")
 - **Variable Names**: camelCase (e.g., "oqsxG2OilQualitySensorData")
 - **Page Component**: PascalCase (e.g., "OQSXG2OilQualitySensorPage")
 
 ### Image Path Format:
+
 ```
 /products/[category display name]/[brand]/[product name]/[image-file].jpg
 ```
 
 ### Required vs Optional Fields:
+
 **Required:**
+
 - id, name, category, subcategory, brand
 - images (at least one)
 - description (at least one paragraph)
@@ -130,5 +134,6 @@ export default function [PRODUCT_NAME_PASCAL_CASE]Page() {
 - breadcrumbItems
 
 **Optional:**
+
 - features
 - additionalSections

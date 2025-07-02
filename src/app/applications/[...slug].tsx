@@ -1,7 +1,7 @@
-import { getApplicationById } from '@/lib/applications';
-import DynamicApplicationPage from '@/components/DynamicApplicationPage';
-import { notFound } from 'next/navigation';
-import { applications } from '@/lib/applications';
+import { getApplicationById } from "@/lib/applications";
+import DynamicApplicationPage from "@/components/DynamicApplicationPage";
+import { notFound } from "next/navigation";
+import { applications } from "@/lib/applications";
 
 interface ApplicationPageProps {
   params: { slug: string[] };
@@ -17,5 +17,5 @@ export default function ApplicationPage({ params }: ApplicationPageProps) {
 }
 
 export function generateStaticParams() {
-  return applications.map(app => ({ slug: [app.id] }));
-} 
+  return applications.map((app) => ({ slug: [app.id] }));
+}

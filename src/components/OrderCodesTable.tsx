@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface OrderCodeChoice {
   range: string;
@@ -25,7 +25,10 @@ interface OrderCodesTableProps {
   className?: string;
 }
 
-export default function OrderCodesTable({ orderCodes, className = "" }: OrderCodesTableProps) {
+export default function OrderCodesTable({
+  orderCodes,
+  className = "",
+}: OrderCodesTableProps) {
   return (
     <div className={`space-y-6 ${className}`}>
       {/* Base Code Section */}
@@ -67,18 +70,20 @@ export default function OrderCodesTable({ orderCodes, className = "" }: OrderCod
                 </thead>
                 <tbody>
                   {option.choices.map((choice, choiceIndex) => (
-                    <tr 
-                      key={choiceIndex} 
+                    <tr
+                      key={choiceIndex}
                       className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${
-                        choiceIndex === option.choices.length - 1 ? 'border-b-0' : ''
+                        choiceIndex === option.choices.length - 1
+                          ? "border-b-0"
+                          : ""
                       }`}
                     >
                       <td className="py-3 px-4 text-gray-800">
                         {choice.range}
                       </td>
                       <td className="py-3 px-4">
-                        <Badge 
-                          variant="outline" 
+                        <Badge
+                          variant="outline"
                           className="font-mono text-lg px-3 py-1 bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100"
                         >
                           {choice.code}
@@ -105,5 +110,5 @@ export default function OrderCodesTable({ orderCodes, className = "" }: OrderCod
         </Card>
       )}
     </div>
-  )
+  );
 }

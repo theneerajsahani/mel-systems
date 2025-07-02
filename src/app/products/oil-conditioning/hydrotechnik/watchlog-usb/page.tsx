@@ -1,7 +1,7 @@
-'use client';
-import DynamicProductPage from '@/components/DynamicProductPage';
-import { watchlogUSBCategoryData } from '@/lib/oil-conditioning-products';
+"use client";
+import DynamicProductPage from "@/components/DynamicProductPage";
+import { watchlogUSBCategoryData } from "@/lib/oil-conditioning-products";
 
 export default function WatchlogUSBPage() {
-    return <DynamicProductPage productData={watchlogUSBCategoryData} />;
+  return <DynamicProductPage productData={watchlogUSBCategoryData} />;
 }

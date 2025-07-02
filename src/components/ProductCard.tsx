@@ -1,8 +1,8 @@
-import Image from "next/image"
+import Image from "next/image";
 
 interface ProductCardProps {
-    image: string;
-    name: string;
+  image: string;
+  name: string;
 }
 
 export default function ProductCard({ image, name }: ProductCardProps) {
@@ -22,7 +22,7 @@ export default function ProductCard({ image, name }: ProductCardProps) {
           {/* Hover Overlay */}
           <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
-        
+
         {/* Content */}
         <div className="p-3 sm:p-4 flex-shrink-0">
           <h3 className="text-sm sm:text-base md:text-lg font-medium text-center text-foreground group-hover:text-primary transition-colors duration-200 leading-tight line-clamp-2">
@@ -31,5 +31,5 @@ export default function ProductCard({ image, name }: ProductCardProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

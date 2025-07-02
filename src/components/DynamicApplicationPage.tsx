@@ -1,14 +1,16 @@
-import { Application } from '@/lib/applications';
-import { Badge } from '@/components/ui/badge';
-import Image from 'next/image';
-import ApplicationSidebar from './ApplicationSidebar';
-import Navbar from './Navbar';
+import { Application } from "@/lib/applications";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import ApplicationSidebar from "./ApplicationSidebar";
+import Navbar from "./Navbar";
 
 interface DynamicApplicationPageProps {
   application: Application;
 }
 
-export default function DynamicApplicationPage({ application }: DynamicApplicationPageProps) {
+export default function DynamicApplicationPage({
+  application,
+}: DynamicApplicationPageProps) {
   return (
     <>
       <Navbar />
@@ -23,7 +25,7 @@ export default function DynamicApplicationPage({ application }: DynamicApplicati
               <p className="text-gray-700 mb-4">{application.additionalInfo}</p>
               <div className="mb-2">
                 <span className="font-semibold">Industries: </span>
-                {(application.industry?.join(', '))}
+                {application.industry?.join(", ")}
               </div>
               <div className="mb-2">
                 <span className="font-semibold">Key Benefits:</span>
@@ -48,4 +50,4 @@ export default function DynamicApplicationPage({ application }: DynamicApplicati
       </div>
     </>
   );
-} 
+}

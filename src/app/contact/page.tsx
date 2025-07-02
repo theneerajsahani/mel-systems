@@ -27,7 +27,8 @@ export default function ContactPage() {
                 Get In Touch
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Our team of experts is ready to help you find the perfect monitoring solution for your industrial needs.
+                Our team of experts is ready to help you find the perfect
+                monitoring solution for your industrial needs.
               </p>
 
               <div className="space-y-6">
@@ -37,9 +38,13 @@ export default function ContactPage() {
                       <Phone className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
+                      <h3 className="font-semibold text-gray-900 mb-1">
+                        Phone
+                      </h3>
                       <p className="text-gray-600">+61 3 9xxx xxxx</p>
-                      <p className="text-sm text-gray-500 mt-1">Mon-Fri, 9AM-5PM AEST</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Mon-Fri, 9AM-5PM AEST
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -50,9 +55,13 @@ export default function ContactPage() {
                       <Mail className="w-6 h-6 text-green-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+                      <h3 className="font-semibold text-gray-900 mb-1">
+                        Email
+                      </h3>
                       <p className="text-gray-600">info@melsystems.com.au</p>
-                      <p className="text-sm text-gray-500 mt-1">We'll respond within 24 hours</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        We'll respond within 24 hours
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -63,10 +72,14 @@ export default function ContactPage() {
                       <MapPin className="w-6 h-6 text-purple-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Office</h3>
+                      <h3 className="font-semibold text-gray-900 mb-1">
+                        Office
+                      </h3>
                       <p className="text-gray-600">
-                        123 Industrial Drive<br />
-                        Melbourne, VIC 3000<br />
+                        123 Industrial Drive
+                        <br />
+                        Melbourne, VIC 3000
+                        <br />
                         Australia
                       </p>
                     </div>
@@ -79,12 +92,17 @@ export default function ContactPage() {
                       <Clock className="w-6 h-6 text-orange-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Business Hours</h3>
+                      <h3 className="font-semibold text-gray-900 mb-1">
+                        Business Hours
+                      </h3>
                       <p className="text-gray-600">
-                        Monday - Friday: 9:00 AM - 5:00 PM<br />
+                        Monday - Friday: 9:00 AM - 5:00 PM
+                        <br />
                         Saturday - Sunday: Closed
                       </p>
-                      <p className="text-sm text-gray-500 mt-1">AEST (Australian Eastern Standard Time)</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        AEST (Australian Eastern Standard Time)
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -101,7 +119,10 @@ export default function ContactPage() {
                   <form className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label
+                          htmlFor="firstName"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
                           First Name *
                         </label>
                         <input
@@ -113,7 +134,10 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label
+                          htmlFor="lastName"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
                           Last Name *
                         </label>
                         <input
@@ -127,7 +151,10 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Email Address *
                       </label>
                       <input
@@ -140,7 +167,10 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="company"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Company
                       </label>
                       <input
@@ -152,7 +182,10 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Phone Number
                       </label>
                       <input
@@ -164,7 +197,10 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="subject"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Subject *
                       </label>
                       <select
@@ -175,16 +211,23 @@ export default function ContactPage() {
                       >
                         <option value="">Select a subject</option>
                         <option value="product-inquiry">Product Inquiry</option>
-                        <option value="technical-support">Technical Support</option>
+                        <option value="technical-support">
+                          Technical Support
+                        </option>
                         <option value="sales">Sales & Pricing</option>
-                        <option value="partnership">Partnership Opportunities</option>
+                        <option value="partnership">
+                          Partnership Opportunities
+                        </option>
                         <option value="careers">Careers</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Message *
                       </label>
                       <textarea
@@ -204,12 +247,19 @@ export default function ContactPage() {
                         name="newsletter"
                         className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
-                      <label htmlFor="newsletter" className="ml-2 block text-sm text-gray-700">
-                        Subscribe to our newsletter for product updates and industry insights
+                      <label
+                        htmlFor="newsletter"
+                        className="ml-2 block text-sm text-gray-700"
+                      >
+                        Subscribe to our newsletter for product updates and
+                        industry insights
                       </label>
                     </div>
 
-                    <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+                    <Button
+                      type="submit"
+                      className="w-full bg-blue-600 hover:bg-blue-700"
+                    >
                       <Send className="w-4 h-4 mr-2" />
                       Send Message
                     </Button>
@@ -229,14 +279,17 @@ export default function ContactPage() {
               Visit Our Office
             </h2>
             <p className="text-lg text-gray-600">
-              Our team is located in the heart of Melbourne's industrial district
+              Our team is located in the heart of Melbourne's industrial
+              district
             </p>
           </div>
 
           <div className="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
             <div className="text-center">
               <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600">Interactive map would be embedded here</p>
+              <p className="text-gray-600">
+                Interactive map would be embedded here
+              </p>
               <p className="text-sm text-gray-500 mt-2">
                 123 Industrial Drive, Melbourne, VIC 3000, Australia
               </p>

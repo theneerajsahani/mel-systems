@@ -1,12 +1,22 @@
-'use client';
+"use client";
 
-import { useState, useMemo } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Zap, Star, Phone, Mail, ExternalLink, Search, Grid, List } from 'lucide-react';
+import { useState, useMemo } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  ArrowRight,
+  Zap,
+  Star,
+  Phone,
+  Mail,
+  ExternalLink,
+  Search,
+  Grid,
+  List,
+} from "lucide-react";
 import {
   watchlogUSBCategoryData,
   watchlogBluetoothSensorsGaugesAndMobileAppsCategoryData,
@@ -28,8 +38,8 @@ import {
   watchlogProQuadCellularWiFiCloudGatewayForFixedSystemsData,
   watchlogProHydraulicSystemMonitoringData,
   watchlogProCustomCloudMonitoringData,
-  watchlogCSVVisualizerSoftwareData
-} from '@/lib/oil-conditioning-products';
+  watchlogCSVVisualizerSoftwareData,
+} from "@/lib/oil-conditioning-products";
 
 // Gather all category data
 const hydrotechnikCategoryData = [
@@ -53,88 +63,103 @@ const hydrotechnikCategoryData = [
   watchlogProQuadCellularWiFiCloudGatewayForFixedSystemsData,
   watchlogProHydraulicSystemMonitoringData,
   watchlogProCustomCloudMonitoringData,
-  watchlogCSVVisualizerSoftwareData
+  watchlogCSVVisualizerSoftwareData,
 ];
 
 // Flatten all products from all categories
-const hydrotechnikProducts = hydrotechnikCategoryData.flatMap(cat => {
-  if (cat.categoryProductIds && Array.isArray(cat.categoryProductIds)) {
-    return cat.categoryProductIds.map(pid => {
-      const product = hydrotechnikCategoryData.find(p => p.id === pid);
-      return product ? {
-        id: product.id,
-        name: product.name,
-        description: product.description?.[0] || '',
-        image: product.images?.[0]?.src || '',
-        href: `/products/oil-conditioning/hydrotechnik/${cat.slugPath?.[2] || cat.id}/${product.id}`,
-        category: cat.name,
-        features: product.features || []
-      } : null;
-    }).filter((p): p is NonNullable<typeof p> => !!p);
-  } else {
-    // If no categoryProductIds, treat the category as a product
-    return [{
-      id: cat.id,
-      name: cat.name,
-      description: cat.description?.[0] || '',
-      image: cat.images?.[0]?.src || '',
-      href: `/products/oil-conditioning/hydrotechnik/${cat.slugPath?.[2] || cat.id}/${cat.id}`,
-      category: cat.name,
-      features: cat.features || []
-    }];
-  }
-}).flat();
+const hydrotechnikProducts = hydrotechnikCategoryData
+  .flatMap((cat) => {
+    if (cat.categoryProductIds && Array.isArray(cat.categoryProductIds)) {
+      return cat.categoryProductIds
+        .map((pid) => {
+          const product = hydrotechnikCategoryData.find((p) => p.id === pid);
+          return product
+            ? {
+                id: product.id,
+                name: product.name,
+                description: product.description?.[0] || "",
+                image: product.images?.[0]?.src || "",
+                href: `/products/oil-conditioning/hydrotechnik/${cat.slugPath?.[2] || cat.id}/${product.id}`,
+                category: cat.name,
+                features: product.features || [],
+              }
+            : null;
+        })
+        .filter((p): p is NonNullable<typeof p> => !!p);
+    } else {
+      // If no categoryProductIds, treat the category as a product
+      return [
+        {
+          id: cat.id,
+          name: cat.name,
+          description: cat.description?.[0] || "",
+          image: cat.images?.[0]?.src || "",
+          href: `/products/oil-conditioning/hydrotechnik/${cat.slugPath?.[2] || cat.id}/${cat.id}`,
+          category: cat.name,
+          features: cat.features || [],
+        },
+      ];
+    }
+  })
+  .flat();
 
 // Build categories for filtering
 const categories = [
-  { name: 'All Products', value: 'all', count: hydrotechnikProducts.length },
-  ...Array.from(new Set(hydrotechnikProducts.map(p => p.category))).map(cat => ({
-    name: cat,
-    value: cat.toLowerCase().replace(/\s+/g, '-'),
-    count: hydrotechnikProducts.filter(p => p.category === cat).length
-  }))
+  { name: "All Products", value: "all", count: hydrotechnikProducts.length },
+  ...Array.from(new Set(hydrotechnikProducts.map((p) => p.category))).map(
+    (cat) => ({
+      name: cat,
+      value: cat.toLowerCase().replace(/\s+/g, "-"),
+      count: hydrotechnikProducts.filter((p) => p.category === cat).length,
+    }),
+  ),
 ];
 
 function getValidImageSrc(image?: any) {
   // Only allow strings
-  if (typeof image !== 'string') return '/placeholder.png';
+  if (typeof image !== "string") return "/placeholder.png";
   // Remove whitespace and check for empty, 'undefined', or 'null'
   const trimmed = image.trim();
-  if (!trimmed || trimmed === 'undefined' || trimmed === 'null') {
-    return '/placeholder.png';
+  if (!trimmed || trimmed === "undefined" || trimmed === "null") {
+    return "/placeholder.png";
   }
   // Absolute URL
-  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
     return trimmed;
   }
   // If it looks like a file path but doesn't start with '/', add it
-  if (!trimmed.startsWith('/')) {
-    return '/' + trimmed;
+  if (!trimmed.startsWith("/")) {
+    return "/" + trimmed;
   }
   return trimmed;
 }
 
 export default function HydrotechnikCategoryPage() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const filteredProducts = useMemo(() => {
-    return hydrotechnikProducts.filter(product => {
-      const matchesSearch = searchTerm === '' ||
+    return hydrotechnikProducts.filter((product) => {
+      const matchesSearch =
+        searchTerm === "" ||
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.features.some(feature => feature.toLowerCase().includes(searchTerm.toLowerCase()));
-      const matchesCategory = selectedCategory === 'all' ||
-        product.category.toLowerCase().replace(/\s+/g, '-') === selectedCategory;
+        product.features.some((feature) =>
+          feature.toLowerCase().includes(searchTerm.toLowerCase()),
+        );
+      const matchesCategory =
+        selectedCategory === "all" ||
+        product.category.toLowerCase().replace(/\s+/g, "-") ===
+          selectedCategory;
       return matchesSearch && matchesCategory;
     });
   }, [searchTerm, selectedCategory]);
 
   // Debug: log all product.image values in filteredProducts
-  if (typeof window !== 'undefined') {
-    filteredProducts.forEach(product => {
-      console.log('Hydrotechnik product image:', product.image);
+  if (typeof window !== "undefined") {
+    filteredProducts.forEach((product) => {
+      console.log("Hydrotechnik product image:", product.image);
     });
   }
 
@@ -165,7 +190,8 @@ export default function HydrotechnikCategoryPage() {
                   </div>
                 </div>
                 <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed mb-8">
-                  Comprehensive monitoring solutions for pressure, temperature, and flow with wireless connectivity.
+                  Comprehensive monitoring solutions for pressure, temperature,
+                  and flow with wireless connectivity.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -179,20 +205,36 @@ export default function HydrotechnikCategoryPage() {
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20">
-                    <div className="text-2xl font-bold text-primary mb-1">{hydrotechnikProducts.length}</div>
-                    <div className="text-sm text-muted-foreground">Products</div>
+                    <div className="text-2xl font-bold text-primary mb-1">
+                      {hydrotechnikProducts.length}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Products
+                    </div>
                   </div>
                   <div className="text-center p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20">
-                    <div className="text-2xl font-bold text-primary mb-1">{categories.length - 1}</div>
-                    <div className="text-sm text-muted-foreground">Categories</div>
+                    <div className="text-2xl font-bold text-primary mb-1">
+                      {categories.length - 1}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Categories
+                    </div>
                   </div>
                   <div className="text-center p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20">
-                    <div className="text-2xl font-bold text-primary mb-1">24/7</div>
-                    <div className="text-sm text-muted-foreground">Monitoring</div>
+                    <div className="text-2xl font-bold text-primary mb-1">
+                      24/7
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Monitoring
+                    </div>
                   </div>
                   <div className="text-center p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20">
-                    <div className="text-2xl font-bold text-primary mb-1">3-5</div>
-                    <div className="text-sm text-muted-foreground">Days Delivery</div>
+                    <div className="text-2xl font-bold text-primary mb-1">
+                      3-5
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Days Delivery
+                    </div>
                   </div>
                 </div>
               </div>
@@ -213,14 +255,18 @@ export default function HydrotechnikCategoryPage() {
                   placeholder="Search Hydrotechnik products..."
                   className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                   value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
               <div className="flex gap-2 flex-wrap">
-                {categories.map(category => (
+                {categories.map((category) => (
                   <Button
                     key={category.value}
-                    variant={selectedCategory === category.value ? 'default' : 'outline'}
+                    variant={
+                      selectedCategory === category.value
+                        ? "default"
+                        : "outline"
+                    }
                     size="sm"
                     onClick={() => setSelectedCategory(category.value)}
                   >
@@ -234,16 +280,16 @@ export default function HydrotechnikCategoryPage() {
             </div>
             <div className="flex items-center gap-2">
               <Button
-                variant={viewMode === 'grid' ? 'default' : 'outline'}
+                variant={viewMode === "grid" ? "default" : "outline"}
                 size="sm"
-                onClick={() => setViewMode('grid')}
+                onClick={() => setViewMode("grid")}
               >
                 <Grid className="w-4 h-4" />
               </Button>
               <Button
-                variant={viewMode === 'list' ? 'default' : 'outline'}
+                variant={viewMode === "list" ? "default" : "outline"}
                 size="sm"
-                onClick={() => setViewMode('list')}
+                onClick={() => setViewMode("list")}
               >
                 <List className="w-4 h-4" />
               </Button>
@@ -259,19 +305,24 @@ export default function HydrotechnikCategoryPage() {
             Hydrotechnik Products
           </h2>
           <p className="text-muted-foreground">
-            Showing {filteredProducts.length} of {hydrotechnikProducts.length} products
+            Showing {filteredProducts.length} of {hydrotechnikProducts.length}{" "}
+            products
           </p>
         </div>
         {/* Grid View */}
-        {viewMode === 'grid' && (
+        {viewMode === "grid" && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map(product => {
+            {filteredProducts.map((product) => {
               const imgSrc = getValidImageSrc(product.image);
-              if (typeof window !== 'undefined') {
-                console.log('Image src for product:', product.name, imgSrc);
+              if (typeof window !== "undefined") {
+                console.log("Image src for product:", product.name, imgSrc);
               }
               return (
-                <Link key={product.id} href={product.href} className="block group">
+                <Link
+                  key={product.id}
+                  href={product.href}
+                  className="block group"
+                >
                   <Card className="h-full border-2 hover:border-primary/50 transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 overflow-hidden">
                     {/* Product Image */}
                     <div className="relative h-56 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
@@ -299,13 +350,21 @@ export default function HydrotechnikCategoryPage() {
                         {product.description}
                       </p>
                       <div className="space-y-2">
-                        <h4 className="text-xs font-semibold text-foreground">Key Features:</h4>
+                        <h4 className="text-xs font-semibold text-foreground">
+                          Key Features:
+                        </h4>
                         <div className="flex flex-wrap gap-1">
-                          {product.features.slice(0, 3).map((feature, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
-                              {feature}
-                            </Badge>
-                          ))}
+                          {product.features
+                            .slice(0, 3)
+                            .map((feature, index) => (
+                              <Badge
+                                key={index}
+                                variant="outline"
+                                className="text-xs"
+                              >
+                                {feature}
+                              </Badge>
+                            ))}
                         </div>
                       </div>
                     </div>
@@ -316,15 +375,19 @@ export default function HydrotechnikCategoryPage() {
           </div>
         )}
         {/* List View */}
-        {viewMode === 'list' && (
+        {viewMode === "list" && (
           <div className="space-y-4">
-            {filteredProducts.map(product => {
+            {filteredProducts.map((product) => {
               const imgSrc = getValidImageSrc(product.image);
-              if (typeof window !== 'undefined') {
-                console.log('Image src for product:', product.name, imgSrc);
+              if (typeof window !== "undefined") {
+                console.log("Image src for product:", product.name, imgSrc);
               }
               return (
-                <Link key={product.id} href={product.href} className="block group">
+                <Link
+                  key={product.id}
+                  href={product.href}
+                  className="block group"
+                >
                   <Card className="border-2 hover:border-primary/50 transition-all duration-300 group-hover:shadow-lg overflow-hidden">
                     <div className="flex items-center gap-6 p-6">
                       <div className="relative w-24 h-24 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg overflow-hidden flex-shrink-0">
@@ -352,7 +415,11 @@ export default function HydrotechnikCategoryPage() {
                         </p>
                         <div className="flex flex-wrap gap-1">
                           {product.features.map((feature, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
+                            <Badge
+                              key={index}
+                              variant="outline"
+                              className="text-xs"
+                            >
                               {feature}
                             </Badge>
                           ))}
@@ -371,13 +438,17 @@ export default function HydrotechnikCategoryPage() {
             <div className="bg-muted/20 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
               <Search className="w-10 h-10 text-muted-foreground" />
             </div>
-            <h3 className="text-xl font-semibold text-foreground mb-3">No products found</h3>
-            <p className="text-muted-foreground text-lg mb-6">Try adjusting your search terms or filters</p>
+            <h3 className="text-xl font-semibold text-foreground mb-3">
+              No products found
+            </h3>
+            <p className="text-muted-foreground text-lg mb-6">
+              Try adjusting your search terms or filters
+            </p>
             <Button
               variant="outline"
               onClick={() => {
-                setSearchTerm('');
-                setSelectedCategory('all');
+                setSearchTerm("");
+                setSelectedCategory("all");
               }}
             >
               Clear Filters
@@ -393,7 +464,8 @@ export default function HydrotechnikCategoryPage() {
             Need Help Choosing the Right Hydrotechnik Solution?
           </h2>
           <p className="text-muted-foreground text-lg mb-8">
-            Our experts can help you select the perfect monitoring solution for your specific application
+            Our experts can help you select the perfect monitoring solution for
+            your specific application
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-primary hover:bg-primary/90">

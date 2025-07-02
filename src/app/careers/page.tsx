@@ -1,14 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Clock, DollarSign, Users, Briefcase, GraduationCap } from "lucide-react";
+import {
+  MapPin,
+  Clock,
+  DollarSign,
+  Users,
+  Briefcase,
+  GraduationCap,
+} from "lucide-react";
 
 interface JobPosition {
   id: string;
   title: string;
   department: string;
   location: string;
-  type: 'Full-time' | 'Part-time' | 'Contract' | 'Internship';
+  type: "Full-time" | "Part-time" | "Contract" | "Internship";
   experience: string;
   salary?: string;
   description: string;
@@ -20,216 +27,222 @@ interface JobPosition {
 
 const jobPositions: JobPosition[] = [
   {
-    id: 'senior-software-engineer',
-    title: 'Senior Software Engineer',
-    department: 'Engineering',
-    location: 'Remote / On-site',
-    type: 'Full-time',
-    experience: '5+ years',
-    salary: '$80,000 - $120,000',
-    description: 'Lead the development of innovative monitoring solutions and IoT systems for industrial applications.',
+    id: "senior-software-engineer",
+    title: "Senior Software Engineer",
+    department: "Engineering",
+    location: "Remote / On-site",
+    type: "Full-time",
+    experience: "5+ years",
+    salary: "$80,000 - $120,000",
+    description:
+      "Lead the development of innovative monitoring solutions and IoT systems for industrial applications.",
     requirements: [
-      'Bachelor\'s degree in Computer Science or related field',
-      '5+ years of software development experience',
-      'Proficiency in JavaScript/TypeScript, React, Node.js',
-      'Experience with IoT systems and industrial protocols',
-      'Knowledge of databases (SQL/NoSQL)',
-      'Strong problem-solving and communication skills'
+      "Bachelor's degree in Computer Science or related field",
+      "5+ years of software development experience",
+      "Proficiency in JavaScript/TypeScript, React, Node.js",
+      "Experience with IoT systems and industrial protocols",
+      "Knowledge of databases (SQL/NoSQL)",
+      "Strong problem-solving and communication skills",
     ],
     responsibilities: [
-      'Design and implement scalable software solutions',
-      'Lead technical architecture decisions',
-      'Mentor junior developers',
-      'Collaborate with product and design teams',
-      'Ensure code quality and best practices',
-      'Participate in code reviews and technical discussions'
+      "Design and implement scalable software solutions",
+      "Lead technical architecture decisions",
+      "Mentor junior developers",
+      "Collaborate with product and design teams",
+      "Ensure code quality and best practices",
+      "Participate in code reviews and technical discussions",
     ],
     benefits: [
-      'Competitive salary and equity',
-      'Health, dental, and vision insurance',
-      'Flexible work arrangements',
-      'Professional development budget',
-      '401(k) matching',
-      'Paid time off and holidays'
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible work arrangements",
+      "Professional development budget",
+      "401(k) matching",
+      "Paid time off and holidays",
     ],
-    posted: '2024-12-15'
+    posted: "2024-12-15",
   },
   {
-    id: 'industrial-engineer',
-    title: 'Industrial Systems Engineer',
-    department: 'Engineering',
-    location: 'Melbourne, Australia',
-    type: 'Full-time',
-    experience: '3-7 years',
-    salary: 'Competitive',
-    description: 'Design and optimize monitoring systems for industrial equipment and machinery.',
+    id: "industrial-engineer",
+    title: "Industrial Systems Engineer",
+    department: "Engineering",
+    location: "Melbourne, Australia",
+    type: "Full-time",
+    experience: "3-7 years",
+    salary: "Competitive",
+    description:
+      "Design and optimize monitoring systems for industrial equipment and machinery.",
     requirements: [
-      'Bachelor\'s degree in Industrial or Mechanical Engineering',
-      '3+ years experience in industrial systems',
-      'Knowledge of oil analysis and condition monitoring',
-      'Experience with sensors and data acquisition systems',
-      'Understanding of maintenance strategies',
-      'Strong analytical and problem-solving skills'
+      "Bachelor's degree in Industrial or Mechanical Engineering",
+      "3+ years experience in industrial systems",
+      "Knowledge of oil analysis and condition monitoring",
+      "Experience with sensors and data acquisition systems",
+      "Understanding of maintenance strategies",
+      "Strong analytical and problem-solving skills",
     ],
     responsibilities: [
-      'Design monitoring solutions for industrial applications',
-      'Analyze system performance and optimization opportunities',
-      'Work with clients to understand their monitoring needs',
-      'Develop technical documentation and specifications',
-      'Support field installations and commissioning',
-      'Provide technical support to sales team'
+      "Design monitoring solutions for industrial applications",
+      "Analyze system performance and optimization opportunities",
+      "Work with clients to understand their monitoring needs",
+      "Develop technical documentation and specifications",
+      "Support field installations and commissioning",
+      "Provide technical support to sales team",
     ],
     benefits: [
-      'Competitive salary package',
-      'Health and wellness benefits',
-      'Professional development opportunities',
-      'Company vehicle or travel allowance',
-      'Flexible working arrangements',
-      'Annual performance bonuses'
+      "Competitive salary package",
+      "Health and wellness benefits",
+      "Professional development opportunities",
+      "Company vehicle or travel allowance",
+      "Flexible working arrangements",
+      "Annual performance bonuses",
     ],
-    posted: '2024-12-10'
+    posted: "2024-12-10",
   },
   {
-    id: 'sales-manager',
-    title: 'Regional Sales Manager',
-    department: 'Sales',
-    location: 'Sydney, Australia',
-    type: 'Full-time',
-    experience: '5+ years',
-    salary: '$70,000 - $100,000 + Commission',
-    description: 'Drive sales growth in the industrial monitoring and oil analysis market.',
+    id: "sales-manager",
+    title: "Regional Sales Manager",
+    department: "Sales",
+    location: "Sydney, Australia",
+    type: "Full-time",
+    experience: "5+ years",
+    salary: "$70,000 - $100,000 + Commission",
+    description:
+      "Drive sales growth in the industrial monitoring and oil analysis market.",
     requirements: [
-      'Bachelor\'s degree in Business, Engineering, or related field',
-      '5+ years of B2B sales experience',
-      'Experience in industrial or technical sales preferred',
-      'Strong relationship building skills',
-      'Excellent communication and presentation skills',
-      'Ability to travel within assigned territory'
+      "Bachelor's degree in Business, Engineering, or related field",
+      "5+ years of B2B sales experience",
+      "Experience in industrial or technical sales preferred",
+      "Strong relationship building skills",
+      "Excellent communication and presentation skills",
+      "Ability to travel within assigned territory",
     ],
     responsibilities: [
-      'Develop and execute sales strategies for assigned region',
-      'Build and maintain relationships with key customers',
-      'Identify new business opportunities',
-      'Provide technical sales support and product demonstrations',
-      'Collaborate with engineering team on customer solutions',
-      'Achieve sales targets and KPIs'
+      "Develop and execute sales strategies for assigned region",
+      "Build and maintain relationships with key customers",
+      "Identify new business opportunities",
+      "Provide technical sales support and product demonstrations",
+      "Collaborate with engineering team on customer solutions",
+      "Achieve sales targets and KPIs",
     ],
     benefits: [
-      'Base salary plus commission structure',
-      'Company car and expense account',
-      'Health insurance and superannuation',
-      'Sales incentive programs',
-      'Professional development training',
-      'Flexible work arrangements'
+      "Base salary plus commission structure",
+      "Company car and expense account",
+      "Health insurance and superannuation",
+      "Sales incentive programs",
+      "Professional development training",
+      "Flexible work arrangements",
     ],
-    posted: '2024-12-08'
+    posted: "2024-12-08",
   },
   {
-    id: 'technical-support-specialist',
-    title: 'Technical Support Specialist',
-    department: 'Support',
-    location: 'Remote',
-    type: 'Full-time',
-    experience: '2-5 years',
-    description: 'Provide technical support and training for our monitoring systems and equipment.',
+    id: "technical-support-specialist",
+    title: "Technical Support Specialist",
+    department: "Support",
+    location: "Remote",
+    type: "Full-time",
+    experience: "2-5 years",
+    description:
+      "Provide technical support and training for our monitoring systems and equipment.",
     requirements: [
-      'Technical diploma or degree preferred',
-      '2+ years in technical support or field service',
-      'Understanding of industrial equipment and sensors',
-      'Strong troubleshooting and diagnostic skills',
-      'Excellent customer service skills',
-      'Ability to work independently and manage multiple cases'
+      "Technical diploma or degree preferred",
+      "2+ years in technical support or field service",
+      "Understanding of industrial equipment and sensors",
+      "Strong troubleshooting and diagnostic skills",
+      "Excellent customer service skills",
+      "Ability to work independently and manage multiple cases",
     ],
     responsibilities: [
-      'Provide technical support via phone, email, and remote access',
-      'Troubleshoot system issues and guide customers through solutions',
-      'Create and maintain technical documentation',
-      'Conduct product training sessions for customers',
-      'Escalate complex issues to engineering team',
-      'Track and report support metrics'
+      "Provide technical support via phone, email, and remote access",
+      "Troubleshoot system issues and guide customers through solutions",
+      "Create and maintain technical documentation",
+      "Conduct product training sessions for customers",
+      "Escalate complex issues to engineering team",
+      "Track and report support metrics",
     ],
     benefits: [
-      'Competitive salary',
-      'Remote work flexibility',
-      'Health and dental benefits',
-      'Training and certification opportunities',
-      'Equipment and home office setup',
-      'Career advancement paths'
+      "Competitive salary",
+      "Remote work flexibility",
+      "Health and dental benefits",
+      "Training and certification opportunities",
+      "Equipment and home office setup",
+      "Career advancement paths",
     ],
-    posted: '2024-12-05'
+    posted: "2024-12-05",
   },
   {
-    id: 'marketing-coordinator',
-    title: 'Marketing Coordinator',
-    department: 'Marketing',
-    location: 'Melbourne, Australia',
-    type: 'Full-time',
-    experience: '2-4 years',
-    description: 'Support marketing initiatives and help grow our brand presence in industrial markets.',
+    id: "marketing-coordinator",
+    title: "Marketing Coordinator",
+    department: "Marketing",
+    location: "Melbourne, Australia",
+    type: "Full-time",
+    experience: "2-4 years",
+    description:
+      "Support marketing initiatives and help grow our brand presence in industrial markets.",
     requirements: [
-      'Bachelor\'s degree in Marketing, Communications, or related field',
-      '2+ years of marketing experience',
-      'Experience with digital marketing and social media',
-      'Strong writing and content creation skills',
-      'Knowledge of marketing automation tools',
-      'Creative thinking and attention to detail'
+      "Bachelor's degree in Marketing, Communications, or related field",
+      "2+ years of marketing experience",
+      "Experience with digital marketing and social media",
+      "Strong writing and content creation skills",
+      "Knowledge of marketing automation tools",
+      "Creative thinking and attention to detail",
     ],
     responsibilities: [
-      'Develop and execute marketing campaigns',
-      'Create content for website, social media, and marketing materials',
-      'Manage trade show participation and events',
-      'Support lead generation and nurturing activities',
-      'Analyze marketing performance and ROI',
-      'Coordinate with sales team on marketing qualified leads'
+      "Develop and execute marketing campaigns",
+      "Create content for website, social media, and marketing materials",
+      "Manage trade show participation and events",
+      "Support lead generation and nurturing activities",
+      "Analyze marketing performance and ROI",
+      "Coordinate with sales team on marketing qualified leads",
     ],
     benefits: [
-      'Competitive salary',
-      'Health and wellness benefits',
-      'Professional development budget',
-      'Flexible work arrangements',
-      'Creative and collaborative work environment',
-      'Opportunity to work with cutting-edge technology'
+      "Competitive salary",
+      "Health and wellness benefits",
+      "Professional development budget",
+      "Flexible work arrangements",
+      "Creative and collaborative work environment",
+      "Opportunity to work with cutting-edge technology",
     ],
-    posted: '2024-12-03'
+    posted: "2024-12-03",
   },
   {
-    id: 'software-engineer-intern',
-    title: 'Software Engineering Intern',
-    department: 'Engineering',
-    location: 'Melbourne, Australia',
-    type: 'Internship',
-    experience: 'Student/Graduate',
-    description: 'Join our engineering team to gain hands-on experience developing monitoring software and IoT solutions.',
+    id: "software-engineer-intern",
+    title: "Software Engineering Intern",
+    department: "Engineering",
+    location: "Melbourne, Australia",
+    type: "Internship",
+    experience: "Student/Graduate",
+    description:
+      "Join our engineering team to gain hands-on experience developing monitoring software and IoT solutions.",
     requirements: [
-      'Currently pursuing or recently completed degree in Computer Science, Software Engineering, or related field',
-      'Basic programming knowledge (JavaScript, Python, or similar)',
-      'Interest in IoT and industrial systems',
-      'Strong problem-solving skills',
-      'Eagerness to learn and adapt',
-      'Good communication and teamwork skills'
+      "Currently pursuing or recently completed degree in Computer Science, Software Engineering, or related field",
+      "Basic programming knowledge (JavaScript, Python, or similar)",
+      "Interest in IoT and industrial systems",
+      "Strong problem-solving skills",
+      "Eagerness to learn and adapt",
+      "Good communication and teamwork skills",
     ],
     responsibilities: [
-      'Assist with software development projects',
-      'Write and test code under supervision',
-      'Participate in team meetings and code reviews',
-      'Learn about industrial monitoring systems',
-      'Document development processes and procedures',
-      'Support quality assurance testing'
+      "Assist with software development projects",
+      "Write and test code under supervision",
+      "Participate in team meetings and code reviews",
+      "Learn about industrial monitoring systems",
+      "Document development processes and procedures",
+      "Support quality assurance testing",
     ],
     benefits: [
-      'Competitive internship stipend',
-      'Mentorship from senior engineers',
-      'Real-world project experience',
-      'Potential for full-time employment',
-      'Flexible schedule around studies',
-      'Professional development opportunities'
+      "Competitive internship stipend",
+      "Mentorship from senior engineers",
+      "Real-world project experience",
+      "Potential for full-time employment",
+      "Flexible schedule around studies",
+      "Professional development opportunities",
     ],
-    posted: '2024-11-28'
-  }
+    posted: "2024-11-28",
+  },
 ];
 
-const departments = ['All', 'Engineering', 'Sales', 'Support', 'Marketing'];
-const locations = ['All', 'Remote', 'Melbourne', 'Sydney', 'Remote / On-site'];
+const departments = ["All", "Engineering", "Sales", "Support", "Marketing"];
+const locations = ["All", "Remote", "Melbourne", "Sydney", "Remote / On-site"];
 
 export default function CareersPage() {
   return (
@@ -241,13 +254,21 @@ export default function CareersPage() {
             Join Our Team
           </h1>
           <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8">
-            Build the future of industrial monitoring with innovative technology and passionate people
+            Build the future of industrial monitoring with innovative technology
+            and passionate people
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
+            <Button
+              size="lg"
+              className="bg-white text-blue-900 hover:bg-gray-100"
+            >
               View Open Positions
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-white hover:text-blue-900"
+            >
               Learn About Our Culture
             </Button>
           </div>
@@ -262,7 +283,8 @@ export default function CareersPage() {
               Why Work With Us?
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Join a team that's passionate about innovation, quality, and making a real impact in industrial monitoring.
+              Join a team that's passionate about innovation, quality, and
+              making a real impact in industrial monitoring.
             </p>
           </div>
 
@@ -276,7 +298,8 @@ export default function CareersPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Work with talented professionals who support each other and share knowledge freely.
+                  Work with talented professionals who support each other and
+                  share knowledge freely.
                 </p>
               </CardContent>
             </Card>
@@ -290,7 +313,8 @@ export default function CareersPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Access to training, conferences, and professional development opportunities.
+                  Access to training, conferences, and professional development
+                  opportunities.
                 </p>
               </CardContent>
             </Card>
@@ -304,7 +328,8 @@ export default function CareersPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Flexible work arrangements and generous time off to maintain a healthy balance.
+                  Flexible work arrangements and generous time off to maintain a
+                  healthy balance.
                 </p>
               </CardContent>
             </Card>
@@ -320,16 +345,23 @@ export default function CareersPage() {
               Open Positions
             </h2>
             <p className="text-lg text-gray-600">
-              Find your next opportunity and help us shape the future of industrial monitoring.
+              Find your next opportunity and help us shape the future of
+              industrial monitoring.
             </p>
           </div>
 
           {/* Filters */}
           <div className="mb-8 flex flex-wrap gap-4 justify-center">
             <div className="flex flex-wrap gap-2">
-              <span className="text-sm font-medium text-gray-700 mr-2">Department:</span>
+              <span className="text-sm font-medium text-gray-700 mr-2">
+                Department:
+              </span>
               {departments.map((dept) => (
-                <Badge key={dept} variant="outline" className="cursor-pointer hover:bg-blue-50">
+                <Badge
+                  key={dept}
+                  variant="outline"
+                  className="cursor-pointer hover:bg-blue-50"
+                >
                   {dept}
                 </Badge>
               ))}
@@ -339,11 +371,16 @@ export default function CareersPage() {
           {/* Job Cards */}
           <div className="space-y-6">
             {jobPositions.map((job) => (
-              <Card key={job.id} className="hover:shadow-lg transition-shadow duration-300">
+              <Card
+                key={job.id}
+                className="hover:shadow-lg transition-shadow duration-300"
+              >
                 <CardHeader>
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
-                      <CardTitle className="text-xl text-blue-900">{job.title}</CardTitle>
+                      <CardTitle className="text-xl text-blue-900">
+                        {job.title}
+                      </CardTitle>
                       <div className="flex flex-wrap gap-3 mt-2">
                         <Badge variant="secondary">{job.department}</Badge>
                         <div className="flex items-center text-sm text-gray-600">
@@ -373,10 +410,12 @@ export default function CareersPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">{job.description}</p>
-                  
+
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Key Requirements:</h4>
+                      <h4 className="font-semibold text-gray-900 mb-2">
+                        Key Requirements:
+                      </h4>
                       <ul className="text-sm text-gray-600 space-y-1">
                         {job.requirements.slice(0, 4).map((req, index) => (
                           <li key={index} className="flex items-start">
@@ -391,9 +430,11 @@ export default function CareersPage() {
                         )}
                       </ul>
                     </div>
-                    
+
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Key Responsibilities:</h4>
+                      <h4 className="font-semibold text-gray-900 mb-2">
+                        Key Responsibilities:
+                      </h4>
                       <ul className="text-sm text-gray-600 space-y-1">
                         {job.responsibilities.slice(0, 4).map((resp, index) => (
                           <li key={index} className="flex items-start">
@@ -403,7 +444,8 @@ export default function CareersPage() {
                         ))}
                         {job.responsibilities.length > 4 && (
                           <li className="text-blue-600 text-sm">
-                            +{job.responsibilities.length - 4} more responsibilities
+                            +{job.responsibilities.length - 4} more
+                            responsibilities
                           </li>
                         )}
                       </ul>
@@ -411,7 +453,9 @@ export default function CareersPage() {
                   </div>
 
                   <div className="mt-4 pt-4 border-t">
-                    <p className="text-xs text-gray-500">Posted: {new Date(job.posted).toLocaleDateString()}</p>
+                    <p className="text-xs text-gray-500">
+                      Posted: {new Date(job.posted).toLocaleDateString()}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -428,7 +472,8 @@ export default function CareersPage() {
               Employee Benefits
             </h2>
             <p className="text-lg text-gray-600">
-              We believe in taking care of our team with comprehensive benefits and perks.
+              We believe in taking care of our team with comprehensive benefits
+              and perks.
             </p>
           </div>
 
@@ -438,7 +483,9 @@ export default function CareersPage() {
                 <span className="text-2xl">🏥</span>
               </div>
               <h3 className="font-semibold mb-2">Health & Wellness</h3>
-              <p className="text-sm text-gray-600">Comprehensive health, dental, and vision coverage</p>
+              <p className="text-sm text-gray-600">
+                Comprehensive health, dental, and vision coverage
+              </p>
             </div>
 
             <div className="text-center">
@@ -446,7 +493,9 @@ export default function CareersPage() {
                 <span className="text-2xl">💰</span>
               </div>
               <h3 className="font-semibold mb-2">Financial Security</h3>
-              <p className="text-sm text-gray-600">Competitive salary, superannuation, and performance bonuses</p>
+              <p className="text-sm text-gray-600">
+                Competitive salary, superannuation, and performance bonuses
+              </p>
             </div>
 
             <div className="text-center">
@@ -454,7 +503,9 @@ export default function CareersPage() {
                 <span className="text-2xl">🏠</span>
               </div>
               <h3 className="font-semibold mb-2">Work Flexibility</h3>
-              <p className="text-sm text-gray-600">Remote work options and flexible scheduling</p>
+              <p className="text-sm text-gray-600">
+                Remote work options and flexible scheduling
+              </p>
             </div>
 
             <div className="text-center">
@@ -462,7 +513,9 @@ export default function CareersPage() {
                 <span className="text-2xl">📚</span>
               </div>
               <h3 className="font-semibold mb-2">Growth & Development</h3>
-              <p className="text-sm text-gray-600">Training budget and career advancement opportunities</p>
+              <p className="text-sm text-gray-600">
+                Training budget and career advancement opportunities
+              </p>
             </div>
           </div>
         </div>
@@ -475,7 +528,8 @@ export default function CareersPage() {
             Ready to Join Our Team?
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Don't see the perfect role? We're always looking for talented individuals who share our passion for innovation.
+            Don't see the perfect role? We're always looking for talented
+            individuals who share our passion for innovation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
