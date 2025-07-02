@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
+  output: 'export',
   
   // Image optimization settings
   images: {
@@ -20,46 +21,46 @@ const nextConfig: NextConfig = {
   generateEtags: true,
   
   // Headers for video optimization and caching
-  async headers() {
-    return [
-      {
-        source: '/hero-optimized.(mp4|webm)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'Accept-Ranges',
-            value: 'bytes',
-          },
-        ],
-      },
-      {
-        source: '/hero-mobile.mp4',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'Accept-Ranges',
-            value: 'bytes',
-          },
-        ],
-      },
-      // Cache static assets
-      {
-        source: '/products/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=86400, s-maxage=86400', // 24 hours
-          },
-        ],
-      },
-    ];
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/hero-optimized.(mp4|webm)',
+  //       headers: [
+  //         {
+  //           key: 'Cache-Control',
+  //           value: 'public, max-age=31536000, immutable',
+  //         },
+  //         {
+  //           key: 'Accept-Ranges',
+  //           value: 'bytes',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       source: '/hero-mobile.mp4',
+  //       headers: [
+  //         {
+  //           key: 'Cache-Control',
+  //           value: 'public, max-age=31536000, immutable',
+  //         },
+  //         {
+  //           key: 'Accept-Ranges',
+  //           value: 'bytes',
+  //         },
+  //       ],
+  //     },
+  //     // Cache static assets
+  //     {
+  //       source: '/products/:path*',
+  //       headers: [
+  //         {
+  //           key: 'Cache-Control',
+  //           value: 'public, max-age=86400, s-maxage=86400', // 24 hours
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
 };
 
 export default nextConfig;

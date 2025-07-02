@@ -9,7 +9,9 @@ export interface ProductData {
   id: string;
   name: string;
   category: string;
-  subcategory: string;
+  subcategory?: string;
+  subsubcategory?: string;
+  subsubsubcategory?: string;
   brand: string;
   images?: ProductImage[];
   video?: string;
@@ -35,10 +37,7 @@ export interface ProductData {
     }[];
     note?: string;
   };
-  breadcrumbItems: Array<{
-    label: string;
-    href?: string;
-  }>;
+  slugPath: string[];
   categoryProductIds?: string[];
   href?: string;
 }
@@ -75,6 +74,41 @@ export interface ProductData {
 
 // ============================
 
+// Category Data - Tandelta
+export const tandeltaCategoryData: ProductData = {
+  id: "tandelta",
+  name: "Tandelta",
+  category: "oil-conditioning",
+  subcategory: "tandelta",
+  brand: "Tandelta",
+  images: [
+    {
+      src: "/products/oil conditioning/Tandelta/OQSx-G2 Oil Quality Sensor/OQSx-G2 Oil Quality Sensor-1.jpg",
+      alt: "Tandelta"
+    },
+  ],
+  categoryProductIds: [
+    'oqsx-g2-oil-quality-sensor',
+    'oqsx-g2-haz-oil-quality-sensor',
+    'mot-mobile-oil-test-kit',
+    'oqsx-g2-sensor-kit',
+    'sense2-display-kit',
+    'sense3-gateway-kit',
+    'gateway-oqtg',
+    'oqde-g2-display-express',
+    'gateway-hub',
+    'manifold',
+    'cables'
+  ],
+  additionalSections: [
+    {
+      title: "Product Ranges",
+      content: "PRODUCT_GRID:tandelta-products"
+    }
+  ],
+  slugPath: ["oil-conditioning", "tandelta"]
+};
+
 // Product Data - OQSx-G2 Oil Quality Sensor
 export const oqsxG2OilQualitySensorData: ProductData = {
   id: "oqsx-g2-oil-quality-sensor",
@@ -85,24 +119,23 @@ export const oqsxG2OilQualitySensorData: ProductData = {
   images: [
     {
       src: "/products/oil conditioning/Tandelta/OQSx-G2 Oil Quality Sensor/OQSx-G2 Oil Quality Sensor-1.jpg",
-      alt: "OQSX-G2 Sensor Kit"
+      alt: "OQSx-G2 Oil Quality Sensor"
     },
     {
       src: "/products/oil conditioning/Tandelta/OQSx-G2 Oil Quality Sensor/OQSx-G2 Oil Quality Sensor-2.jpg",
-      alt: "OQSX-G2 Sensor Kit Detail"
+      alt: "OQSx-G2 Oil Quality Sensor"
     }
   ],
   description: [
     "Real time oil condition analysis sensor with integrated intelligent equipment maintenance optimisation analytics for all industrial and commercial applications.",
     "OQSx-G2 delivers the ultimate high-quality real-time oil condition analysis. This enables multiple tangible operating benefits that include reduced maintenance costs, improved reliability, reduced oil wastage, and extended equipment life.",
-    "Our unique FSH™ core technology analyses oil condition holistically, detecting, measuring and tracking all and any contamination or wear with 0.01% sensitivity (100ppm) - other sensor systems typically look at specific parameters and ignore others. This unmatched real-time complete oil analysis capability is achieved through continuous analysis of the electro-chemical properties of the oil at a molecular level.",
+    "TanDelta's FSH™ core technology analyses oil condition holistically, detecting, measuring and tracking all and any contamination or wear with 0.01% sensitivity (100ppm) – other sensor systems typically look at specific parameters and ignore others. This unmatched real-time complete oil analysis capability is achieved through continuous analysis of the electro-chemical properties of the oil at a molecular level.",
     "OQSx-G2 analysis data provides unrivalled high-confidence insight into real-time equipment health and maintenance status. Reliable forecasting and planning of maintenance based upon actual equipment need and thus extended optimised maintenance intervals and reduced cost becomes possible; with the assurance and safety of continuous over-watch that detects any unexpected anomalies and or contamination.",
     "OQSx-G2 works with any oil type and is easily fitted to any equipment operating in any environment or application."
   ],
   additionalSections: [
     {
       title: "Oil Interpreting Guide",
-      content: "",
       image: {
         src: "/products/oil conditioning/Tandelta/OQSx-G2 Oil Quality Sensor/OQSx-G2 Oil Quality Sensor-3.png",
         alt: "Oil Interpreting Guide"
@@ -192,12 +225,7 @@ export const oqsxG2OilQualitySensorData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "OQSx-G2 Oil Quality Sensor" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "oqsx-g2-oil-quality-sensor"]
 };
 
 // Product Data - OQSx-G2 HAZ Oil Quality Sensor
@@ -227,7 +255,6 @@ export const oqsxG2HAZOilQualitySensorData: ProductData = {
   additionalSections: [
     {
       title: "Oil Interpreting Guide",
-      content: "",
       image: {
         src: "/products/oil conditioning/Tandelta/OQSx-G2 HAZ Oil Quality Sensor/OQSx-G2 HAZ Oil Quality Sensor-2.png",
         alt: "Oil Interpreting Guide"
@@ -320,18 +347,13 @@ export const oqsxG2HAZOilQualitySensorData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "OQSx-G2 HAZ Oil Quality Sensor" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "oqsx-g2-haz-oil-quality-sensor"]
 };
 
 // Product Data - MOT - Mobile Oil Test Kit
 export const motMobileOilTestKitData: ProductData = {
   id: "mot-mobile-oil-test-kit",
-  name: "MOT - Mobile Oil Test Kit",
+  name: "MOT – Mobile Oil Test Kit",
   category: "oil-conditioning",
   subcategory: "tandelta",
   brand: "TanDelta",
@@ -357,7 +379,6 @@ export const motMobileOilTestKitData: ProductData = {
   additionalSections: [
     {
       title: "Oil Interpreting Guide",
-      content: "",
       image: {
         src: "/products/oil conditioning/Tandelta/MOT – Mobile Oil Test Kit/MOT – Mobile Oil Test Kit-1.png",
         alt: "Oil Interpreting Guide"
@@ -407,12 +428,7 @@ export const motMobileOilTestKitData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "MOT - Mobile Oil Test Kit" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "mot-mobile-oil-test-kit"]
 };
 
 // Product Data - OQSX-G2 Sensor kit
@@ -434,19 +450,9 @@ export const oqsxG2SensorKitData: ProductData = {
     "OQSx-G2 analyses oil in real time at a molecular level (0.001% accuracy), detecting, analysing and measuring changes caused by wear, contamination or mechanical issues with the equipment itself. This information enables you to significantly cut maintenance costs through using oil fully to the end of its life, undertaking maintenance when actually needed and reducing break downs.",
     "Once you have configured the OQSx-G2 to the target oil in your equipment using the CADS kit, you can install and connect it to your desired display to see the oil analysis data. You can retain the CADS kit for future use and means that you only need buy the sensor without a CADS kit in the future."
   ],
-  features: [
-    "REAL TIME OIL CONDITION ANALYSIS: continuously analyses and tracks oil condition in real time providing a simple to understand Tan Delta Number (TDN) scale.",
-    "PREDICT MAINTENANCE: use the rate of change to easily and accurately predict oil end of life and safely extend intervals between maintenance according to equipment needs.",
-    "EVENT ALERTS: immediate detection and alert in the event of contamination and or unseen equipment issues which may lead to breakdowns or damage.",
-    "SIMPLE & RELIABLE: easy to install and use with any equipment operating in any environment. Operates continuously with no maintenance required.",
-    "REDUCED MAINTENANCE COSTS: trend analysis of oil condition change enables maintenance to be planned ahead of time at the optimal point, safely extending maintenance intervals. Typically reduces maintenance costs by between 30% and 50%.",
-    "IMPROVED RELIABILITY: unseen issues cause subtle changes to oil condition that OQSx-G2 detects and alerts. Enables faults to be detected and fixed before failure, reducing costly break downs and extending equipment life.",
-    "ESG TARGETS: reduced oil consumption, spare part consumption, optimisation of equipment operating efficiency and extended productive equipment life all make a material and verifiable contribution to ESG targets."
-  ],
   additionalSections: [
     {
       title: "Oil Interpreting Guide",
-      content: "",
       image: {
         src: "/products/oil conditioning/Tandelta/OQSX-G2 Sensor kit/OQSX-G2 Sensor kit-1.png",
         alt: "Oil Interpreting Guide"
@@ -530,12 +536,7 @@ export const oqsxG2SensorKitData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "OQSX-G2 Sensor kit" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "oqsx-g2-sensor-kit"]
 };
 
 // Product Data - SENSE2 Display Kit
@@ -620,12 +621,7 @@ export const sense2DisplayKitData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "SENSE2 Display Kit" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "sense2-display-kit"]
 };
 
 // Product Data - SENSE3 Gateway Kit
@@ -638,7 +634,7 @@ export const sense3GatewayKitData: ProductData = {
   images: [
     {
       src: "/products/oil conditioning/Tandelta/SENSE3 Gateway Kit/SENSE3 Gateway Kit.jpg",
-      alt: "TODO: Add alt text"
+      alt: "SENSE3 Gateway Kit"
     }
   ],
   description: [
@@ -728,12 +724,7 @@ export const sense3GatewayKitData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "SENSE3 Gateway Kit" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "sense3-gateway-kit"]
 };
 
 // Product Data - Gateway (OQTg)
@@ -762,7 +753,6 @@ export const gatewayOQTgData: ProductData = {
   additionalSections: [
     {
       title: "Oil Interpreting Guide",
-      content: "",
       image: {
         src: "/products/oil conditioning/Tandelta/Gateway (OQTg)/Gateway (OQTg)-2.png",
         alt: "Oil Interpreting Guide"
@@ -842,12 +832,7 @@ export const gatewayOQTgData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "Gateway (OQTg)" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "gateway-oqtg"]
 };
 
 // Product Data - OQDe-G2 Display Express
@@ -860,7 +845,7 @@ export const oqdeG2DisplayExpressData: ProductData = {
   images: [
     {
       src: "/products/oil conditioning/Tandelta/OQDe-G2 Display Express/OQDe-G2 Display Express.jpg",
-      alt: "TODO: Add alt text"
+      alt: "OQDe-G2 Display Express"
     }
   ],
   description: [
@@ -873,7 +858,6 @@ export const oqdeG2DisplayExpressData: ProductData = {
   additionalSections: [
     {
       title: "Oil Interpreting Guide",
-      content: "",
       image: {
         src: "/products/oil conditioning/Tandelta/OQDe-G2 Display Express/OQDe-G2 Display Express-1.png",
         alt: "Oil Interpreting Guide"
@@ -944,12 +928,7 @@ export const oqdeG2DisplayExpressData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "OQDe-G2 Display Express" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "oqde-g2-display-express"]
 };
 
 // Product Data - Gateway Hub
@@ -962,7 +941,7 @@ export const gatewayHubData: ProductData = {
   images: [
     {
       src: "/products/oil conditioning/Tandelta/Gateway Hub/Gateway Hub.jpg",
-      alt: "TODO: Add alt text"
+      alt: "Gateway Hub"
     }
   ],
   description: [
@@ -972,7 +951,6 @@ export const gatewayHubData: ProductData = {
   additionalSections: [
     {
       title: "Oil Interpreting Guide",
-      content: "",
       image: {
         src: "/products/oil conditioning/Tandelta/Gateway Hub/Gateway Hub-1.png",
         alt: "Oil Interpreting Guide"
@@ -1031,12 +1009,7 @@ export const gatewayHubData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "Gateway Hub" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "gateway-hub"]
 };
 
 // Product Data - Manifold
@@ -1049,7 +1022,7 @@ export const manifoldData: ProductData = {
   images: [
     {
       src: "/products/oil conditioning/Tandelta/Manifold/Manifold.jpg",
-      alt: "TODO: Add alt text"
+      alt: "Manifold"
     }
   ],
   description: [
@@ -1059,7 +1032,6 @@ export const manifoldData: ProductData = {
   additionalSections: [
     {
       title: "Oil Interpreting Guide",
-      content: "",
       image: {
         src: "/products/oil conditioning/Tandelta/Manifold/Manifold-1.png",
         alt: "Oil Interpreting Guide"
@@ -1084,12 +1056,7 @@ export const manifoldData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Tandelta", href: "/products/oil-conditioning/tandelta" },
-    { label: "Manifold" }
-  ]
+  slugPath: ["oil-conditioning", "tandelta", "manifold"]
 };
 
 // Product Data - Tandelta Cables
@@ -1110,8 +1077,8 @@ export const manifoldData: ProductData = {
 //             - WLB-DDPG Series Bluetooth Digital Datalogging Pressure Gauges
 //             - WLB-DPG Series Watchlog Bluetooth Digital Pressure Gauge
 //             - Watchlog Bluetooth Live View & Datalogging App for iOS and Android
-//             - DDPG Series Digital Datalogging Blutooth Pressure Gauge & Minimess® Test Kit
-//             - DGP Series Digital Bluetooth Pressure Gauge & Minimess Test Kit
+//             - DDPG Series Digital Datalogging Bluetooth Pressure Gauge & Minimess® Test Kit
+//             - DPG Series Digital Bluetooth Pressure Gauge & Minimess® Test Kit
 //         - Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App for up to 12 connected sensors & advanced app calculation features
 //             - HT-WLBP Watchlog Bluetooth-Plus Pressure Sensor
 //             - HT-WLBL Watchlog Bluetooth-Plus Hydrostatic Level Sensors
@@ -1141,6 +1108,28 @@ export const manifoldData: ProductData = {
 //     - Watchlog CSV Visualizer Software
 // ============================
 
+// Category Data - Hydrotechnik
+export const hydrotechnikCategoryData: ProductData = {
+  id: "hydrotechnik",
+  name: "Hydrotechnik",
+  category: "oil-conditioning",
+  subcategory: "hydrotechnik",
+  brand: "Hydrotechnik",
+  images: [
+    {
+      src: "/products/oil conditioning/Hydrotechnik/Watchlog-USB/Watchlog USB Dual Pressure and Temperature Sensor/Watchlog USB Dual Pressure and Temperature Sensor.png",
+      alt: "Hydrotechnik"
+    },
+  ],
+  categoryProductIds: [
+    'watchlog-usb',
+    'watchlog-bluetooth-sensors-gauges-and-mobile-apps',
+    'watchlog-wireless-pressure-temperature-and-flow-sensors',
+    'watchlog-pro-remote-monitoring'
+  ],
+  slugPath: ["oil-conditioning", "hydrotechnik"]
+};
+
 // ============================
 // WATCHLOG USB
 // ============================
@@ -1151,6 +1140,7 @@ export const watchlogUSBCategoryData: ProductData = {
   name: "Watchlog USB",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
+  subsubcategory: "watchlog-usb",
   brand: "Hydrotechnik",
   images: [
     {
@@ -1178,7 +1168,7 @@ export const watchlogUSBCategoryData: ProductData = {
   ],
   categoryProductIds: [
     'watchlog-usb-dual-pressure-and-temperature-sensor',
-    'watchlog-usb-windows-pc-tablet-software'
+    'watchlog-usb-windows-pc-tablet-pressure-temperature-measurement-software'
   ],
   additionalSections: [
     {
@@ -1186,12 +1176,7 @@ export const watchlogUSBCategoryData: ProductData = {
       content: "PRODUCT_GRID:watchlog-usb-products"
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog USB" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-usb"]
 };
 
 // Product Data - Watchlog USB Dual Pressure and Temperature Sensor
@@ -1233,18 +1218,12 @@ export const watchlogUSBDualSensorData: ProductData = {
     ],
     note: "Other pressure ranges available on request."
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog USB", href: "/products/oil-conditioning/hydrotechnik/watchlog-usb" },
-    { label: "Watchlog USB Dual Pressure and Temperature Sensor" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-usb", "watchlog-usb-dual-pressure-and-temperature-sensor"]
 };
 
-// Product Data - Watchlog USB Windows PC/Tablet Software
-export const watchlogUSBSoftwareData: ProductData = {
-  id: "watchlog-usb-windows-pc-tablet-software",
+// Product Data - Watchlog USB Windows® PC/tablet pressure & temperature measurement software
+export const watchlogUsbWindowsPcTabletPressureTemperatureMeasurementSoftwareData: ProductData = {
+  id: "watchlog-usb-windows-pc-tablet-pressure-temperature-measurement-software",
   name: "Watchlog USB Windows® PC/tablet pressure & temperature measurement software",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -1252,7 +1231,7 @@ export const watchlogUSBSoftwareData: ProductData = {
   images: [
     {
       src: "/products/oil conditioning/Hydrotechnik/Watchlog-USB/Watchlog USB Windows® PCtablet pressure & temperature measurement software/Watchlog USB Windows PCandtablet pressure and temperature measurement software.png",
-      alt: "Watchlog USB Windows PC/tablet Software"
+      alt: "Watchlog USB Windows® PC/tablet pressure & temperature measurement software"
     }
   ],
   description: [
@@ -1272,13 +1251,7 @@ export const watchlogUSBSoftwareData: ProductData = {
     "PDF and CSV test export options",
     "SECTORS: Industrial, food & beverage, pulp & paper, mobile hydraulics, and pump & component testing"
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog USB", href: "/products/oil-conditioning/hydrotechnik/watchlog-usb" },
-    { label: "Watchlog USB Windows PC/tablet Software" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-usb", "watchlog-usb-windows-pc-tablet-pressure-temperature-measurement-software"]
 };
 
 // ============================
@@ -1286,29 +1259,15 @@ export const watchlogUSBSoftwareData: ProductData = {
 // ============================
 
 // Category Data - Watchlog Bluetooth Sensors, Gauges and Mobile Apps
-export const watchlogBluetoothSensorsGaugesAndMobileAppsData: ProductData = {
+export const watchlogBluetoothSensorsGaugesAndMobileAppsCategoryData: ProductData = {
   id: "watchlog-bluetooth-sensors-gauges-and-mobile-apps",
   name: "Watchlog Bluetooth Sensors, Gauges and Mobile Apps",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
   brand: "Hydrotechnik",
-  href: "/products/oil-conditioning/hydrotechnik/watchlog-bluetooth-sensors-gauges-and-mobile-apps",
-  images: [
-    {
-      src: "/products/oil conditioning/Hydrotechnik/Watchlog Bluetooth Sensors, Gauges and Mobile Apps/Watchlog Bluetooth Sensors, Gauges and Mobile Apps.png",
-      alt: "Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App"
-    },
-  ],
-  description: [
-    "Our Watchlog Bluetooth offering is available in 2 ranges. Each range contains a selection of sensors and an app, with the Watchlog Bluetooth Plus sensors and app offering a wider range for more advanced requirements."
-  ],
-  features: [
-    "Watchlog Bluetooth allows users to simultaneously monitor and record data from up to 4 pressure sensors, temperature sensors and/or pressure gauges.",
-    "Watchlog Bluetooth-Plus allows users to monitor and record data from up to 12 sensors simultaneously. Additional sensor options include force and level sensors, calculation channels, and an array of visual indicators such as tank levels and gauges to customise your app dashboard. Sensor types include pressure, hydrostatic level, and load cell sensors."
-  ],
   categoryProductIds: [
-    'watchlog-bluetooth-pressure-temp-sensors',
-    'watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors'
+    'watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously',
+    'watchlog-bluetooth-plus-pressure-level-force-sensors-and-app-for-up-to-12-connected-sensors-advanced-app-calculation-features'
   ],
   additionalSections: [
     {
@@ -1316,12 +1275,7 @@ export const watchlogBluetoothSensorsGaugesAndMobileAppsData: ProductData = {
       content: "PRODUCT_GRID:watchlog-bluetooth-sensors-gauges-and-mobile-apps-products"
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Bluetooth Sensors, Gauges and Mobile Apps" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps"]
 };
 
 // ============================
@@ -1329,43 +1283,39 @@ export const watchlogBluetoothSensorsGaugesAndMobileAppsData: ProductData = {
 // ============================
 
 // Category Data - Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App for up to 4 sensors connected simultaneously
-export const watchlogBluetoothPressureTempSensorsCategoryData = {
-  id: "watchlog-bluetooth-pressure-temp-sensors",
-  name: "Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App (up to 4 sensors)",
+export const watchlogBluetoothPressureTemperatureSensorsGaugesAndAppForUpTo4SensorsConnectedSimultaneouslyCategoryData = {
+  id: "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously",
+  name: "Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App for up to 4 sensors connected simultaneously",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
+  subsubcategory: "watchlog-bluetooth-sensors-gauges-and-mobile-apps",
+  subsubsubcategory: "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously",
   brand: "Hydrotechnik",
-  href: "/products/oil-conditioning/hydrotechnik/watchlog-bluetooth-pressure-temp-sensors",
   description: [
     "The Watchlog Bluetooth range is an extremely fast and easy way to add live pressure, temperature monitoring, and datalogging to your system. The low-cost, cable-free temperature sensors, pressure sensors, and pressure gauges are designed for use with our free monitoring and datalogging app, which is available in the iOS App Store and Android Google Play store."
   ],
   images: [
     {
       src: "/products/oil conditioning/Hydrotechnik/Watchlog Bluetooth Sensors, Gauges and Mobile Apps/1st category/watchlog-bluetooth-pressure-temp-sensors.png",
-      alt: "Watchlog Bluetooth Sensors, Gauges and Mobile Apps"
+      alt: "Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App for up to 4 sensors connected simultaneously"
     }
   ],
   categoryProductIds: [
     "wlb-pt-compact-bluetooth-pressure-sensor",
     "wlb-tt-compact-bluetooth-temperature-sensor",
-    "wlb-ddpg-series-bluetooth-datalogging-pressure-gauges",
-    "wlb-dpg-series-bluetooth-pressure-gauge",
-    "watchlog-bluetooth-live-view-datalogging-app",
-    "ddpg-series-bluetooth-pressure-gauge-test-kit",
-    "dgp-series-bluetooth-pressure-gauge-test-kit"
+    "wlb-ddpg-series-bluetooth-digital-datalogging-pressure-gauges",
+    "wlb-dpg-series-watchlog-bluetooth-digital-pressure-gauge",
+    "watchlog-bluetooth-live-view-datalogging-app-for-ios-and-android",
+    "ddpg-series-digital-datalogging-bluetooth-pressure-gauge-minimess-test-kit",
+    "dpg-series-digital-bluetooth-pressure-gauge-minimess-test-kit"
   ],
   additionalSections: [
     {
       title: "Product Ranges",
-      content: "PRODUCT_GRID:watchlog-bluetooth-pressure-temp-sensors-products"
+      content: "PRODUCT_GRID:watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously-products"
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App (up to 4 sensors)" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps", "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously"]
 };
 
 // Product Data - WLB-PT Compact Bluetooth Pressure Sensor
@@ -1417,61 +1367,7 @@ export const wlbPtCompactBluetoothPressureSensorData: ProductData = {
       videoEmbedUrl: "https://youtu.be/ZsVAlXbAL2M"
     }
   ],
-  technicalSpecs: [
-    {
-      title: "MEASURING RANGE",
-      specs: [
-        { label: "Negative/compound pressure", value: "Vacuum to 1 & 16 bar" },
-        { label: "Low pressure (on request)", value: "0...0.1, 0.4 & 0.6 bar" },
-        { label: "Medium pressure", value: "0...60, 160 & 250 bar" },
-        { label: "High Pressure", value: "0...400, 700 & 1000 bar" }
-      ]
-    },
-    {
-      title: "OVERLOAD CAPACITY",
-      specs: [
-        { label: "Up to 400 bar", value: "200% of FS" },
-        { label: "700 bar", value: "150% of FS" },
-        { label: "1000 bar", value: "120% of FS" }
-      ]
-    },
-    {
-      title: "ACCURACY",
-      specs: [
-        { label: "Accuracy", value: "0.2% FS" }
-      ]
-    },
-    {
-      title: "OPERATING TEMPERATURE",
-      specs: [
-        { label: "Operating Temperature", value: "-20...65°C" }
-      ]
-    },
-    {
-      title: "POWER SUPPLY VOLTAGE",
-      specs: [
-        { label: "Power supply voltage", value: "3V (2x AA batteries)" }
-      ]
-    },
-    {
-      title: "PRESSURE UNIT",
-      specs: [
-        { label: "Pressure unit", value: "MPa, bar, kgf, mH2O, PSI, kPa, mmHg, mBAR, mmH2O, Pa, inWC" }
-      ]
-    },
-    {
-      title: "PROTECTION LEVEL",
-      specs: [
-        { label: "Protection level", value: "IP54" }
-      ]
-    }
-  ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "WLB-PT Compact Bluetooth Pressure Sensor" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps", "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously", "wlb-pt-compact-bluetooth-pressure-sensor"]
 };
 
 // Product Data - WLB-TT Compact Bluetooth Temperature Sensor
@@ -1526,66 +1422,12 @@ export const wlbTtCompactBluetoothTemperatureSensorData: ProductData = {
       videoEmbedUrl: "https://youtu.be/ZsVAlXbAL2M"
     }
   ],
-  technicalSpecs: [
-    {
-      title: "MEASURING RANGE",
-      specs: [
-        { label: "Negative/compound pressure", value: "Vacuum to 1 & 16 bar" },
-        { label: "Low pressure (on request)", value: "0...0.1, 0.4 & 0.6 bar" },
-        { label: "Medium pressure", value: "0...60, 160 & 250 bar" },
-        { label: "High Pressure", value: "0...400, 700 & 1000 bar" }
-      ]
-    },
-    {
-      title: "OVERLOAD CAPACITY",
-      specs: [
-        { label: "Up to 400 bar", value: "200% of FS" },
-        { label: "700 bar", value: "150% of FS" },
-        { label: "1000 bar", value: "120% of FS" }
-      ]
-    },
-    {
-      title: "ACCURACY",
-      specs: [
-        { label: "Accuracy", value: "0.2% FS" }
-      ]
-    },
-    {
-      title: "OPERATING TEMPERATURE",
-      specs: [
-        { label: "Operating Temperature", value: "-20...65°C" }
-      ]
-    },
-    {
-      title: "POWER SUPPLY VOLTAGE",
-      specs: [
-        { label: "Power supply voltage", value: "3V (2x AA batteries)" }
-      ]
-    },
-    {
-      title: "PRESSURE UNIT",
-      specs: [
-        { label: "Pressure unit", value: "MPa, bar, kgf, mH2O, PSI, kPa, mmHg, mBAR, mmH2O, Pa, inWC" }
-      ]
-    },
-    {
-      title: "PROTECTION LEVEL",
-      specs: [
-        { label: "Protection level", value: "IP54" }
-      ]
-    }
-  ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "WLB-TT Compact Bluetooth Temperature Sensor" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps", "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously", "wlb-tt-compact-bluetooth-temperature-sensor"]
 };
 
 // Product Data - WLB-DDPG Series Bluetooth Digital Datalogging Pressure Gauges
 export const wlbDdpgSeriesBluetoothDataloggingPressureGaugesData: ProductData = {
-  id: "wlb-ddpg-series-bluetooth-datalogging-pressure-gauges",
+  id: "wlb-ddpg-series-bluetooth-digital-datalogging-pressure-gauges",
   name: "WLB-DDPG Series Bluetooth Digital Datalogging Pressure Gauges",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -1631,66 +1473,12 @@ export const wlbDdpgSeriesBluetoothDataloggingPressureGaugesData: ProductData = 
       videoEmbedUrl: "https://youtu.be/ZsVAlXbAL2M"
     }
   ],
-  technicalSpecs: [
-    {
-      title: "MEASURING RANGE",
-      specs: [
-        { label: "Negative/compound pressure", value: "Vacuum to 1 & 16 bar" },
-        { label: "Low pressure (on request)", value: "0...0.1, 0.4 & 0.6 bar" },
-        { label: "Medium pressure", value: "0...60, 160 & 250 bar" },
-        { label: "High Pressure", value: "0...400, 700 & 1000 bar" }
-      ]
-    },
-    {
-      title: "OVERLOAD CAPACITY",
-      specs: [
-        { label: "Up to 400 bar", value: "200% of FS" },
-        { label: "700 bar", value: "150% of FS" },
-        { label: "1000 bar", value: "120% of FS" }
-      ]
-    },
-    {
-      title: "ACCURACY",
-      specs: [
-        { label: "Accuracy", value: "0.2% FS" }
-      ]
-    },
-    {
-      title: "OPERATING TEMPERATURE",
-      specs: [
-        { label: "Operating Temperature", value: "-20...65°C" }
-      ]
-    },
-    {
-      title: "POWER SUPPLY VOLTAGE",
-      specs: [
-        { label: "Power supply voltage", value: "3V (2x AA batteries)" }
-      ]
-    },
-    {
-      title: "PRESSURE UNIT",
-      specs: [
-        { label: "Pressure unit", value: "MPa, bar, kgf, mH2O, PSI, kPa, mmHg, mBAR, mmH2O, Pa, inWC" }
-      ]
-    },
-    {
-      title: "PROTECTION LEVEL",
-      specs: [
-        { label: "Protection level", value: "IP54" }
-      ]
-    }
-  ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "WLB-DDPG Series Bluetooth Digital Datalogging Pressure Gauges" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps", "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously", "wlb-ddpg-series-bluetooth-digital-datalogging-pressure-gauges"]
 };
 
 // Product Data - WLB-DPG Series Watchlog Bluetooth Digital Pressure Gauge
 export const wlbDpgSeriesBluetoothPressureGaugeData: ProductData = {
-  id: "wlb-dpg-series-bluetooth-pressure-gauge",
+  id: "wlb-dpg-series-watchlog-bluetooth-digital-pressure-gauge",
   name: "WLB-DPG Series Watchlog Bluetooth Digital Pressure Gauge",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -1783,17 +1571,12 @@ export const wlbDpgSeriesBluetoothPressureGaugeData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "WLB-DPG Series Watchlog Bluetooth Digital Pressure Gauge" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps", "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously", "wlb-dpg-series-watchlog-bluetooth-digital-pressure-gauge"]
 };
 
 // Product Data - Watchlog Bluetooth Live View & Datalogging App for iOS and Android
 export const watchlogBluetoothLiveViewAppData: ProductData = {
-  id: "watchlog-bluetooth-live-view-datalogging-app",
+  id: "watchlog-bluetooth-live-view-datalogging-app-for-ios-and-android",
   name: "Watchlog Bluetooth Live View & Datalogging App for iOS and Android",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -1822,18 +1605,13 @@ export const watchlogBluetoothLiveViewAppData: ProductData = {
     "Tapping the graph at any point shows the data for each sensor at that point in time (4).",
     "If the recording option is enabled and data is recorded over a given time, the option to export the data as a CSV file becomes available using the standard share options used by your iOS or Android device."
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Bluetooth Live View & Datalogging App for iOS and Android" }
-  ],
   video: "https://youtu.be/ZsVAlXbAL2M",
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps", "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously", "watchlog-bluetooth-live-view-datalogging-app-for-ios-and-android"]
 };
 
 // Product Data - DDPG Series Digital Datalogging Bluetooth Pressure Gauge & Minimess® Test Kit
 export const ddpgSeriesBluetoothPressureGaugeTestKitData: ProductData = {
-  id: "ddpg-series-bluetooth-pressure-gauge-test-kit",
+  id: "ddpg-series-digital-datalogging-bluetooth-pressure-gauge-minimess-test-kit",
   name: "DDPG Series Digital Datalogging Bluetooth Pressure Gauge & Minimess® Test Kit",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -1891,17 +1669,12 @@ export const ddpgSeriesBluetoothPressureGaugeTestKitData: ProductData = {
       videoEmbedUrl: "https://youtu.be/ZsVAlXbAL2M"
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "DDPG Series Digital Datalogging Bluetooth Pressure Gauge & Minimess® Test Kit" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps", "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously", "ddpg-series-digital-datalogging-bluetooth-pressure-gauge-minimess-test-kit"]
 };
 
 // Product Data - DGP Series Digital Bluetooth Pressure Gauge & Minimess Test Kit
 export const dgpSeriesBluetoothPressureGaugeTestKitData: ProductData = {
-  id: "dgp-series-bluetooth-pressure-gauge-test-kit",
+  id: "dpg-series-digital-bluetooth-pressure-gauge-minimess-test-kit",
   name: "DGP Series Digital Bluetooth Pressure Gauge & Minimess Test Kit",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -1961,12 +1734,7 @@ export const dgpSeriesBluetoothPressureGaugeTestKitData: ProductData = {
       videoEmbedUrl: "https://youtu.be/ZsVAlXbAL2M"
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "DGP Series Digital Bluetooth Pressure Gauge & Minimess Test Kit" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps", "watchlog-bluetooth-pressure-temperature-sensors-gauges-and-app-for-up-to-4-sensors-connected-simultaneously", "dpg-series-digital-bluetooth-pressure-gauge-minimess-test-kit"]
 };
 
 // ============================
@@ -1974,15 +1742,18 @@ export const dgpSeriesBluetoothPressureGaugeTestKitData: ProductData = {
 // ============================
 
 // Category Data - Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App for up to 12 connected sensors & advanced app calculation features
-export const watchlogBluetoothPlusPressureLevelForceSensorApp12SensorsCategoryData = {
-  id: "watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors",
-  name: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App (up to 12 sensors, advanced features)",
+export const watchlogBluetoothPlusPressureLevelForceSensorsAndAppForUpTo12ConnectedSensorsAdvancedAppCalculationFeaturesData = {
+  id: "watchlog-bluetooth-plus-pressure-level-force-sensors-and-app-for-up-to-12-connected-sensors-advanced-app-calculation-features",
+  name: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App for up to 12 connected sensors & advanced app calculation features",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
+  subsubcategory: "watchlog-bluetooth-sensors-gauges-and-mobile-apps",
+  subsubsubcategory: "watchlog-bluetooth-plus-pressure-level-force-sensors-and-app-for-up-to-12-connected-sensors-advanced-app-calculation-features",
   brand: "Hydrotechnik",
-  href: "/products/oil-conditioning/hydrotechnik/watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors",
   description: [
-    "The Watchlog Bluetooth-Plus range offers advanced wireless monitoring for pressure, hydrostatic level, and force (load cell) sensors. The Bluetooth-Plus app supports up to 12 sensors simultaneously, with advanced calculation channels, customisable dashboards, and a wide array of visual indicators such as tank levels and gauges. Ideal for complex monitoring and datalogging requirements in industrial applications."
+    "Watchlog Bluetooth-Plus is a short-range wireless measurement solution, designed to work with iOS and Android mobile devices, as well as iPads and Android tablets.",
+    "Our powerful free app lets users create custom projects and custom dashboards to display values and log data. The custom dashboard includes graphical display elements, such as gauges and tank level widgets, to represent data.",
+    "Up to 12 transmitters at once can be monitored on one device or many devices up to 10 times per second and transmit distances to 90 meters, all powered from just 2 standard AA batteries."
   ],
   images: [
     {
@@ -1990,29 +1761,43 @@ export const watchlogBluetoothPlusPressureLevelForceSensorApp12SensorsCategoryDa
       alt: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App"
     }
   ],
+  features: [
+    "Free iOS and Android mobile apps for viewing and logging data",
+    "Create custom projects/visuals",
+    "View up to 12 sensor readings at a time",
+    "Up to 90 meters data transmission distance",
+    "From 100ms...25s selectable scanning rates",
+    "Standard battery powered (2xAA)",
+    "Password protection",
+    "HT-WLBP Bluetooth-Plus pressure sensors with pressure ranges available from 0...25 bar up to 0...700 bar",
+    "HT-WLBL Bluetooth-Plus hydrostatic level sensors with level ranges from 0...0.5 mH20 to 0...700 mH20",
+    "HT-WLBLC Bluetooth-Plus compression load cells with capacities of 1 to 200kN",
+    "HT-WLBLL Bluetooth-Plus load links with capacities of 1 to 500 tonnes"
+  ],
   categoryProductIds: [
-    "ht-wlbp-bluetooth-plus-pressure-sensor",
-    "ht-wlbl-bluetooth-plus-level-sensor",
-    "ht-wlbf-bluetooth-plus-force-sensor",
-    "watchlog-bluetooth-plus-app"
+    "ht-wlbp-watchlog-bluetooth-plus-pressure-sensor",
+    "ht-wlbl-watchlog-bluetooth-plus-hydrostatic-level-sensors",
+    "ht-wlblc-watchlog-bluetooth-plus-compression-load-cells",
+    "ht-wlbll-watchlog-bluetooth-plus-compression-load-link",
+    "watchlog-bluetooth-plus-ios-and-android-app"
   ],
   additionalSections: [
     {
       title: "Product Ranges",
-      content: "PRODUCT_GRID:watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors-products"
+      content: "PRODUCT_GRID:watchlog-bluetooth-plus-pressure-level-force-sensors-and-app-for-up-to-12-connected-sensors-advanced-app-calculation-features-products"
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App (up to 12 sensors, advanced features)" }
+  slugPath: [
+    "oil-conditioning",
+    "hydrotechnik",
+    "watchlog-bluetooth-sensors-gauges-and-mobile-apps",
+    "watchlog-bluetooth-plus-pressure-level-force-sensors-and-app-for-up-to-12-connected-sensors-advanced-app-calculation-features"
   ]
 };
 
 // Product Data - HT-WLBP Watchlog Bluetooth-Plus Pressure Sensor
-export const htWlbpBluetoothPlusPressureSensorData: ProductData = {
-  id: "ht-wlbp-bluetooth-plus-pressure-sensor",
+export const htWlbpWatchlogBluetoothPlusPressureSensorData: ProductData = {
+  id: "ht-wlbp-watchlog-bluetooth-plus-pressure-sensor",
   name: "HT-WLBP Watchlog Bluetooth-Plus Pressure Sensor",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -2064,17 +1849,18 @@ export const htWlbpBluetoothPlusPressureSensorData: ProductData = {
     ],
     note: "Other pressure ranges and cable lengths available on request. Leave connector type blank if no cable."
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "HT-WLBP Watchlog Bluetooth-Plus Pressure Sensor" }
+  slugPath: [
+    "oil-conditioning",
+    "hydrotechnik",
+    "watchlog-bluetooth-sensors-gauges-and-mobile-apps",
+    "watchlog-bluetooth-plus-pressure-level-force-sensor-app-12-sensors",
+    "ht-wlbp-watchlog-bluetooth-plus-pressure-sensor"
   ]
 };
 
 // Product Data - HT-WLBL Watchlog Bluetooth-Plus Hydrostatic Level Sensors
-export const htWlblBluetoothPlusLevelSensorData: ProductData = {
-  id: "ht-wlbl-bluetooth-plus-hydrostatic-level-sensor",
+export const htWlblWatchlogBluetoothPlusHydrostaticLevelSensorsData: ProductData = {
+  id: "ht-wlbl-watchlog-bluetooth-plus-hydrostatic-level-sensors",
   name: "HT-WLBL Watchlog Bluetooth-Plus Hydrostatic Level Sensors",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -2119,17 +1905,12 @@ export const htWlblBluetoothPlusLevelSensorData: ProductData = {
     ],
     note: "Other level ranges and cable lengths available on request."
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "HT-WLBL Watchlog Bluetooth-Plus Hydrostatic Level Sensors" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-bluetooth-sensors-gauges-and-mobile-apps", "watchlog-bluetooth-plus-pressure-level-force-sensors-and-app-for-up-to-12-connected-sensors-advanced-app-calculation-features", "ht-wlbl-watchlog-bluetooth-plus-hydrostatic-level-sensors"]
 };
 
 // Product Data - HT-WLBLC Watchlog Bluetooth-Plus Compression Load Cells
-export const htWlblcBluetoothPlusLoadCellsData: ProductData = {
-  id: "ht-wlblc-bluetooth-plus-compression-load-cells",
+export const htWlblcWatchlogBluetoothPlusCompressionLoadCellsData: ProductData = {
+  id: "ht-wlblc-watchlog-bluetooth-plus-compression-load-cells",
   name: "HT-WLBLC Watchlog Bluetooth-Plus Compression Load Cells",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -2175,17 +1956,18 @@ export const htWlblcBluetoothPlusLoadCellsData: ProductData = {
     ],
     note: "Other load capacities and cable lengths are available on request."
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "HT-WLBLC Watchlog Bluetooth-Plus Compression Load Cells" }
+  slugPath: [
+    "oil-conditioning",
+    "hydrotechnik",
+    "watchlog-bluetooth-sensors-gauges-and-mobile-apps",
+    "watchlog-bluetooth-plus-pressure-level-force-sensors-and-app-for-up-to-12-connected-sensors-advanced-app-calculation-features",
+    "ht-wlblc-watchlog-bluetooth-plus-compression-load-cells"
   ]
 };
 
 // Product Data - HT-WLBLL Watchlog Bluetooth-Plus Compression Load Link
-export const htWlbllBluetoothPlusLoadLinkData: ProductData = {
-  id: "ht-wlbll-bluetooth-plus-compression-load-link",
+export const htWlbllWatchlogBluetoothPlusCompressionLoadLinkData: ProductData = {
+  id: "ht-wlbll-watchlog-bluetooth-plus-compression-load-link",
   name: "HT-WLBLL Watchlog Bluetooth-Plus Compression Load Link",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -2233,17 +2015,18 @@ export const htWlbllBluetoothPlusLoadLinkData: ProductData = {
     ],
     note: "Other cable lengths are available on request."
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "HT-WLBLL Watchlog Bluetooth-Plus Compression Load Link" }
+  slugPath: [
+    "oil-conditioning",
+    "hydrotechnik",
+    "watchlog-bluetooth-sensors-gauges-and-mobile-apps",
+    "watchlog-bluetooth-plus-pressure-level-force-sensors-and-app-for-up-to-12-connected-sensors-advanced-app-calculation-features",
+    "ht-wlbll-watchlog-bluetooth-plus-compression-load-link"
   ]
 };
 
 // Product Data - Watchlog Bluetooth-Plus iOS and Android App
-export const watchlogBluetoothPlusAppData: ProductData = {
-  id: "watchlog-bluetooth-plus-ios-android-app",
+export const watchlogBluetoothPlusIosAndAndroidAppData: ProductData = {
+  id: "watchlog-bluetooth-plus-ios-and-android-app",
   name: "Watchlog Bluetooth-Plus iOS and Android App",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -2259,9 +2042,9 @@ export const watchlogBluetoothPlusAppData: ProductData = {
     "Transmission rates and password protection can be adjusted using the app. The datalogging feature includes scanning rates from 500ms up to 10 minutes and stored history points from 10 through to 10,000.",
     "Logged data can be shared using multiple methods including text message and email, directly from the app.",
     "Compared with our standard Watchlog Bluetooth App, the Watchlog Bluetooth-Plus app has the following features:",
-    "1.	Connect to more sensors; up to 12, as opposed to up to 4.",
-    "2.	Create calculation channels programmable within the app. For example, using 2 the difference between 2 pressure sensor readings to calculate differential pressure. This calculation can then be displayed, graphed and recorded in real time and shared the same way as sensor readings.",
-    "3.	Use graphical widgets on custom dashboards to represent sensor values such as tank level indicators and gauges."
+    "1.\tConnect to more sensors; up to 12, as opposed to up to 4.",
+    "2.\tCreate calculation channels programmable within the app. For example, using 2 the difference between 2 pressure sensor readings to calculate differential pressure. This calculation can then be displayed, graphed and recorded in real time and shared the same way as sensor readings.",
+    "3.\tUse graphical widgets on custom dashboards to represent sensor values such as tank level indicators and gauges."
   ],
   features: [
     "Free iOS and Android mobile apps for viewing and logging data",
@@ -2272,11 +2055,12 @@ export const watchlogBluetoothPlusAppData: ProductData = {
     "Password protection",
     "SECTORS: Automotive, industrial, food & beverage, pulp & paper, mobile hydraulics, machine tools, and pump testing"
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Bluetooth-Plus iOS and Android App" }
+  slugPath: [
+    "oil-conditioning",
+    "hydrotechnik",
+    "watchlog-bluetooth-sensors-gauges-and-mobile-apps",
+    "watchlog-bluetooth-plus-pressure-level-force-sensors-and-app-for-up-to-12-connected-sensors-advanced-app-calculation-features",
+    "watchlog-bluetooth-plus-ios-and-android-app"
   ]
 };
 
@@ -2285,11 +2069,60 @@ export const watchlogBluetoothPlusAppData: ProductData = {
 // ============================
 
 // Category Data - Watchlog Wireless Pressure, Temperature and Flow Sensors
-// export 
+export const watchlogWirelessPressureTemperatureAndFlowSensorsCategoryData: ProductData = {
+  id: "watchlog-wireless-pressure-temperature-and-flow-sensors",
+  name: "Watchlog Wireless Pressure, Temperature and Flow Sensors",
+  category: "oil-conditioning",
+  subcategory: "hydrotechnik",
+  subsubcategory: "watchlog-wireless-pressure-temperature-and-flow-sensors",
+  brand: "Hydrotechnik",
+  description: [
+    "Watchlog Wireless is our short to medium (800m to 1.6km) wireless transmission system for pressure, temperature, level, flow, position, force etc.",
+    "Data can be viewed in multiple ways. For example, through the free Watchlog Wireless Windows tablet/PC software supplied with all sensors, which has powerful data visualisation features and datalogging capabilities.",
+    "Many other signal gateways are available for easy integration into existing customer data management systems, providing analogue or Modbus signals and also for easy integration into cloud sensor platform, such as our Watchlog Vision system."
+  ],
+  images: [
+    {
+      src: "/products/oil conditioning/Hydrotechnik/Watchlog Wireless Pressure, Temperature and Flow Sensors/Watchlog Wireless Pressure, Temperature and Flow Sensors.png",
+      alt: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App"
+    },
+    {
+      src: "/products/oil conditioning/Hydrotechnik/Watchlog Wireless Pressure, Temperature and Flow Sensors/Watchlog Wireless Pressure, Temperature and Flow Sensors-1.png",
+      alt: "Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App"
+    }
+  ],
+  categoryProductIds: [
+    "watchlog-wireless-pressure-flow-temperature-test-kit",
+    "watchlog-wireless-vision",
+    "watchlog-atex-wireless-pressure-sensors",
+    "watchlog-wireless-pressure-sensors",
+    "watchlog-wireless-temperature-sensors",
+    "watchlog-wireless-linear-position-sensor",
+    "watchlog-wireless-turbine-flow-meters",
+    "watchlog-wireless-oval-gear-flow-meters",
+    "watchlog-wireless-usb-base-stations-receivers",
+    "wlw-ar-wireless-signal-extender",
+    "watchlog-wireless-signal-gateway-modules",
+    "watchlog-wireless-configuring-monitoring-logging-software",
+    "watchlog-wireless-accessories",
+    "wlwpl-series-cellular-level-sensor"
+  ],
+  additionalSections: [
+    {
+      title: "Product Ranges",
+      content: "PRODUCT_GRID:watchlog-wireless-pressure-temperature-and-flow-sensors-products"
+    }
+  ],
+  slugPath: [
+    "oil-conditioning",
+    "hydrotechnik",
+    "watchlog-wireless-pressure-temperature-and-flow-sensors"
+  ]
+};
 
 // Product Data - Watchlog Wireless Pressure, Flow & Temperature Test Kit
-export const watchlogWirelessPressureFlowTempTestKitData: ProductData = {
-  id: "watchlog-wireless-pressure-flow-temp-test-kit",
+export const watchlogWirelessPressureFlowTemperatureTestKitData: ProductData = {
+  id: "watchlog-wireless-pressure-flow-temperature-test-kit",
   name: "Watchlog Wireless Pressure, Flow & Temperature Test Kit",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -2329,12 +2162,6 @@ export const watchlogWirelessPressureFlowTempTestKitData: ProductData = {
       `
     },
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Pressure, Flow & Temperature Test Kit" }
-  ],
   orderCodes: {
     baseCode: "WLWTK-X-X-X-X",
     description: "Select at least one and up to four sensors of your choice to configure your kit. Replace up to 4 Xs in the order code with your selections below.",
@@ -2373,6 +2200,12 @@ export const watchlogWirelessPressureFlowTempTestKitData: ProductData = {
       }
     ]
   },
+  slugPath: [
+    "oil-conditioning",
+    "hydrotechnik",
+    "watchlog-wireless-pressure-temperature-and-flow-sensors",
+    "watchlog-wireless-pressure-flow-temperature-test-kit"
+  ]
 };
 
 // Product Data - Watchlog Wireless Vision
@@ -2418,11 +2251,11 @@ export const watchlogWirelessVisionData: ProductData = {
       }
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Vision" }
+  slugPath: [
+    "oil-conditioning",
+    "hydrotechnik",
+    "watchlog-wireless-pressure-temperature-and-flow-sensors",
+    "watchlog-wireless-vision"
   ]
 };
 
@@ -2480,12 +2313,7 @@ export const watchlogAtexWirelessPressureSensorsData: ProductData = {
       }
     ]
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog ATEX Wireless Pressure Sensors" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "watchlog-atex-wireless-pressure-sensors"]
 };
 
 // Product Data - Watchlog Wireless Pressure Sensors
@@ -2544,11 +2372,11 @@ export const watchlogWirelessPressureSensorsData: ProductData = {
       }
     ]
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Pressure Sensors" }
+  slugPath: [
+    "oil-conditioning",
+    "hydrotechnik",
+    "watchlog-wireless-pressure-temperature-and-flow-sensors",
+    "watchlog-wireless-pressure-sensors"
   ]
 };
 
@@ -2606,12 +2434,7 @@ export const watchlogWirelessTemperatureSensorsData: ProductData = {
       }
     ]
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Temperature Sensors" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "watchlog-wireless-temperature-sensors"]
 };
 
 // Product Data - Watchlog Wireless Linear Position Sensor
@@ -2674,12 +2497,7 @@ export const watchlogWirelessLinearPositionSensorData: ProductData = {
       }
     ]
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Linear Position Sensor" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "watchlog-wireless-linear-position-sensor"]
 };
 
 // Product Data - Watchlog Wireless Turbine Flow Meters
@@ -2718,12 +2536,7 @@ export const watchlogWirelessTurbineFlowMetersData: ProductData = {
       }
     ]
   },
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Turbine Flow Meters" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "watchlog-wireless-turbine-flow-meters"]
 };
 
 // Product Data - Watchlog Wireless Oval Gear Flow Meters
@@ -2780,12 +2593,7 @@ export const watchlogWirelessOvalGearFlowMetersData: ProductData = {
       `
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Oval Gear Flow Meters" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "watchlog-wireless-oval-gear-flow-meters"]
 };
 
 // Product Data - Watchlog Wireless USB Base Stations / Receivers
@@ -2883,12 +2691,7 @@ export const watchlogWirelessUsbBaseStationsReceiversData: ProductData = {
         </ul>`
     },
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless USB Base Stations / Receivers" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "watchlog-wireless-usb-base-stations-receivers"]
 };
 
 // Product Data - WLW-AR Wireless Signal Extender
@@ -2906,12 +2709,7 @@ export const wlwArWirelessSignalExtenderData: ProductData = {
     "The WLW-AR is housed in an IP67 rated enclosure, which accepts two D cell batteries as well as an external power supply. The repeater enables messages to be repeated once, so therefore extends the achievable wireless range. Adding further repeaters to the system will increase coverage, but will not further increase the range.",
     "Watchlog is a modular wireless telemetry sensor system for pressure, temperature & flow sensors. High accuracy, high-quality measurement is interfaced with a simple yet powerful configuration and monitoring software"
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "WLW-AR Wireless Signal Extender" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "wlw-ar-wireless-signal-extender"]
 };
 
 // Product Data - Watchlog Wireless Signal Gateway Modules
@@ -2928,12 +2726,7 @@ export const watchlogWirelessSignalGatewayModulesData: ProductData = {
     "A range of signal converting gateway modules that receive Watchlog wireless signals and convert to standard analogue signals, relays, alarms & serial Modbus or ASCII data.",
     "All gateways are programmed using the included free Toolkit configuration software."
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Signal Gateway Modules" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "watchlog-wireless-signal-gateway-modules"]
 };
 
 // Product Data - Watchlog Wireless Configuring, Monitoring & Logging Software
@@ -2952,12 +2745,7 @@ export const watchlogWirelessConfigMonitoringLoggingSoftwareData: ProductData = 
     "The graphing function allows the construction of graphically rich custom views into your data (import a wide range of graphics/images and customise labelling).",
     "Watchlog is also available as a customised version (for a small charge), which allows users to create their own unique software package for distribution. It is provided with your choice of corporate branding, including company logo, colour scheme and contact information."
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Configuring, Monitoring & Logging Software" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "watchlog-wireless-configuring-monitoring-logging-software"]
 };
 
 // Product Data - Watchlog Wireless Accessories
@@ -2977,12 +2765,7 @@ export const watchlogWirelessAccessoriesData: ProductData = {
     "The solar panel features hail-proof tempered glass and closely packed polycrystalline cells, sealed into a robust aluminium frame. The junction box on the rear of the panel does not protrude beyond the frame, so installation can be simple and neat.",
     "The solar cell comes with 3 metres of cable as standard, while longer lengths are available on request. The SP1 & PP1 combined are designed to provide a perpetual power supply for a 12 V system, drawing an average of 53 mA, even during winter. The PP1 can also be used as a mains 12 VDC supply with battery backup."
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Wireless Accessories" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "watchlog-wireless-accessories"]
 };
 
 // Product Data - WLWPL Series Cellular Level Sensor
@@ -3011,21 +2794,39 @@ export const wlwplSeriesCellularLevelSensorData: ProductData = {
       `
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "WLWPL Series Cellular Level Sensor" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-wireless-pressure-temperature-and-flow-sensors", "wlwpl-series-cellular-level-sensor"]
 };
 
 // ============================
 // WATCHLOG PRO REMOTE MONITORING
 // ============================
 
+// Category Data - Watchlog Pro Remote Monitoring
+export const watchlogProRemoteMonitoringCategoryData: ProductData = {
+  id: "watchlog-pro-remote-monitoring",
+  name: "Watchlog Pro Remote Monitoring",
+  category: "oil-conditioning",
+  subcategory: "hydrotechnik",
+  subsubcategory: "watchlog-pro-remote-monitoring",
+  brand: "Hydrotechnik",
+  images: [
+    { src: "public/products/oil conditioning/Hydrotechnik/Watchlog Pro Remote Monitoring/Watchlog Pro Remote Monitoring.png", alt: "Watchlog Pro Remote Monitoring" }
+  ],
+  description: [
+    "The Watchlog Pro range includes rugged, programmable industrial IIoT/telemetry gateway devices which transmit data captured from sensors to a cloud portal of your choice via cellular or WIFI.",
+  ],
+  additionalSections: [
+    {
+      title: "Sensor compatibility",
+      content: "The Watchlog Pro units allow the connection of nearly all sensor types and accept many inputs, including 4-20ma, 0-10V, Frequency, Modbus, CANbus and RS232/RS485. The Watchlog Pro telemetry units also include GPS and other internal sensors, such as ambient temperature, vibration and a tamper sensor."
+    }
+  ],
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-pro-remote-monitoring"]
+};
+
 // Product Data - Watchlog PRO ORB Cellular / Wi-Fi Cloud Gateway for Mobile Applications
-export const watchlogProOrbCloudGatewayData: ProductData = {
-  id: "watchlog-pro-orb-cloud-gateway",
+export const watchlogProOrbCellularWiFiCloudGatewayForMobileApplicationsData: ProductData = {
+  id: "watchlog-pro-orb-cellular-wi-fi-cloud-gateway-for-mobile-applications",
   name: "Watchlog PRO ORB Cellular / Wi-Fi Cloud Gateway for Mobile Applications",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -3073,17 +2874,12 @@ export const watchlogProOrbCloudGatewayData: ProductData = {
       content: "Our powerful cloud platform allows users to monitor and log sensor data on customisable dashboards. Optionally, the Watchlog Pro can push Sensor data to your custom or 3rd party platform."
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog PRO ORB Cellular / Wi-Fi Cloud Gateway for Mobile Applications" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-pro-remote-monitoring", "watchlog-pro-orb-cellular-wi-fi-cloud-gateway-for-mobile-applications"]
 };
 
 // Product Data - Watchlog PRO QUAD Cellular / Wi-Fi Cloud Gateway for Fixed Systems
-export const watchlogProQuadCloudGatewayData: ProductData = {
-  id: "watchlog-pro-quad-cloud-gateway",
+export const watchlogProQuadCellularWiFiCloudGatewayForFixedSystemsData: ProductData = {
+  id: "watchlog-pro-quad-cellular-wi-fi-cloud-gateway-for-fixed-systems",
   name: "Watchlog PRO QUAD Cellular / Wi-Fi Cloud Gateway for Fixed Systems",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
@@ -3126,12 +2922,7 @@ export const watchlogProQuadCloudGatewayData: ProductData = {
       content: "Our powerful cloud platform allows users to monitor and log sensor data on customisable dashboards. Optionally, the Watchlog Pro can push Sensor data to your custom or 3rd party platform."
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog PRO QUAD Cellular / Wi-Fi Cloud Gateway for Fixed Systems" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-pro-remote-monitoring", "watchlog-pro-quad-cellular-wi-fi-cloud-gateway-for-fixed-systems"]
 };
 
 // Product Data - Watchlog Pro Hydraulic System Monitoring
@@ -3157,12 +2948,7 @@ export const watchlogProHydraulicSystemMonitoringData: ProductData = {
     "Sensor readings can be viewed and saved using our online cloud platform, accessible via most web browsers. Customisable alerts are possible both locally, using a light tower, buzzer or combination of both, as well as using alerts within the cloud software and with SMS messaging.",
     "Installed inline within your setup and powered by 24VDC, the Watchlog Pro Hydraulic System Monitoring unit is a one-stop solution for your remote hydraulic monitoring needs."
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog Pro Hydraulic System Monitoring" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-pro-remote-monitoring", "watchlog-pro-hydraulic-system-monitoring"]
 };
 
 // Product Data - Watchlog PRO Custom Cloud Monitoring
@@ -3192,24 +2978,20 @@ export const watchlogProCustomCloudMonitoringData: ProductData = {
     "View and save sensor readings using our online cloud platform, which is accessible via most web browsers. Configurable alerts are possible locally, utilising a light tower, buzzer or combination of both, and via notifications within the cloud software and SMS messaging.",
     "Installed inline within your setup and powered by 12/24VDC or 240VAC, the Watchlog Pro Custom Cloud Monitor is the ultimate go-to for an existing or new sensor array. Depending on your requirement, a full range of sensor input options include Modbus, CAN bus, 4...20mA, 0...10V, RTD, Thermocouple K type and frequency. Switching outputs can optionally be included to control external equipment."
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog PRO Custom Cloud Monitoring" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-pro-remote-monitoring", "watchlog-pro-custom-cloud-monitoring"]
 };
 
 // ============================
-// WATCHLOG CSV VISUALISER SOFTWARE
+// WATCHLOG CSV VISUALIZER SOFTWARE
 // ============================
 
-// Product Data - Watchlog CSV Visualiser Software
-export const watchlogCSVVisualiserSoftware: ProductData = {
-  id: "watchlog-csv-visualiser-software",
-  name: "Watchlog CSV Visualiser Software",
+// Product Data - Watchlog CSV Visualizer Software
+export const watchlogCSVVisualizerSoftwareData: ProductData = {
+  id: "watchlog-csv-visualizer-software",
+  name: "Watchlog CSV Visualizer Software",
   category: "oil-conditioning",
   subcategory: "hydrotechnik",
+  subsubcategory: "watchlog-csv-visualizer-software",
   brand: "Hydrotechnik",
   video: "https://youtu.be/yGXGoifoPs0",
   description: [
@@ -3273,12 +3055,7 @@ export const watchlogCSVVisualiserSoftware: ProductData = {
       content: `Tests can be manipulated and saved within the software for retrieving later, either save the entire test or just a portion of a test as a more focussed sub-set of the whole test. Saved tests can then be exported as pdfs or can be re-exported as a new .csv file.`
     },
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Hydrotechnik", href: "/products/oil-conditioning/hydrotechnik" },
-    { label: "Watchlog CSV Visualiser Software" }
-  ]
+  slugPath: ["oil-conditioning", "hydrotechnik", "watchlog-csv-visualizer-software"]
 };
 
 // ============================
@@ -3303,6 +3080,26 @@ export const watchlogCSVVisualiserSoftware: ProductData = {
 //         - Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density
 // ============================
 
+// Category Data - Filtertechnik
+export const filtertechnikCategoryData: ProductData = {
+  id: "filtertechnik",
+  name: "Filtertechnik",
+  category: "oil-conditioning",
+  subcategory: "filtertechnik",
+  brand: "Filtertechnik",
+  images: [
+    {
+      src: "/products/oil conditioning/Filtertechnik/S120 Digital Imaging Particle Counter/S120 Digital Imaging Particle Counter.png",
+      alt: "Filtertechnik"
+    }
+  ],
+  categoryProductIds: [
+    's120-digital-imaging-particle-counter',
+    'particle-pal'
+  ],
+  slugPath: ["oil-conditioning", "filtertechnik"]
+};
+
 // ============================
 // S120 DIGITAL IMAGING PARTICLE COUNTER
 // ============================
@@ -3313,6 +3110,7 @@ export const s120DigitalImagingParticleCounterData: ProductData = {
   name: "S120 Digital Imaging Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
+  subsubcategory: "s120-digital-imaging-particle-counter",
   brand: "Filtertechnik",
   images: [
     {
@@ -3365,12 +3163,7 @@ export const s120DigitalImagingParticleCounterData: ProductData = {
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "S120 Digital Imaging Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "s120-digital-imaging-particle-counter"]
 };
 
 // ============================
@@ -3378,12 +3171,20 @@ export const s120DigitalImagingParticleCounterData: ProductData = {
 // ============================
 
 // Category Data - Particle Pal
-// export 
+export const particlePalCategoryData: ProductData = {
+  id: "particle-pal",
+  name: "Particle Pal",
+  category: "oil-conditioning",
+  subcategory: "filtertechnik",
+  subsubcategory: "particle-pal",
+  brand: "Filtertechnik",
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal"]
+};
 
-// Product Data - Particle Pal - Laser Portable Particle Counter
-export const particlePalLaserPortableParticleCounterData: ProductData = {
-  id: "particle-pal-laser-portable-particle-counter",
-  name: "Particle Pal - Laser Portable Particle Counter",
+// Product Data - FS9V2 - Particle Pal - Laser Portable Particle Counter
+export const fs9v2ParticlePalLaserPortableParticleCounterData: ProductData = {
+  id: "fs9v2-particle-pal-laser-portable-particle-counter",
+  name: "FS9V2 - Particle Pal - Laser Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3437,18 +3238,13 @@ export const particlePalLaserPortableParticleCounterData: ProductData = {
                 The FS9V2 is ideal for tank sampling, bottle sampling or drawing from a live system. For water analysis we've included an accurate, temperature compensated genuine Parts Per Million (PPM) water sensor. Also available is a highly accurate density sensor to detect the slightest change in diesel fuels integrity, this can be useful to detect if fuel has been tampered with or substituted with, for example, water or kerosene.`
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal - Laser Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v2-particle-pal-laser-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal + Water Sensor - Laser Portable Particle Counter
-export const particlePalWaterSensorLaserPortableParticleCounterData: ProductData = {
-  id: "particle-pal-water-sensor-laser-portable-particle-counter",
-  name: "Particle Pal + Water Sensor - Laser Portable Particle Counter",
+// Product Data - FS9V2-RH - Particle Pal + Water Sensor - Laser Portable Particle Counter
+export const fs9v2RhParticlePalWaterSensorLaserPortableParticleCounterData: ProductData = {
+  id: "fs9v2-rh-particle-pal-water-sensor-laser-portable-particle-counter",
+  name: "FS9V2-RH - Particle Pal + Water Sensor - Laser Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3476,18 +3272,13 @@ export const particlePalWaterSensorLaserPortableParticleCounterData: ProductData
       content: `• Live ISO, NAS and SAE results plus water content %RH\n• Compact, lightweight unit with robust casing\n• Sample direct from oil reservoir or live system via pressure reducer valve\n• Accurate, repeatable and consistent results\n• The ideal survey tool for field and laboratory use`
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal + Water Sensor - Laser Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v2-rh-particle-pal-water-sensor-laser-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal + Water & Density Sensor - Laser Portable Particle Counter
-export const particlePalWaterDensitySensorLaserPortableParticleCounterData: ProductData = {
-  id: "particle-pal-water-density-sensor-laser-portable-particle-counter",
-  name: "Particle Pal + Water & Density Sensor - Laser Portable Particle Counter",
+// Product Data - FS9V2-RH-DEN - Particle Pal + Water & Density Sensor - Laser Portable Particle Counter
+export const fs9v2RhDenParticlePalWaterDensitySensorLaserPortableParticleCounterData: ProductData = {
+  id: "fs9v2-rh-den-particle-pal-water-density-sensor-laser-portable-particle-counter",
+  name: "FS9V2-RH-DEN - Particle Pal + Water & Density Sensor - Laser Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3519,18 +3310,13 @@ export const particlePalWaterDensitySensorLaserPortableParticleCounterData: Prod
       content: `• Compact, lightweight unit with robust casing\n• Viscosity range (1-320 CST)\n• Accurate, repeatable and consistent results\n\n• Instantly measure the quality of all modern diesel and marine-based fuels such as gas oil and bunker fuel\n• The ideal survey tool for field and laboratory use\n• Samples from a live delivery, fuel tank or fuel polishing cabinet`
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal + Water & Density Sensor - Laser Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v2-rh-den-particle-pal-water-density-sensor-laser-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Pro - Digital Imaging Portable Particle Counter
-export const particlePalProDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-pro-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Pro - Digital Imaging Portable Particle Counter",
+// Product Data - FS9V3 - Particle Pal Pro - Digital Imaging Portable Particle Counter
+export const fs9v3ParticlePalProDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v3-particle-pal-pro-digital-imaging-portable-particle-counter",
+  name: "FS9V3 - Particle Pal Pro - Digital Imaging Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3579,18 +3365,13 @@ export const particlePalProDigitalImagingPortableParticleCounterData: ProductDat
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Pro - Digital Imaging Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v3-particle-pal-pro-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Pro + Water Sensor - Digital Imaging Portable Particle Counter
-export const particlePalProWaterSensorDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-pro-water-sensor-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Pro + Water Sensor - Digital Imaging Portable Particle Counter",
+// Product Data - FS9V3-RH - Particle Pal Pro + Water Sensor - Digital Imaging Portable Particle Counter
+export const fs9v3RhParticlePalProWaterSensorDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v3-rh-particle-pal-pro-water-sensor-digital-imaging-portable-particle-counter",
+  name: "FS9V3-RH - Particle Pal Pro + Water Sensor - Digital Imaging Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3637,18 +3418,13 @@ export const particlePalProWaterSensorDigitalImagingPortableParticleCounterData:
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Pro + Water Sensor - Digital Imaging Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v3-rh-particle-pal-pro-water-sensor-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Pro : Life - Digital Imaging Portable Particle Counter : Including water and remaining oil life sensor
-export const particlePalProLifeDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-pro-life-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Pro : Life - Digital Imaging Portable Particle Counter : Including water and remaining oil life sensor",
+// Product Data - FS9V3-OLU - Particle Pal Pro: Life - Digital Imaging Portable Particle Counter: Including water and remaining oil life sensor
+export const fs9v3OluParticlePalProLifeDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v3-olu-particle-pal-pro-life-digital-imaging-portable-particle-counter",
+  name: "FS9V3-OLU - Particle Pal Pro: Life - Digital Imaging Portable Particle Counter: Including water and remaining oil life sensor",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3696,18 +3472,13 @@ export const particlePalProLifeDigitalImagingPortableParticleCounterData: Produc
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Pro : Life - Digital Imaging Portable Particle Counter : Including water and remaining oil life sensor" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v3-olu-particle-pal-pro-life-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Pro + Viscosity - Digital Imaging Portable Particle Counter
-export const particlePalProViscosityDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-pro-viscosity-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Pro + Viscosity - Digital Imaging Portable Particle Counter",
+// Product Data - FS9V3-OLU-VISCO - Particle Pal Pro + Viscosity - Digital Imaging Portable Particle Counter
+export const fs9v3OluViscoParticlePalProViscosityDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v3-olu-visco-particle-pal-pro-viscosity-digital-imaging-portable-particle-counter",
+  name: "FS9V3-OLU-VISCO - Particle Pal Pro + Viscosity - Digital Imaging Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3754,18 +3525,13 @@ export const particlePalProViscosityDigitalImagingPortableParticleCounterData: P
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Pro + Viscosity - Digital Imaging Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v3-olu-visco-particle-pal-pro-viscosity-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Plus + Water RH%: Digital Imaging Portable Particle Counter
-export const particlePalPlusWaterRHDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-plus-water-rh-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Plus + Water RH%: Digital Imaging Portable Particle Counter",
+// Product Data - FS9V4-RH - Particle Pal Plus + Water RH%: Digital Imaging Portable Particle Counter
+export const fs9v4RhParticlePalPlusWaterRHDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v4-rh-particle-pal-plus-water-rh-digital-imaging-portable-particle-counter",
+  name: "FS9V4-RH - Particle Pal Plus + Water RH%: Digital Imaging Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3836,12 +3602,6 @@ export const particlePalPlusWaterRHDigitalImagingPortableParticleCounterData: Pr
       content: "The digital imaging particle counter gives advanced size and shape recognition for any sample. Counting particulate in fuel and virtually any oil up to 320cSt, the device also eliminates air bubbles, making it ideal for heavy lube and gear oil applications in cold temperatures. Reporting 4, 6, 14, 21, 38 & 70 micron counts as well as categorising any particle greater than 20 microns into Fatigue Wear, Sliding Wear, Cutting Wear and Fibres."
     },
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Plus + Water RH%: Digital Imaging Portable Particle Counter" }
-  ],
   technicalSpecs: [
     {
       title: "Technical Information",
@@ -3852,13 +3612,14 @@ export const particlePalPlusWaterRHDigitalImagingPortableParticleCounterData: Pr
         { label: "Data", value: "All data stored locally with an option to export to CSV or PDF." }
       ]
     }
-  ]
+  ],
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v4-rh-particle-pal-plus-water-rh-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Plus + Water PPM: Digital Imaging Portable Particle Counter
-export const particlePalPlusWaterPPMDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-plus-water-ppm-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Plus + Water PPM: Digital Imaging Portable Particle Counter",
+// Product Data - FS9V4-PPM - Particle Pal Plus + Water PPM: Digital Imaging Portable Particle Counter
+export const fs9v4PpmParticlePalPlusWaterPPMDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v4-ppm-particle-pal-plus-water-ppm-digital-imaging-portable-particle-counter",
+  name: "FS9V4-PPM - Particle Pal Plus + Water PPM: Digital Imaging Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3928,12 +3689,6 @@ export const particlePalPlusWaterPPMDigitalImagingPortableParticleCounterData: P
       content: "The digital imaging particle counter gives advanced size and shape recognition for any sample.    Counting particulate in fuel and virtually any oil up to 320cSt, the device also eliminates air bubbles, making it ideal for heavy lube and gear oil applications in cold temperatures. Reporting 4, 6, 14, 21, 38 & 70 micron counts as well as categorising any particle greater than 20 microns into Fatigue Wear, Sliding Wear, Cutting Wear and Fibres."
     },
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Plus + Water PPM: Digital Imaging Portable Particle Counter" }
-  ],
   technicalSpecs: [
     {
       title: "Technical Information",
@@ -3944,13 +3699,14 @@ export const particlePalPlusWaterPPMDigitalImagingPortableParticleCounterData: P
         { label: "Data", value: "All data stored locally with an option to export to CSV or PDF." }
       ]
     }
-  ]
+  ],
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v4-ppm-particle-pal-plus-water-ppm-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Plus: Digital Imaging Portable Particle Counter
-export const particlePalPlusDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-plus-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Plus: Digital Imaging Portable Particle Counter",
+// Product Data - FS9V4 - Particle Pal Plus: Digital Imaging Portable Particle Counter
+export const fs9v4ParticlePalPlusDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v4-particle-pal-plus-digital-imaging-portable-particle-counter",
+  name: "FS9V4 - Particle Pal Plus: Digital Imaging Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -3968,8 +3724,8 @@ export const particlePalPlusDigitalImagingPortableParticleCounterData: ProductDa
     {
       title: "FS9V4",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus Digital Imaging Portable Particle Counter/Particle Pal Plus Digital Imaging Portable Particle Counter-1.png",
-          alt: "Particle Pal Plus: Digital Imaging Portable Particle Counter"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus Digital Imaging Portable Particle Counter/Particle Pal Plus Digital Imaging Portable Particle Counter-1.png",
+        alt: "Particle Pal Plus: Digital Imaging Portable Particle Counter"
       },
       content: `Harnessing the power of proven digital imaging technology.\n
                 We've embedded the latest in particle counting technology along into our new Particle Pal Plus series. Giving ISO 11171 counts as well as 4, 6, 14, 21, 38 & 70 micron sizing and bubble elimination. Digital imaging, combined with advanced algorithms, sorts particles into fatigue wear, cutting wear and sliding wear categories to give root cause analysis. This powerful technology gives unprecedented, on-the-spot insight into the condition of your oil.\n
@@ -3978,8 +3734,8 @@ export const particlePalPlusDigitalImagingPortableParticleCounterData: ProductDa
     {
       title: "Built-in Display",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus Digital Imaging Portable Particle Counter/Particle Pal Plus Digital Imaging Portable Particle Counter-2.png",
-          alt: "Particle Pal Plus: Digital Imaging Portable Particle Counter"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus Digital Imaging Portable Particle Counter/Particle Pal Plus Digital Imaging Portable Particle Counter-2.png",
+        alt: "Particle Pal Plus: Digital Imaging Portable Particle Counter"
       },
       content: `1.	Clear and easy-to-read ISO code which changes between green, white and red to indicate the oil cleanliness.\n
                 2.	Oil cleanliness for each size category details the ISO code, number of particles per millilitre and the bubbles detected.\n
@@ -3993,8 +3749,8 @@ export const particlePalPlusDigitalImagingPortableParticleCounterData: ProductDa
     {
       title: "Online reporting tool",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus Digital Imaging Portable Particle Counter/Particle Pal Plus Digital Imaging Portable Particle Counter-3.png",
-          alt: "Particle Pal Plus: Digital Imaging Portable Particle Counter"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus Digital Imaging Portable Particle Counter/Particle Pal Plus Digital Imaging Portable Particle Counter-3.png",
+        alt: "Particle Pal Plus: Digital Imaging Portable Particle Counter"
       },
       content: `Particle Pal Plus has the ability to generate a QR code, representing the 5 most recent tests. When scanned on a mobile device this will open a fully tabulated and graphical report based on those readings hosted on particlepal.com. After viewing the report you can choose to create or log into your user account, then save your reports.\n
                 Additional test information can be added to saved reports for future retrieval, as well as optionally displaying your own company name and logo before being shared with third parties such as your own customers.`
@@ -4023,18 +3779,13 @@ export const particlePalPlusDigitalImagingPortableParticleCounterData: ProductDa
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Plus: Digital Imaging Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v4-particle-pal-plus-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter
-export const particlePalPlusHighViscosityDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-plus-high-viscosity-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter",
+// Product Data - FS9V4-HV - Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter
+export const fs9v4HvParticlePalPlusHighViscosityDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v4-hv-particle-pal-plus-high-viscosity-digital-imaging-portable-particle-counter",
+  name: "FS9V4-HV - Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -4052,8 +3803,8 @@ export const particlePalPlusHighViscosityDigitalImagingPortableParticleCounterDa
     {
       title: "FS9V4-HV (High Viscosity)",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter-1.png",
-          alt: "Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter-1.png",
+        alt: "Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter"
       },
       content: `Harnessing the power of proven digital imaging technology.\n
                 Our High Viscosity version has all the features of the standard Particle Pal Plus but with an enhanced stepper motor pump capable of handling higher viscosity oils. Utilising the advanced S120 digital imaging particle counting technology reports ISO 4406 counts as well as 4, 6, 14, 21, 38, 70 & >100 micron sizing and bubble elimination.\n
@@ -4063,8 +3814,8 @@ export const particlePalPlusHighViscosityDigitalImagingPortableParticleCounterDa
     {
       title: "Built-in Display",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter-3.png",
-          alt: "Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter-3.png",
+        alt: "Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter"
       },
       content: `1.	Clear and easy to read ISO code which changes between green, white and red to indicate the oil cleanliness.
                 2.	High Viscosity stepper motor pump: up to 2,400cSt
@@ -4079,8 +3830,8 @@ export const particlePalPlusHighViscosityDigitalImagingPortableParticleCounterDa
     {
       title: "Online reporting tool",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter-4.png",
-          alt: `"Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter"`
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter/Particle Pal Plus High Viscosity Digital Imaging Portable Particle Counter-4.png",
+        alt: `"Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter"`
       },
       content: `Particle Pal Plus has the ability to generate a QR code, representing the 5 most recent tests. When scanned on a mobile device this will open a fully tabulated and graphical report based on those readings hosted on particlepal.com. After viewing the report you can choose to create or log into your user account, then save your reports.\n
                 Additional test information can be added to saved reports for future retrieval, as well as optionally displaying your own company name and logo before being shared with third parties such as your own customers.`
@@ -4113,18 +3864,13 @@ export const particlePalPlusHighViscosityDigitalImagingPortableParticleCounterDa
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v4-hv-particle-pal-plus-high-viscosity-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter
-export const particlePalPlusWaterPPMDensitySensorDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-plus-water-ppm-density-sensor-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter",
+// Product Data - FS9V4-PPM-DEN - Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter
+export const fs9v4PpmDenParticlePalPlusWaterPPMDensitySensorDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v4-ppm-den-particle-pal-plus-water-ppm-density-sensor-digital-imaging-portable-particle-counter",
+  name: "FS9V4-PPM-DEN - Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -4142,8 +3888,8 @@ export const particlePalPlusWaterPPMDensitySensorDigitalImagingPortableParticleC
     {
       title: "FS9V4-PPM-DEN",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter-1.png",
-          alt: "Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter-1.png",
+        alt: "Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter"
       },
       content: `Harnessing the power of proven digital imaging technology with density and water sensing technology.\n
                 Digital Imaging particle counting gives ISO 4406 counts as well as 4, 6, 14, 21, 38 & 70-micron sizing and bubble elimination. This powerful technology, when coupled with the addition of a Water PPM sensor and a Density Sensor gives unprecedented, on-the-spot insight into the condition of your diesel fuel.  Density sensing is used when fuel tampering/replacement is suspected.\n
@@ -4152,8 +3898,8 @@ export const particlePalPlusWaterPPMDensitySensorDigitalImagingPortableParticleC
     {
       title: "Built-in Display",
       image: {
-          src: "/Filtertechnik/Particle Pal/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter-2.png",
-          alt: "Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter"
+        src: "/Filtertechnik/Particle Pal/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter-2.png",
+        alt: "Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter"
       },
       content: `1.	Clear and easy to read ISO code which changes between green, white and red to indicate the fuel cleanliness.
                 2.	Fuel cleanliness for each size category details the ISO code, the number of particles per millilitre and the bubbles detected.
@@ -4167,8 +3913,8 @@ export const particlePalPlusWaterPPMDensitySensorDigitalImagingPortableParticleC
     {
       title: "Online reporting tool",
       image: {
-          src: "/Filtertechnik/Particle Pal/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter-3.png",
-          alt: `"Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter"`
+        src: "/Filtertechnik/Particle Pal/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter/Particle Pal Plus + Water PPM and Density Sensor Digital Imaging Portable Particle Counter-3.png",
+        alt: `"Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter"`
       },
       content: `Particle Pal Plus has the ability to generate a QR code, representing the 5 most recent tests. When scanned on a mobile device this will open a fully tabulated and graphical report based on those readings hosted on particlepal.com. After viewing the report you can choose to create or log into your user account, then save your reports.\n
                 Additional test information can be added to saved reports for future retrieval, as well as optionally displaying your own company name and logo before being shared with third parties such as your own customers.`
@@ -4217,18 +3963,13 @@ export const particlePalPlusWaterPPMDensitySensorDigitalImagingPortableParticleC
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Plus + Water PPM and Density Sensor : Digital Imaging Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v4-ppm-den-particle-pal-plus-water-ppm-density-sensor-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter
-export const particlePalPlusHighViscosityWaterRHDigitalImagingPortableParticleCounterData: ProductData = {
-  id: "particle-pal-plus-high-viscosity-water-rh-digital-imaging-portable-particle-counter",
-  name: "Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter",
+// Product Data - FS9V4-RH-HV - Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter
+export const fs9v4RhHvParticlePalPlusHighViscosityWaterRHDigitalImagingPortableParticleCounterData: ProductData = {
+  id: "fs9v4-rh-hv-particle-pal-plus-high-viscosity-water-rh-digital-imaging-portable-particle-counter",
+  name: "FS9V4-RH-HV - Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -4246,8 +3987,8 @@ export const particlePalPlusHighViscosityWaterRHDigitalImagingPortableParticleCo
     {
       title: "FS9V4-PPM-DEN",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter-1.png",
-          alt: "Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter-1.png",
+        alt: "Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter"
       },
       content: `Harnessing the power of proven digital imaging with water sensing technology and a high viscosity pump.\n
                 The S120 Digital imaging particle counter reports ISO 4406 counts as well as 4, 6, 14, 21, 38 & 70 micron sizing and bubble elimination. Digital imaging, sorts particles into fatigue wear, cutting wear and sliding wear categories to give root cause analysis. This powerful technology, when coupled with an additional sensor for measuring water content as %RH (Relative Humidity - 100% RH = saturation) gives unprecedented, on-the-spot insight into the condition of your oil.`
@@ -4255,8 +3996,8 @@ export const particlePalPlusHighViscosityWaterRHDigitalImagingPortableParticleCo
     {
       title: "Built-in Display",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter-2.png",
-          alt: "Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter-2.png",
+        alt: "Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter"
       },
       content: `1.	Clear and easy to read ISO code which changes between green, white and red to indicate the oil cleanliness.\n
                 2.	1cSt up to 2,400cst viscosity capability.\n
@@ -4270,8 +4011,8 @@ export const particlePalPlusHighViscosityWaterRHDigitalImagingPortableParticleCo
     {
       title: "Online reporting tool",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter-3.png",
-          alt: `"Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter"`
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter/Particle Pal Plus + Water RH Digital Imaging Portable Particle Counter-3.png",
+        alt: `"Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter"`
       },
       content: `Particle Pal Plus has the ability to generate a QR code, representing the 5 most recent tests. When scanned on a mobile device this will open a fully tabulated and graphical report based on those readings hosted on particlepal.com. After viewing the report you can choose to create or log into your user account, then save your reports.\n
                 Additional test information can be added to saved reports for future retrieval, as well as optionally displaying your own company name and logo before being shared with third parties such as your own customers.`
@@ -4312,18 +4053,13 @@ export const particlePalPlusHighViscosityWaterRHDigitalImagingPortableParticleCo
       ]
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v4-rh-hv-particle-pal-plus-high-viscosity-water-rh-digital-imaging-portable-particle-counter"]
 };
 
-// Product Data - Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density
-export const particlePalPlusHighViscosityParticulateWaterRHDensityData: ProductData = {
-  id: "particle-pal-plus-high-viscosity-particulate-water-rh-viscosity-density",
-  name: "Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density",
+// Product Data - FS9V4-RH-V-D-HV - Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density
+export const fs9v4RhVdHvParticlePalPlusHighViscosityParticulateWaterRHDensityData: ProductData = {
+  id: "fs9v4-rh-v-d-hv-particle-pal-plus-high-viscosity-particulate-water-rh-viscosity-density",
+  name: "FS9V4-RH-V-D-HV - Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density",
   category: "oil-conditioning",
   subcategory: "filtertechnik",
   brand: "Filtertechnik",
@@ -4341,8 +4077,8 @@ export const particlePalPlusHighViscosityParticulateWaterRHDensityData: ProductD
     {
       title: "FS9V4-RH-V-D-HV",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density-1.png",
-          alt: "Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density-1.png",
+        alt: "Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density"
       },
       content: `Digital Imaging Particle Counting, Water sensing plus a Viscosity & Density sensor\n
                 We've embedded the latest in particle counting technology along with a viscosity and density sensor into our new Particle Pal Plus series. Giving ISO 4406 counts as well as 4, 6, 14, 21, 38 & 70-micron sizing and bubble elimination. Digital imaging counting technology, combined with advanced algorithms, sorts particles into fatigue wear, cutting wear and sliding wear categories to give root cause analysis. The viscosity sensor gives live dynamic readings. This powerful technology when coupled with an additional sensor for measuring water content gives unprecedented, on-the-spot insight into the condition of your oil.`
@@ -4350,8 +4086,8 @@ export const particlePalPlusHighViscosityParticulateWaterRHDensityData: ProductD
     {
       title: "Built-in Display",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density-2.png",
-          alt: "Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density"
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density-2.png",
+        alt: "Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density"
       },
       content: `1.	Clear and easy to read ISO code which changes between green, white and red to indicate the oil cleanliness.\n
                 2.	Oil cleanliness for each size category details the ISO code, number of particles per millilitre and the bubbles detected.\n
@@ -4365,8 +4101,8 @@ export const particlePalPlusHighViscosityParticulateWaterRHDensityData: ProductD
     {
       title: "Online reporting tool",
       image: {
-          src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density-3.png",
-          alt: `"Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density"`
+        src: "public/products/oil conditioning/Filtertechnik/Particle Pal/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density/Particle Pal Plus High Viscosity Particulate, Water RH, Viscosity and Density-3.png",
+        alt: `"Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density"`
       },
       content: `Particle Pal Plus has the ability to generate a QR code, representing the 5 most recent tests. When scanned on a mobile device this will open a fully tabulated and graphical report based on those readings hosted on particlepal.com. After viewing the report you can choose to create or log into your user account, then save your reports.\n
                 Additional test information can be added to saved reports for future retrieval, as well as optionally displaying your own company name and logo before being shared with third parties such as your own customers.`
@@ -4408,25 +4144,26 @@ export const particlePalPlusHighViscosityParticulateWaterRHDensityData: ProductD
       content: "The digital imaging particle counter gives advanced size and shape recognition for any sample. Counting particulate in fuel and virtually any oil up to 2400cSt, the device also eliminates air bubbles, making it ideal for heavy lube and gear oil applications in cold temperatures. Reporting 4, 6, 14, 21, 38 & 70 micron counts as well as categorising any particle greater than 20 microns into Fatigue Wear, Sliding Wear, Cutting Wear and Fibres."
     },
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Filtertechnik", href: "/products/oil-conditioning/filtertechnik" },
-    { label: "Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density" }
-  ]
+  slugPath: ["oil-conditioning", "filtertechnik", "particle-pal", "fs9v4-rh-v-d-hv-particle-pal-plus-high-viscosity-particulate-water-rh-viscosity-density"]
 };
 
 // ============================
 // EVAMO
 // ============================
 
-// Product Data - Evamo
+// Product Data - Evamo - Smart Bubble System
 export const evamoSmartBubbleSystemData: ProductData = {
   id: "evamo-smart-bubble-system",
   name: "Evamo - Smart Bubble System",
   category: "oil-conditioning",
   subcategory: "evamo",
   brand: "Evamo",
+  images: [
+    {
+      src: "/products/oil conditioning/Evamo/evamo smart bubble system.png",
+      alt: "Evamo - Smart Bubble System"
+    }
+  ],
   description: [
     "The Invisible Threat – Why Air in Oil Matters",
     "Air in oil is often invisible, but its effects are serious. Oxidation, increased wear, loss of performance and premature oil ageing are direct consequences of air bubbles in hydraulic systems and transmissions. Traditional methods of measurement are often inaccurate or only provide indirect data.",
@@ -4445,10 +4182,93 @@ export const evamoSmartBubbleSystemData: ProductData = {
       content: "The Smart Bubble System (SBS) offers customized solutions for all industries that rely on precise oil condition monitoring and lubrication optimization."
     }
   ],
-  breadcrumbItems: [
-    { label: "Products", href: "/products" },
-    { label: "Oil Conditioning", href: "/products/oil-conditioning" },
-    { label: "Evamo" },
-    { label: "Evamo - Smart Bubble System" }
-  ]
+  slugPath: ["oil-conditioning", "evamo", "evamo-smart-bubble-system"]
 };
+
+// MASTER EXPORT: All Oil Conditioning Products & Categories
+export const allOilConditioningProducts: ProductData[] = [
+  // ============================
+  // TanDelta
+  // ============================
+  tandeltaCategoryData,
+  oqsxG2OilQualitySensorData,
+  oqsxG2HAZOilQualitySensorData,
+  motMobileOilTestKitData,
+  oqsxG2SensorKitData,
+  sense2DisplayKitData,
+  sense3GatewayKitData,
+  gatewayOQTgData,
+  oqdeG2DisplayExpressData,
+  gatewayHubData,
+  manifoldData,
+
+  // ============================
+  // Hydrotechnik
+  // ============================
+  hydrotechnikCategoryData,
+  watchlogUSBCategoryData,
+  watchlogUSBDualSensorData,
+  watchlogUsbWindowsPcTabletPressureTemperatureMeasurementSoftwareData,
+  watchlogBluetoothSensorsGaugesAndMobileAppsCategoryData,
+  watchlogBluetoothPressureTemperatureSensorsGaugesAndAppForUpTo4SensorsConnectedSimultaneouslyCategoryData,
+  wlbPtCompactBluetoothPressureSensorData,
+  wlbTtCompactBluetoothTemperatureSensorData,
+  wlbDdpgSeriesBluetoothDataloggingPressureGaugesData,
+  wlbDpgSeriesBluetoothPressureGaugeData,
+  watchlogBluetoothLiveViewAppData,
+  ddpgSeriesBluetoothPressureGaugeTestKitData,
+  dgpSeriesBluetoothPressureGaugeTestKitData,
+  watchlogBluetoothPlusPressureLevelForceSensorsAndAppForUpTo12ConnectedSensorsAdvancedAppCalculationFeaturesData,
+  htWlbpWatchlogBluetoothPlusPressureSensorData,
+  htWlblWatchlogBluetoothPlusHydrostaticLevelSensorsData,
+  htWlblcWatchlogBluetoothPlusCompressionLoadCellsData,
+  htWlbllWatchlogBluetoothPlusCompressionLoadLinkData,
+  watchlogBluetoothPlusIosAndAndroidAppData,
+  watchlogWirelessPressureTemperatureAndFlowSensorsCategoryData,
+  watchlogWirelessPressureFlowTemperatureTestKitData,
+  watchlogWirelessVisionData,
+  watchlogAtexWirelessPressureSensorsData,
+  watchlogWirelessPressureSensorsData,
+  watchlogWirelessTemperatureSensorsData,
+  watchlogWirelessLinearPositionSensorData,
+  watchlogWirelessTurbineFlowMetersData,
+  watchlogWirelessOvalGearFlowMetersData,
+  watchlogWirelessUsbBaseStationsReceiversData,
+  wlwArWirelessSignalExtenderData,
+  watchlogWirelessSignalGatewayModulesData,
+  watchlogWirelessConfigMonitoringLoggingSoftwareData,
+  watchlogWirelessAccessoriesData,
+  wlwplSeriesCellularLevelSensorData,
+  watchlogProRemoteMonitoringCategoryData,
+  watchlogProOrbCellularWiFiCloudGatewayForMobileApplicationsData,
+  watchlogProQuadCellularWiFiCloudGatewayForFixedSystemsData,
+  watchlogProHydraulicSystemMonitoringData,
+  watchlogProCustomCloudMonitoringData,
+  watchlogCSVVisualizerSoftwareData,
+
+  // ============================
+  // Filtertechnik
+  // ============================
+  filtertechnikCategoryData,
+  s120DigitalImagingParticleCounterData,
+  particlePalCategoryData,
+  fs9v2ParticlePalLaserPortableParticleCounterData,
+  fs9v2RhParticlePalWaterSensorLaserPortableParticleCounterData,
+  fs9v2RhDenParticlePalWaterDensitySensorLaserPortableParticleCounterData,
+  fs9v3ParticlePalProDigitalImagingPortableParticleCounterData,
+  fs9v3RhParticlePalProWaterSensorDigitalImagingPortableParticleCounterData,
+  fs9v3OluParticlePalProLifeDigitalImagingPortableParticleCounterData,
+  fs9v3OluViscoParticlePalProViscosityDigitalImagingPortableParticleCounterData,
+  fs9v4RhParticlePalPlusWaterRHDigitalImagingPortableParticleCounterData,
+  fs9v4PpmParticlePalPlusWaterPPMDigitalImagingPortableParticleCounterData,
+  fs9v4ParticlePalPlusDigitalImagingPortableParticleCounterData,
+  fs9v4HvParticlePalPlusHighViscosityDigitalImagingPortableParticleCounterData,
+  fs9v4PpmDenParticlePalPlusWaterPPMDensitySensorDigitalImagingPortableParticleCounterData,
+  fs9v4RhHvParticlePalPlusHighViscosityWaterRHDigitalImagingPortableParticleCounterData,
+  fs9v4RhVdHvParticlePalPlusHighViscosityParticulateWaterRHDensityData,
+
+  // ============================
+  // Evamo
+  // ============================
+  evamoSmartBubbleSystemData
+];

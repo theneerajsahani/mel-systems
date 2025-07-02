@@ -1,36 +1,155 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Product Structure
 
-## Getting Started
+## Oil Conditioning
+    - TanDelta
+        - OQSx-G2 Oil Quality Sensor
+        - OQSx-G2 HAZ Oil Quality Sensor
+        - MOT – Mobile Oil Test Kit
+        - *OQSX-G2 Sensor kit*
+        - SENSE2 Display Kit
+        - SENSE3 Gateway Kit
+        - Gateway (OQTg)
+        - OQDe-G2 Display Express
+        - Gateway Hub
+        - Manifold
+        - Cables
+            - Cable J
+            - Cable X
+            - Cable M
+            - Cable HP
+            - Cable BBHaz
+            - Cable BBSt
+            - Cable DB
+            - Cable HB
+            - Cable GH
+            - Cable SD
+            - Cable SB
+            - Cable SH
+            - Cable HH
+            - Cable HCP-1
+    - Hydrotechnik
+        - Watchlog USB
+            - Watchlog USB Dual Pressure and Temperature Sensor
+            - Watchlog USB Windows® PC/tablet pressure & temperature measurement software
+        - Watchlog Bluetooth Sensors, Gauges and Mobile Apps
+            - Watchlog Bluetooth Pressure & Temperature Sensors, Gauges and App for up to 4 sensors connected simultaneously
+                - WLB-PT Compact Bluetooth Pressure Sensor
+                - WLB-TT Compact Bluetooth Temperature Sensor
+                - WLB-DDPG Series Bluetooth Digital Datalogging Pressure Gauges
+                - WLB-DPG Series Watchlog Bluetooth Digital Pressure Gauge
+                - Watchlog Bluetooth Live View & Datalogging App for iOS and Android
+                - DDPG Series Digital Datalogging Bluetooth Pressure Gauge & Minimess® Test Kit
+                - DPG Series Digital Bluetooth Pressure Gauge & Minimess® Test Kit
+            - Watchlog Bluetooth-Plus Pressure, Level & Force Sensors and App for up to 12 connected sensors & advanced app calculation features
+                - HT-WLBP Watchlog Bluetooth-Plus Pressure Sensor
+                - HT-WLBL Watchlog Bluetooth-Plus Hydrostatic Level Sensors
+                - HT-WLBLC Watchlog Bluetooth-Plus Compression Load Cells
+                - HT-WLBLL Watchlog Bluetooth-Plus Compression Load Link
+                - Watchlog Bluetooth-Plus iOS and Android App
+        - Watchlog Wireless Pressure, Temperature and Flow Sensors
+            - Watchlog Wireless Pressure, Flow & Temperature Test Kit
+            - Watchlog Wireless Vision
+            - Watchlog ATEX Wireless Pressure Sensors
+            - Watchlog Wireless Pressure Sensors
+            - Watchlog Wireless Temperature Sensors
+            - Watchlog Wireless Linear Position Sensor
+            - Watchlog Wireless Turbine Flow Meters
+            - Watchlog Wireless Oval Gear Flow Meters
+            - Watchlog Wireless USB Base Stations / Receivers
+            - WLW-AR Wireless Signal Extender
+            - Watchlog Wireless Signal Gateway Modules
+            - Watchlog Wireless Configuring, Monitoring & Logging Software
+            - Watchlog Wireless Accessories
+            - WLWPL Series Cellular Level Sensor
+        - Watchlog Pro Remote Monitoring
+            - Watchlog PRO ORB Cellular / Wi-Fi Cloud Gateway for Mobile Applications
+            - Watchlog PRO QUAD Cellular / Wi-Fi Cloud Gateway for Fixed Systems
+            - Watchlog Pro Hydraulic System Monitoring
+            - Watchlog PRO Custom Cloud Monitoring
+        - Watchlog CSV Visualizer Software
+    - Filtertechnik
+        - S120 Digital Imaging Particle Counter
+        - Particle Pal
+            - FS9V2 - Particle Pal - Laser Portable Particle Counter
+            - FS9V2-RH - Particle Pal + Water Sensor - Laser Portable Particle Counter
+            - FS9V2-RH-DEN - Particle Pal + Water & Density Sensor - Laser Portable Particle Counter
+            - FS9-OLO - Remaining Oil Life Portable Test Kit
+            - FS9V3 - Particle Pal Pro - Digital Imaging Portable Particle Counter
+            - FS9V3-RH - Particle Pal Pro + Water Sensor - Digital Imaging Portable Particle Counter
+            - FS9V3-OLU - Particle Pal Pro: Life - Digital Imaging Portable Particle Counter: Including water and remaining oil life sensor
+            - FS9V3-OLU-VISCO - Particle Pal Pro + Viscosity - Digital Imaging Portable Particle Counter
+            - FS9V4-RH - Particle Pal Plus + Water RH%: Digital Imaging Portable Particle Counter
+            - FS9V4-PPM - Particle Pal Plus + Water PPM: Digital Imaging Portable Particle Counter
+            - FS9V4 - Particle Pal Plus: Digital Imaging Portable Particle Counter
+            - FS9V4-HV - Particle Pal Plus High Viscosity: Digital Imaging Portable Particle Counter
+            - FS9V4-PPM-DEN - Particle Pal Plus + Water PPM and Density Sensor: Digital Imaging Portable Particle Counter
+            - FS9V4-RH-HV - Particle Pal Plus High Viscosity + Water RH%: Digital Imaging Portable Particle Counter
+            - FS9V4-RH-V-D-HV - Particle Pal Plus High Viscosity: Particulate, Water RH%, Viscosity and Density
+    - Evamo
+        - Evamo - Smart Bubble System
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Systems
+    - Motec
+        - Rear View Cameras
+            - MC3000B - Heavy-Duty Camera
+            - MC3000B-VA - Heavy-duty stainless steel-camera
+            - MC3000C-IR & WL - Night vision-compatible heavy-duty infrared camera with built-in light
+            - MC4000A - Heavy-duty camera
+            - MC4000A-IR & WL - Night-vision-compatible heavy-duty infrared camera with built-in light
+            - MC6000D - Sturdy universal camera
+            - MC7000C Series - Heavy Duty Camera
+            - MC7180N - Wide-angle camera
+            - MC7000B-MH1 - Heavy Duty Camera
+            - MC7000B-MH2 Heavy Duty Camera
+        - Front Camera System
+            - MC3050B-4-VKMS - Heavy Duty Camera for front implements
+        - Digital Camera’s
+            - MCDB7000A - Heavy Duty Broadr-Reach Camera
+            - MCDE3000 - OEM Ethernet Camera
+            - MCDL7000A - Heavy-Duty LVDS Camera
+            - MCDE7000A - Heavy-Duty Ethernet Camera
+            - MCDE5200 - Digital Motor Zoom Camera
+        - Monitors
+            - MD3071A  - 7” Monitor
+            - MD3073 - Waterproof heavy-duty monitor
+            - MD3100 - 10.2” Monitor
+            - 17 Zoll LCD Monitor
+            - MD4074-Quad-IP30 & IP67 Heavy duty monitor
+        - Digital Monitors
+            - MDDE1072 7” Heavy duty digital ethernet monitor
+            - MDDE1102 10” heavy duty digital ethernet monitor
+            - MDDE1122 12” heavy duty digital ethernet monitor
+        - Fork Camera’s
+            - MC9000 - Sturdy fork camera
+            - MC9150B - heavy duty pinhole camera
+            - MC9250 - sturdy fork camera
+            - MC925C - fork-arm mounted camera
+        - Video Control Units
+            - MVCD2000 - digital video control unit
+            - MVCU1300
+            - MVCU1400
+            - MVCU1500
+            - MVCU1600
+            - MB1205 - for two cameras
+            - MB1405-Quad - with split function
+            - MBE5200 - for cranes
+            - MV13 - video unit
+            - MV5201-1
+        - Crane Camera’s
+            - MWS - motec workview system
+            - MC5201 - motor zoom camera
+            - MCDE5200 - digital motor zoom camera
+        - Transmissions
+            - MVRD1100 - digital radio system
+            - MAB2000 - mobile heavy duty battery box
+            - MVR5200 - wireless system for cranes
+            - MTP-VS and MTP-VE - video signal amplifier
+            - MKW-Kabel
+            - MK5-cabel
+            - MK25.15-MA2-cable
+            - Mk67-cable
+            - MK84-cable
+            - MK228-cabel
+            - MK232-cabel
+            - MK295-cabel
+            - MK296-cabel

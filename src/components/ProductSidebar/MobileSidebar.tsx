@@ -7,7 +7,7 @@ import { SIDEBAR_STYLES } from "./styles";
 
 interface MobileSidebarProps {
   category: ProductCategory;
-  currentPath: string;
+  currentSlugPath: string[];
   isOpen: boolean;
   onClose: () => void;
   expandedItems: Set<string>;
@@ -16,7 +16,7 @@ interface MobileSidebarProps {
 
 export const MobileSidebar = memo<MobileSidebarProps>(({ 
   category, 
-  currentPath, 
+  currentSlugPath, 
   isOpen, 
   onClose, 
   expandedItems,
@@ -65,13 +65,14 @@ export const MobileSidebar = memo<MobileSidebarProps>(({
           >
             {category.children.map((item, index) => (
               <NavigationItemComponent
-                key={`mobile-${item.href || item.label}-${index}`}
+                key={`mobile-${item.slug}-${index}`}
                 item={item}
                 level={0}
-                currentPath={currentPath}
+                slugPath={[category.slug, item.slug]}
+                currentSlugPath={currentSlugPath}
                 onItemClick={onClose}
-                  expandedItems={expandedItems}
-                  toggleExpanded={toggleExpanded}
+                expandedItems={expandedItems}
+                toggleExpanded={toggleExpanded}
               />
             ))}
           </nav>

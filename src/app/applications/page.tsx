@@ -1,163 +1,94 @@
-import { applications, getAllCategories, getApplicationsByCategory } from "@/lib/applications";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+'use client';
+import { useState } from "react";
+import { applications } from "@/lib/applications";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ApplicationsPage() {
-  const categories = getAllCategories();
+  const [search, setSearch] = useState("");
+
+  const filteredApps = applications.filter(app => {
+    const searchLower = search.toLowerCase();
+    return (
+      app.title.toLowerCase().includes(searchLower) ||
+      (app.additionalInfo?.toLowerCase().includes(searchLower) ?? false) ||
+      app.industry.some(ind => ind.toLowerCase().includes(searchLower))
+    );
+  });
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16 px-4 md:px-8 lg:px-16">
-        <div className="max-w-screen-xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Applications
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
-            Discover how our advanced monitoring solutions serve diverse industries worldwide
-          </p>
-        </div>
-      </section>
+    <div className="min-h-screen bg-white dark:bg-gray-950 px-4 md:px-8 lg:px-16 py-10">
+      {/* Hero Heading Section */}
+      <div className="max-w-screen-xl mx-auto text-center mb-10">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white tracking-tight">
+          Applications
+        </h1>
+        <p className="text-lg md:text-xl text-gray-400 dark:text-gray-400 max-w-2xl mx-auto font-normal">
+          Discover how our advanced monitoring solutions serve diverse industries worldwide
+        </p>
+      </div>
 
-      {/* Category Filter */}
-      <section className="py-8 px-4 md:px-8 lg:px-16 bg-white border-b">
-        <div className="max-w-screen-xl mx-auto">
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Badge variant="default" className="px-4 py-2 text-sm cursor-pointer">
-              All Categories
-            </Badge>
-            {categories.map((category) => (
-              <Badge 
-                key={category} 
-                variant="outline" 
-                className="px-4 py-2 text-sm cursor-pointer hover:bg-blue-50 capitalize"
-              >
-                {category.replace('-', ' ')}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Minimal Search Bar */}
+      <div className="max-w-3xl mx-auto mb-12 relative">
+        <input
+          type="text"
+          placeholder="Search applications..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 text-base focus:outline-none focus:border-b-2 focus:border-blue-400 transition placeholder-gray-400 dark:placeholder-gray-500 shadow-none"
+        />
+      </div>
 
       {/* Applications Grid */}
-      <section className="py-16 px-4 md:px-8 lg:px-16">
-        <div className="max-w-screen-xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {applications.map((application) => (
-              <Card key={application.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                <div className="relative h-48 overflow-hidden">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${application.gradient}`}>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14">
+          <AnimatePresence>
+            {filteredApps.map((app, idx) => (
+              <motion.div
+                key={app.id}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 24 }}
+                transition={{ delay: idx * 0.05, duration: 0.4, type: "tween" }}
+                className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden flex flex-col border border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 group cursor-pointer min-h-[340px]"
+              >
+                <Link href={`/applications/${app.id}`} className="block group h-full">
+                  <div className="relative h-48 bg-gray-100 dark:bg-gray-800 overflow-hidden">
                     <Image
-                      src={application.image}
-                      alt={application.title}
+                      src={app.images?.[0] || "/images/placeholder.jpg"}
+                      alt={app.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500 mix-blend-overlay"
+                      className="object-cover transition-transform duration-500"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-white/20 text-white border-white/30 capitalize">
-                      {application.category.replace('-', ' ')}
-                    </Badge>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white font-bold text-lg mb-1">
-                      {application.title}
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {app.title}
                     </h3>
-                  </div>
-                </div>
-                
-                <CardContent className="p-6">
-                  <CardDescription className="text-gray-600 mb-4 line-clamp-3">
-                    {application.description}
-                  </CardDescription>
-                  
-                  <div className="space-y-3">
-                    {/* Industries */}
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-700 mb-2">Industries:</h4>
-                      <div className="flex flex-wrap gap-1">
-                        {application.industries.slice(0, 2).map((industry) => (
-                          <Badge key={industry} variant="secondary" className="text-xs">
-                            {industry}
-                          </Badge>
-                        ))}
-                        {application.industries.length > 2 && (
-                          <Badge variant="secondary" className="text-xs">
-                            +{application.industries.length - 2} more
-                          </Badge>
-                        )}
-                      </div>
+                    <p className="text-gray-400 dark:text-gray-400 text-sm mb-5 line-clamp-3 min-h-[48px] font-light">
+                      {app.additionalInfo || "No description available."}
+                    </p>
+                    <div className="mt-auto flex flex-wrap gap-1">
+                      {app.industry.map((ind, i) => (
+                        <span
+                          key={i}
+                          className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-xs font-normal px-2 py-0.5 rounded-full border border-gray-200 dark:border-gray-700"
+                        >
+                          {ind}
+                        </span>
+                      ))}
                     </div>
-
-                    {/* Key Benefits */}
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-700 mb-2">Key Benefits:</h4>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        {application.keyBenefits.slice(0, 3).map((benefit, index) => (
-                          <li key={index} className="flex items-start">
-                            <div className="w-1 h-1 bg-blue-500 rounded-full mt-2 mr-2 flex-shrink-0"></div>
-                            <span className="line-clamp-1">{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Related Products */}
-                    {application.relatedProducts && (
-                      <div>
-                        <h4 className="text-sm font-semibold text-gray-700 mb-2">Related Products:</h4>
-                        <div className="text-sm text-blue-600">
-                          {application.relatedProducts.slice(0, 2).join(', ')}
-                          {application.relatedProducts.length > 2 && ` +${application.relatedProducts.length - 2} more`}
-                        </div>
-                      </div>
-                    )}
                   </div>
-
-                  <div className="mt-6 pt-4 border-t">
-                    <Link href={`/applications/${application.id}`}>
-                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200 text-sm font-medium">
-                        Learn More
-                      </button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+                </Link>
+              </motion.div>
             ))}
-          </div>
+          </AnimatePresence>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-gray-100 py-16 px-4 md:px-8 lg:px-16">
-        <div className="max-w-screen-xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Don't See Your Industry?
-          </h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Our solutions are adaptable to various industries. Contact our experts to discuss your specific monitoring needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="inline-flex items-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200">
-              Contact Our Experts
-              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
-            <Link href="/products">
-              <button className="inline-flex items-center px-8 py-3 border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-800 font-medium rounded-lg transition-colors duration-200">
-                Browse Products
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
+        {filteredApps.length === 0 && (
+          <div className="text-center text-gray-300 mt-20 text-base">No applications found.</div>
+        )}
+      </div>
     </div>
   );
 }

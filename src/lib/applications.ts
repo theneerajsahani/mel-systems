@@ -1,327 +1,207 @@
 export interface Application {
   id: string;
   title: string;
-  description: string;
-  image: string;
-  category: 'industrial' | 'energy' | 'transportation' | 'marine' | 'construction' | 'agriculture' | 'mining' | 'infrastructure';
-  gradient: string;
-  featured: boolean;
-  industries: string[];
-  keyBenefits: string[];
-  relatedProducts?: string[];
+  subtitle?: string;
+  images?: string[];
+  requirements: string[];
+  solutions: string[];
+  benefits?: string[];
+  commercialBenefit?: string[];
+  highlights?: string[];
+  additionalInfo?: {
+    title: string;
+    content: string[];
+    image?: string;
+  };
+  industry: string[];
 }
 
 export const applications: Application[] = [
   {
-    id: 'concrete-slab-press',
-    title: 'Concrete Slab Press',
-    description: 'Advanced hydraulic monitoring for concrete slab pressing operations ensuring consistent quality and optimal performance.',
-    image: '/images/applications/concrete-slab-press.jpg',
-    category: 'construction',
-    gradient: 'from-gray-400 to-gray-600',
-    featured: true,
-    industries: ['Construction', 'Precast Concrete', 'Manufacturing'],
-    keyBenefits: [
-      'Hydraulic pressure monitoring',
-      'Quality consistency',
-      'Reduced downtime',
-      'Improved efficiency'
+    id: "chiller-compressors",
+    title: "Chiller Compressors",
+    subtitle: "Food Processing Continuous - Oil Condition Monitoring",
+    images: ["applications/chiller compressors/1.png"],
+    requirements: [" At one of the UK’s largest supermarket chilled storage centres,there are two twin screw compressors operating 24x7, to ensure the temperature is maintained within a controlled range. A catastrophic failure occurred on one of the two compressors and it was decided that a live condition based monitoring system would be an effective solution to mitigate future risk."],
+    solutions: ["Tan Delta worked closely with the engineering team on-site to examine all of the potential methods for monitoring these assemblies. It was quickly concluded that regular oil sampling would give a good indication of the condition of the critical compressors, however it would not be practical or cost effective"],
+    benefits: ["Tan Delta suggested the installation of their patented Oil Quality Sensor (OQSx) which would continuously monitor the overall oil condition and oil temperature. The sensor was wired back into the “MachineGuard” data logging and communication system, enabling the client to set warning and alarm levels within the system."],
+    commercialBenefit: [" The OQSx warning levels have pre-empted and helped prevent a second potential catastrophic failure. The site has seen financial savings of £74K per annum since adopting sensor technologies."],
+    highlights: [
+      "24/7 Monitoring: Continuos monitoring condition of critical chiller motors and compressors, without the need of oil samples.",
+      "Integrated Technology: Oil Quuality Sensor (OQSx) fitted into the compressors to continuosly monitor the overall oil condition.",
+      "Custom Setup: The OQSx was calibrated to match the specalist synthetic oils with an ammonia depletion advice.",
+      "Cost Effective: Cost of maintenance significantly reduced and unplanned downtime eradicated."
     ],
-    relatedProducts: ['Watchlog Pressure Sensors', 'Hydraulic Monitoring']
+    additionalInfo: {
+      title: "Service and Support from Tan Delta",
+      content: [
+        "At one of the UK’s largest supermarket chilled storage centres,there are two twin screw compressors operating 24x7, to ensure the temperature is maintained within a controlled range. A catastrophic failure occurred on one of the two compressors and it was decided that a live condition based monitoring system would be an effective solution to mitigate future risk.",
+      ],
+    },
+    industry: ["Food Processing"],
   },
   {
-    id: 'concrete-delivery-precision',
-    title: 'Concrete Delivery Precision',
-    description: 'Precision monitoring systems for concrete delivery processes with enhanced accuracy and consistency controls.',
-    image: '/images/applications/concrete-delivery.jpg',
-    category: 'construction',
-    gradient: 'from-orange-400 to-red-500',
-    featured: false,
-    industries: ['Construction', 'Ready Mix Concrete', 'Quality Control'],
-    keyBenefits: [
-      'Delivery precision monitoring',
-      'Quality assurance',
-      'Process optimization',
-      'Real-time feedback'
-    ],
-    relatedProducts: ['Pressure Sensors', 'Flow Monitoring']
+    id: "concrete",
+    title: "Concrete",
+    images: ["/images/concrete.jpg"],
+    requirements: ["Concrete requirement"],
+    solutions: ["Concrete solution"],
+    benefits: ["Concrete benefit"],
+    additionalInfo: "Concrete additional info",
+    industry: ["Concrete industry"],
   },
   {
-    id: 'flood-gate-pressure-monitoring',
-    title: 'Flood Gate Pressure Monitoring',
-    description: 'Critical pressure monitoring systems for flood control gates ensuring reliable operation during emergency situations.',
-    image: '/images/applications/flood-gate.jpg',
-    category: 'infrastructure',
-    gradient: 'from-blue-400 to-blue-600',
-    featured: true,
-    industries: ['Water Management', 'Infrastructure', 'Emergency Services'],
-    keyBenefits: [
-      'Emergency response readiness',
-      'Hydraulic system reliability',
-      'Remote monitoring',
-      'Preventive maintenance'
-    ],
-    relatedProducts: ['Watchlog Wireless Sensors', 'Remote Monitoring']
+    id: "concrete-delivery-precision",
+    title: "Concrete Delivery Precision",
+    images: ["/images/concrete-delivery-precision.jpg"],
+    requirements: ["Concrete Delivery Precision requirement"],
+    solutions: ["Concrete Delivery Precision solution"],
+    benefits: ["Concrete Delivery Precision benefit"],
+    additionalInfo: "Concrete Delivery Precision additional info",
+    industry: ["Concrete Delivery Precision industry"],
   },
   {
-    id: 'industrial-engine',
-    title: 'Industrial Engine',
-    description: 'Comprehensive engine monitoring solutions for industrial applications with oil quality and performance tracking.',
-    image: '/images/applications/industrial-engine.jpg',
-    category: 'industrial',
-    gradient: 'from-indigo-400 to-purple-500',
-    featured: true,
-    industries: ['Manufacturing', 'Industrial', 'Power Generation'],
-    keyBenefits: [
-      'Engine oil condition monitoring',
-      'Performance optimization',
-      'Predictive maintenance',
-      'Extended engine life'
-    ],
-    relatedProducts: ['OQSx-G2', 'Particle Pal', 'Oil Quality Sensors']
+    id: "electricity-transformers",
+    title: "Electricity Transformers",
+    images: ["/images/electricity-transformers.jpg"],
+    requirements: ["Electricity Transformers requirement"],
+    solutions: ["Electricity Transformers solution"],
+    benefits: ["Electricity Transformers benefit"],
+    additionalInfo: "Electricity Transformers additional info",
+    industry: ["Electricity Transformers industry"],
   },
   {
-    id: 'natural-gas-engine',
-    title: 'Natural Gas Engine',
-    description: 'Specialized monitoring systems for natural gas engines with focus on oil quality and combustion efficiency.',
-    image: '/images/applications/natural-gas-engine.jpg',
-    category: 'energy',
-    gradient: 'from-green-400 to-teal-500',
-    featured: false,
-    industries: ['Energy', 'Power Generation', 'Gas Processing'],
-    keyBenefits: [
-      'Combustion efficiency monitoring',
-      'Oil degradation tracking',
-      'Emission optimization',
-      'Fuel efficiency improvement'
-    ],
-    relatedProducts: ['Gas Engine Monitoring', 'OQSx-G2']
+  id: "engine-monitoring",
+  title: "Engine Monitoring",
+    images: ["/images/engine-monitoring.jpg"],
+    requirements: ["Engine Monitoring requirement"],
+    solutions: ["Engine Monitoring solution"],
+    benefits: ["Engine Monitoring benefit"],
+    additionalInfo: "Engine Monitoring additional info",
+    industry: ["Engine Monitoring industry"],
   },
   {
-    id: 'chiller-compressors',
-    title: 'Chiller Compressors',
-    description: 'Advanced monitoring for chiller compressor systems ensuring optimal cooling performance and energy efficiency.',
-    image: '/images/applications/chiller-compressors.jpg',
-    category: 'industrial',
-    gradient: 'from-cyan-400 to-blue-500',
-    featured: false,
-    industries: ['HVAC', 'Refrigeration', 'Industrial Cooling'],
-    keyBenefits: [
-      'Refrigerant monitoring',
-      'Energy efficiency optimization',
-      'Compressor protection',
-      'System reliability'
-    ],
-    relatedProducts: ['Temperature Sensors', 'Pressure Monitoring']
+    id: "environment-agency",
+    title: "Environment Agency",
+    images: ["/images/environment-agency.jpg"],
+    requirements: ["Environment Agency requirement"],
+    solutions: ["Environment Agency solution"],
+    benefits: ["Environment Agency benefit"],
+    additionalInfo: "Environment Agency additional info",
+    industry: ["Environment Agency industry"],
   },
   {
-    id: 'electricity-transformers',
-    title: 'Electricity Transformers',
-    description: 'Critical monitoring systems for electrical transformers with oil quality and thermal management capabilities.',
-    image: '/images/applications/transformers.jpg',
-    category: 'energy',
-    gradient: 'from-yellow-400 to-orange-500',
-    featured: true,
-    industries: ['Utilities', 'Power Distribution', 'Electrical Grid'],
-    keyBenefits: [
-      'Transformer oil monitoring',
-      'Thermal protection',
-      'Grid reliability',
-      'Asset protection'
-    ],
-    relatedProducts: ['OQSx-G2', 'Transformer Monitoring']
+    id: "gearbox",
+    title: "Gearbox",
+    images: ["/images/gearbox.jpg"],
+    requirements: ["Gearbox requirement"],
+    solutions: ["Gearbox solution"],
+    benefits: ["Gearbox benefit"],
+    additionalInfo: "Gearbox additional info",
+    industry: ["Gearbox industry"],
   },
   {
-    id: 'gearbox',
-    title: 'Gearbox',
-    description: 'Comprehensive gearbox monitoring solutions for industrial applications with vibration and oil quality analysis.',
-    image: '/images/applications/gearbox.jpg',
-    category: 'industrial',
-    gradient: 'from-purple-400 to-pink-500',
-    featured: false,
-    industries: ['Manufacturing', 'Industrial', 'Mechanical Systems'],
-    keyBenefits: [
-      'Gear oil condition monitoring',
-      'Vibration analysis',
-      'Wear particle detection',
-      'Predictive maintenance'
-    ],
-    relatedProducts: ['Particle Pal', 'Vibration Sensors']
+    id: "genset-engine",
+    title: "Genset Engine",
+    images: ["/images/genset-engine.jpg"],
+    requirements: ["Genset Engine requirement"],
+    solutions: ["Genset Engine solution"],
+    benefits: ["Genset Engine benefit"],
+    additionalInfo: "Genset Engine additional info",
+    industry: ["Genset Engine industry"],
   },
   {
-    id: 'engine-power-generation',
-    title: 'Engine - Power Generation',
-    description: 'Specialized monitoring for power generation engines ensuring reliable electricity production and optimal performance.',
-    image: '/images/applications/power-generation-engine.jpg',
-    category: 'energy',
-    gradient: 'from-red-400 to-pink-500',
-    featured: true,
-    industries: ['Power Generation', 'Utilities', 'Emergency Power'],
-    keyBenefits: [
-      'Continuous power reliability',
-      'Engine performance optimization',
-      'Fuel efficiency monitoring',
-      'Emission control'
-    ],
-    relatedProducts: ['Engine Monitoring Systems', 'OQSx-G2']
+    id: "heavy-lift-cranes",
+    title: "Heavy Lift Cranes",
+    images: ["/images/heavy-lift-cranes.jpg"],
+    requirements: ["Heavy Lift Cranes requirement"],
+    solutions: ["Heavy Lift Cranes solution"],
+    benefits: ["Heavy Lift Cranes benefit"],
+    additionalInfo: "Heavy Lift Cranes additional info",
+    industry: ["Heavy Lift Cranes industry"],
   },
   {
-    id: 'heavy-lift-cranes',
-    title: 'Heavy Lift Cranes',
-    description: 'Advanced monitoring systems for heavy lift cranes with hydraulic and mechanical component tracking.',
-    image: '/images/applications/heavy-lift-cranes.jpg',
-    category: 'construction',
-    gradient: 'from-orange-400 to-red-600',
-    featured: false,
-    industries: ['Construction', 'Heavy Industry', 'Port Operations'],
-    keyBenefits: [
-      'Hydraulic system monitoring',
-      'Load management',
-      'Safety assurance',
-      'Operational efficiency'
-    ],
-    relatedProducts: ['Crane Monitoring', 'Hydraulic Sensors']
+    id: "heavy-mining-equipment",
+    title: "Heavy Mining Equipment",
+    images: ["/images/heavy-mining-equipment.jpg"],
+    requirements: ["Heavy Mining Equipment requirement"],
+    solutions: ["Heavy Mining Equipment solution"],
+    benefits: ["Heavy Mining Equipment benefit"],
+    additionalInfo: "Heavy Mining Equipment additional info",
+    industry: ["Heavy Mining Equipment industry"],
   },
   {
-    id: 'heavy-mining-equipment',
-    title: 'Heavy Mining Equipment',
-    description: 'Robust monitoring solutions for heavy mining equipment operating in harsh environments with extreme conditions.',
-    image: '/images/applications/mining-equipment.jpg',
-    category: 'mining',
-    gradient: 'from-yellow-600 to-orange-600',
-    featured: true,
-    industries: ['Mining', 'Excavation', 'Material Handling'],
-    keyBenefits: [
-      'Equipment protection',
-      'Harsh environment monitoring',
-      'Downtime reduction',
-      'Maintenance optimization'
-    ],
-    relatedProducts: ['Heavy Duty Sensors', 'Mining Equipment Monitoring']
+    id: "hydraulic",
+    title: "Hydraulic",
+    images: ["/images/hydraulic.jpg"],
+    requirements: ["Hydraulic requirement"],
+    solutions: ["Hydraulic solution"],
+    benefits: ["Hydraulic benefit"],
+    additionalInfo: "Hydraulic additional info",
+    industry: ["Hydraulic industry"],
   },
   {
-    id: 'hydraulics',
-    title: 'Hydraulics',
-    description: 'Comprehensive hydraulic system monitoring with pressure, temperature, and fluid quality analysis.',
-    image: '/images/applications/hydraulics.jpg',
-    category: 'industrial',
-    gradient: 'from-blue-500 to-purple-600',
-    featured: false,
-    industries: ['Industrial', 'Construction', 'Manufacturing'],
-    keyBenefits: [
-      'Hydraulic fluid monitoring',
-      'Pressure optimization',
-      'System efficiency',
-      'Component protection'
-    ],
-    relatedProducts: ['Hydraulic Monitoring', 'Pressure Sensors']
+    id: "large-marine-engine",
+    title: "Large Marine Engine",
+    images: ["/images/large-marine-engine.jpg"],
+    requirements: ["Large Marine Engine requirement"],
+    solutions: ["Large Marine Engine solution"],
+    benefits: ["Large Marine Engine benefit"],
+    additionalInfo: "Large Marine Engine additional info",
+    industry: ["Large Marine Engine industry"],
   },
   {
-    id: 'engine-shipping-vessel',
-    title: 'Engine - Shipping Vessel',
-    description: 'Marine engine monitoring systems for shipping vessels with salt water resistance and remote capabilities.',
-    image: '/images/applications/shipping-vessel-engine.jpg',
-    category: 'marine',
-    gradient: 'from-blue-400 to-cyan-500',
-    featured: true,
-    industries: ['Maritime', 'Shipping', 'Marine Transport'],
-    keyBenefits: [
-      'Marine environment protection',
-      'Engine reliability',
-      'Remote monitoring',
-      'Fuel efficiency'
-    ],
-    relatedProducts: ['Marine Monitoring', 'OQSx-G2 HAZ']
+    id: "natural-gas-engine",
+    title: "Natural Gas Engine",
+    images: ["/images/natural-gas-engine.jpg"],
+    requirements: ["Natural Gas Engine requirement"],
+    solutions: ["Natural Gas Engine solution"],
+    benefits: ["Natural Gas Engine benefit"],
+    additionalInfo: "Natural Gas Engine additional info",
+    industry: ["Natural Gas Engine industry"],
   },
   {
-    id: 'railway-locomotive',
-    title: 'Railway Locomotive',
-    description: 'Specialized monitoring systems for railway locomotives with engine and transmission monitoring capabilities.',
-    image: '/images/applications/railway-locomotive.jpg',
-    category: 'transportation',
-    gradient: 'from-green-500 to-blue-600',
-    featured: false,
-    industries: ['Railway', 'Transportation', 'Logistics'],
-    keyBenefits: [
-      'Locomotive engine monitoring',
-      'Transmission protection',
-      'Schedule reliability',
-      'Maintenance planning'
-    ],
-    relatedProducts: ['Railway Monitoring', 'Engine Sensors']
+    id: "railway-locomotive",
+    title: "Railway Locomotive",
+    images: ["/images/railway-locomotive.jpg"],
+    requirements: ["Railway Locomotive requirement"],
+    solutions: ["Railway Locomotive solution"],
+    benefits: ["Railway Locomotive benefit"],
+    additionalInfo: "Railway Locomotive additional info",
+    industry: ["Railway Locomotive industry"],
   },
   {
-    id: 'sheffield-forgemasters',
-    title: 'Sheffield Forgemasters',
-    description: 'Industrial forging operation monitoring with heavy machinery and hydraulic system oversight.',
-    image: '/images/applications/sheffield-forgemasters.jpg',
-    category: 'industrial',
-    gradient: 'from-red-500 to-orange-600',
-    featured: false,
-    industries: ['Heavy Industry', 'Forging', 'Manufacturing'],
-    keyBenefits: [
-      'Heavy machinery monitoring',
-      'Process optimization',
-      'Quality assurance',
-      'Equipment protection'
-    ],
-    relatedProducts: ['Industrial Monitoring', 'Heavy Duty Systems']
+    id: "sheffield-forgemasters",
+    title: "Sheffield Forgemaster's",
+    images: ["/images/sheffield-forgemasters.jpg"],
+    requirements: ["Sheffield Forgemaster's requirement"],
+    solutions: ["Sheffield Forgemaster's solution"],
+    benefits: ["Sheffield Forgemaster's benefit"],
+    additionalInfo: "Sheffield Forgemaster's additional info",
+    industry: ["Sheffield Forgemaster's industry"],
   },
   {
-    id: 'gearbox-wind-turbine',
-    title: 'Gearbox - Wind Turbine',
-    description: 'Specialized wind turbine gearbox monitoring with vibration analysis and oil quality tracking.',
-    image: '/images/applications/wind-turbine-gearbox.jpg',
-    category: 'energy',
-    gradient: 'from-green-400 to-teal-600',
-    featured: true,
-    industries: ['Renewable Energy', 'Wind Power', 'Green Technology'],
-    keyBenefits: [
-      'Wind turbine reliability',
-      'Gearbox protection',
-      'Energy production optimization',
-      'Maintenance planning'
-    ],
-    relatedProducts: ['Wind Turbine Monitoring', 'Gearbox Sensors']
+    id: "wind-turbine-gearbox",
+    title: "Wind Turbine Gearbox",
+    images: ["/images/wind-turbine-gearbox.jpg"],
+    requirements: ["Wind Turbine Gearbox requirement"],
+    solutions: ["Wind Turbine Gearbox solution"],
+    benefits: ["Wind Turbine Gearbox benefit"],
+    additionalInfo: "Wind Turbine Gearbox additional info",
+    industry: ["Wind Turbine Gearbox industry"],
   },
   {
-    id: 'work-boat-engine-monitoring',
-    title: 'Work Boat - Engine Monitoring Kit',
-    description: 'Complete engine monitoring kit for work boats with marine-grade sensors and remote monitoring capabilities.',
-    image: '/images/applications/work-boat-engine.jpg',
-    category: 'marine',
-    gradient: 'from-blue-500 to-teal-500',
-    featured: false,
-    industries: ['Marine Services', 'Offshore', 'Port Operations'],
-    keyBenefits: [
-      'Marine engine protection',
-      'Remote diagnostics',
-      'Operational efficiency',
-      'Maintenance scheduling'
-    ],
-    relatedProducts: ['Marine Engine Kit', 'Boat Monitoring']
-  }
+    id: "work-boat-engine-monitoring-kit",
+    title: "Work Boat Engine Monitoring Kit",
+    images: ["/images/work-boat-engine-monitoring-kit.jpg"],
+    requirements: ["Work Boat Engine Monitoring Kit requirement"],
+    solutions: ["Work Boat Engine Monitoring Kit solution"],
+    benefits: ["Work Boat Engine Monitoring Kit benefit"],
+    additionalInfo: "Work Boat Engine Monitoring Kit additional info",
+    industry: ["Work Boat Engine Monitoring Kit industry"],
+  },
 ];
 
-// Helper functions
-export const getFeaturedApplications = (): Application[] => {
-  return applications.filter(app => app.featured);
-};
-
-export const getApplicationsByCategory = (category: Application['category']): Application[] => {
-  return applications.filter(app => app.category === category);
-};
-
-export const getApplicationById = (id: string): Application | undefined => {
+export function getApplicationById(id: string) {
   return applications.find(app => app.id === id);
-};
-
-export const getAllCategories = (): Application['category'][] => {
-  return ['industrial', 'energy', 'transportation', 'marine', 'construction', 'agriculture', 'mining', 'infrastructure'];
-};
-
-export const getApplicationsByIndustry = (industry: string): Application[] => {
-  return applications.filter(app => 
-    app.industries.some(ind => ind.toLowerCase().includes(industry.toLowerCase()))
-  );
-};
+}

@@ -4,12 +4,12 @@ import { useState, useCallback, memo } from "react";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { findCurrentNavigation } from "@/lib/navigation";
+import { findCurrentNavigationBySlugs, buildHrefFromSlugs } from "@/lib/navigation";
 import { Button } from "@/components/ui/button";
-    import { NavigationItemComponent } from "./NavigationItem";
-    import { MobileSidebar } from "./MobileSidebar";
-    import { useExpandedItems } from "./hooks/useExpandedItems";
-    import { SIDEBAR_STYLES } from "./styles";
+import { NavigationItemComponent } from "./NavigationItem";
+import { MobileSidebar } from "./MobileSidebar";
+import { useExpandedItems } from "./hooks/useExpandedItems";
+import { SIDEBAR_STYLES } from "./styles";
 
 interface ProductSidebarProps {
   className?: string;
@@ -17,11 +17,13 @@ interface ProductSidebarProps {
 
 const ProductSidebar = memo(({ className }: ProductSidebarProps) => {
   const pathname = usePathname();
-  const { category } = findCurrentNavigation(pathname);
+  // Parse the current path into slugs (assuming /products/slug1/slug2...)
+  const slugPath = pathname.replace(/^\/products\/?/, "").split("/").filter(Boolean);
+  const { category } = findCurrentNavigationBySlugs(slugPath);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Custom hook for managing expanded items
-  const { expandedItems, toggleExpanded } = useExpandedItems(category, pathname);
+  const { expandedItems, toggleExpanded } = useExpandedItems(category, slugPath);
 
   const handleCloseMobile = useCallback(() => {
     setIsMobileMenuOpen(false);
@@ -66,10 +68,11 @@ const ProductSidebar = memo(({ className }: ProductSidebarProps) => {
           <nav className="space-y-1" role="navigation" aria-label={`${category.label} products`}>
             {category.children.map((item, index) => (
               <NavigationItemComponent
-                key={`${item.href || item.label}-${index}`}
+                key={`${item.slug}-${index}`}
                 item={item}
                 level={0}
-                currentPath={pathname}
+                slugPath={[category.slug, item.slug]}
+                currentSlugPath={slugPath}
                 expandedItems={expandedItems}
                 toggleExpanded={toggleExpanded}
               />
@@ -80,7 +83,7 @@ const ProductSidebar = memo(({ className }: ProductSidebarProps) => {
 
       <MobileSidebar
         category={category}
-        currentPath={pathname}
+        currentSlugPath={slugPath}
         isOpen={isMobileMenuOpen}
         onClose={handleCloseMobile}
         expandedItems={expandedItems}

@@ -11,7 +11,8 @@
     "deploy": "vercel --prod",
     "deploy-preview": "vercel",
     "generate:product": "node scripts/generate-product-page.js",
-    "generate:products:bulk": "node scripts/bulk-generate-products.js"
+    "generate:products:bulk": "node scripts/bulk-generate-products.js",
+    "export": "next export"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.7",
@@ -23,7 +24,7 @@
     "framer-motion": "^12.18.1",
     "gsap": "^3.13.0",
     "lucide-react": "^0.513.0",
-    "next": "15.3.3",
+    "next": "^15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.3.0"

@@ -10,38 +10,34 @@ import TechnicalSpecsTable from "@/components/TechnicalSpecsTable"
 import OrderCodesTable from "@/components/OrderCodesTable"
 import ProductLayout from "@/components/ProductLayout"
 import ProductGrid from "@/components/ProductGrid"
-import { ProductData, watchlogUSBDualSensorData, watchlogUSBSoftwareData, watchlogBluetoothSensorsGaugesAndMobileAppsData, watchlogBluetoothPressureTempSensorsCategoryData, watchlogBluetoothPlusPressureLevelForceSensorApp12SensorsCategoryData } from "@/lib/oil-conditioning-products"
+import { findCurrentNavigationBySlugs, buildHrefFromSlugs } from "@/lib/navigation"
+
+import type { ProductData as SystemsProductData } from '@/lib/systems-products'
 
 interface DynamicProductPageProps {
-  productData: ProductData;
+  productData: SystemsProductData;
 }
 
-// Helper: aggregate all product and category data for lookup by ID
-const allProducts = [
-  watchlogUSBDualSensorData,
-  watchlogUSBSoftwareData,
-  watchlogBluetoothSensorsGaugesAndMobileAppsData,
-  watchlogBluetoothPressureTempSensorsCategoryData,
-  watchlogBluetoothPlusPressureLevelForceSensorApp12SensorsCategoryData,
-  // Add other product data exports here as needed
-];
-
-function getProductGridItemsByIds(ids: string[]) {
-  return ids
-    .map(id => allProducts.find(p => p.id === id))
-    .filter((product): product is ProductData => !!product)
-    .map(product => {
-      // Use explicit href property if present, otherwise fallback
-      const explicitHref = (product as any).href;
-      return {
-        name: product.name,
-        description: product.description?.[0] || "",
-        image: product.images?.[0]?.src || "",
-        href: explicitHref || `/products/oil-conditioning/hydrotechnik/${product.id}`,
-        category: product.category || "",
-        features: product.features || []
-      };
-    });
+function buildBreadcrumbsFromSlugPath(slugPath: string[]) {
+  // Always start with Products
+  const breadcrumbs: { label: string; href?: string }[] = [
+    { label: "Products", href: "/products" }
+  ];
+  let currentSlugs: string[] = [];
+  let nodes = require("@/lib/navigation").productNavigation;
+  for (let i = 0; i < slugPath.length; i++) {
+    const slug = slugPath[i];
+    const node = (nodes || []).find((n: any) => n.slug === slug);
+    if (!node) break;
+    currentSlugs.push(slug);
+    if (i === slugPath.length - 1) {
+      breadcrumbs.push({ label: node.label });
+    } else {
+      breadcrumbs.push({ label: node.label, href: buildHrefFromSlugs(currentSlugs) });
+    }
+    nodes = node.children;
+  }
+  return breadcrumbs;
 }
 
 export default function DynamicProductPage({ productData }: DynamicProductPageProps) {
@@ -49,8 +45,11 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
     const [isImageZoomed, setIsImageZoomed] = useState(false)
     const [showAllFeatures, setShowAllFeatures] = useState(false)
 
+    // Fallback to empty array if slugPath is missing
+    const breadcrumbItems = buildBreadcrumbsFromSlugPath(productData.slugPath || []);
+
     return (
-        <ProductLayout breadcrumbItems={productData.breadcrumbItems}>
+        <ProductLayout breadcrumbItems={breadcrumbItems}>
             {/* 1. TITLE SECTION */}
             <div className="mb-8">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -164,31 +163,7 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                 </Card>
             )}
 
-            {/* 4. FEATURES SECTION */}
-            {productData.features && productData.features.length > 0 ? (
-                <Card className="mb-8 shadow-lg border-0">
-                    <CardContent className="p-6 lg:p-8">
-                        <div className="flex items-center mb-6">
-                            <div className="w-1 h-8 bg-gradient-to-b from-green-500 to-green-600 rounded-full mr-4"></div>
-                            <h2 className="text-2xl font-bold text-gray-900">Key Features</h2>
-                        </div>
-                        <div className="space-y-3">
-                            {productData.features.map((feature: string, index: number) => (
-                                <div key={index} className="flex items-start gap-3 py-1">
-                                    <div className="flex-shrink-0 w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                                    <div className="min-w-0 flex-1">
-                                        <p className="text-gray-700 text-base leading-relaxed">
-                                            {feature}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </CardContent>
-                </Card>
-            ) : null}
-
-            {/* 5. ADDITIONAL SECTIONS */}
+            {/* 4. ADDITIONAL SECTIONS */}
             {productData.additionalSections && productData.additionalSections.length > 0 && (
                 <div className="space-y-6 lg:space-y-8 mb-8">
                     {productData.additionalSections.map((section, index) => (
@@ -201,30 +176,27 @@ export default function DynamicProductPage({ productData }: DynamicProductPagePr
                                             <h2 className="text-2xl font-bold text-gray-900">{section.title}</h2>
                                         </div>
                                     )}
-                                    {section.content && section.content.startsWith('PRODUCT_GRID:') &&
-                                     productData.categoryProductIds &&
-                                     <ProductGrid products={getProductGridItemsByIds(productData.categoryProductIds)} />}
-                                    {section.content && !section.content.startsWith('PRODUCT_GRID:') ? (
+                                    {section.content && (
                                         <div className="prose prose-lg prose-gray max-w-none mb-6">
                                             {section.content.split('\n').map((paragraph, pIndex) => (
                                                 <p key={pIndex} className="text-gray-700 leading-relaxed mb-4 text-base lg:text-lg">
                                                     {paragraph}
                                                 </p>
                                             ))}
-                                            {section.videoEmbedUrl && (
-                                                <div className="w-full aspect-w-16 aspect-h-9 my-6">
-                                                    <iframe
-                                                        src={section.videoEmbedUrl}
-                                                        title="YouTube video"
-                                                        frameBorder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                        allowFullScreen
-                                                        className="w-full h-96 rounded-lg shadow-lg"
-                                                    ></iframe>
-                                                </div>
-                                            )}
                                         </div>
-                                    ) : null}
+                                    )}
+                                    {section.videoEmbedUrl && (
+                                        <div className="w-full aspect-w-16 aspect-h-9 my-6">
+                                            <iframe
+                                                src={section.videoEmbedUrl}
+                                                title="Embedded video"
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                                className="w-full h-96 rounded-lg shadow-lg"
+                                            ></iframe>
+                                        </div>
+                                    )}
                                 </div>
                                 {section.image && (
                                     <div className="border-t border-gray-100">

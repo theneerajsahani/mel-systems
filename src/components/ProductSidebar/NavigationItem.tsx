@@ -2,44 +2,43 @@ import { memo, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { NavigationItem } from "@/lib/navigation";
+import { NavigationItem, buildHrefFromSlugs } from "@/lib/navigation";
 import { SIDEBAR_STYLES } from "./styles";
 
 interface NavigationItemProps {
   item: NavigationItem;
   level: number;
-  currentPath: string;
+  slugPath: string[];
+  currentSlugPath: string[];
   expandedItems: Set<string>;
   toggleExpanded: (path: string) => void;
   onItemClick?: () => void;
 }
 
-// Helper function to check if an item or its children are active
-function isItemOrChildrenActive(item: NavigationItem, currentPath: string): boolean {
-  if (item.href === currentPath) return true;
+function isItemOrChildrenActive(item: NavigationItem, slugPath: string[], currentSlugPath: string[]): boolean {
+  if (slugPath.join("/") === currentSlugPath.slice(0, slugPath.length).join("/")) return true;
   if (!item.children) return false;
-  
-  return item.children.some(child => isItemOrChildrenActive(child, currentPath));
+  return item.children.some(child => isItemOrChildrenActive(child, [...slugPath, child.slug], currentSlugPath));
 }
 
 export const NavigationItemComponent = memo<NavigationItemProps>(({ 
   item, 
   level, 
-  currentPath, 
+  slugPath,
+  currentSlugPath,
   expandedItems,
   toggleExpanded,
   onItemClick
 }) => {
   const hasChildren = item.children && item.children.length > 0;
-  const isActive = item.href === currentPath;
-  const isParentOfActive = hasChildren && isItemOrChildrenActive(item, currentPath);
-  const itemKey = item.href || item.label;
-  
-  // Smart expansion logic
+  const isActive = slugPath.join("/") === currentSlugPath.join("/");
+  const isParentOfActive = hasChildren && isItemOrChildrenActive(item, slugPath, currentSlugPath);
+  const itemKey = slugPath.join("/");
+
   const shouldExpand = useMemo(() => {
-    if (level === 0) return true; // Always expand brands (level 0)
-    if (isParentOfActive) return true; // Expand if contains active item
-    if (expandedItems.has(itemKey)) return true; // Manual expansion
+    if (level === 0) return true;
+    if (isParentOfActive) return true;
+    if (expandedItems.has(itemKey)) return true;
     return false;
   }, [level, isParentOfActive, expandedItems, itemKey]);
 
@@ -53,18 +52,15 @@ export const NavigationItemComponent = memo<NavigationItemProps>(({
     }
   }, [hasChildren, toggleExpanded, itemKey]);
 
-  // Enhanced styling for different levels and states
   const getItemStyles = () => {
     const levelStyle = SIDEBAR_STYLES.navigationItem.level[level as keyof typeof SIDEBAR_STYLES.navigationItem.level] 
       || SIDEBAR_STYLES.navigationItem.level.default;
-    
     const stateStyles = [
       SIDEBAR_STYLES.navigationItem.states.hover,
       SIDEBAR_STYLES.navigationItem.states.focus,
       isActive && SIDEBAR_STYLES.navigationItem.states.active,
       isParentOfActive && !isActive && SIDEBAR_STYLES.navigationItem.states.parentOfActive,
     ].filter(Boolean).join(" ");
-    
     return cn(
       SIDEBAR_STYLES.navigationItem.base,
       levelStyle,
@@ -87,19 +83,14 @@ export const NavigationItemComponent = memo<NavigationItemProps>(({
           aria-level={level + 1}
           aria-selected={isActive}
         >
-          {item.href ? (
-            <Link 
-              href={item.href} 
-              className="flex-1 flex items-center min-w-0 focus:outline-none" 
-              onClick={onItemClick}
-              tabIndex={-1} // Parent div handles focus
-            >
-              <span className="truncate" title={item.label}>{item.label}</span>
-            </Link>
-          ) : (
-            <span className="flex-1 truncate" title={item.label}>{item.label}</span>
-          )}
-          
+          <Link 
+            href={buildHrefFromSlugs(slugPath)}
+            className="flex-1 flex items-center min-w-0 focus:outline-none" 
+            onClick={onItemClick}
+            tabIndex={-1}
+          >
+            <span className="truncate" title={item.label}>{item.label}</span>
+          </Link>
           <button
             onClick={handleToggle}
             className={SIDEBAR_STYLES.expandButton}
@@ -113,7 +104,6 @@ export const NavigationItemComponent = memo<NavigationItemProps>(({
             )}
           </button>
         </div>
-        
         {isExpanded && (
           <div 
             className={SIDEBAR_STYLES.childrenContainer}
@@ -122,10 +112,11 @@ export const NavigationItemComponent = memo<NavigationItemProps>(({
           >
             {item.children!.map((child, index) => (
               <NavigationItemComponent
-                key={`${child.href || child.label}-${index}`}
+                key={`${child.slug}-${index}`}
                 item={child}
                 level={level + 1}
-                currentPath={currentPath}
+                slugPath={[...slugPath, child.slug]}
+                currentSlugPath={currentSlugPath}
                 onItemClick={onItemClick}
                 expandedItems={expandedItems}
                 toggleExpanded={toggleExpanded}
@@ -145,18 +136,14 @@ export const NavigationItemComponent = memo<NavigationItemProps>(({
       aria-level={level + 1}
       aria-selected={isActive}
     >
-      {item.href ? (
-        <Link 
-          href={item.href} 
-          className="block truncate w-full focus:outline-none" 
-          onClick={onItemClick} 
-          title={item.label}
-        >
-          {item.label}
-        </Link>
-      ) : (
-        <span className="block truncate" title={item.label}>{item.label}</span>
-      )}
+      <Link 
+        href={buildHrefFromSlugs(slugPath)}
+        className="block truncate w-full focus:outline-none" 
+        onClick={onItemClick} 
+        title={item.label}
+      >
+        {item.label}
+      </Link>
     </div>
   );
 });

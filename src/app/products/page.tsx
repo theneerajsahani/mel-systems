@@ -8,6 +8,8 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
+import { tandeltaCategoryData, hydrotechnikCategoryData, filtertechnikCategoryData, evamoSmartBubbleSystemData } from "@/lib/oil-conditioning-products"
+import { rearViewCamerasCategoryData, frontCameraSystemCategoryData, digitalCamerasCategoryData, monitorsCategoryData, digitalMonitorsCategoryData, forkCamerasCategoryData, videoControlUnitsCategoryData, craneCamerasCategoryData, transmissionsCategoryData } from "@/lib/systems-products"
 
 export default function products() {
     return (
@@ -53,7 +55,7 @@ export default function products() {
                             <Carousel 
                                 opts={{
                                     align: "start",
-                                    loop: true,
+                                    loop: false,
                                     slidesToScroll: 1,
                                     skipSnaps: false,
                                     dragFree: true,
@@ -61,42 +63,42 @@ export default function products() {
                                 className="w-full"
                             >
                                 <CarouselContent className="-ml-2 sm:-ml-4">
-                                    <CarouselItem className="pl-2 sm:pl-4 basis-full sm:basis-1/3">
-                                        <div className="h-full">
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
                                             <ProductCard 
-                                                image="/products/oil conditioning/Tandelta/OQSx-G2 Oil Quality Sensor/OQSx-G2 Oil Quality Sensor-1.jpg"
-                                                name="Tandelta Oil Quality Sensors"
+                                                image={tandeltaCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name={tandeltaCategoryData.name}
                                             />
                                         </div>
                                     </CarouselItem>
-                                    <CarouselItem className="pl-2 sm:pl-4 basis-full sm:basis-1/3">
-                                        <div className="h-full">
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
                                             <ProductCard 
-                                                image="/products/oil conditioning/Hydrotechnik/Watchlog-USB/Wactchlog USB.png"
-                                                name="Hydrotechnik Monitoring Systems"
+                                                image={hydrotechnikCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name={hydrotechnikCategoryData.name}
                                             />
                                         </div>
                                     </CarouselItem>
-                                    <CarouselItem className="pl-2 sm:pl-4 basis-full sm:basis-1/3">
-                                        <div className="h-full">
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
                                             <ProductCard 
-                                                image="/products/oil conditioning/Filtertechnik/S120 Digital Imaging Particle Counter/S120 Digital Imaging Particle Counter.png"
-                                                name="Filtertechnik Particle Counters"
+                                                image={filtertechnikCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name={filtertechnikCategoryData.name}
                                             />
                                         </div>
                                     </CarouselItem>
-                                    <CarouselItem className="pl-2 sm:pl-4 basis-full sm:basis-1/3">
-                                        <div className="h-full">
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
                                             <ProductCard 
-                                                image="/products/oil conditioning/Tandelta/MOT – Mobile Oil Test Kit/MOT – Mobile Oil Test Kit-1.png"
-                                                name="Mobile Oil Test Kits"
+                                                image={evamoSmartBubbleSystemData.images?.[0]?.src || "/fallback.jpg"}
+                                                name={evamoSmartBubbleSystemData.name}
                                             />
                                         </div>
                                     </CarouselItem>
                                 </CarouselContent>
                                 <div className="hidden sm:block">
-                                    <CarouselPrevious className="absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border-2 shadow-lg" />
-                                    <CarouselNext className="absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border-2 shadow-lg" />
+                                    <CarouselPrevious className="" />
+                                    <CarouselNext className="" />
                                 </div>
                             </Carousel>
                         </div>
@@ -128,7 +130,7 @@ export default function products() {
                             <Carousel 
                                 opts={{
                                     align: "start",
-                                    loop: true,
+                                    loop: false,
                                     slidesToScroll: 1,
                                     skipSnaps: false,
                                     dragFree: true,
@@ -136,42 +138,82 @@ export default function products() {
                                 className="w-full"
                             >
                                 <CarouselContent className="-ml-2 sm:-ml-4">
-                                    <CarouselItem className="pl-2 sm:pl-4 basis-full sm:basis-1/3">
-                                        <div className="h-full">
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
                                             <ProductCard 
-                                                image="/products/systems/Motec/Rear view cameras/MC7180N/MC7180N.png"
-                                                name="Rear View Camera Systems"
+                                                image={rearViewCamerasCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name="Rear View Camera"
                                             />
                                         </div>
                                     </CarouselItem>
-                                    <CarouselItem className="pl-2 sm:pl-4 basis-full sm:basis-1/3">
-                                        <div className="h-full">
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
                                             <ProductCard 
-                                                image="/products/systems/Motec/Front camera system/MC3050B-4-VKMS/MC3050B-4-VKMS.png"
-                                                name="Front Camera Systems"
+                                                image={frontCameraSystemCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name="Front Camera"
                                             />
                                         </div>
                                     </CarouselItem>
-                                    <CarouselItem className="pl-2 sm:pl-4 basis-full sm:basis-1/3">
-                                        <div className="h-full">
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
                                             <ProductCard 
-                                                image="/products/systems/Motec/Video control units/MVCU1600/MVCU1600.png"
-                                                name="Video Control Units"
+                                                image={digitalCamerasCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name="Digital Camera"
                                             />
                                         </div>
                                     </CarouselItem>
-                                    <CarouselItem className="pl-2 sm:pl-4 basis-full sm:basis-1/3">
-                                        <div className="h-full">
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
                                             <ProductCard 
-                                                image="/products/systems/Motec/Digital Monitors/MDDE1122/MDDE1122.png"
-                                                name="Digital Monitors"
+                                                image={monitorsCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name="Monitor"
+                                            />
+                                        </div>
+                                    </CarouselItem>
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
+                                            <ProductCard 
+                                                image={digitalMonitorsCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name="Digital Monitor"
+                                            />
+                                        </div>
+                                    </CarouselItem>
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
+                                            <ProductCard 
+                                                image={forkCamerasCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name="Fork Camera"
+                                            />
+                                        </div>
+                                    </CarouselItem>
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="h-[320px] w-[280px]">
+                                            <ProductCard 
+                                                image={videoControlUnitsCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name="Video Control Unit"
+                                            />
+                                        </div>
+                                    </CarouselItem>
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="">
+                                            <ProductCard 
+                                                image={craneCamerasCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name="Crane Camera"
+                                            />
+                                        </div>
+                                    </CarouselItem>
+                                    <CarouselItem className="pl-4 sm:pl-10">
+                                        <div className="">
+                                            <ProductCard 
+                                                image={transmissionsCategoryData.images?.[0]?.src || "/fallback.jpg"}
+                                                name="Transmissions"
                                             />
                                         </div>
                                     </CarouselItem>
                                 </CarouselContent>
                                 <div className="hidden sm:block">
-                                    <CarouselPrevious className="absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border-2 shadow-lg" />
-                                    <CarouselNext className="absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border-2 shadow-lg" />
+                                    <CarouselPrevious className="" />
+                                    <CarouselNext className="" />
                                 </div>
                             </Carousel>
                         </div>

@@ -1,36 +1,32 @@
 import { useMemo, useState, useCallback } from "react";
 import { NavigationItem, ProductCategory } from "@/lib/navigation";
 
-// Helper function to check if an item or its children are active
-function isItemOrChildrenActive(item: NavigationItem, currentPath: string): boolean {
-  if (item.href === currentPath) return true;
+// Helper function to check if an item or its children are active by slug path
+function isItemOrChildrenActive(item: NavigationItem, slugPath: string[], currentSlugPath: string[]): boolean {
+  if (slugPath.join("/") === currentSlugPath.slice(0, slugPath.length).join("/")) return true;
   if (!item.children) return false;
-  
-  return item.children.some(child => isItemOrChildrenActive(child, currentPath));
+  return item.children.some(child => isItemOrChildrenActive(child, [...slugPath, child.slug], currentSlugPath));
 }
 
-export function useExpandedItems(category: ProductCategory | undefined, currentPath: string) {
+export function useExpandedItems(category: ProductCategory | undefined, currentSlugPath: string[]) {
   const autoExpandedItems = useMemo(() => {
     if (!category) return new Set<string>();
-    
     const expanded = new Set<string>();
-    
-    // Auto-expand items that contain the current path
-    const addParentPaths = (items: NavigationItem[]) => {
+    // Auto-expand items that contain the current slug path
+    const addParentPaths = (items: NavigationItem[], parentSlugPath: string[]) => {
       items.forEach(item => {
-        if (isItemOrChildrenActive(item, currentPath)) {
-          expanded.add(item.href || item.label);
+        const itemSlugPath = [...parentSlugPath, item.slug];
+        if (isItemOrChildrenActive(item, itemSlugPath, currentSlugPath)) {
+          expanded.add(itemSlugPath.join("/"));
         }
-        
         if (item.children) {
-          addParentPaths(item.children);
+          addParentPaths(item.children, itemSlugPath);
         }
       });
     };
-    
-    addParentPaths(category.children);
+    addParentPaths(category.children || [], [category.slug]);
     return expanded;
-  }, [category, currentPath]);
+  }, [category, currentSlugPath]);
 
   const [manuallyExpandedItems, setManuallyExpandedItems] = useState<Set<string>>(new Set());
 
