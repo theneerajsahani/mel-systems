@@ -60,7 +60,7 @@ function buildBreadcrumbsFromSlugPath(slugPath: string[]) {
         href: buildHrefFromSlugs(currentSlugs),
       });
     }
-    nodes = node.children;
+    nodes = node.children ?? [];
   }
   return breadcrumbs;
 }

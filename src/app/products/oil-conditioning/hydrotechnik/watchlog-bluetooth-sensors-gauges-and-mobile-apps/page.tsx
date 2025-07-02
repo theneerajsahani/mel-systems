@@ -1,6 +1,6 @@
 "use client";
 import DynamicProductPage from "@/components/DynamicProductPage";
-import { watchlogBluetoothSensorsGaugesAndMobileAppsData } from "@/lib/oil-conditioning-products";
+import { watchlogBluetoothSensorsGaugesAndMobileAppsCategoryData } from "@/lib/oil-conditioning-products";
 
 export default function Page() {
   return (

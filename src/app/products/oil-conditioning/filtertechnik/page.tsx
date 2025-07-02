@@ -247,7 +247,7 @@ export default function FiltertechnikPage() {
                 className="overflow-hidden group shadow-md border-0"
               >
                 <Link
-                  href={`${product.href ?? `/products/oil-conditioning/filtertechnik/${product.id}` ?? "#"}`}
+                  href={product.href ? product.href : `/products/oil-conditioning/filtertechnik/${product.id}`}
                   className="block"
                 >
                   <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
@@ -297,7 +297,7 @@ export default function FiltertechnikPage() {
             {filteredProducts.map((product) => (
               <Link
                 key={product.id}
-                href={product.href}
+                href={product.href ? product.href : `/products/oil-conditioning/filtertechnik/${product.id}`}
                 className="block group"
               >
                 <Card className="border-2 hover:border-green-500/50 transition-all duration-300 group-hover:shadow-lg overflow-hidden">

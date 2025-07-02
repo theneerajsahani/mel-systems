@@ -64,7 +64,7 @@ export const MobileSidebar = memo<MobileSidebarProps>(
               role="navigation"
               aria-label={`${category.label} mobile navigation`}
             >
-              {category.children.map((item, index) => (
+              {category.children?.map((item, index) => (
                 <NavigationItemComponent
                   key={`mobile-${item.slug}-${index}`}
                   item={item}

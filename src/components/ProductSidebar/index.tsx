@@ -79,7 +79,7 @@ const ProductSidebar = memo(({ className }: ProductSidebarProps) => {
             role="navigation"
             aria-label={`${category.label} products`}
           >
-            {category.children.map((item, index) => (
+            {category.children?.map((item, index) => (
               <NavigationItemComponent
                 key={`${item.slug}-${index}`}
                 item={item}

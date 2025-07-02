@@ -22,7 +22,11 @@ export default function DynamicApplicationPage({
           <div className="mb-8 flex flex-col md:flex-row gap-8 items-center">
             <div className="flex-1">
               <h1 className="text-3xl font-bold mb-2">{application.title}</h1>
-              <p className="text-gray-700 mb-4">{application.additionalInfo}</p>
+              <p className="text-gray-700 mb-4">
+                {application.additionalInfo
+                  ? `${application.additionalInfo.title}${application.additionalInfo.content.length ? ': ' + application.additionalInfo.content.join(' ') : ''}`
+                  : ''}
+              </p>
               <div className="mb-2">
                 <span className="font-semibold">Industries: </span>
                 {application.industry?.join(", ")}
