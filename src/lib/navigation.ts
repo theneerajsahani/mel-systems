@@ -26,7 +26,7 @@ export function findCurrentNavigationBySlugs(slugPath: string[]): {
     depth: number,
   ): ProductNode | undefined {
     for (const node of nodes) {
-      if (node.slug === slugPath[depth]) {
+      if (node.slug.toLowerCase() === slugPath[depth]?.toLowerCase()) {
         if (depth === 0) category = node;
         else if (depth === 1) brand = node;
         else product = node;
