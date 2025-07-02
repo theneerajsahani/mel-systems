@@ -86,7 +86,7 @@ export default function SystemsCatchAllPage({
 }) {
   const slugs = params.slug || [];
   const product = findProductBySlug(slugs);
-  if (product) {
+  if (product && Array.isArray(product.slugPath)) {
     return <DynamicProductPage productData={product} />;
   }
   const category = findCategoryBySlug(slugs);
