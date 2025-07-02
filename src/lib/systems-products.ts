@@ -2238,113 +2238,67 @@ export const mk296CableData: ProductData = {
 // PRODUCT MAPPING
 // ============================
 
-export const systemsProductMapping: Record<string, ProductData> = {
-  // Rear View Cameras
-  "/products/systems/motec/rear-view-cameras/mc3000b-heavy-duty-camera":
-    mc3000bHeavyDutyCameraData,
-  "/products/systems/motec/rear-view-cameras/mc3000b-va-heavy-duty-stainless-steel-camera":
-    mc3000bVaHeavyDutyStainlessSteelCameraData,
-  "/products/systems/motec/rear-view-cameras/mc3000c-ir-wl-night-vision-compatible-heavy-duty-infrared-camera-with-built-in-light":
-    mc3000cIrWlNightVisionCompatibleHeavyDutyInfraredCameraWithBuiltInLightData,
-  "/products/systems/motec/rear-view-cameras/mc4000a-heavy-duty-camera":
-    mc4000aHeavyDutyCameraData,
-  "/products/systems/motec/rear-view-cameras/mc4000a-ir-wl-night-vision-compatible-heavy-duty-infrared-camera-with-built-in-light":
-    mc4000aIrWlNightVisionCompatibleHeavyDutyInfraredCameraWithBuiltInLightData,
-  "/products/systems/motec/rear-view-cameras/mc6000d-sturdy-universal-camera":
-    mc6000dSturdyUniversalCameraData,
-  "/products/systems/motec/rear-view-cameras/mc7000c-series-heavy-duty-camera":
-    mc7000cSeriesHeavyDutyCameraData,
-  "/products/systems/motec/rear-view-cameras/mc7180n-wide-angle-camera":
-    mc7180nWideAngleCameraData,
-  "/products/systems/motec/rear-view-cameras/mc7000b-mh1-heavy-duty-camera":
-    mc7000bMh1HeavyDutyCameraData,
-  "/products/systems/motec/rear-view-cameras/mc7000b-mh2-heavy-duty-camera":
-    mc7000bMh2HeavyDutyCameraData,
+// Automatically generate the mapping to ensure all keys are lowercased and match the slugPath
+const allSystemsProducts: ProductData[] = [
+  mc3000bHeavyDutyCameraData,
+  mc3000bVaHeavyDutyStainlessSteelCameraData,
+  mc3000cIrWlNightVisionCompatibleHeavyDutyInfraredCameraWithBuiltInLightData,
+  mc4000aHeavyDutyCameraData,
+  mc4000aIrWlNightVisionCompatibleHeavyDutyInfraredCameraWithBuiltInLightData,
+  mc6000dSturdyUniversalCameraData,
+  mc7000cSeriesHeavyDutyCameraData,
+  mc7180nWideAngleCameraData,
+  mc7000bMh1HeavyDutyCameraData,
+  mc7000bMh2HeavyDutyCameraData,
+  mc3050b4VkmsHeavyDutyCameraForFrontImplementsData,
+  mcdb7000aHeavyDutyBroadrReachCameraData,
+  mcde3000OemEthernetCameraData,
+  mcdl7000aHeavyDutyLvdsCameraData,
+  mcde7000aHeavyDutyEthernetCameraData,
+  mcde5200DigitalMotorZoomCameraData,
+  md3071a7MonitorData,
+  md3073WaterproofHeavyDutyMonitorData,
+  md3100102MonitorData,
+  lcd17zollLCDMonitorData,
+  md4074QuadIp30Ip67HeavyDutyMonitorData,
+  mdde10727HeavyDutyDigitalEthernetMonitorData,
+  mdde110210HeavyDutyDigitalEthernetMonitorData,
+  mdde112212HeavyDutyDigitalEthernetMonitorData,
+  mc9000SturdyForkCameraData,
+  mc9150bHeavyDutyPinholeCameraData,
+  mc9250SturdyForkCameraData,
+  mc925cForkArmMountedCameraData,
+  mvcd2000DigitalVideoControlUnitData,
+  mvcu1300tData,
+  mvcu1400Data,
+  mvcu1500Data,
+  mvcu1600Data,
+  mb1205ForTwoCamerasData,
+  mb1405QuadData,
+  mbe5200ForCranesData,
+  mv13VideoUnitData,
+  mv5201_1Data,
+  mwsMotecWorkviewSystemData,
+  mc5201MotorZoomCameraData,
+  mcde5200DigitalMotorZoomCameraData,
+  mvrd1100DigitalRadioSystemData,
+  mab2000MobileHeavyDutyBatteryBoxData,
+  mvr5200WirelessSystemForCranesData,
+  mtpVsVeVideoSignalAmplifierData,
+  mkwKabelData,
+  mk5CabelData,
+  mk2515ma2CableData,
+  mk67CableData,
+  mk84CableData,
+  mk228CableData,
+  mk232CableData,
+  mk295CableData,
+  mk296CableData,
+];
 
-  // Front Camera System
-  "/products/systems/motec/front-camera-system/mc3050b-4-vkms-heavy-duty-camera-for-front-implements":
-    mc3050b4VkmsHeavyDutyCameraForFrontImplementsData,
-
-  // Digital Cameras
-  "/products/systems/motec/digital-cameras/mcdb7000a-heavy-duty-broadr-reach-camera":
-    mcdb7000aHeavyDutyBroadrReachCameraData,
-  "/products/systems/motec/digital-cameras/mcde3000-oem-ethernet-camera":
-    mcde3000OemEthernetCameraData,
-  "/products/systems/motec/digital-cameras/mcdl7000a-heavy-duty-lvds-camera":
-    mcdl7000aHeavyDutyLvdsCameraData,
-  "/products/systems/motec/digital-cameras/mcde7000a-heavy-duty-ethernet-camera":
-    mcde7000aHeavyDutyEthernetCameraData,
-  "/products/systems/motec/digital-cameras/mcde5200-digital-motor-zoom-camera":
-    mcde5200DigitalMotorZoomCameraData,
-
-  // Monitors
-  "/products/systems/motec/monitors/md3071a-7-monitor": md3071a7MonitorData,
-  "/products/systems/motec/monitors/md3073-waterproof-heavy-duty-monitor":
-    md3073WaterproofHeavyDutyMonitorData,
-  "/products/systems/motec/monitors/md3100-102-monitor": md3100102MonitorData,
-  "/products/systems/motec/monitors/17-zoll-lcd-monitor":
-    lcd17zollLCDMonitorData,
-  "/products/systems/motec/monitors/md4074-quad-ip30-ip67-heavy-duty-monitor":
-    md4074QuadIp30Ip67HeavyDutyMonitorData,
-
-  // Digital Monitors
-  "/products/systems/motec/digital-monitors/mdde1072-7-heavy-duty-digital-ethernet-monitor":
-    mdde10727HeavyDutyDigitalEthernetMonitorData,
-  "/products/systems/motec/digital-monitors/mdde1102-10-heavy-duty-digital-ethernet-monitor":
-    mdde110210HeavyDutyDigitalEthernetMonitorData,
-  "/products/systems/motec/digital-monitors/mdde1122-12-heavy-duty-digital-ethernet-monitor":
-    mdde112212HeavyDutyDigitalEthernetMonitorData,
-
-  // Fork Cameras
-  "/products/systems/motec/fork-cameras/mc9000-sturdy-fork-camera":
-    mc9000SturdyForkCameraData,
-  "/products/systems/motec/fork-cameras/mc9150b-heavy-duty-pinhole-camera":
-    mc9150bHeavyDutyPinholeCameraData,
-  "/products/systems/motec/fork-cameras/mc9250-sturdy-fork-camera":
-    mc9250SturdyForkCameraData,
-  "/products/systems/motec/fork-cameras/mc925c-fork-arm-mounted-camera":
-    mc925cForkArmMountedCameraData,
-
-  // Video Control Units
-  "/products/systems/motec/video-control-units/mvcd2000-digital-video-control-unit":
-    mvcd2000DigitalVideoControlUnitData,
-  "/products/systems/motec/video-control-units/mvcu1300": mvcu1300tData,
-  "/products/systems/motec/video-control-units/mvcu1400": mvcu1400Data,
-  "/products/systems/motec/video-control-units/mvcu1500": mvcu1500Data,
-  "/products/systems/motec/video-control-units/mvcu1600": mvcu1600Data,
-  "/products/systems/motec/video-control-units/mb1205-for-two-cameras":
-    mb1205ForTwoCamerasData,
-  "/products/systems/motec/video-control-units/mb1405-quad": mb1405QuadData,
-  "/products/systems/motec/video-control-units/mbe5200-for-cranes":
-    mbe5200ForCranesData,
-  "/products/systems/motec/video-control-units/mv13-video-unit":
-    mv13VideoUnitData,
-  "/products/systems/motec/video-control-units/mv5201-1": mv5201_1Data,
-
-  // Crane Cameras
-  "/products/systems/motec/crane-cameras/mws-motec-workview-system":
-    mwsMotecWorkviewSystemData,
-  "/products/systems/motec/crane-cameras/mc5201-motor-zoom-camera":
-    mc5201MotorZoomCameraData,
-  "/products/systems/motec/crane-cameras/mcde5200-digital-motor-zoom-camera":
-    mcde5200DigitalMotorZoomCameraData,
-
-  // Transmissions
-  "/products/systems/motec/transmissions/mvrd1100-digital-radio-system":
-    mvrd1100DigitalRadioSystemData,
-  "/products/systems/motec/transmissions/mab2000-mobile-heavy-duty-battery-box":
-    mab2000MobileHeavyDutyBatteryBoxData,
-  "/products/systems/motec/transmissions/mvr5200-wireless-system-for-cranes":
-    mvr5200WirelessSystemForCranesData,
-  "/products/systems/motec/transmissions/mtp-vs-ve-video-signal-amplifier":
-    mtpVsVeVideoSignalAmplifierData,
-  "/products/systems/motec/transmissions/mkw-kabel": mkwKabelData,
-  "/products/systems/motec/transmissions/mk5-cabel": mk5CabelData,
-  "/products/systems/motec/transmissions/mk25-15-ma2-cable": mk2515ma2CableData,
-  "/products/systems/motec/transmissions/mk67-cable": mk67CableData,
-  "/products/systems/motec/transmissions/mk84-cable": mk84CableData,
-  "/products/systems/motec/transmissions/mk228-cabel": mk228CableData,
-  "/products/systems/motec/transmissions/mk232-cabel": mk232CableData,
-  "/products/systems/motec/transmissions/mk295-cabel": mk295CableData,
-  "/products/systems/motec/transmissions/mk296-cabel": mk296CableData,
-};
+export const systemsProductMapping: Record<string, ProductData> = Object.fromEntries(
+  allSystemsProducts.map((product) => [
+    `/products/systems/${product.slugPath.slice(1).join("/").toLowerCase()}`,
+    product,
+  ])
+);

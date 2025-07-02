@@ -86,6 +86,21 @@ export default function SystemsCatchAllPage({
 }) {
   const slugs = params.slug || [];
   const product = findProductBySlug(slugs);
+  if (!product) {
+    if (typeof window === 'undefined') {
+      // Only log on server/build
+      // eslint-disable-next-line no-console
+      console.warn(`No product mapping found for slug: ${slugs.join("/")}`);
+    }
+    if (process.env.NODE_ENV === 'development') {
+      return (
+        <div style={{ color: 'red', padding: 24 }}>
+          <h2>Product mapping not found for slug: <code>{slugs.join("/")}</code></h2>
+          <p>Check systemsProductMapping and the product's slugPath.</p>
+        </div>
+      );
+    }
+  }
   if (product && Array.isArray(product.slugPath)) {
     return <DynamicProductPage productData={product} />;
   }
