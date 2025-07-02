@@ -108,7 +108,9 @@ export default function ApplicationsSection() {
                         {/* Description - Enhanced visibility */}
                         <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-200">
                           <p className="text-xs sm:text-sm lg:text-xs xl:text-sm mb-2 sm:mb-3 lg:mb-2 xl:mb-4 leading-relaxed text-slate-200">
-                            {application.additionalInfo || ""}
+                            {typeof application.additionalInfo === "string"
+                              ? application.additionalInfo
+                              : application.additionalInfo?.content?.join(" ") || ""}
                           </p>
 
                           {/* Key Benefits with improved styling */}
