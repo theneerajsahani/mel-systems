@@ -12,8 +12,8 @@ export default function ApplicationsPage() {
     const searchLower = search.toLowerCase();
     return (
       app.title.toLowerCase().includes(searchLower) ||
-      (app.additionalInfo?.title.toLowerCase().includes(searchLower) ?? false) ||
-      (app.additionalInfo?.content.some((c) => c.toLowerCase().includes(searchLower)) ?? false) ||
+      (app.additionalInfo?.some(info => info.title?.toLowerCase().includes(searchLower)) ?? false) ||
+      (app.additionalInfo?.some(info => info.content?.some((c) => c.toLowerCase().includes(searchLower))) ?? false) ||
       app.industry.some((ind) => ind.toLowerCase().includes(searchLower))
     );
   });
@@ -72,8 +72,10 @@ export default function ApplicationsPage() {
                       {app.title}
                     </h3>
                     <p className="text-gray-400 dark:text-gray-400 text-sm mb-5 line-clamp-3 min-h-[48px] font-light">
-                      {app.additionalInfo
-                        ? `${app.additionalInfo.title}${app.additionalInfo.content.length ? ': ' + app.additionalInfo.content.join(' ') : ''}`
+                      {app.additionalInfo && app.additionalInfo.length
+                        ? app.additionalInfo.map((info) =>
+                            `${info.title ?? ""}${info.content?.length ? ': ' + info.content.join(' ') : ''}`
+                          ).join(' | ')
                         : "No description available."}
                     </p>
                     <div className="mt-auto flex flex-wrap gap-1">
