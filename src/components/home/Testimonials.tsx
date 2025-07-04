@@ -23,7 +23,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[48px] xl:text-[64px] 2xl:text-[54px] font-bold text-gray-900 mb-12 sm:mb-16 md:mb-20 lg:mb-24 xl:mb-28 2xl:mb-32">
+          <h2 className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[48px] font-bold text-gray-900 mb-12 md:mb-20 lg:mb-24">
             TESTIMONIALS
           </h2>
         </motion.div>
@@ -67,23 +67,23 @@ export default function Testimonials() {
             {infiniteTestimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[28rem] 2xl:w-[32rem] flex-shrink-0 border border-gray-200 hover:shadow-md transition-shadow duration-300 rounded-lg"
+                className="w-64 md:w-80 lg:w-96 xl:w-[28rem] 2xl:w-[32rem] flex-shrink-0 border border-gray-200 hover:shadow-md transition-shadow duration-300 rounded-lg"
               >
                 <CardContent className="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 2xl:p-9">
                   <div className="flex items-center mb-3 sm:mb-4 md:mb-5">
                     <div className="ml-0">
-                      <h4 className="font-semibold text-gray-900 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[22px]">
+                      <h4 className="font-semibold text-gray-900 text-[14px] lg:text-[20px]">
                         {testimonial.name}
                       </h4>
-                      <p className="text-gray-600 text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px]">
+                      <p className="text-gray-600 text-[12px] lg:text-[16px] ">
                         {testimonial.position}
                       </p>
-                      <p className="text-gray-500 text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px]">
+                      <p className="text-gray-500 text-[10px] lg:text-[14px] ">
                         {testimonial.company}
                       </p>
                     </div>
                   </div>
-                  <p className="text-gray-700 text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px] leading-relaxed">
+                  <p className="text-gray-700 text-[12px] lg:text-base leading-relaxed">
                     {testimonial.content}
                   </p>
                 </CardContent>

@@ -55,11 +55,20 @@ export default function AboutUsPage() {
       return 0.03; // sm and below - slightly slower for readability
     };
 
+    // Responsive ScrollTrigger start/end points
+    const getScrollTriggerPoints = () => {
+      if (window.innerWidth >= 1024) return { start: "top 80%", end: "bottom 30%" }; // large+
+      if (window.innerWidth >= 768) return { start: "top 85%", end: "bottom 35%" }; // md
+      return { start: "top 90%", end: "bottom 40%" }; // mobile
+    };
+
+    const { start, end } = getScrollTriggerPoints();
+
     gsap.to(validRefs, {
       scrollTrigger: {
         trigger: container.current,
-        start: "top 80%", // Start earlier for better visibility
-        end: "bottom 30%", // End later to allow full animation
+        start,
+        end,
         scrub: 1, // Smoother scrub for better control
         markers: false,
         refreshPriority: -1, // Ensure proper refresh on resize
@@ -100,7 +109,7 @@ export default function AboutUsPage() {
       body.push(
         <span
           key={word + "_" + i}
-          className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[48px] 2xl:text-[40px] font-bold mr-2 sm:mr-3 md:mr-4 lg:mr-5 xl:mr-6 inline-block"
+          className="text-[18px] md:text-[24px] lg:text-[32px] font-bold mr-2 sm:mr-3 md:mr-4 lg:mr-5 xl:mr-6 inline-block"
         >
           {letters}
         </span>,
@@ -111,6 +120,8 @@ export default function AboutUsPage() {
   };
 
   const splitLetters = (word: string) => {
+    // Clear refs before pushing to avoid duplicates
+    refs.current = [];
     const letters: React.ReactElement[] = [];
     word.split("").forEach((letter: string, i: number) => {
       letters.push(
@@ -135,7 +146,7 @@ export default function AboutUsPage() {
       ref={container}
       className="flex flex-col min-h-screen h-auto items-center justify-center bg-white px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-20 sm:py-24 md:py-28 lg:py-32"
     >
-      <h2 className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[48px] xl:text-[64px] 2xl:text-[54px] font-bold text-gray-900 mb-8 sm:mb-12 md:mb-16 w-full text-center">
+      <h2 className="text-[24px] md:text-[32px] lg:text-[48px] font-bold text-gray-900 mb-8 sm:mb-12 md:mb-16 w-full text-center">
         ABOUT US
       </h2>
       <div

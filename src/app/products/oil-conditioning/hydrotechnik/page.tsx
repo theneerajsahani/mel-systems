@@ -194,7 +194,7 @@ export default function HydrotechnikCategoryPage() {
                   and flow with wireless connectivity.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  <Button size="lg">
                     <Phone className="w-4 h-4 mr-2" />
                     Contact Hydrotechnik Expert
                   </Button>
@@ -468,7 +468,7 @@ export default function HydrotechnikCategoryPage() {
             your specific application
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
+            <Button size="lg">
               <Phone className="w-4 h-4 mr-2" />
               Speak with Hydrotechnik Expert
             </Button>

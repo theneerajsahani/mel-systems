@@ -48,32 +48,32 @@ export default function ApplicationsSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full text-xs sm:text-sm xl:text-base font-semibold mb-4 sm:mb-6">
+          <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 bg-gray-100 rounded-full text-[10px] md:text-[12px] font-semibold mb-4 sm:mb-6">
             <Factory className="w-3 h-3 sm:w-4 sm:h-4" />
             Industry Applications
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[64px] 2xl:text-7xl font-bold text-slate-900 mb-4 sm:mb-6 lg:mb-8 leading-tight tracking-tight">
-            APPLICATIONS
-            <span className="block bg-gradient-to-r from-cyan-600 via-blue-500 to-cyan-700 bg-clip-text text-transparent">
-              ACROSS INDUSTRIES
+          <h2 className="text-[24px] md:text-[32px] lg:text-[48px] font-bold text-slate-900 mb-4 sm:mb-6 lg:mb-8 leading-tight tracking-tight">
+            Applications
+            <span className="block bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
+              Across Industries
             </span>
           </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-ls xl:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4">
+          <p className="text-[12px] md:text-base text-slate-600 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
             The industries around which our know-how revolves - delivering
             mission-critical solutions where failure is not an option.
           </p>
         </div>
 
         {/* Applications Carousel */}
-        <div className="relative mb-12 sm:mb-16 lg:mb-20">
+        <div className="relative mb-12 lg:mb-20">
           <Carousel
             opts={{
               align: "start",
-              loop: true,
+              loop: false,
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4">
+            <CarouselContent className="">
               {featuredApplications.map((application) => {
                 const CategoryIcon = getCategoryIcon(
                   application.industry[0] || "",
@@ -81,13 +81,13 @@ export default function ApplicationsSection() {
                 return (
                   <CarouselItem
                     key={application.id}
-                    className="pl-1 sm:pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/4"
+                    className="basis-1/2 md:basis-1/3 lg:basis-1/4"
                   >
-                    <div className="group relative h-72 xs:h-80 sm:h-88 md:h-96 lg:h-72 xl:h-80 rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                    <div className="group relative h-40 md:h-60 lg:h-72 xl:h-80 rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-1 sm:hover:-translate-y-2">
                       {/* Background Image with Enhanced Gradient */}
                       <div className="absolute inset-0">
                         <div
-                          className={`absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-700 opacity-90`}
+                          className={`absolute inset-0`}
                         ></div>
                         <Image
                           src={
@@ -99,16 +99,15 @@ export default function ApplicationsSection() {
                         />
                       </div>
 
-                      {/* Enhanced Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-800/30 to-transparent group-hover:from-slate-900/98 transition-all duration-300"></div>
-
-                      {/* Floating Category Icon */}
-                      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-4 lg:right-4 xl:top-6 xl:right-6 p-2 sm:p-2.5 lg:p-2 xl:p-3 bg-white/20 backdrop-blur-md rounded-md sm:rounded-lg lg:rounded-xl border border-white/30 group-hover:scale-110 transition-transform duration-300 shadow-lg sm:shadow-xl">
-                        <CategoryIcon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-white" />
+                      {/* Card Title at Bottom */}
+                      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent px-3 py-2 sm:px-4 sm:py-3 md:px-5 lg:px-4 xl:px-6 rounded-b-lg sm:rounded-b-xl lg:rounded-b-2xl z-20">
+                        <h3 className="text-[10px] md:text-[12px] lg:text-[16px] font-bold text-white tracking-tight text-center whitespace-normal break-words">
+                          {application.title.toUpperCase()}
+                        </h3>
                       </div>
 
                       {/* Content */}
-                      <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-5 lg:p-4 xl:p-6 text-white">
+                      <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-5 lg:p-4 xl:p-6 text-white pb-12">
                         {/* Industry Tags */}
                         <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-3 lg:mb-2 xl:mb-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
                           {application.industry
@@ -123,19 +122,10 @@ export default function ApplicationsSection() {
                             ))}
                         </div>
 
-                        {/* Title */}
-                        <h3 className="text-lg xs:text-xl sm:text-xl md:text-2xl lg:text-lg xl:text-2xl font-bold mb-2 sm:mb-3 lg:mb-2 xl:mb-3 transform group-hover:translate-y-0 transition-transform duration-300 tracking-tight">
-                          {application.title.toUpperCase()}
-                        </h3>
-
                         {/* Description - Enhanced visibility */}
                         <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-200">
                           <p className="text-xs sm:text-sm lg:text-xs xl:text-sm mb-2 sm:mb-3 lg:mb-2 xl:mb-4 leading-relaxed text-slate-200">
-                            {typeof application.additionalInfo === "string"
-                              ? application.additionalInfo
-                              : application.additionalInfo?.content?.join(
-                                  " ",
-                                ) || ""}
+                            {application.additionalInfo?.map(info => info.content?.join(" ")).join(" | ") || ""}
                           </p>
 
                           {/* Key Benefits with improved styling */}
@@ -175,38 +165,38 @@ export default function ApplicationsSection() {
 
           {/* Mobile Navigation Hint */}
           <div className="flex justify-center mt-4 sm:mt-6 md:hidden">
-            <p className="text-xs sm:text-sm text-slate-500 bg-white/70 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg">
+            <p className="text-[10px] sm:text-sm text-slate-500 bg-white/70 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg">
               Swipe to explore more applications →
             </p>
           </div>
         </div>
 
         {/* Enhanced Bottom CTA */}
-        <div className="text-center bg-gradient-to-r from-cyan-600 via-blue-600 to-blue-700 rounded-lg sm:rounded-xl lg:rounded-2xl p-6 sm:p-8 lg:p-12 text-white relative overflow-hidden shadow-lg sm:shadow-2xl mx-2 sm:mx-0">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-16 sm:w-24 lg:w-32 h-16 sm:h-24 lg:h-32 bg-white rounded-full transform -translate-x-8 sm:-translate-x-12 lg:-translate-x-16 -translate-y-8 sm:-translate-y-12 lg:-translate-y-16"></div>
-            <div className="absolute bottom-0 right-0 w-20 sm:w-30 lg:w-40 h-20 sm:h-30 lg:h-40 bg-white rounded-full transform translate-x-10 sm:translate-x-15 lg:translate-x-20 translate-y-10 sm:translate-y-15 lg:translate-y-20"></div>
+        <div className="text-center bg-white rounded-lg sm:rounded-xl lg:rounded-2xl p-6 sm:p-8 lg:p-12 text-slate-900 relative overflow-hidden shadow-lg sm:shadow-2xl mx-2 sm:mx-0">
+          {/* Optional: Subtle background pattern for light effect */}
+          <div className="absolute inset-0 opacity-5 pointer-events-none">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-pink-100 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute bottom-0 right-0 w-40 h-40 bg-blue-100 rounded-full translate-x-1/3 translate-y-1/3"></div>
           </div>
 
           <div className="relative z-10">
-            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[48px] font-bold mb-4 sm:mb-6 tracking-tight">
+            <h3 className="text-[18px] md:text-[32px] font-bold mb-4 sm:mb-6 tracking-tight text-slate-900">
               Ready to Transform Your Industry?
             </h3>
-            <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-[20px] mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
+            <p className="text-[12px] md:text-[14px] lg:text-[16px] mb-6 sm:mb-8 text-slate-600 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
               Need a solution for your specific industry? Our experts understand
               the unique challenges across all industrial sectors.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/applications" className="w-full sm:w-auto">
-                <Button className="w-full sm:w-auto bg-white text-blue-600 hover:bg-slate-100 hover:text-blue-700 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg xl:text-xl font-semibold rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-300 group">
-                  View All Applications
-                  <ArrowRight className="ml-1.5 sm:ml-2 w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              <Link href="/contact">
+                <Button className="w-full sm:w-auto bg-black text-white hover:bg-neutral-900 px-6 sm:px-8 py-3 sm:py-4 text-[12px] md:text-[14px] lg:text-[16px] font-semibold rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl transition-all duration-300">
+                  Get Expert Consultation
                 </Button>
               </Link>
-              <Link href="/contact" className="w-full sm:w-auto">
-                <Button className="w-full sm:w-auto bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white hover:text-blue-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg xl:text-xl font-semibold rounded-lg sm:rounded-xl transition-all duration-300">
-                  Contact Our Experts
+              <Link href="/applications">
+                <Button variant="outline" className="w-full sm:w-auto bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 px-6 sm:px-8 py-3 sm:py-4 text-[12px] md:text-[14px] lg:text-[16px] font-semibold rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl transition-all duration-300 group">
+                  View All Applications
+                  <ArrowRight className="ml-1.5 sm:ml-2 w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </div>

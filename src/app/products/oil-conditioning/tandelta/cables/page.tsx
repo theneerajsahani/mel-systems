@@ -261,7 +261,7 @@ export default function CablesPage() {
                     </div>
                   ))}
                 </div>
-                <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
+                <Button>
                   Request Quote
                 </Button>
               </CardContent>

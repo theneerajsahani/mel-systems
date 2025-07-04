@@ -110,12 +110,12 @@ export default function FiltertechnikPage() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Button
                     size="lg"
-                    className="bg-green-500 hover:bg-green-600 text-white"
+                    className="bg-black text-white hover:bg-neutral-900"
                   >
                     <Phone className="w-4 h-4 mr-2" />
                     Contact Filtertechnik Expert
                   </Button>
-                  <Button variant="outline" size="lg">
+                  <Button variant="outline" size="lg" className="bg-white text-black hover:bg-neutral-100">
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Visit Filtertechnik Website
                   </Button>
@@ -185,11 +185,7 @@ export default function FiltertechnikPage() {
                     }
                     size="sm"
                     onClick={() => setSelectedCategory(category.value)}
-                    className={
-                      selectedCategory === category.value
-                        ? "bg-green-500 hover:bg-green-600"
-                        : ""
-                    }
+                    className={selectedCategory === category.value ? "bg-black text-white hover:bg-neutral-900" : ""}
                   >
                     {category.name}
                     <Badge variant="secondary" className="ml-2 text-xs">
@@ -205,9 +201,7 @@ export default function FiltertechnikPage() {
                 variant={viewMode === "grid" ? "default" : "outline"}
                 size="sm"
                 onClick={() => setViewMode("grid")}
-                className={
-                  viewMode === "grid" ? "bg-green-500 hover:bg-green-600" : ""
-                }
+                className={viewMode === "grid" ? "bg-black text-white hover:bg-neutral-900" : ""}
               >
                 <Grid className="w-4 h-4" />
               </Button>
@@ -215,9 +209,7 @@ export default function FiltertechnikPage() {
                 variant={viewMode === "list" ? "default" : "outline"}
                 size="sm"
                 onClick={() => setViewMode("list")}
-                className={
-                  viewMode === "list" ? "bg-green-500 hover:bg-green-600" : ""
-                }
+                className={viewMode === "list" ? "bg-black text-white hover:bg-neutral-900" : ""}
               >
                 <List className="w-4 h-4" />
               </Button>
@@ -385,12 +377,12 @@ export default function FiltertechnikPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-green-500 hover:bg-green-600 text-white"
+              className="bg-black text-white hover:bg-neutral-900"
             >
               <Phone className="w-4 h-4 mr-2" />
               Speak with Filtertechnik Expert
             </Button>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="bg-white text-black hover:bg-neutral-100">
               <Mail className="w-4 h-4 mr-2" />
               Request Technical Documentation
             </Button>

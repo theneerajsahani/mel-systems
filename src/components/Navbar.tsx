@@ -71,7 +71,7 @@ export default function Navbar() {
         ease: "easeInOut",
       }}
     >
-      <div className="flex flex-row items-center justify-between px-4 md:px-8 lg:px-16 py-3 md:py-4">
+      <div className="flex flex-row items-center justify-between px-4 md:px-8 lg:px-16 py-2 md:py-2">
         {/* Logo */}
         <Link
           href="/"
@@ -83,7 +83,7 @@ export default function Navbar() {
             alt="Mel Systems"
             width={140}
             height={45}
-            className="h-9 md:h-11 w-auto"
+            className="h-9 w-auto"
             priority
           />
         </Link>
@@ -97,7 +97,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "font-medium transition-all duration-200",
+                  "font-medium transition-all duration-200 text-[12px] lg:text-[16px]",
                   isActive
                     ? "text-black"
                     : "text-gray-500 hover:text-black opacity-70 hover:opacity-100",
@@ -161,7 +161,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "block text-base font-medium transition-all duration-200",
+                  "block text-[12px] font-medium transition-all duration-200",
                   isActive
                     ? "text-black"
                     : "text-gray-500 hover:text-black opacity-70 hover:opacity-100",

@@ -36,7 +36,7 @@ const productCategories: ProductCategory[] = [
     ],
   },
   {
-    title: "Systems",
+    title: "Safety Systems",
     description:
       "Comprehensive safety and monitoring systems including crane cameras, digital monitors, and video control units for enhanced operational safety.",
     image: "/products/systems/Motec/Rear view cameras/MC3000B/MC3000B.png",
@@ -69,17 +69,17 @@ export default function ProductsSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm xl:text-base font-semibold mb-4 sm:mb-6">
+          <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 bg-gray-100 rounded-full text-[10px] md:text-[12px] font-semibold mb-4 sm:mb-6">
             <Settings className="w-3 h-3 sm:w-4 sm:h-4" />
             Our Product Solutions
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[64px] 2xl:text-7xl font-bold text-slate-900 mb-4 sm:mb-6 lg:mb-8 leading-tight tracking-tight">
+          <h2 className="text-[24px] md:text-[32px] lg:text-[48px] font-bold text-slate-900 mb-4 sm:mb-6 lg:mb-8 leading-tight tracking-tight">
             Engineered for
             <span className="block bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
               Maximum Performance
             </span>
           </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed px-2 sm:px-0">
+          <p className="text-[12px] md:text-base lg:text-base text-slate-600 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
             Discover our comprehensive range of industrial solutions designed to
             enhance machinery performance, extend equipment life, and optimize
             maintenance operations across critical industries.
@@ -105,14 +105,9 @@ export default function ProductsSection() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-800/30 to-transparent"></div>
 
-                  {/* Floating Icon */}
-                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4 lg:top-6 lg:left-6 p-1.5 sm:p-2 lg:p-3 bg-white/20 backdrop-blur-md rounded-md sm:rounded-lg lg:rounded-xl border border-white/30">
-                    <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white" />
-                  </div>
-
                   {/* Category Title Overlay */}
                   <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 lg:bottom-6 lg:left-6 lg:right-6">
-                    <h3 className="text-lg xs:text-xl sm:text-2xl lg:text-[24px] xl:text-[48px] font-bold text-white mb-1 sm:mb-2 lg:mb-3 tracking-tight">
+                    <h3 className="text-lg md:text-[20px] lg:text-[24px] xl:text-[32px] font-bold text-white mb-1 sm:mb-2 lg:mb-3 tracking-tight">
                       {category.title}
                     </h3>
                   </div>
@@ -122,14 +117,14 @@ export default function ProductsSection() {
                 <div className="p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 flex flex-col flex-1">
                   {/* Description - Fixed height */}
                   <div className="mb-3 sm:mb-4 lg:mb-6 h-14 xs:h-16 sm:h-18 md:h-20 xl:h-28 flex items-start overflow-hidden">
-                    <p className="text-slate-600 leading-relaxed text-xs xs:text-sm sm:text-base lg:text-base xl:text-[20px] line-clamp-3 xl:line-clamp-4">
+                    <p className="text-slate-600 leading-relaxed text-xs md:text-[14px] lg:text-base line-clamp-3 xl:line-clamp-4">
                       {category.description}
                     </p>
                   </div>
 
                   {/* Key Features - Responsive height */}
                   <div className="mb-3 sm:mb-4 lg:mb-6 min-h-28 xs:min-h-32 sm:min-h-34 md:min-h-40 lg:min-h-44">
-                    <h4 className="text-sm xs:text-base lg:text-base xl:text-[20px] font-semibold text-slate-900 mb-2 sm:mb-3 lg:mb-4">
+                    <h4 className="text-sm lg:text-[18px] font-semibold text-slate-900 mb-2 sm:mb-3 lg:mb-4">
                       Key Features
                     </h4>
                     <div className="grid grid-cols-1 gap-1.5 xs:gap-2 sm:gap-3">
@@ -138,8 +133,8 @@ export default function ProductsSection() {
                           key={featureIndex}
                           className="flex items-center gap-2 sm:gap-3"
                         >
-                          <CheckCircle className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-emerald-500 flex-shrink-0" />
-                          <span className="text-slate-700 text-xs md:text-sm xl:text-[18px] leading-tight">
+                          <CheckCircle className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-gray-500 flex-shrink-0" />
+                          <span className="text-slate-700 text-xs md:text-sm lg:text-base leading-tight">
                             {feature}
                           </span>
                         </div>
@@ -150,7 +145,7 @@ export default function ProductsSection() {
                   {/* CTA Button */}
                   <div className="mt-auto">
                     <Link href={category.href} className="block">
-                      <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-2.5 xs:py-3 sm:py-4 text-sm xs:text-base sm:text-lg xl:text-xl font-semibold rounded-md sm:rounded-lg lg:rounded-xl group transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-2xl">
+                      <Button className="w-full bg-black text-white py-2.5 xs:py-3 sm:py-4 text-[12px] md:text-[14px] lg:text-base font-semibold rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl transition-all duration-300">
                         Explore {category.title}
                         <ArrowRight className="ml-1.5 sm:ml-2 w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                       </Button>
@@ -163,22 +158,22 @@ export default function ProductsSection() {
         </div>
 
         {/* Bottom CTA Section */}
-        <div className="text-center bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 rounded-lg sm:rounded-xl lg:rounded-2xl p-6 sm:p-8 lg:p-12 text-white shadow-xl sm:shadow-2xl mx-2 sm:mx-0">
-          <h3 className="text-xl md:text-[32px] xl:text-[48px] font-bold mb-4 sm:mb-6 tracking-tight">
+        <div className="text-center rounded-lg sm:rounded-xl lg:rounded-2xl p-6 sm:p-8 lg:p-12 bg-white/80 backdrop-blur-sm shadow-lg sm:shadow-xl mx-2 sm:mx-0 border border-white/20">
+          <h3 className="text-[18px] md:text-[32px] text-slate-900 font-bold mb-4 sm:mb-6 tracking-tight">
             Ready to Transform Your Operations?
           </h3>
-          <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-[20px] mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
+          <p className="text-[12px] md:text-[14px] lg:text-base mb-6 sm:mb-8 text-slate-600 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
             Our experts are standing by to help you select the perfect solution
             for your specific needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <Link href="/contact" className="w-full sm:w-auto">
-              <Button className="w-full sm:w-auto bg-white text-blue-600 hover:bg-slate-100 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg xl:text-xl font-semibold rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-300">
+              <Button className="w-full sm:w-auto bg-black text-white hover:bg-neutral-900 px-6 sm:px-8 py-3 sm:py-4 text-[12px] md:text-[14px] lg:text-base font-semibold rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl transition-all duration-300">
                 Get Expert Consultation
               </Button>
             </Link>
             <Link href="/products" className="w-full sm:w-auto">
-              <Button className="w-full sm:w-auto bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white hover:text-blue-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg xl:text-xl font-semibold rounded-lg sm:rounded-xl transition-all duration-300">
+              <Button className="w-full sm:w-auto bg-white text-black border border-slate-200 hover:bg-slate-100 px-6 sm:px-8 py-3 sm:py-4 text-[12px] md:text-[14px] lg:text-base font-semibold rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl transition-all duration-300">
                 View All Products
                 <ArrowRight className="ml-1.5 sm:ml-2 w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
               </Button>

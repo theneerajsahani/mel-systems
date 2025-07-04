@@ -73,7 +73,7 @@ export default function StatsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[48px] xl:text-[64px] 2xl:text-[54px] font-bold text-gray-900 mb-12 sm:mb-16 md:mb-14 lg:mb-16 w-full">
+          <h2 className="text-[24px] md:text-[32px] lg:text-[48px] font-bold text-gray-900 mb-12 sm:mb-16 md:mb-14 lg:mb-16 w-full">
             OUR IMPACT
           </h2>
 
@@ -87,14 +87,14 @@ export default function StatsSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
               >
-                <div className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[48px] xl:text-[64px] 2xl:text-[72px] font-bold text-gray-900 mb-2">
+                <div className="text-[24px] md:text-[32px] lg:text-[48px] font-bold text-gray-900 mb-2">
                   <CounterAnimation
                     target={stat.target}
                     suffix={stat.suffix}
                     duration={1.5 + index * 0.2}
                   />
                 </div>
-                <div className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[24px] xl:text-[32px] 2xl:text-[30px] text-gray-600">
+                <div className="text-[14px] md:text-[16px] lg:text-[20px]  text-gray-600">
                   {stat.label}
                 </div>
               </motion.div>

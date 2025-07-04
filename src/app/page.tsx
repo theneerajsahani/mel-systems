@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import HeroSection from "@/components/home/Hero";
+import WhyChooseUs2 from "@/components/home/WhyChooseUs2";
 
 // Lazy load non-critical sections
 const ProductsSection = lazy(() => import("@/components/home/Products"));
@@ -53,6 +54,10 @@ export default function HomePage() {
 
       <Suspense fallback={<SectionSkeleton />}>
         <Testimonials />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton />}>
+        <WhyChooseUs2 />
       </Suspense>
     </>
   );

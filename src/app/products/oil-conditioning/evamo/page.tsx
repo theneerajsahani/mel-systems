@@ -54,12 +54,12 @@ export default function EvamoPage() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Button
                     size="lg"
-                    className="bg-purple-500 hover:bg-purple-600 text-white"
+                    className="bg-black text-white hover:bg-neutral-900"
                   >
                     <Phone className="w-4 h-4 mr-2" />
                     Contact Evamo Expert
                   </Button>
-                  <Button variant="outline" size="lg">
+                  <Button variant="outline" size="lg" className="bg-white text-black hover:bg-neutral-100">
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Visit Evamo Website
                   </Button>
@@ -121,12 +121,12 @@ export default function EvamoPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button
               size="lg"
-              className="bg-purple-500 hover:bg-purple-600 text-white"
+              className="bg-black text-white hover:bg-neutral-900"
             >
               <Phone className="w-4 h-4 mr-2" />
               Get Product Information
             </Button>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="bg-white text-black hover:bg-neutral-100">
               <Mail className="w-4 h-4 mr-2" />
               Request Consultation
             </Button>
@@ -198,12 +198,12 @@ export default function EvamoPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-purple-500 hover:bg-purple-600 text-white"
+              className="bg-black text-white hover:bg-neutral-900"
             >
               <Phone className="w-4 h-4 mr-2" />
               Speak with Evamo Expert
             </Button>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="bg-white text-black hover:bg-neutral-100">
               <Mail className="w-4 h-4 mr-2" />
               Request Custom Quote
             </Button>
